@@ -1,0 +1,972 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Ren Li&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ren Li&#39;s blog">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-Java" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Java/" class="article-date">
+  <time datetime="2018-01-20T17:20:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Java/">Java笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><a href="#1">第一节_基础知识</a></li>
+<li><a href="#2">第二节_String操作</a></li>
+<li><a href="#3">第三节_输入输出</a></li>
+<li><a href="#4">第四节_GUI</a></li>
+</ul>
+<h3 id="1"> 第一节_基础知识 </h3>
+
+<ul>
+<li><p>api中查的都是类，函数查不到。<br>查包的话直接在首页按字母顺序找即可。</p>
+</li>
+<li><p>不清楚数组长度的情况下遍历：<br>for(String/int.. a : array ){}</p>
+</li>
+<li><p>控制double输出格式：decimalformat类<br>DecimalFormat df = new DecimalFormat(“0.0000000”);<br>df.format(xx);<br>“#.#######”与”0.0000000”的区别，【开头位置】出现0时是否用0占位。#舍去0,0则占位。</p>
+</li>
+<li><p>测试代码执行时间<br>long a=System.currentTimeMillis();<br>//测试代码<br>System.out.println((System.currentTimeMillis()-a)/1000f+” 秒 “);</p>
+</li>
+<li><p>基本数据类型从低级-&gt;高级为自动类型转换（因为不会丢失数据）<br>高级-&gt;低级有丢失数据的风险，所以需要强制类型转换。<br>但若低级-&gt;高级时有溢出可能，也需在右式强转，否则无法接收溢出的数据。<br>eg：<br>int n=xxx;<br>double d = n <em> n;<br>【若n^2超出int范围，则无法接收溢出数据，在右式即截断了】<br>应为double d = (double)n </em> n;</p>
+</li>
+<li><p><strong>java各数值类型范围</strong><br>类型|字节数|取值范围<br>:-:|:-:|:-:<br>int|4|-2^31~2^31-1(-21亿~21亿)<br>long|8|-2^63~2^63-1(很大)<br>float|4|3.4x10^-38~3.4x10^38(绝对值)<br>double|8|1.7x10^-308~1.7x10^308(绝对值)<br>char|1|-128~127<br>boolean|1|true/false</p>
+</li>
+<li><p>取绝对值函数：Math.abs(xx)<br>开方函数：Math.sqrt(xx)<br>Arrays.sort(a)：将数组a从小到大排序<br>Arrays.fill(a,xx)：将数组a元素全部置为xx</p>
+</li>
+<li><p>java不显示地支持2进制表示，可用16进制(0x开头)、8进制(0)来代替，直接int即可。<br>但位运算符：&amp; | ^ ~等都是将数转化为二进制后运算。<br>十进制数转二进制输出：Integer.toBinaryString(xx);</p>
+</li>
+<li><p><strong>建立class数组</strong><br>Class[] c = new Class[n];<br>for(int i = 0;i&lt;n;i++){ c[i] = new Class(); }<br>还要逐个进行初始化</p>
+</li>
+<li><p>java自定义类比大小<br>实现Comparable&lt;自定义类名&gt;接口<br>并重写int compareTo(&lt;自定义类名&gt; xx)方法，<br>this小于xx返回负值，等于返回零，大于返回正值。</p>
+</li>
+<li><p>多线程时：实现runnable接口的方式便于多重继承，但在类体内可能无法使用一些Threadl类的方法（如sleep）。<br>继承Thread虽然只能单继承，但方便在类体内使用Thread方法。</p>
+</li>
+</ul>
+<p></p><h3 id="2"> 第二节_String操作 </h3><p></p>
+<ul>
+<li><p>访问字符串中的元素，返回char<br>String.charAt(index)      0 ~ lenth-1</p>
+</li>
+<li><p>char[]转换为String：不能直接toString(),会乱码；正确方法为new String(char[])</p>
+</li>
+<li><p>字符串string匹配要用equals函数，不能直接==；直接==比较的是内存地址<br>但char可以直接==比较</p>
+</li>
+<li><p>搜索字符串str.indexOf(char ch,int index)：从index开始搜</p>
+</li>
+<li><p><strong>分割字符串：</strong><br>str.split(“xx”)：以”xx”分隔str，返回String数组<br>str.substring(int begin,int end)：返回begin~end-1，所以长度为end-begin。</p>
+</li>
+<li><p>制表符\t，当它的前面有单词的时候，补的空格和单词长度加起来刚好能被 8 整除。<br>效果：使制表符后面的字符对齐</p>
+</li>
+<li><p><strong>int,double和string转换</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">double</span> j=<span class="number">1.0</span>;</span><br><span class="line">String str_i=Integer.toString(i);</span><br><span class="line">String str_j = Double.toString(j);</span><br><span class="line"><span class="keyword">double</span> dd = Double.parseDouble(<span class="string">"123.2"</span>);</span><br><span class="line">String str_j = Double.toString(j);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p></p><h3 id="3"> 第三节_输入输出 </h3><p></p>
+<ul>
+<li><p>使用System.in来创建流时，不可关闭。否则会把其他流也一起关掉</p>
+</li>
+<li><p><strong>关于输入输出中的next()函数：</strong><br>Scanner in的输入函数中：next()只接收有效字符，而nextLine()、nextInt()、nextDouble()等此类函数则会接收包括换行、空格在内的一切字符。<br>所有【next类函数】后接in.nextLine()\nextDouble()..函数会出错，会跳过in.nextLine()的输入语句。<br>因为nextLine()接收到上一句next()最后的回车符后就结束了。<br>next()不丢弃末尾的回车符，nextline()函数会丢弃。<br>【解决】：<br>(1).next()后单独跟一句nextLine()接收回车符;<br>(2).都采用next()形式，只接收有效字符。<br>另外，在同一个函数中，不管中间隔了多少语句，只要没有输入语句，nextLine()就还会接收next()的回车。</p>
+</li>
+<li><p>ObjectInputStream()和ObjectOutputStream()用什么顺序写进去的就用什么顺序读出来。而且Object流和其他流不能混用，必须用同类流输入输出。</p>
+</li>
+<li><p>运用缓冲流BufferedWriter写文件时，write()函数后一定要接flush()函数，缓冲流中的内容才会写到文件中，否则就一直在缓冲流中。</p>
+</li>
+<li><p>网络流read、writer读取时只有关闭后才能正常显示-1。<br>最好用read(byte[])的方法而非一个一个byte read，因为函数的循环调用也会占用时间。</p>
+</li>
+</ul>
+<p></p><h3 id="4"> 第四节_GUI </h3><p></p>
+<ul>
+<li><p>写jframe时，setvisible()函数要写到所有所有组件语句之后。<br>否则一开始不会显示组件，拖动下窗口才会显示。</p>
+</li>
+<li><p>setvisible(true)目的是使控件可以显示出来,如果该控件已经被显示出来，那么该方法使控件显示在窗口的最前方。<br>但其使用的位置需要注意。setVisible的对象一般是该对象的使用者调用的。如果setVisible在某个控件的内部，那么在setVisible函数后面添加的控件就显示不出来了。<br>原因就在于，setVisible(true)并不是告诉JVM让该控件可见，而是在内部调用repaint方法把各个控件画出来进行显示。如果在控件还没完全添加完其他控件就setVisible(true)那么在方法后面添加的控件都不能显示。</p>
+</li>
+<li><p>keylistener中的方法是对所有键盘上的按键都会调用。若要针对某个特定的键，可以调用if()方法来判断。</p>
+</li>
+<li><p>key pressed是按下键，typed是键值传到电脑，released是按键完成释放按键。顺序pressed-&gt;typed-&gt;released。<br>1).pressed和typed一般是紧接着的两个动作，中间不会插其他键的函数。而在typed和realesed间若同时按两个键可能会加另外一个键的函数。<br>2).就是realesed时按键才算按成。<br>3).长按键会有很多pressed和typed，但只有一个realesed。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Java/" data-id="cjmmeykxa0005d5qxzhew398v" class="article-share-link" data-share="baidu" data-title="Java笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Java/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Other/编程体会" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Other/编程体会/" class="article-date">
+  <time datetime="2018-01-20T17:10:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Other/编程体会/">编程体会</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p>先想架构再写程序，把架构写好再往里面填代码。<br>确定好哪些可以重用，哪些可以继承。避免同一段代码写多遍。</p>
+</li>
+<li><p>一开始不要考虑太多限制(防止限制代码相互影响)，如输入非负/输入必须为数字等等<br>最后再统一考虑限制</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Other/编程体会/" data-id="cjmmeykym001vd5qxna9kc4ux" class="article-share-link" data-share="baidu" data-title="编程体会">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Other/编程体会/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Matlab笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Matlab笔记/" class="article-date">
+  <time datetime="2018-01-20T10:40:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Matlab笔记/">Matlab笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><a href="#1">matlab基本操作</a></li>
+<li><a href="#2">matlab矩阵操作</a></li>
+<li><a href="#3">matlab绘图</a></li>
+<li><a href="#4">解线性方程组</a></li>
+<li><a href="#5">matlab一些函数用法</a></li>
+</ul>
+<h2 id="1"> matlab基本操作 </h2><br>1. <strong>一些操作Tips:</strong><br>    - clear：清空Workspace     clc：清空Command Window<br>    - 批量修改变量名：shift+enter（只针对变量第一次出现时）<br>    - 控制输出格式：format<br>    format short：小数点后4位，之后输出的数都按此格式<br>    - digits(4)    vpa(x)   一起用控制x输出为4位有效数字。或者直接vpa(x,4)<br>    - 批量注释：ctrl+R  取消注释：ctrl+T<br>    - 单步调试：F10<br>    - 查看变量：who(只列举)       whos(附带变量空间大小、字节数等信息)<br><br>2. <strong>文件操作：</strong><br>    - save filename  x1 x2 x3  (-append)<br>    存储变量值至filename.mat文件，默认存储至matlab.mat文件。-append追加存储，默认为覆盖存储<br>    - load filename  x1 x2 x3：加载变量，默认为加载所有变量。会覆盖Workspace同名变量<br><br>3. <strong>函数.m文件定义</strong><br>function [y1,y2] = fun(x1,x2)      y1,y2…是输出变量，直接在函数内参与运算，函数内不要写clear，会清掉输入变量<br><br>4. <strong>字符串操作：</strong><br>eval(‘xxx’)：执行字符串所对应的matlab语句<br>str2num(‘xxx’)：将数字字符串转化为数字<br>num2str(xxx)：将数字转化为数字字符串<br>取字符串特定字符：str(2)<br>字符串拼接：str=[str1,str2]<br>abs(‘x’)函数：求字符x的ASCII码<br>char(x)：求ASCII码为x的字符<br><br><h2 id="2"> matlab矩阵操作 </h2><br>1. 矩阵的建立：  a=[1 2 3;4 5 6;7 8 9]<br>矩阵取元素：<br>    - 下标：a(2,3)，行、列皆从1开始<br>    - 序号：a(8)，按列计数<br><br>2. 冒号表达式建立行向量  x=5:2:20<br><br>3. 矩阵拼接：直接中括号拼接[  ]<br><br>4. 矩阵拆分： b=a(2:4,5:6)，b为矩阵a2~4行5~6列的内容。<br>用end来表示最后一行/列，用冒号：表示所有行/列<br>b=a(:)，按矩阵a元素的【排列顺序】取元素，最终排成列向量<br><br>5. 矩阵查找特定元素：<br>num/[rows,cols,vals]=find(A&gt;10)，找矩阵A中所有&gt;10的数。一个返回值为序号，两个返回值即为下标，三个返回值加上值。<br><br>6. 矩阵转置：B=A’<br><br>7. 删除矩阵元素，对矩阵整行/整列元素置空，后面元素序号前补     a(2,:)=[]<br><br>8. 复制矩阵         repat(&lt;矩阵名&gt;,x,y)，以此矩阵为“一块”复制x行，y列<br><br>9. 矩阵计算：直接+-<em>/<br>/为右除   \为左除   /即为乘矩阵的逆<br>.</em>和./为点乘点除，矩阵对应元素的乘除。<br>注意：矩阵的幂^和矩阵元素的幂.^不一样<br><br>10. A(:)表示以一列的方式显示矩阵A中所有元素<br><br>11. size(A,1)矩阵的行数，size(A,2)矩阵的列数<br><br>12. 特殊矩阵的建立<br>zeros：零矩阵    zeros(x,y)：x行y列零矩阵<br>ones：1矩阵<br>eye：单位矩阵<br>rand：随机矩阵，元素为0~1随机数的矩阵<br>rand（a,b）表示产生a行b列随机数<br>产生a到b之间的x行y列随机矩阵：a+(b-a) * rand(x,y)<br>randn：均值为0，方差为1的标准正态分布的随机矩阵<br>inv()：求方程组的逆矩阵<br>diff()：计算差分（后项减前项）<br>diag()：构建对角矩阵(输入向量)or从矩阵中取对角线(输入矩阵)<br><br><h2 id="3"> matlab绘图 </h2><br>1. 绘制函数图形标识符：legend(‘’,’’,’’)<br>多个图例要依据添加对应数据的顺序依次加入<br><br>2. plot(x,y)<br>最基本的绘图函数<br>画多条函数plot(x,y1,x,y2,x,y3….)<br><br>3. 设置线型和线的粗细：plot(x,y,’-.’,’linewidth’,1.5);可通过线型、点型和颜色改变线条外观，粗细设置尤为重要。<br>更改坐标范围：axis([Xmin, Xmax, Ymin, Ymax])、xlim([Xmin, Xmax])、ylim([Ymin, Ymax])<br>坐标轴名字(并设置字体)：xlabel(‘titke’,’fontsize’,12)<br><br><br>4. loglog(),semilogx(),semilogy()函数分别以<br>两坐标轴为log10刻度，x轴为log10刻度，y轴为log10刻度作函数图<br><br>5. plotyy(x,y1,x,y2)双y轴作图<br><br>6. errorbar(y,E)函数，E为1/2误差长度的向量<br>在函数上标明误差(对应离散点作图，且x/y和E向量长度相等)<br><br>7. fplot(‘&lt;M文件名&gt;’,[范围])<br>调用M文件函数绘图，有范围限制<br><br>8. ezplot(‘函数表达式’,[x范围],[y范围])<br>隐函数绘图。easy plot，直接写函数表达式即可绘图<br><br>9. polar(x,y)、ezpolar(‘函数表达式’)<br>极坐标绘图，(ρ,Θ)<br><br>10. hist(data,&lt;区间数&gt;)<br>绘制频数分布直方图，频数总分数默认10份<br><br>11. 对图形的修改可直接在figur面板上进行<br><br><h2 id="4">  解线性方程组 </h2>
+
+<ol>
+<li><p>基本概念<br>tol：误差<br>rank(A)：返回矩阵A的秩<br>size(A,1)：返回矩阵A的行数<br>size(A,2)：返回矩阵A的列数<br>null(A)：求齐次方程组的解<br>det(A):求【方阵】的行列式<br>diag(diag(A))：构造矩阵A的对角线矩阵<br>norm(A):求向量A的范数（向量中各元素的平方和再开根号）<br>可用来求两向量的的“差值”norm(A-B)</p>
+</li>
+<li><p>左除法：matlab一般用inv()&lt;方阵求逆&gt;、pinv()&lt;非方阵求伪逆&gt;来代替左除。<br>左除法分三种情况：<br>恰定方程组：rank(A) = rank([A,b]) = n，方程组有唯一解<br>欠定方程组：rank(A) = rank([A,b]) &lt; n，方程组有无穷解，通解用”特解+对应齐次方程组解”来表示。<br>超定方程组：rank(A) != rank([A,b])，方程组无解，求出的是最小二乘解。</p>
+</li>
+</ol>
+<ol start="3">
+<li>[r]=eig(A)：求矩阵A的特征值r&lt;列向量形式&gt;<br>[x,r]=eig[A]：求矩阵A的特征向量x和特征值r&lt;对角矩阵形式&gt;<br>使A<em>x=x</em>r<br>max(max(abs(r)))：找绝对值最大的特征值</li>
+</ol>
+<h2 id="5"> matlab一些函数用法： </h2>
+
+<ol>
+<li><p>vpa(xxx,数字)<br>四舍五入控制有效数字位数，xxx可以是数，也可是表达式。</p>
+</li>
+<li><p>poly2sym(系数行向量,x)<br>系数行向量-&gt;多项式，各项次数由系数数量控制</p>
+</li>
+<li><p>求线性规划问题：linprog()</p>
+</li>
+<li><p>scatter()画散点图</p>
+</li>
+<li><p>size(A)：矩阵A的行、列数   size(A,1)：A的行数   size(A,2)：A的列数</p>
+</li>
+<li><p>常微分方程符号解：fun=dsolve(‘equ1’,’equ2’,’equ3’)，fun即为最终求得的微分方程，默认对自变量t求导<br>微分方程数值解：ode工具箱</p>
+</li>
+<li><p>对符号方程中特定符号进行替换：subs(fun,{‘a’,’b’},{3,5})<br>可替换为特定数值、其他符号变量       可替换为数组：得到同阶数组</p>
+</li>
+<li><p>积分<br>数值积分：integral(fun,xmin,xmax)<br>符号积分：int()</p>
+</li>
+<li><p>解方程组<br>solve：求方程组的符号解<br>linsolve：求线性方程组数值解<br>fsolve：求非线性方程组数值解</p>
+</li>
+<li><p>matlab中没有求解不等式的函数，只能先解对应的等式再画图判断<br>normpdf(x,mu,sigma)   x(向量)的正态分布概率密度函数</p>
+</li>
+<li><p>matlab插值函数：y=interp1(x0,y0,x,’spline’)  spline为三次样条插值<br>x0,y0为原始点   x为更密集的需求值点,y为求得的函数值，一般不推荐外插<br>二维插值：z = interp2(x0,y0,z0,x,y,’spline’)</p>
+</li>
+<li><p>多项式拟合：[p]=polyfit(x,y,n)  和  y1=polyval(p,x1)       p为降幂排列的阶数<br>matlab拟合工具箱：cftool</p>
+</li>
+<li><p>最后legend加公式：legend(‘样本’,[‘y = ‘,sprintf(‘%.3fx^2+%.3fx%.3f’,p(1),p(2),p(3))]);</p>
+</li>
+<li><p>一些统计学名词：</p>
+<ul>
+<li>SSE(残差平方和)：The sum of squares due to error，越接近0越好。点对点误差平方，再加和</li>
+<li>MSE(残差平方和均值)：Mean squared error，SSE/n</li>
+<li>RMSE：MSE开根号</li>
+<li>SSR(回归平方和)：预测数据与原始数据均值之差的平方，再加和。点对面</li>
+<li>R-square(确定系数)：[0,1]，越接近1越好</li>
+<li>Adjusted R-square(矫正后确定系数)：对复杂模型的惩罚</li>
+</ul>
+</li>
+<li><p>求差分、求导都是用的diff函数</p>
+</li>
+<li><p>桌面文件路径：C:\Users\35055\Desktop.….<br>读excel：A=xlsread(filename,sheet,’B3:C4’)     sheet为对应数字<br>写excel：直接粘贴</p>
+</li>
+<li><p>元胞数组：通过小括号()加下标访问，返回的是对应cell的格式。<br>通过大括号{}加下标访问，返回的是对应cell的内容。</p>
+</li>
+<li><p>excel不同的样本纵向排列，单个样本不同的变量/观测横向排列。<br>但对于神经网络、支持向量机，样本横向排列，变量纵向排列</p>
+</li>
+<li><p>Min-Max标准化：将矩阵的【每一行】进行标准化处理（针对模式识别智能算法）<br>  A=[1,2,3];<br>  A=mapminmax(A,0,1);      标准化到0~1之间<br>  [Y,PS] = mapminmax(X,YMIN,YMAX)<br>  Y = mapminmax(‘apply’,X,PS)<br>  X = mapminmax(‘reverse’,Y,PS)</p>
+</li>
+<li><p>legend加公式   legend(‘样本’,[‘y = ‘,sprintf(‘%.3fx^2+%.3fx%.3f’,p(1),p(2),p(3))]);</p>
+</li>
+<li><p>rng(2)，设置随机数种子。之后rand()产生的随机数都是一定的</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Matlab笔记/" data-id="cjmmeykxg000dd5qxj6mp04kh" class="article-share-link" data-share="baidu" data-title="Matlab笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Matlab笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Lingo笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Lingo笔记/" class="article-date">
+  <time datetime="2018-01-20T10:34:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Lingo笔记/">Lingo笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p><strong>一些语法：</strong></p>
+<ul>
+<li>变量不区分大小写</li>
+<li>语句以分号结尾</li>
+<li>以感叹号！开头写注释，同样需要分号结尾</li>
+<li>系统默认变量非负，除非用@free/@sub/@slb函数另行说明</li>
+<li>lingo一次只能输出一组解，要检验是否有其他解，加额外的约束</li>
+</ul>
+</li>
+<li><p><strong>集合sets和属性的概念：</strong><br>QU/1,2,3/:x1,x2,x3,x4;/1..3/<br>QU集合有三个元素，1~3每个元素都有x1~x4四个属性变量，另外x1~x4也都是大小为3的数组。<br>集合就是一维数组，定义二维数组/矩阵：set3(set1,set2)   注意是括号不是/../</p>
+</li>
+<li><p><strong>Lingo程序结构：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MODEL:</span><br><span class="line">	SETS:定义集合和属性，即变量结构</span><br><span class="line"> 	ENDSETS</span><br><span class="line">	DATA:声明常量, 属性=常数列表</span><br><span class="line">	ENDDATA</span><br><span class="line">	写目标函数:max=...../min=....</span><br><span class="line">	约束条件</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>集合循环函数：</strong><br>FOR、MAX、MIN、SUM、PROD</p>
+<ul>
+<li>@SUM(setname(i)|对i 的约束 : x(i)表达式)<br>若集合中所有元素都要进行求和，则可以省略下标</li>
+<li>@FOR(setname(i)|对i 的约束 : x(i)表达式)<br>若集合中所有元素相同，则可以省略下标</li>
+<li>注：@SUM是遍历属性(横向)，@FOR是遍历集合(纵向)，遍历的方向不同</li>
+<li>@PROD(s:e) 对集合s中的每个成员,分别得到 表达式e 的值,然后返回所有这些值的乘积</li>
+</ul>
+</li>
+<li><p><strong>lingo中函数都以@开头</strong><br>  限定取整数：@gin(x)<br>  0/1变量：@bin(x)<br>  @text(‘文件路径’)=’X为’x   输出集或属性的所有值  写在data块中，在model所有操作执行完后才执行<br>  @rand(seed)  产生0~1之间的随机数，seed为种子，0~1随便取</p>
+</li>
+<li><p><strong>模型类型：</strong><br>LP   线性规划<br>ILP  整数线性规划<br>NLP  非线性规划<br>INLP  整数非线性规划<br>MILP  混合整数线性规划<br>IP    二次规划<br>IQP    整数二次规划</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Lingo笔记/" data-id="cjmmeykx90004d5qxqmxvuviu" class="article-share-link" data-share="baidu" data-title="Lingo笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Lingo笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lingo/">Lingo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库SQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/数据库SQL/" class="article-date">
+  <time datetime="2018-01-20T10:26:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/数据库SQL/">数据库SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><ul>
+<li><p>sql语句不区分大小写，且在语句末尾必须输分号。</p>
+</li>
+<li><p>创建、删除用户时，用户名、密码两边要用单引号括起来。<br>当输入的值为字符串、日期时，也要用单引号括起来。（双引号也可以）</p>
+</li>
+<li><p>创建数据库：create database xxx;<br>使用数据库：use xxx;<br><a href="https://www.cnblogs.com/qzsoul/p/6919564.html" target="_blank" rel="noopener">mysql数据库相关操作</a></p>
+</li>
+<li><p><strong>数据库授权：</strong><br>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’192.168.1.102’ IDENTIFIED BY ‘1234’ WITH GRANT OPTION; </p>
+</li>
+<li><p><strong>防注入：</strong><br>要对用户直接输入的数据做一些处理再写数据库，防止注入。或者用preparedStatement语句防注入，但要注意% 的like查询注入。</p>
+</li>
+<li><p><strong>清除table的所有数据：</strong><br>truncate table xxx；</p>
+</li>
+<li><p>SQL中两种约束：列级约束(只作用于一列)、表级约束(可作用于多列)<br><strong>六种具体约束：</strong><br>  主键约束（primary key ）<br>  外键约束（foreign）<br>  唯一性约束（unique）<br>  检查约束（check）<br>  缺省约束（default）  只能列级约束<br>  非空约束 (not null)       只能列级约束</p>
+</li>
+<li><p><strong>数据库三级模式：</strong><br>外模式-模式-内模式<br>模式：表，外模式：视图，内模式：物理结构和存储方式</p>
+</li>
+</ul>
+<h2 id="MySQL数据库"><a href="#MySQL数据库" class="headerlink" title="MySQL数据库"></a>MySQL数据库</h2><ul>
+<li><p>mysql数据库目录：C:\Program Files\MySQL\MySQL Server 8.0\bin<br>dos下用cd C:\Program Files\MySQL\MySQL Server 8.0\bin</p>
+</li>
+<li><p>用命令行操作数据库要从dos里打开。找到安装路径下bin文件夹中的mysql.exe，再用登录命令。mysql -u 用户名 -p  （回车-&gt;输密码）</p>
+</li>
+<li><p>mysql数据库 “The server time zone value” 异常：mysql数据库时间与系统时间格式不匹配的问题<br>解决：数据库的url后加”?serverTimezone=GMT”：String dburl = “jdbc:mysql://localhost:3306/bookstore?serverTimezone=GMT”;</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/数据库SQL/" data-id="cjmmeykxs000ud5qx8631u5i3" class="article-share-link" data-share="baidu" data-title="数据库SQL">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/数据库SQL/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Other/PS操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Other/PS操作/" class="article-date">
+  <time datetime="2018-01-20T10:14:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Other/PS操作/">PS操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p>复制新图层：ctrl+J</p>
+</li>
+<li><p>快速蒙版：Q</p>
+</li>
+<li><p>区分撤销和后退操作：撤销为ctrl+z，只能撤到上一步；后退为ctrl+alt+z，可撤回多步。<br>注：ctrl+alt+z会与QQ/Tim的快捷键冲突。</p>
+</li>
+<li><p>恢复：恢复到上一次保存时的状态。</p>
+</li>
+<li><p>背景色橡皮擦：擦去背景，变为透明色</p>
+</li>
+<li><p>画圆：椭圆按钮，shift+左键</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Other/PS操作/" data-id="cjmmeykyg001jd5qxh0nopmnq" class="article-share-link" data-share="baidu" data-title="PS操作">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Other/PS操作/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-人工智能笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/人工智能笔记/" class="article-date">
+  <time datetime="2018-01-20T09:20:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/人工智能笔记/">人工智能笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p><strong>1. 智能的三类观点</strong></p>
+<ul>
+<li>思维理论：智能的核心是思维，可通过对思维规律和思维方法的研究来揭示智能本质。</li>
+<li>知识阙值理论：智能取决于知识的数量及其可运用程度。</li>
+<li>进化理论：智能取决于对外界环境的感知和适应。</li>
+</ul>
+<p><strong>2. 图灵测试：判断机器是否具有智能</strong><br>测试者向人和机器提问，若有超过30%的测试者不能区分任何机器，机器则通过图灵测试。<br>存在的问题：仅涉及了结果的比较，没有涉及思维过程。</p>
+<p><strong>3. 人工智能的定义</strong><br>用人工的方法在机器上实现智能。<br>研究如何构造智能机器，模拟、延伸和扩展人类智能。</p>
+<p><strong>4. 人工智能的发展</strong></p>
+<ul>
+<li>孕育期(1956年之前)：数理逻辑、电子计算机、神经网络模型和控制论的出现。</li>
+<li>形成期(1956-1970)：达特茅斯会议正式定义Aritificial Intelligence这一术语。</li>
+<li>知识应用期(1971-80年代末)：专家系统、自然语言理解、机器翻译等技术的出现。</li>
+<li>从学派分离到综合(80年代末-本世纪初)：三大学派的综合集成。<br>  符号主义学派：功能模拟，数理推理，逻辑理论机——数学定理证明程序LT。<br>  连接主义学派：结构模拟，模拟大脑结构的神将网络系统。<br>  行为主义学派：行为模拟，构造具有进化能力的智能系统。</li>
+<li>智能科学技术的兴起(本世纪初以来)：自然智能、人工智能、集成智能的协同研究。</li>
+</ul>
+<h3 id="第二章-知识表示"><a href="#第二章-知识表示" class="headerlink" title="第二章 知识表示"></a>第二章 知识表示</h3><p><strong>1. 知识的概念</strong><br>人们在实践中积累的认识和经验。<br>认识：对事物现象、属性、本质等的认识；<br>经验：解决问题的方法（微观/宏观）。</p>
+<p><strong>2. 知识表示</strong><br>是对知识的描述，用符号将知识表示成计算机可接受的形式。<br>知识表示的方法不唯一。</p>
+<p><strong>3. 一阶谓词逻辑</strong><br>断言：一个陈述句称为一个断言。<br>命题：具有真假意义的断言。<br>谓词：谓词名(命题的谓语)+个体(命题的主语)。<br>个体域：所讨论对象的全体构成的集合。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/人工智能笔记/" data-id="cjmmeykxh000gd5qx3c63eayp" class="article-share-link" data-share="baidu" data-title="人工智能笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/人工智能笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MFC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/MFC/" class="article-date">
+  <time datetime="2018-01-20T07:14:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/MFC/">MFC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><strong>关于控件值交换</strong><br>upgradedata()：通过绑定的变量和控件交换值。更新所有编辑框。<br>参数是TRUE时：控件内容赋值给和控件绑定的变量。函数在前面<br>参数是FALSE时：控件绑定的变量赋值给控件的内容。函数在后面。<br>前提：控件和变量是绑定的。</li>
+</ul>
+<p>SetDlgItemText()/GetDlgItemText()：直接和控件交换值。更新特定编辑框。</p>
+<ul>
+<li><strong>关于模态/非模态对话框</strong><br>模态对话框：每次只能操作当前的模态对话框，不能操作主对话框。<br>DoModal：创建模态对话框，直到关闭模态对话框时才会返回，因此在此期间父对话框不能接收任何操作。关闭模态对话框时会返回一个整形值。domodal函数也有显示对话框的功能，因此无须再用其他的显示函数。</li>
+</ul>
+<p>非模态对话框：不用DoModal,对话框出现时还可操作父对话框。用new来创建，再显示。</p>
+<p>怎样先显示登陆界面而非主界面：在oninit函数中domodal登陆dlg。</p>
+<ul>
+<li><strong>关于MFC绘图</strong><br>dc:设备上下文，设备环境，绘图必须要先获取dc。<br>矩形类：CRect<br>在哪里画-&gt;画多大-&gt;画什么</li>
+</ul>
+<p>bitblt：当要处理或刷新多张图片时，会出现闪烁，要使用双缓冲绘图。<br>会先将图片拷贝到内存，再由内存拷贝到桌面，两次bitblt函数</p>
+<ul>
+<li><p><strong>关于网络通信</strong><br>IP、端口号<br>TCP/UDP协议的区别<br>TCP:三次握手,安全传输，数据不容易丢失<br>UDP:无需确认，不稳定。<br>CSocket类<br>通信协议：先发一个int数据，告诉对方我接下来要发的是文字/图片..信息，再发相应的信息</p>
+</li>
+<li><p>手动删消息函数：三个地方，函数体、映射、头文件</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/MFC/" data-id="cjmmeykxd0009d5qxhuldxi2d" class="article-share-link" data-share="baidu" data-title="MFC">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/MFC/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python/python环境配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/Python/python环境配置/" class="article-date">
+  <time datetime="2018-01-19T23:00:00.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/19/Python/python环境配置/">VSCode_python环境配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p><strong>配置python调试环境</strong><br>1、新建一个项目文件夹，在文件夹中建一个.py文件，再在VSCode中打开文件夹。<br>2、点开最左边侧栏”debug”项(小虫子图标)，再点左上角齿轮按钮配置launch.json即可。<br>注1：launch.json为调试相关的设置，如调试时是否停在第一行，是否自动跳到终端等。<br>注2：调试选项选Python: Terminal(integrated)，使用VSCode的内置环境调试。</p>
+</li>
+<li><p><strong>关于调试F5</strong><br>调试(F5)不下断点的话和直接运行(ctrl+F5)没区别。<br>调试时F10和F11的区别：F10一条条语句执行(不进入函数)，F11会进入函数内。不要被F10的翻译“单步跳过”所误导，语句还是会执行，并没有跳过。</p>
+</li>
+<li><p>调试(F5)时自动跳到“终端”而非“调试控制台”的解决办法：<br>在launch.json文件中对应调试项中加 <code>&quot;console&quot;: &quot;none&quot;,</code> 不在最后一行的话句尾要加逗号</p>
+</li>
+<li><p><strong>pylint对C扩展库报错</strong><br>对于VSCode中Pylint的报错：E1101: Module ‘xxx’ has no ‘xxx’ member’<br><strong>原因：</strong>Pylint默认只信任来自标准库stdlib的C扩展，而忽略其他的。模块’xxx’不是stdlib的一部分，因此需要手动将其添加到白名单。<br><strong>解决：</strong><br>1、在项目所在目录新建.pylintrc文件<br>2、参照pylint.config模板，写上默认设置：<a href="https://github.com/robot527/python_primer/blob/master/pylint.conf" target="_blank" rel="noopener">https://github.com/robot527/python_primer/blob/master/pylint.conf</a><br>3、文件最后输入<code>extension-pkg-whitelist=xxx</code>(xxx为模块名)<br>注：直接建立.pylintrc文件会提示必须输入文件名，可先建一个空txt文件，再另存为.pylintrc文件即可。 </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/19/Python/python环境配置/" data-id="cjmmeykyq0025d5qxdwg6d1py" class="article-share-link" data-share="baidu" data-title="VSCode_python环境配置">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/19/Python/python环境配置/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Other/一些快捷键" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/Other/一些快捷键/" class="article-date">
+  <time datetime="2018-01-19T16:30:00.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/19/Other/一些快捷键/">一些快捷键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p>chrome删除记录的网址：shift+delete键</p>
+</li>
+<li><p>chrome恢复刚关闭的网页：ctrl+shift+t</p>
+</li>
+<li><p>输入覆盖后面文字：按insert键切换</p>
+</li>
+<li><p>Tab向后缩进，Shift+Tab向前缩进</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/19/Other/一些快捷键/" data-id="cjmmeykyn001xd5qx4qd1rckd" class="article-share-link" data-share="baidu" data-title="一些快捷键">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/19/Other/一些快捷键/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

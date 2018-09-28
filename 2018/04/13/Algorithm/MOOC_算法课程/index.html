@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MOOC_算法课程笔记 | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在MOOC上报名了北大郭炜老师的算法课程，感觉收获还是蛮大的，因此整理一下自己的学习心得，方便以后复习查阅。  第一章_枚举 逐个尝试答案的一种求解策略 遇到题，首先考虑枚举法，看数据量是否允许，是否有“剪枝”策略。 但枚举时也要考虑“减枝”：如何去掉明显不满足的解，加快枚举速度  转变枚举思路：从条件出发找解 -&amp;gt; 从解出发去试是否满足条件，解比条件组合更容易遍历所有情况。自问：题目">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MOOC_算法课程笔记">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="最近在MOOC上报名了北大郭炜老师的算法课程，感觉收获还是蛮大的，因此整理一下自己的学习心得，方便以后复习查阅。  第一章_枚举 逐个尝试答案的一种求解策略 遇到题，首先考虑枚举法，看数据量是否允许，是否有“剪枝”策略。 但枚举时也要考虑“减枝”：如何去掉明显不满足的解，加快枚举速度  转变枚举思路：从条件出发找解 -&amp;gt; 从解出发去试是否满足条件，解比条件组合更容易遍历所有情况。自问：题目">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-16T09:00:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MOOC_算法课程笔记">
+<meta name="twitter:description" content="最近在MOOC上报名了北大郭炜老师的算法课程，感觉收获还是蛮大的，因此整理一下自己的学习心得，方便以后复习查阅。  第一章_枚举 逐个尝试答案的一种求解策略 遇到题，首先考虑枚举法，看数据量是否允许，是否有“剪枝”策略。 但枚举时也要考虑“减枝”：如何去掉明显不满足的解，加快枚举速度  转变枚举思路：从条件出发找解 -&amp;gt; 从解出发去试是否满足条件，解比条件组合更容易遍历所有情况。自问：题目">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Algorithm/MOOC_算法课程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/13/Algorithm/MOOC_算法课程/" class="article-date">
+  <time datetime="2018-04-13T07:14:00.000Z" itemprop="datePublished">2018-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MOOC_算法课程笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <hr>
+<p>最近在MOOC上报名了北大郭炜老师的算法课程，感觉收获还是蛮大的，因此整理一下自己的学习心得，方便以后复习查阅。</p>
+<hr>
+<h2 id="第一章-枚举"><a href="#第一章-枚举" class="headerlink" title="第一章_枚举"></a>第一章_枚举</h2><ul>
+<li>逐个尝试答案的一种求解策略</li>
+<li>遇到题，首先考虑枚举法，看数据量是否允许，是否有“剪枝”策略。</li>
+<li>但枚举时也要考虑“减枝”：如何去掉明显不满足的解，加快枚举速度 </li>
+<li>转变枚举思路：从条件出发找解 -&gt; 从解出发去试是否满足条件，解比条件组合更容易遍历所有情况。<br>自问：题目什么是结果，什么是条件。</li>
+<li><strong>局部枚举：</strong><br>可由局部来确定剩余部分的状态，这样只需枚举局部即可实现对全体的枚举。<br>关键是找出局部-&gt;全体的推导关系。</li>
+</ul>
+<hr>
+<h2 id="第二章-递归"><a href="#第二章-递归" class="headerlink" title="第二章_递归"></a>第二章_递归</h2><ul>
+<li><p><strong>常用递归情况：</strong><br>1.解决用递归定义的问题(求解表达式问题)<br>2.将问题分解为规模更小的子问题来求解(汉诺塔问题)</p>
+</li>
+<li><p>想明白递推关系(递推函数是干什么的、返回值是什么)、终止条件。</p>
+</li>
+<li><p>递归用于数据量较小的情况，数据量大用动态规划。</p>
+</li>
+<li><p>递归的本质也是分解子问题，思考怎样把问题缩小。</p>
+</li>
+</ul>
+<hr>
+<h2 id="第三章-动态规划"><a href="#第三章-动态规划" class="headerlink" title="第三章_动态规划"></a>第三章_动态规划</h2><ul>
+<li><p><strong>解题思路</strong></p>
+<ol>
+<li>设计子问题，将原问题分解为子问题(满足最优子结构和无后效性两条件)</li>
+<li>存放子问题解：一个解若由K个变量决定，就申请一个<strong>K维数组</strong>来保存。</li>
+<li>确定初始子问题：问题的边界值(最小的子问题)。</li>
+<li>确定递推函数：如何从子问题-&gt;父问题。多为一个单位一个单位使问题规模递增。可以先做一步，再看能不能划分为形式相同子问题。</li>
+</ol>
+</li>
+<li><p><strong>可用动规解决的问题的特点</strong></p>
+<ul>
+<li><p><strong>最优子结构</strong>：若父问题解是最优的，则子问题解也肯定是最优的。</p>
+</li>
+<li><p><strong>无后效性</strong>：父问题的解只和子问题解的值有关，和子问题的解是如何求得的无关。</p>
+</li>
+<li><p>与递归的相同处：思路都是大问题分成相同形式子问题(递推函数)，小问题的解再组合为大问题解。</p>
+</li>
+<li><p>与递归的不同处：动归要保存中间结果(多用全局数组保存)，避免重复计算。</p>
+</li>
+</ul>
+</li>
+<li><p>递归函数与递推函数：递推函数是用循环实现的：找好结束条件，确定从哪开始循环，在循环体里写递推函数就可以了。</p>
+</li>
+<li><p>递推函数开数组：数组若特别大，考虑用滚动数组，后项不断覆盖前项，可实现二维数组-&gt;一维数组的降维。</p>
+</li>
+</ul>
+<hr>
+<h2 id="第四章-深度优先搜索"><a href="#第四章-深度优先搜索" class="headerlink" title="第四章_深度优先搜索"></a>第四章_深度优先搜索</h2><ul>
+<li><p>多为递归+剪枝来实现。剪枝分为<strong>可行性剪枝(能否求得解)</strong>和<strong>最优性剪枝(是否是最优解)</strong>，从这两个思路来想。</p>
+</li>
+<li><p>深搜的本质还是递归分解子问题，一层层地分解，用栈解决的问题用递归都都可以解决。</p>
+</li>
+<li><p>搜索问题其实就是遍历所有解找最优解的过程，枚举也是搜索的一种，深度/广度搜索只是枚举的策略不同而已。搜索和一般的枚举区别在于，搜索问题的点与点之间是有关系的(边表示这种关系)，因此从一个点可以按规则进入下一个点，而不是盲目的枚举。(如正则表达式问题，出现了’(‘即表示要递归进入新的节点，出现’)’即表示要结束当前问题，出现’|’即需要求左右两边最大值)</p>
+</li>
+<li><p><strong>遍历图的伪代码流程</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    将所有点标记为新点</span><br><span class="line">    起点=xx;</span><br><span class="line">    重点=xx;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;Dfs(起点);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断从V出发是否能走到终点</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Dfs</span><span class="params">(V)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(V是终点)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(V是旧点)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    将V标记为旧点;</span><br><span class="line">    遍历V相邻的每个结点U&#123;</span><br><span class="line">        <span class="keyword">if</span>(Dfs(U)==<span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断从V出发是否能走到终点，并记录路径</span></span><br><span class="line">Node path[MAX_LEN]; <span class="comment">//全局数组，记录路径</span></span><br><span class="line"><span class="keyword">int</span> depth=<span class="number">0</span>; <span class="comment">//记录深度</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Dfs</span><span class="params">(V)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(V是终点)&#123;</span><br><span class="line">        path[depth]=V;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(V是旧点)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    将V标记为旧点;</span><br><span class="line">    path[depth]=V;</span><br><span class="line">    depth++;</span><br><span class="line">    遍历V相邻的每个结点U&#123;</span><br><span class="line">        <span class="keyword">if</span>(Dfs(U)==<span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    depth--; <span class="comment">//从V走不到终点，回退</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历图中所有点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    将所有点标记为新点;</span><br><span class="line">    <span class="keyword">while</span>(在图中能找到能找到新点K) </span><br><span class="line">        Dfs(K);</span><br><span class="line">&#125;</span><br><span class="line">Dfs(V)&#123;</span><br><span class="line">    <span class="keyword">if</span>(V是旧点) <span class="keyword">return</span>;</span><br><span class="line">    将V标记为旧点;</span><br><span class="line">    对和V相邻的每个点U&#123;</span><br><span class="line">        Dfs(U);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>图的数据结构</strong></p>
+<ul>
+<li><p>邻接矩阵：二维数组，G[i][j]表示节点i和节点j之间边的情况。遍历复杂度O(n2)</p>
+</li>
+<li><p>邻接表：每个节点V设置一个一维数组，存放从V连出去的边。边稀疏时效率高，遍历复杂度O(n+e)。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表实现</span></span><br><span class="line">Vector&lt;Vector&lt;T&gt;&gt; v   <span class="comment">//变长二维数组，用法和数组一样</span></span><br><span class="line">v.push_back()   <span class="comment">//添加元素</span></span><br><span class="line">v[<span class="number">0</span>].size()    <span class="comment">//vector长度</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="第五章-广度优先搜索"><a href="#第五章-广度优先搜索" class="headerlink" title="第五章_广度优先搜索"></a>第五章_广度优先搜索</h2><ul>
+<li><p>依层次顺序，从小到大扩展节点。把层次低的点全部扩展出来后，才会扩展层次高的点。</p>
+</li>
+<li><p>可确保找出最短路径解，因为是一层一层找的</p>
+</li>
+<li><p>深搜用栈(递归)存节点，广搜用队列存节点。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//队列操作</span></span><br><span class="line"><span class="built_in">queue</span>&lt;T&gt; q</span><br><span class="line">q.empty()  <span class="comment">//是否为空</span></span><br><span class="line">q.front()  <span class="comment">//取队首元素  </span></span><br><span class="line">q.push(xx)   <span class="comment">//加入元素</span></span><br><span class="line">q.pop()  <span class="comment">//抛弃元素</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>广搜中若要输出路径，则就要自己实现队列，数组 + aad、tail指针，队头取数，队尾加数。</p>
+<ul>
+<li><p><strong>优先队列：priority_queue<t></t></strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//与multiset区别，pr_queue默认从大到小，multiset默认从小到大。</span></span><br><span class="line"><span class="comment">//pr_queue重载'&lt;'运算符(直接写重载函数即可)，multiset重载'()'运算符(写在结构体中)。</span></span><br><span class="line"><span class="comment">//重写operator&lt;比较符</span></span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> T &amp; t1,<span class="keyword">const</span> T &amp; t2)&#123;</span><br><span class="line">    <span class="keyword">return</span> t1&lt;t2;  <span class="comment">//t1的优先级小于t2，则t2排在队首(优先级高的排队首)</span></span><br><span class="line">&#125;</span><br><span class="line">priority_queue&lt;T&gt; q;  <span class="comment">//自动按重写的&lt;对T排序</span></span><br><span class="line">q.top()   <span class="comment">//取队首</span></span><br><span class="line">q.push()  <span class="comment">//入队尾</span></span><br><span class="line">q.pop()   <span class="comment">//扔队首</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>深搜/广搜区别，深搜用递归，广搜用队列(空间需求会大一些)。广搜最先找到的一定是最优解，深搜则要全部搜完才能找到最优解。因此需要遍历所有节点的情况用深搜，要递归的情况用深搜。</p>
+</li>
+</ul>
+<hr>
+<h2 id="第六章-贪心算法"><a href="#第六章-贪心算法" class="headerlink" title="第六章_贪心算法"></a>第六章_贪心算法</h2><ul>
+<li><p>每一步行动总是选取当前下一步的最优操作，并不考虑之后的影响。<br>(要考虑当前的最优操作也是整体的最优操作)</p>
+</li>
+<li><p>大部分贪心都和排序相关，直接从排序结果中从高到低选择即可。</p>
+</li>
+<li><h4 id="三类常见的区间贪心问题"><a href="#三类常见的区间贪心问题" class="headerlink" title="三类常见的区间贪心问题"></a>三类常见的区间贪心问题</h4><ul>
+<li><p><strong>线段覆盖</strong><br>n个开区间(ai,bi)，选择尽量多个区间，使得这些区间两两不相交<br>右端点排序（&lt;）兼顾左端点（&gt;），再从左到右遇到不相交的就选</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a[i].l、a[i].r为左、右端点</span></span><br><span class="line">sort(a,a+n,cmp);</span><br><span class="line"><span class="keyword">int</span> num=<span class="number">1</span>,now=a[<span class="number">0</span>].r;  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i].l&gt;=now) now=a[i].r,num++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, num);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>区间选点</strong><br>n个闭区间[ai,bi]，选择尽量少的点，使得每个区间至少有一个点<br>右端点排序（&lt;）兼顾左端点（&gt;），每次选择可选区间的最后一个点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sort(a,a+n,cmp);</span><br><span class="line"><span class="keyword">int</span> num=<span class="number">1</span>,now=a[<span class="number">0</span>].r;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i].l&gt;now) now=a[i].r,num++;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, num);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>区间覆盖</strong><br>数轴上有n个闭区间[ai,bi]，选择尽量少的区间覆盖一条指定的线段[s,t]<br>左端点排序（&lt;）兼顾右端点（&lt;），每次选择从当前起点能覆盖到的最长的区间</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sort(a,a+n,cmp);</span><br><span class="line"><span class="keyword">int</span> num=<span class="number">0</span>,now=s,to=<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n &amp;&amp; to&lt;=t; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i].l&lt;=now)    to=max(to,a[i].r);</span><br><span class="line">    <span class="keyword">else</span>    now=to,to=a[i].r,num++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, num);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="一些基础知识"><a href="#一些基础知识" class="headerlink" title="一些基础知识"></a>一些基础知识</h2><ul>
+<li><p><strong>有关复杂度的估算：</strong><br>十亿级肯定超时，亿级较危险，最好千万以下</p>
+</li>
+<li><p>算法中的证明，很难从正面直接证明，多为反证法，要多考虑<strong>反面的不可能性</strong>。eg,证明两数不可能相等，就想两数什么时候会相等、若相等会有什么条件不满足等等…</p>
+</li>
+<li><p><strong>算法三大能力：</strong><br>1.按步骤思考，大问题分为小问题，一步步解决问题的能力<br>2.实际问题抽象为计算机表示的能力(列出问题涉及的元素，再依次表示为计算机的数据结构)<br>3.编程实现的能力(按1.的步骤，对数据结构进行操作，即编写算法)</p>
+</li>
+</ul>
+<p>解题思路：数据量不大，先想枚举，再想递归。大数据量考虑动规。其次深搜、广搜。然后贪心。</p>
+<p>C/C++不能动态申请数组，就一次申请最大量，空间-&gt;时间。</p>
+<p>for循环中：++i比i++效率高(无需保存原先的变量)，尽量使用++i。</p>
+<ul>
+<li><p>vector&lt;pair&lt;string, int&gt;&gt; word; gcc会报错”&gt;&gt;”，理解为输入符号。此时应加上空格：<br>vector&lt;pair&lt;string, int&gt; &gt;</p>
+</li>
+<li><p>对于涉及到“选前n个数”的问题，下标统一从1开始，这样下标使用的时候可以统一，只用把存储信息的数组从1开始存就可以了。</p>
+</li>
+</ul>
+<p>好题记录：</p>
+<ul>
+<li>POJ 1222(灯泡、开关问题)，第一周4题</li>
+<li>放苹果，第三周3题(递归、动态规划对比)</li>
+<li>找n元素数组前m大的数，第五周3题(n+mlogm算法)</li>
+<li>最佳加法表达式，第六周4题(怎样自底向上推导)</li>
+<li>分蛋糕，第七周5题(怎样自底向上推导，循环的嵌套)</li>
+<li>城市通路，第九周1题(深搜，怎样剪枝)</li>
+<li>生日蛋糕，第九周3题(深搜，剪枝)</li>
+<li>带限制的广搜：增加搜索状态的维度，判重时要考虑增加的维度。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/" data-id="cjmmeyky80017d5qxkviwow90" class="article-share-link" data-share="baidu" data-title="MOOC_算法课程笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/03/FaceLivenessDetection/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          活体人脸识别系统介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/18/Python/Python3笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python3笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/04/13/Algorithm/MOOC_算法课程/" data-title="MOOC_算法课程笔记" data-url="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

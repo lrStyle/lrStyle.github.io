@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Matlab笔记 | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="matlab基本操作 matlab矩阵操作 matlab绘图 解线性方程组 matlab一些函数用法   matlab基本操作 1. 一些操作Tips:    - clear：清空Workspace     clc：清空Command Window    - 批量修改变量名：shift+enter（只针对变量第一次出现时）    - 控制输出格式：format    format short：小">
+<meta name="keywords" content="MachineLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab笔记">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/Matlab笔记/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="matlab基本操作 matlab矩阵操作 matlab绘图 解线性方程组 matlab一些函数用法   matlab基本操作 1. 一些操作Tips:    - clear：清空Workspace     clc：清空Command Window    - 批量修改变量名：shift+enter（只针对变量第一次出现时）    - 控制输出格式：format    format short：小">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-14T11:47:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Matlab笔记">
+<meta name="twitter:description" content="matlab基本操作 matlab矩阵操作 matlab绘图 解线性方程组 matlab一些函数用法   matlab基本操作 1. 一些操作Tips:    - clear：清空Workspace     clc：清空Command Window    - 批量修改变量名：shift+enter（只针对变量第一次出现时）    - 控制输出格式：format    format short：小">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Matlab笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Matlab笔记/" class="article-date">
+  <time datetime="2018-01-20T10:40:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Matlab笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><a href="#1">matlab基本操作</a></li>
+<li><a href="#2">matlab矩阵操作</a></li>
+<li><a href="#3">matlab绘图</a></li>
+<li><a href="#4">解线性方程组</a></li>
+<li><a href="#5">matlab一些函数用法</a></li>
+</ul>
+<h2 id="1"> matlab基本操作 </h2><br>1. <strong>一些操作Tips:</strong><br>    - clear：清空Workspace     clc：清空Command Window<br>    - 批量修改变量名：shift+enter（只针对变量第一次出现时）<br>    - 控制输出格式：format<br>    format short：小数点后4位，之后输出的数都按此格式<br>    - digits(4)    vpa(x)   一起用控制x输出为4位有效数字。或者直接vpa(x,4)<br>    - 批量注释：ctrl+R  取消注释：ctrl+T<br>    - 单步调试：F10<br>    - 查看变量：who(只列举)       whos(附带变量空间大小、字节数等信息)<br><br>2. <strong>文件操作：</strong><br>    - save filename  x1 x2 x3  (-append)<br>    存储变量值至filename.mat文件，默认存储至matlab.mat文件。-append追加存储，默认为覆盖存储<br>    - load filename  x1 x2 x3：加载变量，默认为加载所有变量。会覆盖Workspace同名变量<br><br>3. <strong>函数.m文件定义</strong><br>function [y1,y2] = fun(x1,x2)      y1,y2…是输出变量，直接在函数内参与运算，函数内不要写clear，会清掉输入变量<br><br>4. <strong>字符串操作：</strong><br>eval(‘xxx’)：执行字符串所对应的matlab语句<br>str2num(‘xxx’)：将数字字符串转化为数字<br>num2str(xxx)：将数字转化为数字字符串<br>取字符串特定字符：str(2)<br>字符串拼接：str=[str1,str2]<br>abs(‘x’)函数：求字符x的ASCII码<br>char(x)：求ASCII码为x的字符<br><br><h2 id="2"> matlab矩阵操作 </h2><br>1. 矩阵的建立：  a=[1 2 3;4 5 6;7 8 9]<br>矩阵取元素：<br>    - 下标：a(2,3)，行、列皆从1开始<br>    - 序号：a(8)，按列计数<br><br>2. 冒号表达式建立行向量  x=5:2:20<br><br>3. 矩阵拼接：直接中括号拼接[  ]<br><br>4. 矩阵拆分： b=a(2:4,5:6)，b为矩阵a2~4行5~6列的内容。<br>用end来表示最后一行/列，用冒号：表示所有行/列<br>b=a(:)，按矩阵a元素的【排列顺序】取元素，最终排成列向量<br><br>5. 矩阵查找特定元素：<br>num/[rows,cols,vals]=find(A&gt;10)，找矩阵A中所有&gt;10的数。一个返回值为序号，两个返回值即为下标，三个返回值加上值。<br><br>6. 矩阵转置：B=A’<br><br>7. 删除矩阵元素，对矩阵整行/整列元素置空，后面元素序号前补     a(2,:)=[]<br><br>8. 复制矩阵         repat(&lt;矩阵名&gt;,x,y)，以此矩阵为“一块”复制x行，y列<br><br>9. 矩阵计算：直接+-<em>/<br>/为右除   \为左除   /即为乘矩阵的逆<br>.</em>和./为点乘点除，矩阵对应元素的乘除。<br>注意：矩阵的幂^和矩阵元素的幂.^不一样<br><br>10. A(:)表示以一列的方式显示矩阵A中所有元素<br><br>11. size(A,1)矩阵的行数，size(A,2)矩阵的列数<br><br>12. 特殊矩阵的建立<br>zeros：零矩阵    zeros(x,y)：x行y列零矩阵<br>ones：1矩阵<br>eye：单位矩阵<br>rand：随机矩阵，元素为0~1随机数的矩阵<br>rand（a,b）表示产生a行b列随机数<br>产生a到b之间的x行y列随机矩阵：a+(b-a) * rand(x,y)<br>randn：均值为0，方差为1的标准正态分布的随机矩阵<br>inv()：求方程组的逆矩阵<br>diff()：计算差分（后项减前项）<br>diag()：构建对角矩阵(输入向量)or从矩阵中取对角线(输入矩阵)<br><br><h2 id="3"> matlab绘图 </h2><br>1. 绘制函数图形标识符：legend(‘’,’’,’’)<br>多个图例要依据添加对应数据的顺序依次加入<br><br>2. plot(x,y)<br>最基本的绘图函数<br>画多条函数plot(x,y1,x,y2,x,y3….)<br><br>3. 设置线型和线的粗细：plot(x,y,’-.’,’linewidth’,1.5);可通过线型、点型和颜色改变线条外观，粗细设置尤为重要。<br>更改坐标范围：axis([Xmin, Xmax, Ymin, Ymax])、xlim([Xmin, Xmax])、ylim([Ymin, Ymax])<br>坐标轴名字(并设置字体)：xlabel(‘titke’,’fontsize’,12)<br><br><br>4. loglog(),semilogx(),semilogy()函数分别以<br>两坐标轴为log10刻度，x轴为log10刻度，y轴为log10刻度作函数图<br><br>5. plotyy(x,y1,x,y2)双y轴作图<br><br>6. errorbar(y,E)函数，E为1/2误差长度的向量<br>在函数上标明误差(对应离散点作图，且x/y和E向量长度相等)<br><br>7. fplot(‘&lt;M文件名&gt;’,[范围])<br>调用M文件函数绘图，有范围限制<br><br>8. ezplot(‘函数表达式’,[x范围],[y范围])<br>隐函数绘图。easy plot，直接写函数表达式即可绘图<br><br>9. polar(x,y)、ezpolar(‘函数表达式’)<br>极坐标绘图，(ρ,Θ)<br><br>10. hist(data,&lt;区间数&gt;)<br>绘制频数分布直方图，频数总分数默认10份<br><br>11. 对图形的修改可直接在figur面板上进行<br><br><h2 id="4">  解线性方程组 </h2>
+
+<ol>
+<li><p>基本概念<br>tol：误差<br>rank(A)：返回矩阵A的秩<br>size(A,1)：返回矩阵A的行数<br>size(A,2)：返回矩阵A的列数<br>null(A)：求齐次方程组的解<br>det(A):求【方阵】的行列式<br>diag(diag(A))：构造矩阵A的对角线矩阵<br>norm(A):求向量A的范数（向量中各元素的平方和再开根号）<br>可用来求两向量的的“差值”norm(A-B)</p>
+</li>
+<li><p>左除法：matlab一般用inv()&lt;方阵求逆&gt;、pinv()&lt;非方阵求伪逆&gt;来代替左除。<br>左除法分三种情况：<br>恰定方程组：rank(A) = rank([A,b]) = n，方程组有唯一解<br>欠定方程组：rank(A) = rank([A,b]) &lt; n，方程组有无穷解，通解用”特解+对应齐次方程组解”来表示。<br>超定方程组：rank(A) != rank([A,b])，方程组无解，求出的是最小二乘解。</p>
+</li>
+</ol>
+<ol start="3">
+<li>[r]=eig(A)：求矩阵A的特征值r&lt;列向量形式&gt;<br>[x,r]=eig[A]：求矩阵A的特征向量x和特征值r&lt;对角矩阵形式&gt;<br>使A<em>x=x</em>r<br>max(max(abs(r)))：找绝对值最大的特征值</li>
+</ol>
+<h2 id="5"> matlab一些函数用法： </h2>
+
+<ol>
+<li><p>vpa(xxx,数字)<br>四舍五入控制有效数字位数，xxx可以是数，也可是表达式。</p>
+</li>
+<li><p>poly2sym(系数行向量,x)<br>系数行向量-&gt;多项式，各项次数由系数数量控制</p>
+</li>
+<li><p>求线性规划问题：linprog()</p>
+</li>
+<li><p>scatter()画散点图</p>
+</li>
+<li><p>size(A)：矩阵A的行、列数   size(A,1)：A的行数   size(A,2)：A的列数</p>
+</li>
+<li><p>常微分方程符号解：fun=dsolve(‘equ1’,’equ2’,’equ3’)，fun即为最终求得的微分方程，默认对自变量t求导<br>微分方程数值解：ode工具箱</p>
+</li>
+<li><p>对符号方程中特定符号进行替换：subs(fun,{‘a’,’b’},{3,5})<br>可替换为特定数值、其他符号变量       可替换为数组：得到同阶数组</p>
+</li>
+<li><p>积分<br>数值积分：integral(fun,xmin,xmax)<br>符号积分：int()</p>
+</li>
+<li><p>解方程组<br>solve：求方程组的符号解<br>linsolve：求线性方程组数值解<br>fsolve：求非线性方程组数值解</p>
+</li>
+<li><p>matlab中没有求解不等式的函数，只能先解对应的等式再画图判断<br>normpdf(x,mu,sigma)   x(向量)的正态分布概率密度函数</p>
+</li>
+<li><p>matlab插值函数：y=interp1(x0,y0,x,’spline’)  spline为三次样条插值<br>x0,y0为原始点   x为更密集的需求值点,y为求得的函数值，一般不推荐外插<br>二维插值：z = interp2(x0,y0,z0,x,y,’spline’)</p>
+</li>
+<li><p>多项式拟合：[p]=polyfit(x,y,n)  和  y1=polyval(p,x1)       p为降幂排列的阶数<br>matlab拟合工具箱：cftool</p>
+</li>
+<li><p>最后legend加公式：legend(‘样本’,[‘y = ‘,sprintf(‘%.3fx^2+%.3fx%.3f’,p(1),p(2),p(3))]);</p>
+</li>
+<li><p>一些统计学名词：</p>
+<ul>
+<li>SSE(残差平方和)：The sum of squares due to error，越接近0越好。点对点误差平方，再加和</li>
+<li>MSE(残差平方和均值)：Mean squared error，SSE/n</li>
+<li>RMSE：MSE开根号</li>
+<li>SSR(回归平方和)：预测数据与原始数据均值之差的平方，再加和。点对面</li>
+<li>R-square(确定系数)：[0,1]，越接近1越好</li>
+<li>Adjusted R-square(矫正后确定系数)：对复杂模型的惩罚</li>
+</ul>
+</li>
+<li><p>求差分、求导都是用的diff函数</p>
+</li>
+<li><p>桌面文件路径：C:\Users\35055\Desktop.….<br>读excel：A=xlsread(filename,sheet,’B3:C4’)     sheet为对应数字<br>写excel：直接粘贴</p>
+</li>
+<li><p>元胞数组：通过小括号()加下标访问，返回的是对应cell的格式。<br>通过大括号{}加下标访问，返回的是对应cell的内容。</p>
+</li>
+<li><p>excel不同的样本纵向排列，单个样本不同的变量/观测横向排列。<br>但对于神经网络、支持向量机，样本横向排列，变量纵向排列</p>
+</li>
+<li><p>Min-Max标准化：将矩阵的【每一行】进行标准化处理（针对模式识别智能算法）<br>  A=[1,2,3];<br>  A=mapminmax(A,0,1);      标准化到0~1之间<br>  [Y,PS] = mapminmax(X,YMIN,YMAX)<br>  Y = mapminmax(‘apply’,X,PS)<br>  X = mapminmax(‘reverse’,Y,PS)</p>
+</li>
+<li><p>legend加公式   legend(‘样本’,[‘y = ‘,sprintf(‘%.3fx^2+%.3fx%.3f’,p(1),p(2),p(3))]);</p>
+</li>
+<li><p>rng(2)，设置随机数种子。之后rand()产生的随机数都是一定的</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Matlab笔记/" data-id="cjmmeykxg000dd5qxj6mp04kh" class="article-share-link" data-share="baidu" data-title="Matlab笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Matlab笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/20/Other/编程体会/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          编程体会
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/20/Lingo笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lingo笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/01/20/Matlab笔记/" data-title="Matlab笔记" data-url="http://yoursite.com/2018/01/20/Matlab笔记/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

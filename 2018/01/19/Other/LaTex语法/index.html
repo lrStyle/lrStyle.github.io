@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>LaTex语法 | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文记录了在Markdown中使用LaTex输入数学公式的方法，这样Markdown在一定程度上就可以完全替代office word了。   在markdown中使用LaTex公式1、导入MathJax引擎, 在文章的任意地方加入以下代码即可：&amp;lt;script src=&amp;#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/Mat">
+<meta name="keywords" content="Other">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTex语法">
+<meta property="og:url" content="http://yoursite.com/2018/01/19/Other/LaTex语法/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="本文记录了在Markdown中使用LaTex输入数学公式的方法，这样Markdown在一定程度上就可以完全替代office word了。   在markdown中使用LaTex公式1、导入MathJax引擎, 在文章的任意地方加入以下代码即可：&amp;lt;script src=&amp;#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/Mat">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-19T03:36:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LaTex语法">
+<meta name="twitter:description" content="本文记录了在Markdown中使用LaTex输入数学公式的方法，这样Markdown在一定程度上就可以完全替代office word了。   在markdown中使用LaTex公式1、导入MathJax引擎, 在文章的任意地方加入以下代码即可：&amp;lt;script src=&amp;#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/Mat">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Other/LaTex语法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/Other/LaTex语法/" class="article-date">
+  <time datetime="2018-01-19T08:15:00.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LaTex语法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+<p>本文记录了在Markdown中使用LaTex输入数学公式的方法，这样Markdown在一定程度上就可以完全替代office word了。</p>
+<hr>
+<ul>
+<li><p><strong>在markdown中使用LaTex公式</strong><br>1、导入MathJax引擎, 在文章的任意地方加入以下代码即可：<br><code>&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML&#39; async&gt;&lt;/script&gt;</code><br>2、使用LaTex语法写公式即可。<br>注1：MathJax引擎本质是一个js脚本，把页面中的LaTex代码翻译成数学公式。<br>注2：翻译LaTex的工作流程，Markdown先把代码按Markdown语法翻译一遍，因此一些\和特殊字符的组合，要对反斜杠进行转义，如<code>\\{</code>；之后再由js脚本对翻译为数学公式。</p>
+</li>
+<li><p><strong>公式表示</strong><br><code>$$公式$$</code>：表示行间公式，单独居中成行<br><code>\\(公式\\)</code>：表示行内公式，只占一行。两个斜杠<code>\\</code>表示转义。</p>
+</li>
+<li><p><strong>加减乘除</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>语法</th>
+<th>名称</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>加</td>
+<td>+</td>
+<td>减</td>
+<td>-</td>
+</tr>
+<tr>
+<td>乘</td>
+<td><code>\times</code>或直接用<code>*</code></td>
+<td>除</td>
+<td><code>\div</code> 或直接用<code>/</code></td>
+</tr>
+</tbody>
+</table>
+<p>注：乘除后要加一个空格，和后面的字母区分开</p>
+<ul>
+<li><strong>上标和下标</strong><br>使用^表示上标,使用_表示下标,默认将这两个符号后的一个符号作为上下标,如果需要多个符号,则使用{和}括起来.<br>如：<code>z_{i+2} = x^{k+2}+y_2</code><br>$$z_{i+2} = x^{k+2}+y_2$$</li>
+</ul>
+<ul>
+<li><strong>使用括号</strong><br>LaTex中<code>[</code> <code>]</code> <code>(</code>和<code>)</code>都不变，直接输入即可。对于<code>{}</code>，因为其默认作用是将多个元素组合成一个整体，因此需要用<code>\</code>转义，但因为<code>\{</code>在markdown中会被转义为单独一个<code>{</code>，因此要使用<code>\\{</code>对<code>\</code>也进行转义<br>如：<code>$$(z) = \\{x\\}+[y]$$</code>    $$(z) = \{x\}+[y]$$</li>
+</ul>
+<ul>
+<li><strong>特殊符号</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>LaTex语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分数</td>
+<td><code>\frac {a} {b}</code></td>
+<td>\(\frac {a} {b}\)</td>
+</tr>
+<tr>
+<td>平方根</td>
+<td><code>\sqrt{a*x+b}</code></td>
+<td>\(\sqrt{a*x+b}\)</td>
+</tr>
+<tr>
+<td>n次方根</td>
+<td><code>\sqrt[n]{a*x+b}</code></td>
+<td>\(\sqrt[n]{a*x+b}\)</td>
+</tr>
+<tr>
+<td>积分</td>
+<td><code>\int_a^b f(x) dx</code></td>
+<td>\(\int_a^b f(x) dx\)</td>
+</tr>
+<tr>
+<td>极限</td>
+<td><code>\lim_{n \rightarrow 0} (\sin{x} / x)</code></td>
+<td>\(\lim_{n \rightarrow 0} (\sin{x} / x)\)</td>
+</tr>
+<tr>
+<td>求和</td>
+<td><code>\sum_{i=0}^n \frac{1}{i^2}</code></td>
+<td>\(\sum_{i=0}^n \frac{1}{i^2}\)</td>
+</tr>
+<tr>
+<td>求积</td>
+<td><code>\prod_{i=0}^n \frac{1}{i^2}</code></td>
+<td>\(\prod_{i=0}^n \frac{1}{i^2}\)</td>
+</tr>
+<tr>
+<td>梯度算子</td>
+<td><code>\nabla</code></td>
+<td>\(\nabla\)</td>
+</tr>
+<tr>
+<td>上划线</td>
+<td><code>\bar{A}</code></td>
+<td>\(\bar{A}\)</td>
+</tr>
+<tr>
+<td>长上划线</td>
+<td><code>\overline{A\cup B}</code></td>
+<td>\(\overline{A\cup B}\)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>希腊字母</strong><br>希腊字母直接用<code>\字母名</code>即可，如<code>\alpha</code>为\(\alpha\)，<code>\beta</code>为\(\beta\)，<code>\theta</code>为\(\theta\)<br>具体符号表可见：<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D" target="_blank" rel="noopener">希腊字母维基百科</a>，注意首字母要小写</p>
+</li>
+<li><p><strong>矢量运算</strong><br>用<code>\vec{a}</code>表示矢量符号\(\vec{a}\)，<code>\cdot</code>表示点乘\(\vec{a}\cdot \vec{b}\)，<code>\times</code>表示叉乘\(\vec{a}\times \vec{b}\)</p>
+</li>
+<li><p><strong>矩阵</strong><br>矩阵的基本语法为<code>$$\begin{matrix}…\end{matrix}$$</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">  \begin&#123;matrix&#125;</span><br><span class="line">   1 &amp; 2 &amp; 3 \\\\</span><br><span class="line">   4 &amp; 5 &amp; 6 \\\\</span><br><span class="line">   7 &amp; 8 &amp; 9</span><br><span class="line">  \end&#123;matrix&#125; </span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$$<br>  \begin{matrix}<br>   1 &amp; 2 &amp; 3 \\<br>   4 &amp; 5 &amp; 6 \\<br>   7 &amp; 8 &amp; 9<br>  \end{matrix}<br>$$<br>注：因为LaTex中\表示换行，因此在Markdown中使用\\表示</p>
+<ul>
+<li><strong>怎样将矩阵用括号括起来</strong><br>使用<code>\left(</code>和<code>\right)</code>引入变长括号(当然，其他符号也是可以变长的)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">  \left(</span><br><span class="line">  \begin&#123;matrix&#125;</span><br><span class="line">   1 &amp; 2 &amp; 3 \\\\</span><br><span class="line">   4 &amp; 5 &amp; 6 \\\\</span><br><span class="line">   7 &amp; 8 &amp; 9</span><br><span class="line">  \end&#123;matrix&#125; </span><br><span class="line">  \right)</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>\(<br>  \left(<br>  \begin{matrix}<br>   1 &amp; 2 &amp; 3 \\<br>   4 &amp; 5 &amp; 6 \\<br>   7 &amp; 8 &amp; 9<br>  \end{matrix}<br>  \right)<br>\)    \(\left|\begin{matrix}1 &amp; 2 &amp; 3 \\4 &amp; 5 &amp; 6 \\7 &amp; 8 &amp; 9\end{matrix}\right|\)</p>
+<ul>
+<li><strong>矩阵内怎样使用省略号</strong><br>与各种点代码结合可输入省略号，<code>\cdots</code>横向点，<code>\vdots</code>竖向点，<code>\ddtots</code>斜向点<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"> 1      &amp; 2      &amp; \cdots &amp; 4      \\\\</span><br><span class="line"> 7      &amp; 6      &amp; \cdots &amp; 5      \\\\</span><br><span class="line"> \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\\</span><br><span class="line"> 8      &amp; 9      &amp; \cdots &amp; 0      \\\\</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right]</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$$<br>\left[<br>\begin{matrix}<br> 1      &amp; 2      &amp; \cdots &amp; 4      \\<br> 7      &amp; 6      &amp; \cdots &amp; 5      \\<br> \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br> 8      &amp; 9      &amp; \cdots &amp; 0      \\<br>\end{matrix}<br>\right]<br>$$</p>
+<ul>
+<li><strong>如何输入多行公式</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$ f(x)=\left\\&#123;</span><br><span class="line">\begin&#123;align&#125;</span><br><span class="line">x &amp; =&amp;  &amp;\cos(t) + &amp;x\\\\</span><br><span class="line">y &amp; =&amp;  &amp;\sin(t) + &amp;y\\\\</span><br><span class="line">z &amp; =&amp;  &amp;\frac xy + &amp;z</span><br><span class="line">\end&#123;align&#125;</span><br><span class="line">\right.</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注1：<code>align</code>用来将多行公式括起来，<code>&amp;</code>用来分割各个对齐的单元<br>注2：<code>\right.</code>表示右括号不显示<br>$$ f(x)=\left\{<br>\begin{align}<br>x12 &amp; =  &amp;\cos(t) &amp;+1 &amp;x1 &amp;=1 \\<br>y123 &amp; =  &amp;\sin(t) &amp;+12 &amp;y12 &amp;=12 \\<br>z1234 &amp; =  &amp;\frac xy &amp;+123 &amp;z123 &amp;=123<br>\end{align}<br>\right.<br>$$</p>
+<ul>
+<li><p><strong>关于align中&amp;的对齐方式</strong><br>假设有n个&amp;，会将一行分为n+1列，从左向右两个列分为一组(如1、2列为一组，3、4列为一组…，若有奇数个列，则最后一列单独为一组)。每一行的&amp;数量要保证相同，否则对齐格式会乱。<br>首先明确，LaTex对齐方式包括组内对齐和组间对齐。<br><strong>组内对齐：</strong>两列一组，在组内部，第一列向右对齐，第二列向左对齐，即两列在所在位置上向中间对齐。<br><strong>组间对齐：</strong>首先，不同行的对应组会根据组的中线进行对齐，因为每行组数是一样的，因此为保证组的中线在同一位置，会统一固定组的长度，因此若公式较短就会出现空白。<br>其次在中线对齐的基础上，第一组会紧靠页<strong>左侧</strong>，最后一组则紧靠页<strong>右侧</strong>，紧靠页左/右侧就是将最长的一组紧靠上去，也就是说对于长度不一样的行，较短的那一行是靠不上去的(因为首先要保证组的中线对齐)。</p>
+</li>
+<li><p><strong>字体选项</strong><br><strong>字体大小：</strong><br>稍微小一点：<code>\small</code>，再小一点：<code>\scriptsize</code>，最小：<code>\tiny</code><br>大一点：<code>\huge</code>，最大：<code>huge</code><br><strong>加粗：</strong><br><code>\textbf{xx}</code>，加粗和上划线混用：<code>\overline{\textbf{xx}}</code><br><strong>将公式中的斜体转为正体：</strong><br>在<code>\\( \\)</code>和<code>$$</code>公式中的字母会自动为斜体，转为正体：<code>\rm</code></p>
+</li>
+</ul>
+<ul>
+<li><p>hexo下使用LaTex，若使用了<code>A_{xxx}</code>这种复合下标(下划线和花括号连用)，且<strong>前面</strong>的公式还出现了下划线(后面公式有下划线没事…)，公式就会出错。<br>原因：hexo下的markdown将两个下划线作为斜体符号进行了翻译，公式就无法正常解析了。<br>解决：在两个下划线前分别加反斜杠，<code>\_</code>，对下划线进行转义。<br>注：只有这种情况公式中的下划线会被解析成斜体符号，其他情况下则没事，具体原因不很清楚。</p>
+</li>
+<li><p>更多符号，如逻辑运算、集合运算等可见博文<br><a href="https://blog.csdn.net/u013007900/article/details/50082205" target="_blank" rel="noopener">MathJax使用LaTeX语法编写数学公式教程</a><br><a href="https://blog.csdn.net/ying_xu/article/details/51240291" target="_blank" rel="noopener">Latex所有常用数学符号整理</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/" data-id="cjmmeykyl001td5qx8w93xn8b" class="article-share-link" data-share="baidu" data-title="LaTex语法">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/19/Other/LaTex语法/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/19/Other/一些快捷键/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一些快捷键
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/19/Other/markdown语法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Markdown笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/01/19/Other/LaTex语法/" data-title="LaTex语法" data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

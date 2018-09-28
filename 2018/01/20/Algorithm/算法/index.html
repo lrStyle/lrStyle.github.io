@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>算法知识点 | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="树、图的存储：链式前向星 123456789101112131415	Edge&amp;#123;u,v,next,weight&amp;#125;和head[]辅助数组。	head[]存Edge的序号，为以对应顶点为起点的边。	Edge中，u:起点，v:终点，next：以u为起点的下一条边的序号，无边返回为-1	初始化：	edge[i].next=head[u]	head[u]=i	遍历：	for(int i">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法知识点">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/Algorithm/算法/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="树、图的存储：链式前向星 123456789101112131415	Edge&amp;#123;u,v,next,weight&amp;#125;和head[]辅助数组。	head[]存Edge的序号，为以对应顶点为起点的边。	Edge中，u:起点，v:终点，next：以u为起点的下一条边的序号，无边返回为-1	初始化：	edge[i].next=head[u]	head[u]=i	遍历：	for(int i">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-13T13:50:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法知识点">
+<meta name="twitter:description" content="树、图的存储：链式前向星 123456789101112131415	Edge&amp;#123;u,v,next,weight&amp;#125;和head[]辅助数组。	head[]存Edge的序号，为以对应顶点为起点的边。	Edge中，u:起点，v:终点，next：以u为起点的下一条边的序号，无边返回为-1	初始化：	edge[i].next=head[u]	head[u]=i	遍历：	for(int i">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Algorithm/算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Algorithm/算法/" class="article-date">
+  <time datetime="2018-01-20T19:50:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      算法知识点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p>树、图的存储：链式前向星</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	Edge&#123;u,v,next,weight&#125;和head[]辅助数组。</span><br><span class="line">	head[]存Edge的序号，为以对应顶点为起点的边。</span><br><span class="line">	Edge中，u:起点，v:终点，next：以u为起点的下一条边的序号，无边返回为-1</span><br><span class="line"></span><br><span class="line">	初始化：</span><br><span class="line">	edge[i].next=head[u]</span><br><span class="line">	head[u]=i</span><br><span class="line"></span><br><span class="line">	遍历：</span><br><span class="line">	for(int i = head[n];i!=-1;i=edge[i].next)&#123;</span><br><span class="line">	//操作edge[i].v</span><br><span class="line">	&#125;</span><br><span class="line">	注：无向图edge要开2倍的大小</span><br><span class="line"></span><br><span class="line">//图的其他数据结构：邻接矩阵(二维数组)、邻接表(Vector&lt;Vector&gt;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图的遍历：<br>DFS:递归实现，递归完要回退<br>BFS:队列优化</p>
+</li>
+<li><p>单源点最短路径：SPFA算法(队列优化，不断松弛操作)，可有负边不能负环。<br>或Dijkstra算法，不能负边or负环。一次将单源点到所有点的最小距离都生成了，<br>不断选最小点，更新未选点。</p>
+</li>
+<li><p>图的最小生成树<br>prim算法：边较少。(不断从所有已选点中选距离最短的相邻未选点)<br>Kruskal算法：边较多。（所有边中不断找最小边，判断是否在一个连通分量中）<br>判断连通分量用到路径优化后的并查集，注意更新parent[]数组一定要更新根节点。<br>关于已选集合和未选集合的实现：可用visited数组来存储状态。</p>
+</li>
+<li><p>在一些树形动态规划问题中，可能会子结点对应多个父结点，所以开Edge数组要开2倍的大小，而且在前向星便利时要除去父结点的情况。</p>
+</li>
+<li><p>动态规划要点<br>1.列状态转移方程，常分选择/不选择当前结点两种情况(用二维数组a[n][2]表示)<br>2.一定要将每种情况的值存储下来，这样才能保证效率。用二维数组存↑<br>3.程序上常常用递归或for循环实现</p>
+</li>
+<li><p>归并排序：<br>【递归】的思想对数组进行排序，包括排序和合并两个步骤。<br>先将数组分为左右两部分，分别排序，再将有序的两部分合并。<br>可用一个辅助数组temp来临时保存数据来实现原数组排序。<br>可用归并排序来求逆序数：<br>一个数组的逆序数【左半部分逆序数】+【右半部分逆序数】+【左半部分比右半部分大的数的个数（在合并左、右时计算）】</p>
+</li>
+<li><p>二叉树的操作中注意可能会出现单根的情况，会导致树深度大大增加。<br>此时考虑用二叉平衡树。<br>平衡二叉树的简化版-&gt;splay树，伸展树。</p>
+</li>
+</ul>
+<h3 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h3><ul>
+<li><p>若对循环设置一个判断的变量，要注意在每次循环前/后是否需要对变量置为初始值。防止上一次的判断结果影响这一次的判断。<br>eg：&lt;完美的代价&gt;中n为奇数条件pos的使用。</p>
+</li>
+<li><p>日期的计算：<br>计算从日期a到日期b的天数n<br><strong>最常见</strong>如果a算在内但不算b那就是n=b-a。<br>eg:算天数差/经过了多少天/隔多少天<br>如果a和b这两天也算在内就是n=b-a+1<br>如果不算a和b这两天就是n=b-a-1</p>
+</li>
+<li><p>for()循环，满足一定条件才执行段内语句，要在<strong>段内</strong>用if语句，不能将条件写到for()内，否则会变成中止条件，而不是continue条件。</p>
+</li>
+<li><p>一些实际的应用题，可用模拟的方法来求解。确定一个最小的变化单元，不断模拟。<br>eg：&lt;龟兔赛跑&gt;问题中时间一次+1s模拟</p>
+</li>
+<li><p>对于结束情形的判断，若判断各种结束情况很复杂且题目涉及总数量，可改为直接检测数量，会简化许多</p>
+</li>
+<li><p>在递归中，若表达式涉及传入递归函数的参数，要先写回传入的变量，再写递归式。防止下一次递归中改变了变量的值。</p>
+</li>
+<li><p>在进行按位操作时，输入、输出顺序和运算顺序是相反的。<br>但输入输出可都用相反顺序(即正常读入读出顺序)，最后反反得正，结果不受影响。</p>
+</li>
+<li><p>关于输出空格/空行的控制，for循环下可对循环次数进行检测(首次/末次不输出)，while循环下可设标志位检测。</p>
+</li>
+<li><p>大while中套小while，小while每次的判断条件也要保证大while的条件，保证小while的循环不会使大while“循环越界”。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Algorithm/算法/" data-id="cjmmeykya0019d5qxgeu8vyom" class="article-share-link" data-share="baidu" data-title="算法知识点">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Algorithm/算法/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/22/图灵论文阅读笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Computing machinery and Intelligence 阅读笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/20/C++输入输出/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C++文件操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/01/20/Algorithm/算法/" data-title="算法知识点" data-url="http://yoursite.com/2018/01/20/Algorithm/算法/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

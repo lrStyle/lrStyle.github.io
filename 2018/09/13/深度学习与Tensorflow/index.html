@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>深度学习与TensorFlow | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="深度学习概述人工智能AI人工智能AI是计算机科学的一个分支，早在20世纪50年代就被提出了，著名的“图灵测试”就是AI发展的终极目标：如果某台机器运行的逻辑程序可以表现出与人类无法分辨的智能，则认为计算机有了思维，能够进行思考。从实用的角度讲，AI的目标是要让计算机自动完成那些需要人类智慧才能完成的工作。 深度学习的起因 AI初期：专家系统AI发展初期，主要的思路是将人类总结的知识用一系列规范的、">
+<meta name="keywords" content="MachineLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习与TensorFlow">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/深度学习与Tensorflow/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="深度学习概述人工智能AI人工智能AI是计算机科学的一个分支，早在20世纪50年代就被提出了，著名的“图灵测试”就是AI发展的终极目标：如果某台机器运行的逻辑程序可以表现出与人类无法分辨的智能，则认为计算机有了思维，能够进行思考。从实用的角度讲，AI的目标是要让计算机自动完成那些需要人类智慧才能完成的工作。 深度学习的起因 AI初期：专家系统AI发展初期，主要的思路是将人类总结的知识用一系列规范的、">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T13:56:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习与TensorFlow">
+<meta name="twitter:description" content="深度学习概述人工智能AI人工智能AI是计算机科学的一个分支，早在20世纪50年代就被提出了，著名的“图灵测试”就是AI发展的终极目标：如果某台机器运行的逻辑程序可以表现出与人类无法分辨的智能，则认为计算机有了思维，能够进行思考。从实用的角度讲，AI的目标是要让计算机自动完成那些需要人类智慧才能完成的工作。 深度学习的起因 AI初期：专家系统AI发展初期，主要的思路是将人类总结的知识用一系列规范的、">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-深度学习与Tensorflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/深度学习与Tensorflow/" class="article-date">
+  <time datetime="2018-09-13T07:49:58.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      深度学习与TensorFlow
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <div id="toc" class="toc-article">
+        <br>
+        <strong class="toc-title">文章目录</strong>
+        <hr>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#深度学习概述"><span class="toc-number">1.</span> <span class="toc-text">深度学习概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#人工智能AI"><span class="toc-number">1.1.</span> <span class="toc-text">人工智能AI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深度学习的起因"><span class="toc-number">1.2.</span> <span class="toc-text">深度学习的起因</span></a></li></ol></li></ol>
+        </div>
+        
+        <h2 id="深度学习概述"><a href="#深度学习概述" class="headerlink" title="深度学习概述"></a>深度学习概述</h2><h3 id="人工智能AI"><a href="#人工智能AI" class="headerlink" title="人工智能AI"></a>人工智能AI</h3><p>人工智能AI是计算机科学的一个分支，早在20世纪50年代就被提出了，著名的“图灵测试”就是AI发展的终极目标：如果某台机器运行的逻辑程序可以表现出与人类无法分辨的智能，则认为计算机有了思维，能够进行思考。从实用的角度讲，AI的目标是要让计算机自动完成那些需要人类智慧才能完成的工作。</p>
+<h3 id="深度学习的起因"><a href="#深度学习的起因" class="headerlink" title="深度学习的起因"></a>深度学习的起因</h3><ul>
+<li><p><strong>AI初期：专家系统</strong><br>AI发展初期，主要的思路是将人类总结的知识用一系列规范的、形式化的规则来表示，然后通过自动化的程序来代替人类处理问题，以知识为基础的<strong>专家系统</strong>（Knowledge-based expert system）就是这方面的典型代表。<br>专家系统是将专家的经验写成规则，再依照规则推理的方式来模拟专家的思维。专家系统没有获得太大的成功，原因在于系统会明显受到规则数量的限制，规则是有限的，而问题发生时的状况是无限的，用有限的规则处理无限的可能，注定很容易失败。</p>
+</li>
+<li><p><strong>专家系统-&gt;机器学习</strong><br>因此，“演绎法”的规则推理暂时行不通，“归纳法”就成了另一条出路，基于概率统计的机器学习（Machine Learning）逐渐成为了主流方法，其直接将大量真实世界产生的数据样本交给算法处理，让算法自己在数据中寻找和学习特定的规律，自己“归纳”知识。这种从数据中学习规律的过程也叫做“模式识别”。</p>
+</li>
+<li><p><strong>机器学习-&gt;深度学习</strong><br>但这之后机器学习也遇到了一些问题，例如，对于朴素贝叶斯、逻辑回归等经典机器学习算法，本质是计算输入样本和输出目标之间的<strong>隐含规律/相关性</strong>，但计算相关性其实是一个后续问题，在这之前我们首先要确定各个影响因素，而如何表示各个影响因素会严重影响相关性的判断。如要辨别一段语言中演讲者是男人、女人还是小孩，简单机器学习算法的判断依据很可能是音量而非音色和音调。因此设计合适的<strong>特征表示</strong>在机器学习中是一项非常重要的工作，被称为<strong>特征工程</strong>。但长期以来，合适特征的选取都非常困难，不仅费事费力，更需要人们提供大量的先验知识以弥补对数据本身挖掘不足而产生的缺陷。因此若要拓展机器学习的适用范围，必须要降低对特征工程的依赖性。因此也就出现了深度学习。<br>深度学习是一种<strong>表示学习</strong>（Representation Learning）方法，所谓表示学习，就是要让算法在少量人为先验知识的情况下，能够自己从数据中抽取合适的特征。而表示学习目前受到重视的另一个原因是对于人工智能，其目标就是让机器有能力理解我们所在的世界，只有当它学会如何感知和辨别数据背后的各种隐含因素时才能达到这个目标。<br>深度学习最主要的模型是<strong>深度神经网络</strong>，其思想是通过一些列非线性变换操作把从原始数据中提取的简单特征进行组合，从而得到更高层、更抽象的特征表示，这也对应着我们思维理解的过程。如对于文本分析，先认识各个字母，再认识由字母组成的单词，其次是词组、句子、段落，逐渐由简单向抽象映射。一般有<strong>三个</strong>以上隐含层的神经网络就称为深度神经网络。</p>
+</li>
+<li><p><strong>CPU和GPU</strong><br>促进深度学习的另一个因素是GPU的广泛使用。GPU的主要功能是渲染画面，涉及到坐标变换、栅格化、平面渲染等大量的浮点数计算操作。相比来说，CPU是面向通用计算的产品，GPU则是面向大规模浮点数并行计算的，因此GPU训练计算神经网络的效率会更高。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/09/13/深度学习与Tensorflow/" data-id="cjmmeykxu000xd5qxx9y6q6fi" class="article-share-link" data-share="baidu" data-title="深度学习与TensorFlow">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/09/13/深度学习与Tensorflow/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/13/微机接口技术与应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">微机接口技术与应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/09/13/深度学习与Tensorflow/" data-title="深度学习与TensorFlow" data-url="http://yoursite.com/2018/09/13/深度学习与Tensorflow/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

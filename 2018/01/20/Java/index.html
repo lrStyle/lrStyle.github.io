@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java笔记 | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一节_基础知识 第二节_String操作 第三节_输入输出 第四节_GUI   第一节_基础知识    api中查的都是类，函数查不到。查包的话直接在首页按字母顺序找即可。  不清楚数组长度的情况下遍历：for(String/int.. a : array ){}  控制double输出格式：decimalformat类DecimalFormat df = new DecimalFormat(">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java笔记">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/Java/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="第一节_基础知识 第二节_String操作 第三节_输入输出 第四节_GUI   第一节_基础知识    api中查的都是类，函数查不到。查包的话直接在首页按字母顺序找即可。  不清楚数组长度的情况下遍历：for(String/int.. a : array ){}  控制double输出格式：decimalformat类DecimalFormat df = new DecimalFormat(">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-04T01:02:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java笔记">
+<meta name="twitter:description" content="第一节_基础知识 第二节_String操作 第三节_输入输出 第四节_GUI   第一节_基础知识    api中查的都是类，函数查不到。查包的话直接在首页按字母顺序找即可。  不清楚数组长度的情况下遍历：for(String/int.. a : array ){}  控制double输出格式：decimalformat类DecimalFormat df = new DecimalFormat(">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-Java" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Java/" class="article-date">
+  <time datetime="2018-01-20T17:20:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><a href="#1">第一节_基础知识</a></li>
+<li><a href="#2">第二节_String操作</a></li>
+<li><a href="#3">第三节_输入输出</a></li>
+<li><a href="#4">第四节_GUI</a></li>
+</ul>
+<h3 id="1"> 第一节_基础知识 </h3>
+
+<ul>
+<li><p>api中查的都是类，函数查不到。<br>查包的话直接在首页按字母顺序找即可。</p>
+</li>
+<li><p>不清楚数组长度的情况下遍历：<br>for(String/int.. a : array ){}</p>
+</li>
+<li><p>控制double输出格式：decimalformat类<br>DecimalFormat df = new DecimalFormat(“0.0000000”);<br>df.format(xx);<br>“#.#######”与”0.0000000”的区别，【开头位置】出现0时是否用0占位。#舍去0,0则占位。</p>
+</li>
+<li><p>测试代码执行时间<br>long a=System.currentTimeMillis();<br>//测试代码<br>System.out.println((System.currentTimeMillis()-a)/1000f+” 秒 “);</p>
+</li>
+<li><p>基本数据类型从低级-&gt;高级为自动类型转换（因为不会丢失数据）<br>高级-&gt;低级有丢失数据的风险，所以需要强制类型转换。<br>但若低级-&gt;高级时有溢出可能，也需在右式强转，否则无法接收溢出的数据。<br>eg：<br>int n=xxx;<br>double d = n <em> n;<br>【若n^2超出int范围，则无法接收溢出数据，在右式即截断了】<br>应为double d = (double)n </em> n;</p>
+</li>
+<li><p><strong>java各数值类型范围</strong><br>类型|字节数|取值范围<br>:-:|:-:|:-:<br>int|4|-2^31~2^31-1(-21亿~21亿)<br>long|8|-2^63~2^63-1(很大)<br>float|4|3.4x10^-38~3.4x10^38(绝对值)<br>double|8|1.7x10^-308~1.7x10^308(绝对值)<br>char|1|-128~127<br>boolean|1|true/false</p>
+</li>
+<li><p>取绝对值函数：Math.abs(xx)<br>开方函数：Math.sqrt(xx)<br>Arrays.sort(a)：将数组a从小到大排序<br>Arrays.fill(a,xx)：将数组a元素全部置为xx</p>
+</li>
+<li><p>java不显示地支持2进制表示，可用16进制(0x开头)、8进制(0)来代替，直接int即可。<br>但位运算符：&amp; | ^ ~等都是将数转化为二进制后运算。<br>十进制数转二进制输出：Integer.toBinaryString(xx);</p>
+</li>
+<li><p><strong>建立class数组</strong><br>Class[] c = new Class[n];<br>for(int i = 0;i&lt;n;i++){ c[i] = new Class(); }<br>还要逐个进行初始化</p>
+</li>
+<li><p>java自定义类比大小<br>实现Comparable&lt;自定义类名&gt;接口<br>并重写int compareTo(&lt;自定义类名&gt; xx)方法，<br>this小于xx返回负值，等于返回零，大于返回正值。</p>
+</li>
+<li><p>多线程时：实现runnable接口的方式便于多重继承，但在类体内可能无法使用一些Threadl类的方法（如sleep）。<br>继承Thread虽然只能单继承，但方便在类体内使用Thread方法。</p>
+</li>
+</ul>
+<p></p><h3 id="2"> 第二节_String操作 </h3><p></p>
+<ul>
+<li><p>访问字符串中的元素，返回char<br>String.charAt(index)      0 ~ lenth-1</p>
+</li>
+<li><p>char[]转换为String：不能直接toString(),会乱码；正确方法为new String(char[])</p>
+</li>
+<li><p>字符串string匹配要用equals函数，不能直接==；直接==比较的是内存地址<br>但char可以直接==比较</p>
+</li>
+<li><p>搜索字符串str.indexOf(char ch,int index)：从index开始搜</p>
+</li>
+<li><p><strong>分割字符串：</strong><br>str.split(“xx”)：以”xx”分隔str，返回String数组<br>str.substring(int begin,int end)：返回begin~end-1，所以长度为end-begin。</p>
+</li>
+<li><p>制表符\t，当它的前面有单词的时候，补的空格和单词长度加起来刚好能被 8 整除。<br>效果：使制表符后面的字符对齐</p>
+</li>
+<li><p><strong>int,double和string转换</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">double</span> j=<span class="number">1.0</span>;</span><br><span class="line">String str_i=Integer.toString(i);</span><br><span class="line">String str_j = Double.toString(j);</span><br><span class="line"><span class="keyword">double</span> dd = Double.parseDouble(<span class="string">"123.2"</span>);</span><br><span class="line">String str_j = Double.toString(j);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p></p><h3 id="3"> 第三节_输入输出 </h3><p></p>
+<ul>
+<li><p>使用System.in来创建流时，不可关闭。否则会把其他流也一起关掉</p>
+</li>
+<li><p><strong>关于输入输出中的next()函数：</strong><br>Scanner in的输入函数中：next()只接收有效字符，而nextLine()、nextInt()、nextDouble()等此类函数则会接收包括换行、空格在内的一切字符。<br>所有【next类函数】后接in.nextLine()\nextDouble()..函数会出错，会跳过in.nextLine()的输入语句。<br>因为nextLine()接收到上一句next()最后的回车符后就结束了。<br>next()不丢弃末尾的回车符，nextline()函数会丢弃。<br>【解决】：<br>(1).next()后单独跟一句nextLine()接收回车符;<br>(2).都采用next()形式，只接收有效字符。<br>另外，在同一个函数中，不管中间隔了多少语句，只要没有输入语句，nextLine()就还会接收next()的回车。</p>
+</li>
+<li><p>ObjectInputStream()和ObjectOutputStream()用什么顺序写进去的就用什么顺序读出来。而且Object流和其他流不能混用，必须用同类流输入输出。</p>
+</li>
+<li><p>运用缓冲流BufferedWriter写文件时，write()函数后一定要接flush()函数，缓冲流中的内容才会写到文件中，否则就一直在缓冲流中。</p>
+</li>
+<li><p>网络流read、writer读取时只有关闭后才能正常显示-1。<br>最好用read(byte[])的方法而非一个一个byte read，因为函数的循环调用也会占用时间。</p>
+</li>
+</ul>
+<p></p><h3 id="4"> 第四节_GUI </h3><p></p>
+<ul>
+<li><p>写jframe时，setvisible()函数要写到所有所有组件语句之后。<br>否则一开始不会显示组件，拖动下窗口才会显示。</p>
+</li>
+<li><p>setvisible(true)目的是使控件可以显示出来,如果该控件已经被显示出来，那么该方法使控件显示在窗口的最前方。<br>但其使用的位置需要注意。setVisible的对象一般是该对象的使用者调用的。如果setVisible在某个控件的内部，那么在setVisible函数后面添加的控件就显示不出来了。<br>原因就在于，setVisible(true)并不是告诉JVM让该控件可见，而是在内部调用repaint方法把各个控件画出来进行显示。如果在控件还没完全添加完其他控件就setVisible(true)那么在方法后面添加的控件都不能显示。</p>
+</li>
+<li><p>keylistener中的方法是对所有键盘上的按键都会调用。若要针对某个特定的键，可以调用if()方法来判断。</p>
+</li>
+<li><p>key pressed是按下键，typed是键值传到电脑，released是按键完成释放按键。顺序pressed-&gt;typed-&gt;released。<br>1).pressed和typed一般是紧接着的两个动作，中间不会插其他键的函数。而在typed和realesed间若同时按两个键可能会加另外一个键的函数。<br>2).就是realesed时按键才算按成。<br>3).长按键会有很多pressed和typed，但只有一个realesed。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Java/" data-id="cjmmeykxa0005d5qxzhew398v" class="article-share-link" data-share="baidu" data-title="Java笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Java/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/20/Git操作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/20/Other/编程体会/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">编程体会</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/01/20/Java/" data-title="Java笔记" data-url="http://yoursite.com/2018/01/20/Java/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Notes of Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
