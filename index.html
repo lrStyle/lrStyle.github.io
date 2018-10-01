@@ -70,6 +70,145 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Paper Notes/On Availability For Blockchain based Systems" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" class="article-date">
+  <time datetime="2018-09-13T07:49:59.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><a href="https://research.csiro.au/data61/wp-content/uploads/sites/85/2016/08/OnAvailabilityForBlockchain-BasedSystems-SRDS2017-authors-copy.pdf" target="_blank" rel="noopener">论文地址点这里</a></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>  
+
+<h2 id="论文内容概述"><a href="#论文内容概述" class="headerlink" title="论文内容概述"></a>论文内容概述</h2><p>这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。</p>
+<h3 id="简介-INTRODUCTION"><a href="#简介-INTRODUCTION" class="headerlink" title="简介(INTRODUCTION)"></a>简介(INTRODUCTION)</h3><ul>
+<li><p><strong>区块链的可靠性问题</strong><br>可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。<br>提交时间不稳定：客户端不可预知交易成功提交所需的时间。从Fig.1中可看出，61.5%的交易在3分钟内就提交了，但13.8%的交易4.5分钟还没提交(延迟了50%)，提交时间的差异可能系统可用性的下降。</p>
+</li>
+<li><p><strong>论文主要研究内容</strong>  </p>
+<ul>
+<li>导致交易无法成功提交的因素</li>
+<li>以太坊中的transaction inclusion机制</li>
+<li>以太坊中gas price和gas limit两个参数对提交时间的影响</li>
+<li>以太坊中block gas limit的影响</li>
+<li>交易终止机制</li>
+</ul>
+</li>
+</ul>
+<h3 id="背景知识-BACKGROUND"><a href="#背景知识-BACKGROUND" class="headerlink" title="背景知识(BACKGROUND)"></a>背景知识(BACKGROUND)</h3><ul>
+<li><p><strong>区块链基本知识</strong><br>区块链可认为是一个分布式的公共账本，记载了交易信息和资产信息。区块链中的每个用户本地都存储着一个账本的副本，并运行着一个客户端，负责和整个网络同步更新账本信息。</p>
+</li>
+<li><p><strong>区块链中的链指什么</strong><br>区块链系统的交易信息存储在区块(block)中，从第二个区块开始，每个区块都有前一区块的哈希值，即相当于把各个区块链起来了，最终各个区块按时间顺序链接起来呈现一套完整的数据(区块链大账本)。 </p>
+</li>
+<li><p><strong>区块链加密技术</strong><br>区块链采用了非对称加密技术，和传统对称加密最大不同是，加密和解密不再是同一把钥匙，而是分为公钥和私钥。只有特定的用户具有私钥，可以对交易信息进行加密和数字签名；而所有的用户都具备公钥，可以对交易信息解密，并通过数字签名验证交易签署者的身份。 </p>
+</li>
+<li><p><strong>共识算法</strong><br><strong>问题背景：</strong>因为区块链是分布式存储的，所有节点都需要对区块链中块的内容和次序达成“共识”，为了解决这个问题就提出了共识算法。<br><strong>工作量证明算法(POW)：</strong>这是目前最广泛使用的共识算法，其基本原理是：一个节点将交易信息打包到区块中，并添加一个随机数，再做哈希和运算，之后将块发布到网络中。其他节点接收到块后，根据块中包含的参数进行大量的计算(俗称挖矿)，计算出的结果如果小于哈希和，即完成了这部分工作，得出的结果值就相当于对其工作量的“证明”。拥有“证明”后节点不仅会获得一定奖励，也拥有了创建区块的权利，新创建的区块会加到主链末端，其他节点可在其后面继续添加新区块，其后每添加一个区块，就相当于做了一次确认，当其后的区块达到了一定数量后(比特币是6个，以太坊是12个)，就相当于和网络中其他节点达成“共识”了，这个区块即正式被记录在案了。<br><strong>核心思想：</strong>工作量证明机制的核心思想是工作方要得出结果具有一定难度，但验证方检查结果却非常容易，因此很容易验证工作方是不是做了相应工作。既保证了工作完成后奖励的价值(需要付出大量的计算代价)，激励节点去积极打包交易信息，同时验证的简单性也保证了共识算法的效率和可靠。</p>
+</li>
+<li><p><strong>分叉问题(fork)</strong><br><strong>基本概念：</strong>考虑一种小概率情况，两个节点恰好同时完成了计算，创建了区块，并向全网进行了广播，这种情况就叫做分叉。形象的理解就是区块链主链的末端被连了两个块，像是分叉了一样。<br><strong>分叉的影响：</strong>正常情况下，网络中所有的节点达成共识，所生成的区块链就是一条主链，内容、次序都是确定的；而在分叉的情况下，区块链会向两个不同的方向延申(因为每一个区块都是依赖于上一个区块产生的)，主链的内容、次序就不确定了，各节点即无法正常地查询交易和资产信息。<br><strong>解决办法：</strong>所有节点都从当前最长的链开始工作。因为有统计结论，链中的区块数越多，越不容易发生分叉现象。</p>
+</li>
+</ul>
+<h3 id="比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS"><a href="#比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS" class="headerlink" title="比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)"></a>比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)</h3><p>在本节中，作者讨论了影响比特币提交时间的因素，并进行了实验验证。</p>
+<ul>
+<li><p><strong>影响交易提交时间的因素</strong><br><strong>交易手续费(transaction fee)：</strong>手续费的多少会影响节点打包交易信息的积极性，从而影响交易提交的时间。<br><strong>交易是否按顺序到达：</strong>如果一个交易比其所引用的父交易先到达，则被称为orphan。只有父交易提交后，子交易才能提交，否则子交易就会一直在mempool中等待。<br><strong>锁定时间(locktimes)：</strong>这是一个用户可设置的参数，可使得某个交易在特定顺序的区块产生之前一直处于不可用状态。  </p>
+</li>
+<li><p><strong>实验过程</strong><br><strong>实验任务：</strong>观测交易的产生并记录其提交所花费的时间。为了探究不同网络环境下的情况，作者在2016年11月和2017年4月分别进行了两次实验（第二次实验的网络负载较大）。<br><strong>观测窗口：</strong>为了充分收集包含在区块链中的交易信息，作者定义了观测窗口：从实验开始前的第一个区块到实验结束24h后的一个区块，这之间的交易即处于观测窗口中，都会被记录下来。</p>
+</li>
+<li><p><strong>实验结果</strong><br>作者主要研究的交易有两类：<strong>Straight-accepts</strong>和<strong>Oranphans</strong>。<br>实验结果1（针对到达顺序因素）：由Fig.2可知两次实验中，Oranphans的提交时间都比Straight-accepts的时间要长，且在第二次实验中尤为明显，可见到达的顺序对提交时间有着显著的影响，按顺序到达的交易比无序到达的交易时间要短很多。<br>实验结果2（针对交易手续费因素）：由Fig.3可知，交易手续费和提交时间之间并没有显著关联。<br>实验结果3（针对locktimes因素）：通过作者分析可知，绝大多数交易并未使用locktimes这个参数，且Oranphans和Straight-accepts这两类交易结束锁定的时间差异也很大，最终作者认为locktimes并非是Oranphans延迟的主要因素。  </p>
+</li>
+</ul>
+<h3 id="以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS"><a href="#以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS" class="headerlink" title="以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)"></a>以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)</h3><p>在本节中，作者介绍了以太坊不能保证提交的原理，并实验研究了gas price、gas limit、network三个因素对提交时间的影响。</p>
+<ul>
+<li><p><strong>以太坊中交易事务的生命周期</strong><br>1、交易声明：交易发生并声明。<br>2、交易打包进区块：发布节点将交易信息打包到区块中。<br>3、区块链接到主链：节点完成打包计算，将区块链接到主链。<br>4、交易正式提交：其后链接了一定数量的区块后，即正式提交。<br>注：因为分叉现象或其他原因，步骤2并不能保证交易最终一定被提交，这就产生系统的可靠性问题。</p>
+</li>
+<li><p><strong>实验过程</strong><br>实验任务：研究交易从打包到最终提交所花费的时间以及分支合并后会丢失多少已打包的交易。<br>创建监听节点：作者改写了一个客户端节点作为监听节点，以检测交易声明和区块声明。<br>记录时间：监听节点会记录交易声明的时间和区块到达的时间，以计算交易提交的延迟时间。<br>计算方法：根据交易声明的时间和包含此交易的第一个区块到达的时间，我们计算这之间的时间差，结果就是Fig.5中的<br><code>1st inclusion</code>；当第一个块变为叔块时，我们可根据包含此交易的第二个区块到达的时间，计算出<code>2nd inclusion</code>；同理，<br><code>3rd inclusion</code>也是这么计算的；此外，我们根据最后一个区块的到达时间，可以计算出<code>12 confirmations</code>和<code>36 confirmations</code>。将上述计算出的结果绘成图表，就是文中的Fig.5。</p>
+</li>
+<li><p><strong>实验结果</strong><br>实验结果1（各类提交时间的对比）：从Fig.5中可知，相比1st/2nd/3rd inclusion，12/36 conclusion的提交时间更长，而36 conclusion尤为明显，这说明交易数量越多，交易提交所花费的时间越长。<br>实验结果2（针对gas price因素）：从Fig.6中可知，总体趋势是gas price越高，延时越短，但gas price高于25Gwei后对延时的影响就非常小了。这也侧面解释为什么大部分交易定价在[20,25)的区间内(性价比最高)。<br>实验结果3（针对maximum gas因素）：虽然有个别交易因maximum gas过高而有明显的延时，但作者依旧认为maximum gas和提交时间之间没有很强的关联性。<br>实验结果4（针对network delays因素）：虽然没有得出明确的结论，但作者分析了in-order和out-of-order交易在提交延迟和数量方面的数据后，认为网络延迟对交易的传播是有负面影响的。</p>
+</li>
+</ul>
+<h3 id="BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM"><a href="#BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM" class="headerlink" title="BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)"></a>BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)</h3><ul>
+<li><p><strong>产生原因</strong><br>出台gas limit per block的原因是希望通过限制每个区块消耗的gas总量，防止DDoS攻击。如果交易所需的气体超过了限制值，交易就无法被包含到块中，这就使得大规模的分布式拒绝服务攻击难以发生。</p>
+</li>
+<li><p><strong>问题背景</strong><br>在没有限制之前，签署合约花费了150万的气体，因此作者认为限制会对合约相关的交易产生负面影响，但对单纯的资金转移交易应该影响不大，之后作者即针对这个观点进行了分析。</p>
+</li>
+<li><p><strong>分析结果</strong><br>由Fig.10可知，在50万气体的限制下，有46.21%的合约类交易无法正常进行；在200万气体的限制下，也有18.78%的合约类交易无法产生。因为气体限额的存在，大量的合约类交易无法进行，这也验证了作者之前的观点。</p>
+</li>
+</ul>
+<h3 id="以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM"><a href="#以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM" class="headerlink" title="以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)"></a>以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)</h3><p>这一节主要对应了作者在摘要中提到的观点：终止机制的缺失会使大量交易处于既未终止也未提交的”pending”状态，严重影响系统的可靠性。为解决这个问题，作者提出了一种交易终止的机制，并进行了实验考察。</p>
+<ul>
+<li><p><strong>终止原理</strong><br><strong>竞争法：</strong>如果先前的交易\(Tx_i\)在规定的时间内未提交，账户可以重新发布一个具有相同nonce序号的交易\(Tx_i^{\prime}\)，赋予其更高的手续费，并将交易的接收方设为自己。一旦\(Tx_i^{\prime}\)成功提交，\(Tx_i\)就会自动过期了，即终止了其状态。<br><strong>重传法：</strong>账户重新发布一个与\(Tx_i\)内容相同的交易\(Tx_i^{\prime\prime}\)，但设置较高的手续费，这样虽然\(Tx_i^{\prime\prime}\)交易信息和\(Tx_i\)是一样的，但数字签名和哈希值却不一样(因为手续费不一样)，这样其他节点会把其当作一个新的交易。只要交易\(Tx_i\)和\(Tx_i^{\prime\prime}\)任何一个成功提交了，另外一个即过期了(因为nonce是一样的)，这样也可以达到终止的目的。</p>
+</li>
+<li><p><strong>实验模拟的三种情况</strong><br>1、交易在规定时间内没有被打包<br>2、因为手续费不足，用户决定撤回之前发布的交易<br>3、因为账户余额不足，交易无法被正常提交，即进入”pending”状态</p>
+</li>
+<li><p><strong>对情况1的实验</strong><br>实验原理：为了降低交易被打包的概率，作者减少了交易的手续费，分别为市场均价的0%、10%、…、90%，并设置了10min的截止时间。如果截止时间内原交易未提交，就按照上文提到的竞争法进行终止。<br>实验结果1：大部分交易都成功提交了，甚至30%-90%市场价的交易全部成功提交。出现这样的情况，我猜测可能是因为设置的终止时间太长了，即虽然手续费低，但只要时间足够长，交易还是有可能成功提交的。<br>实验结果2：在0-20%市场价的交易中，有16个没有成功提交，但最后都成功终止了，终止成功率为100%。</p>
+</li>
+<li><p><strong>对情况2的实验</strong><br>实验原理：这种情况考虑的是客户端希望撤回原先的交易，因此相比情况1，设置的截止时间要短一些（因为如果再设置很长时间的话，就失去模拟用户自行撤回的意义了），实验中是取所有交易提交时间的中位点，即3min。<br>实验结果1：截止时间缩短后，未提交的交易数明显增多，总共有53个交易没有提交，甚至0-20%市场价的交易全部没有提交成功，这也验证了我在实验1中的猜想。<br>实验结果2：虽然未提交的交易数量大大增加，但依旧每个交易都成功终止了，成功率为100%。</p>
+</li>
+<li><p><strong>对情况3的实验</strong><br>实验原理：首先作者创建了两个交易：\(Tx_1(bonce=n+1,value=\frac {k} {1000})\)和\(Tx_1(bonce=n+1,value=\frac {999k} {1000})\)，k为当前账户的余额。其次为了模拟余额不足这种情况，作者采用了一种很巧妙的方式：先发送\(Tx_2\)，隔5s后再发送\(Tx_1\)，这样可以使得\(Tx_2\)顺利发出，因为先发\(Tx_1\)的话，一旦其被顺利打包，\(Tx_2\)就会因为余额不够而无法发送到网络中了。采用这种方式，\(Tx_2\)就有可能比\(Tx_1\)先发到网络中，又因为\(Tx_1 nonce&lt;Tx_2 nonce\)，所以\(Tx_1\)必然会比\(Tx_2\)先打包，这样\(Tx_2\)就会因余额不够而停滞在网络中，即成功模拟了因余额不足所导致的”pending”状态。<br>实验结果：作者进行了100次实验，终止成功率依然是100%，结合前两次实验的结果，说明终止机制的效果还是非常好的。</p>
+</li>
+</ul>
+<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><h3 id="对于区块链的理解"><a href="#对于区块链的理解" class="headerlink" title="对于区块链的理解"></a>对于区块链的理解</h3><ul>
+<li>区块链的本质是一个去中心化的分布式账本。我认为区块链就是一个账本，记载了所有交易信息和资产信息，但和传统金融记录方式的不同在于，区块链账本并非存储在某一个中心，其在每一个用户的本地都有存储的副本，相当于每个用户都是一个中心。  </li>
+<li>去中心化带来的好处：首先是不用考虑中心的故障问题，就像双11，你再想买一个东西，淘宝服务器一旦瘫痪就不行了，所有的交易都依赖于这个第三方的中心；其次是不用担心信息泄露的问题，还是淘宝的例子，你要买东西、卖家要卖东西，都要提供个人信息，交易完成后也会产生交易信息，这些都被存在淘宝的服务器中，在当今这个强调个人隐私的时代，这是非常让人困扰的；第三是安全，区块链技术具有不可篡改性，我们不用担心因第三方中心的原因导致我们的资产受损失(如银行破产)。  </li>
+<li>去中心化带来的问题：最大的问题是我们如何在各个节点间同步数据。在中心化系统中，中心说什么就是什么，其他人只需和中心保持同步即可；而在去中心化系统中，我们需要和全网进行同步，难度增大了很多，为了解决这个问题，也就出现了共识机制，大家共同记账，一定数量的节点达成共识后，就可正式在网络中进行同步了；而为了提高大家记账的积极性，就出现了工作量证明算法，对于成功记账的人会有奖励，大家都去积极记账了，账本自然就可以不断地维护、更新了。</li>
+</ul>
+<h3 id="对于区块链可靠性的理解"><a href="#对于区块链可靠性的理解" class="headerlink" title="对于区块链可靠性的理解"></a>对于区块链可靠性的理解</h3><ul>
+<li>本文对于区块链可靠性的研究主要围绕“交易提交时间”这个概念，一个交易产生了，最好的情况是在规定时间内顺利打包，加入到区块链主链中。但因为复杂的网络环境、交易手续费或其他种种因素，一个交易的提交很可能会产生延迟，甚至会出现交易既没有提交、又没有销毁的”pending”状态。  </li>
+<li>这就需要我们去探讨两个方面的问题：到底有哪些因素会影响交易的提交时间？交易如果没有顺利提交我们应该采取什么办法？前者就是文章第三、第四节主要研究的内容，通过具体的实验分析了各种可能影响因素；后者则是作者在第六节研究的内容，提出了一种交易终止机制并进行了实验测试。</li>
+</ul>
+<h3 id="对于交易终止机制的理解"><a href="#对于交易终止机制的理解" class="headerlink" title="对于交易终止机制的理解"></a>对于交易终止机制的理解</h3><ul>
+<li>文中提到了两种交易终止的方法：竞争法和重传法，虽然有些区别，但本质思想都是一样的，都是利用了“nonce相等”的原理来终止原来的交易。  </li>
+<li>文中还提到，虽然以太坊不像比特币那样把每一个块都链接起来，但其每个块都有唯一的顺序号nonce，而且主链上的区块必须是按顺序的，因此我们就可以利用nonce号来使某次交易过期，从而达到终止的目的。</li>
+</ul>
+<h3 id="其他一些感想"><a href="#其他一些感想" class="headerlink" title="其他一些感想"></a>其他一些感想</h3><ul>
+<li>论文中还有一点使我印象很深刻，就是整篇文章都贯穿着实验的思想，作者进行了大量的实验去研究某些因素的影响，对所提出的终止机制也进行了具体的实验探究，实验过后还有对实验结果的合理分析，这些都使得整篇文章的逻辑结构很清晰，值得我在今后的科研工作中去学习。</li>
+</ul>
+<h2 id="改进方案"><a href="#改进方案" class="headerlink" title="改进方案"></a>改进方案</h2><h3 id="对比特币实验中无序现象产生的原因进行研究"><a href="#对比特币实验中无序现象产生的原因进行研究" class="headerlink" title="对比特币实验中无序现象产生的原因进行研究"></a>对比特币实验中无序现象产生的原因进行研究</h3><ul>
+<li>在第三节中，作者研究了到达顺序对交易提交时间的影响，最终得出了结论：顺序到达的交易比无序到达的交易的延时要短。</li>
+<li>作者虽然分析出了现象，但对产生这种现象的原因并没有深入研究，我认为如果对无序现象产生的原因进行研究，也会有助于改善区块链系统的可靠性问题。</li>
+<li>方案实现：可参考文中第三节引言部分提到的几种情况，我认为可以主要研究节点转发策略和节点负载这两个因素，转发策略的不同可能会打乱原先的交易分发顺序，从而使得交易无法按顺序到达其他节点；而节点负载主要会影响交易传播的速度，不同节点的传播速度如果不同，也可能会导致交易失序。有了初步的分析，我们可设计实验来具体研究：首先选择一定量的矿工节点，将其按照不同的转发策略和不同的节点负载进行分组，转发策略可通过观察客户端版本、研究底层转发行为的实现代码等方式得出，而节点负载可通过观测相应网络指标得到。之后可以对两种因素进行控制变量分析，从而研究其对交易到达顺序的影响。</li>
+</ul>
+<h3 id="对比特币实验2中部分Orphans数据未统计的情况进行改进"><a href="#对比特币实验2中部分Orphans数据未统计的情况进行改进" class="headerlink" title="对比特币实验2中部分Orphans数据未统计的情况进行改进"></a>对比特币实验2中部分Orphans数据未统计的情况进行改进</h3><ul>
+<li>在比特币的实验2中，因为高网络负载的原因，有20%的Orphans交易最后未被打包到块中，观测样本因此少了20%，作者也认为这对实验结果是一个很大的限制，因此我认为可根据这一点做下改进。  </li>
+<li>方案实现：我考虑了两种思路，思路一：选择网络负载比实验2小但比实验1大的一个时间点，按照同样的方式做实验3，这样既可观测到不同网络环境下的实验结果，也可以减小网络负载对Orphans交易的影响，不至于使实验观测到的样本减少太多；思路二：保持实验1和实验2的网络条件不变，增加观测窗口的时长，分别进行实验3和实验4。由Fig.2可知计算的是累积比例，因此增加观测窗口相当于延长了一段X轴，Orphans Exp 2这条线最终就有机会到达1，而对其他三条曲线则不会有影响(它们已经很接近1了)，因此就可收集到更多的Orphans数据。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" data-id="cjmqioyuf0029ybqx5oa00hdy" class="article-share-link" data-share="baidu" data-title="On Availability For Blockchain based Systems读书笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" class="article-date">
@@ -195,7 +334,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" data-id="cjmmfwu1y0025mjqxn71psqli" class="article-share-link" data-share="baidu" data-title="Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" data-id="cjmqioyud0025ybqx3yarjmkk" class="article-share-link" data-share="baidu" data-title="Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记">Share</a>
       
 
       
@@ -300,7 +439,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/" data-id="cjmmfwu1v0021mjqx7katf2xg" class="article-share-link" data-share="baidu" data-title="Notes of Efficient Estimation of Word Representations in Vector Space读书笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/" data-id="cjmqioyub0021ybqx3wv1bn1r" class="article-share-link" data-share="baidu" data-title="Notes of Efficient Estimation of Word Representations in Vector Space读书笔记">Share</a>
       
 
       
@@ -317,10 +456,10 @@
 
 
   
-    <article id="post-Paper Notes/On Availability For Blockchain based Systems" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Algorithm/MOOC_C语言程序设计笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" class="article-date">
-  <time datetime="2018-09-13T07:49:59.000Z" itemprop="datePublished">2018-09-13</time>
+    <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" class="article-date">
+  <time datetime="2018-09-13T07:49:58.000Z" itemprop="datePublished">2018-09-13</time>
 </a>
     
   </div>
@@ -331,7 +470,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+      <a class="article-title" href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
     </h1>
   
 
@@ -341,113 +480,216 @@
       
         <!-- Table of Contents -->
         
-        <p><a href="https://research.csiro.au/data61/wp-content/uploads/sites/85/2016/08/OnAvailabilityForBlockchain-BasedSystems-SRDS2017-authors-copy.pdf" target="_blank" rel="noopener">论文地址点这里</a></p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>  
-
-<h2 id="内容概述"><a href="#内容概述" class="headerlink" title="内容概述"></a>内容概述</h2><p>这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。</p>
-<h3 id="简介-INTRODUCTION"><a href="#简介-INTRODUCTION" class="headerlink" title="简介(INTRODUCTION)"></a>简介(INTRODUCTION)</h3><ul>
-<li><p><strong>区块链的可靠性问题</strong><br>可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。<br>提交时间不稳定：客户端不可预知交易成功提交所需的时间。从Fig.1中可看出，61.5%的交易在3分钟内就提交了，但13.8%的交易4.5分钟还没提交(延迟了50%)，提交时间的差异可能系统可用性的下降。</p>
+        <h2 id="第一节-基础知识"><a href="#第一节-基础知识" class="headerlink" title="第一节_基础知识"></a>第一节_基础知识</h2><ul>
+<li><strong>STL：</strong>C++中的标准模板库</li>
+<li><p><strong>define和typedef</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 9999  <span class="comment">//宏定义，多用来替代常量</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">multimap</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MAP; <span class="comment">//为复杂的类型定义取别名，简化程序，也便于修改。</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>论文主要研究内容</strong>  </p>
+<li><p><strong>类型取值范围</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">字节数</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">-2^31~2^31-1(-21亿~21亿)</td>
+</tr>
+<tr>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">-2^63~2^63-1(很大)</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3.4x10^-38~3.4x10^38(绝对值)</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1.7x10^-308~1.7x10^308(绝对值)</td>
+</tr>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-128~127</td>
+</tr>
+<tr>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">true/false</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>导致交易无法成功提交的因素</li>
-<li>以太坊中的transaction inclusion机制</li>
-<li>以太坊中gas price和gas limit两个参数对提交时间的影响</li>
-<li>以太坊中block gas limit的影响</li>
-<li>交易终止机制</li>
-</ul>
+<li><p>double类型比较相等：相减-&gt;是否小于一个很小的数(0.00001)。<br>比大小：直接&gt; &lt; 比较即可。</p>
+</li>
+<li><p>求字节数：sizeof(int)/sizeof(n)</p>
+</li>
+<li><p>反斜杠\，转义字符、win下地址路径；正斜杠/，网址路径。</p>
+</li>
+<li><p>字符型和整型数据可以相互转换，整型-&gt;字符型：只留最右边8位，再转成ASCII码。</p>
+</li>
+<li><p>常用ASCII码：<br>‘0’-‘9’：48-57<br>‘A’-‘Z’：65-90<br>‘a’-‘z’：97-122</p>
+</li>
+<li><p>十六进制常量：0x打头,0xFFA，1个十六进制位对应4个二进制位。<br>表示二进制：转化为16进制。00101011-&gt;0x2b</p>
+</li>
+<li><p>八进制整型常量：0打头，0677,1个八进制位对应3个二进制位。</p>
+</li>
+<li><p><strong>位运算</strong><br>单独对某些比特进行操作<br><strong>与&amp;</strong>：将某些位置0、获取变量中的某一位<br>eg：判断n的第7位是否为为0，n&amp;0x80==ox80？</p>
 </li>
 </ul>
-<h3 id="背景知识-BACKGROUND"><a href="#背景知识-BACKGROUND" class="headerlink" title="背景知识(BACKGROUND)"></a>背景知识(BACKGROUND)</h3><ul>
-<li><p><strong>区块链基本知识</strong><br>区块链可认为是一个分布式的公共账本，记载了交易信息和资产信息。区块链中的每个用户本地都存储着一个账本的副本，并运行着一个客户端，负责和整个网络同步更新账本信息。</p>
-</li>
-<li><p><strong>区块链中的链指什么</strong><br>区块链系统的交易信息存储在区块(block)中，从第二个区块开始，每个区块都有前一区块的哈希值，即相当于把各个区块链起来了，最终各个区块按时间顺序链接起来呈现一套完整的数据(区块链大账本)。 </p>
-</li>
-<li><p><strong>区块链加密技术</strong><br>区块链采用了非对称加密技术，和传统对称加密最大不同是，加密和解密不再是同一把钥匙，而是分为公钥和私钥。只有特定的用户具有私钥，可以对交易信息进行加密和数字签名；而所有的用户都具备公钥，可以对交易信息解密，并通过数字签名验证交易签署者的身份。 </p>
-</li>
-<li><p><strong>共识算法</strong><br><strong>问题背景：</strong>因为区块链是分布式存储的，所有节点都需要对区块链中块的内容和次序达成“共识”，为了解决这个问题就提出了共识算法。<br><strong>工作量证明算法(POW)：</strong>这是目前最广泛使用的共识算法，其基本原理是：一个节点将交易信息打包到区块中，并添加一个随机数，再做哈希和运算，之后将块发布到网络中。其他节点接收到块后，根据块中包含的参数进行大量的计算(俗称挖矿)，计算出的结果如果小于哈希和，即完成了这部分工作，得出的结果值就相当于对其工作量的“证明”。拥有“证明”后节点不仅会获得一定奖励，也拥有了创建区块的权利，新创建的区块会加到主链末端，其他节点可在其后面继续添加新区块，其后每添加一个区块，就相当于做了一次确认，当其后的区块达到了一定数量后(比特币是6个，以太坊是12个)，就相当于和网络中其他节点达成“共识”了，这个区块即正式被记录在案了。<br><strong>核心思想：</strong>工作量证明机制的核心思想是工作方要得出结果具有一定难度，但验证方检查结果却非常容易，因此很容易验证工作方是不是做了相应工作。既保证了工作完成后奖励的价值(需要付出大量的计算代价)，激励节点去积极打包交易信息，同时验证的简单性也保证了共识算法的效率和可靠。</p>
-</li>
-<li><p><strong>分叉问题(fork)</strong><br><strong>基本概念：</strong>考虑一种小概率情况，两个节点恰好同时完成了计算，创建了区块，并向全网进行了广播，这种情况就叫做分叉。形象的理解就是区块链主链的末端被连了两个块，像是分叉了一样。<br><strong>分叉的影响：</strong>正常情况下，网络中所有的节点达成共识，所生成的区块链就是一条主链，内容、次序都是确定的；而在分叉的情况下，区块链会向两个不同的方向延申(因为每一个区块都是依赖于上一个区块产生的)，主链的内容、次序就不确定了，各节点即无法正常地查询交易和资产信息。<br><strong>解决办法：</strong>所有节点都从当前最长的链开始工作。因为有统计结论，链中的区块数越多，越不容易发生分叉现象。</p>
+<p><strong>或|</strong>：将某些位置1</p>
+<p><strong>异或^</strong>：相同为0不同为1。将某些位按位取反，其他位不变：取反的与1异或，其他与0异或。</p>
+<p><strong>非~</strong>：按位取反。</p>
+<p><strong>左移&lt;&lt;</strong>：左移n位即乘2的n次方，但比乘法要快很多。</p>
+<p><strong>右移&gt;&gt;</strong>：除2的n次方，且向小取整。高位补符号位。</p>
+<h2 id="第二节-数据结构"><a href="#第二节-数据结构" class="headerlink" title="第二节_数据结构"></a>第二节_数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>初始化：类型名 数组名[数量]={x1,x2,x3,x4..} 或 用for循环初始化。<br>数组越界编译器不会报错，会根据内存地址去访问，数组名即相当于内存地址。<br><strong>编程技巧：可用数组取代复杂的switch case分支结构</strong></p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
+<li><strong>字符串三种形式</strong><br>1、字符串常量，双引号括起来””。<br>2、存放在char数组中，以’\0’结尾，多占一个数组元素。<br>3、string对象，c++标准模板库中的类。<br>注：char数组比string快，但char数组没法传字符串值，只能传数组首地址。因此在一些需要传值的场合，用string更合适。</li>
+</ul>
+<p>字符串在内存占的字节数等于字符数目加1(‘\0’的存在 )<br><strong>读入字符串</strong>：cin或scanf，读到空格为止。空格后内容在下一次cin读入。<br><strong>读一行</strong>：cin.getline(char buf[],int bufSize)，读入不超过bufsize-1个字符</p>
+<h3 id="结构体struct"><a href="#结构体struct" class="headerlink" title="结构体struct"></a>结构体struct</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> ID;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">float</span> fGPA;</span><br><span class="line">    Student* frd;<span class="comment">//成员可以是结构体的指针</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Student s1 = &#123;<span class="number">1234</span>,<span class="string">"TOM"</span>,...&#125;;<span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s1.ID;</span><br><span class="line">Student* s2;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s2-&gt;ID; / <span class="built_in">cout</span>&lt;&lt;(*s2).ID;指针访问成员</span><br></pre></td></tr></table></figure>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>局部变量：</strong>定义在函数内部、语句块内部的变量。<br><strong>全局变量：</strong>定义在函数外部(main函数外)，在所有函数中均可使用。默认初始化为0.<br><strong>静态变量：</strong>全局变量和static定义的变量。生存期一直持续到整个程序结束。<br><strong>PS：</strong>若未初始化，静态变量默认赋值为0，非静态变量值为随机的。</p>
+<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch case"></a>switch case</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">    <span class="keyword">case</span> x1:</span><br><span class="line">    <span class="keyword">break</span>;  <span class="comment">//有无中括号都可以</span></span><br><span class="line">    <span class="keyword">case</span> x2:</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第三节-函数与输入输出"><a href="#第三节-函数与输入输出" class="headerlink" title="第三节_函数与输入输出"></a>第三节_函数与输入输出</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数定义：</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">    <span class="keyword">return</span> xx ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">函数声明：(无函数体，常写在开头)</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun2</span><span class="params">(<span class="keyword">int</span> a[])</span></span>;<span class="comment">//一维数组作形参，不用写大小。int a[]与int *a等价。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fan3</span><span class="params">(<span class="keyword">int</span> a[][<span class="number">3</span>])</span><span class="comment">//二维数组作形参，行数不用写，列数必须写</span></span></span><br></pre></td></tr></table></figure>
+<p>函数的形参是实参的<strong>拷贝</strong>，形参的改变不会影响实参。(除非形参是数组、引用或对象)<br>string类型也是传值<br>数组作形参传的是首地址，并非整个数组。</p>
+<h3 id="printf、scanf格式化输入输出"><a href="#printf、scanf格式化输入输出" class="headerlink" title="printf、scanf格式化输入输出"></a>printf、scanf格式化输入输出</h3><p>比cin/cout效率高，尽量使用。<br>%：类型占位符</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">int类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">char类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">float类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%lf</td>
+<td style="text-align:center">double类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%.xlf</td>
+<td style="text-align:center">输出x位小数</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;   //头文件</span></span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"这是字符型数据%c，这是int型数据%d"</span>，ch,i);  <span class="comment">//格式化输出</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);  <span class="comment">//记得加&amp;，返回值是接收变量的个数</span></span><br><span class="line"><span class="keyword">char</span> c[<span class="number">20</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s"</span>,c); <span class="comment">//读入字符串，检测到/0结束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为EOF(-1)时说明输入结束</span></span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(xxx) != EOF)&#123;</span><br><span class="line">    <span class="comment">//循环读入数据</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cin</span>.peek()   <span class="comment">//看一个字符不取走</span></span><br><span class="line"><span class="built_in">cin</span>.putback(c)  <span class="comment">//把字符放回输入流头部</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>函数读空格和换行：</span><br><span class="line">如果是%d、%f数值类型，会自动跳过多余的空格和换行，如果是%c会读入空格和换行。</span><br></pre></td></tr></table></figure>
+<h3 id="freopen重定向"><a href="#freopen重定向" class="headerlink" title="freopen重定向"></a>freopen重定向</h3><p>将输入由键盘重定向为文件(不用每次都输入测试数据)<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">freopen(<span class="string">"c:\\xxx.txt"</span>，<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(...)!=EOF)&#123;</span><br><span class="line">    <span class="comment">//从txt文件中输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="cin函数"><a href="#cin函数" class="headerlink" title="cin函数"></a>cin函数</h3><p>cin &gt;&gt; n &gt;&gt; m;<br>返回True(成功接收所有输入)或false()<br>while(cin &gt;&gt; n){<br>    //循环读入数据<br>}<br>注：cin读入的格式由后面的变量决定，若为char即读入一个字符，int则读入一个整数(遇到空格/换行为止)</p>
+<h2 id="第四节-指针"><a href="#第四节-指针" class="headerlink" title="第四节_指针"></a>第四节_指针</h2><ul>
+<li><strong>指针</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">指针变量，<span class="number">4</span>个字节，内容表示一个内存地址。</span><br><span class="line"><span class="keyword">int</span> *p; <span class="comment">//p类型：int *，*p的类型：int</span></span><br><span class="line"><span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c1; <span class="comment">//pc指向变量c1</span></span><br><span class="line"><span class="comment">//*：间接引用运算符。&amp;：取地址运算符。</span></span><br><span class="line"><span class="comment">//&amp;x：变量x的地址，就是指向x的指针，类型是 T*。</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS"><a href="#比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS" class="headerlink" title="比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)"></a>比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)</h3><p>在本节中，作者讨论了影响比特币提交时间的因素，并进行了实验验证。</p>
+<p>指针的意义：不需要通过变量，即可自由访问内存空间。</p>
 <ul>
-<li><p><strong>影响交易提交时间的因素</strong><br><strong>交易手续费(transaction fee)：</strong>手续费的多少会影响节点打包交易信息的积极性，从而影响交易提交的时间。<br><strong>交易是否按顺序到达：</strong>如果一个交易比其所引用的父交易先到达，则被称为orphan。只有父交易提交后，子交易才能提交，否则子交易就会一直在mempool中等待。<br><strong>锁定时间(locktimes)：</strong>这是一个用户可设置的参数，可使得某个交易在特定顺序的区块产生之前一直处于不可用状态。  </p>
+<li><p><strong>指针互相赋值</strong><br>不同类型的指针，如果不经过强制类型转换，不能直接相互赋值。 (每个指针类型还代表着一次向内存读/写多少字节)<br>char <em>c = ‘A’;<br>int </em>p = (int <em>)c;
+</em>p=122; //此时’A’后面三个字节的值也会被改变。</p>
 </li>
-<li><p><strong>实验过程</strong><br><strong>实验任务：</strong>观测交易的产生并记录其提交所花费的时间。为了探究不同网络环境下的情况，作者在2016年11月和2017年4月分别进行了两次实验（第二次实验的网络负载较大）。<br><strong>观测窗口：</strong>为了充分收集包含在区块链中的交易信息，作者定义了观测窗口：从实验开始前的第一个区块到实验结束24h后的一个区块，这之间的交易即处于观测窗口中，都会被记录下来。</p>
-</li>
-<li><p><strong>实验结果</strong><br>作者主要研究的交易有两类：<strong>Straight-accepts</strong>和<strong>Oranphans</strong>。<br>实验结果1（针对到达顺序因素）：由Fig.2可知两次实验中，Oranphans的提交时间都比Straight-accepts的时间要长，且在第二次实验中尤为明显，可见到达的顺序对提交时间有着显著的影响，按顺序到达的交易比无序到达的交易时间要短很多。<br>实验结果2（针对交易手续费因素）：由Fig.3可知，交易手续费和提交时间之间并没有显著关联。<br>实验结果3（针对locktimes因素）：通过作者分析可知，绝大多数交易并未使用locktimes这个参数，且Oranphans和Straight-accepts这两类交易结束锁定的时间差异也很大，最终作者认为locktimes并非是Oranphans延迟的主要因素。  </p>
+<li><p><strong>指针的运算</strong></p>
 </li>
 </ul>
-<h3 id="以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS"><a href="#以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS" class="headerlink" title="以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)"></a>以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)</h3><p>在本节中，作者介绍了以太坊不能保证提交的原理，并实验研究了gas price、gas limit、network三个因素对提交时间的影响。</p>
+<ol>
+<li>指针比大小：比p1和p2地址的大小</li>
+<li>指针相减：p1-p2=(地址p1-地址p2)/sizeof(T)</li>
+<li>p+n=p+n*sizeof(T)，结果还是指针。</li>
+<li>p[n]=*(p+n)</li>
+</ol>
 <ul>
-<li><p><strong>以太坊中交易事务的生命周期</strong><br>1、交易声明：交易发生并声明。<br>2、交易打包进区块：发布节点将交易信息打包到区块中。<br>3、区块链接到主链：节点完成打包计算，将区块链接到主链。<br>4、交易正式提交：其后链接了一定数量的区块后，即正式提交。<br>注：因为分叉现象或其他原因，步骤2并不能保证交易最终一定被提交，这就产生系统的可靠性问题。</p>
+<li><p><strong>空指针</strong><br>指向地址0的指针，int *pn=NULL;</p>
 </li>
-<li><p><strong>实验过程</strong><br>实验任务：研究交易从打包到最终提交所花费的时间以及分支合并后会丢失多少已打包的交易。<br>创建监听节点：作者改写了一个客户端节点作为监听节点，以检测交易声明和区块声明。<br>记录时间：监听节点会记录交易声明的时间和区块到达的时间，以计算交易提交的延迟时间。<br>计算方法：根据交易声明的时间和包含此交易的第一个区块到达的时间，我们计算这之间的时间差，结果就是Fig.5中的<br><code>1st inclusion</code>；当第一个块变为叔块时，我们可根据包含此交易的第二个区块到达的时间，计算出<code>2nd inclusion</code>；同理，<br><code>3rd inclusion</code>也是这么计算的；此外，我们根据最后一个区块的到达时间，可以计算出<code>12 confirmations</code>和<code>36 confirmations</code>。将上述计算出的结果绘成图表，就是文中的Fig.5。</p>
+<li><p><strong>指针和字符串</strong><br>字符串常量、字符数组的类型都是char*。</p>
 </li>
-<li><p><strong>实验结果</strong><br>实验结果1（各类提交时间的对比）：从Fig.5中可知，相比1st/2nd/3rd inclusion，12/36 conclusion的提交时间更长，而36 conclusion尤为明显，这说明交易数量越多，交易提交所花费的时间越长。<br>实验结果2（针对gas price因素）：从Fig.6中可知，总体趋势是gas price越高，延时越短，但gas price高于25Gwei后对延时的影响就非常小了。这也侧面解释为什么大部分交易定价在[20,25)的区间内(性价比最高)。<br>实验结果3（针对maximum gas因素）：虽然有个别交易因maximum gas过高而有明显的延时，但作者依旧认为maximum gas和提交时间之间没有很强的关联性。<br>实验结果4（针对network delays因素）：虽然没有得出明确的结论，但作者分析了in-order和out-of-order交易在提交延迟和数量方面的数据后，认为网络延迟对交易的传播是有负面影响的。</p>
+<li><p><strong>void指针</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以用任何类型的指针对<span class="keyword">void</span>指针进行赋值</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">void</span> *p = &amp;a;</span><br><span class="line">但*p、P+n、p++等均无意义</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<h3 id="BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM"><a href="#BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM" class="headerlink" title="BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)"></a>BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)</h3><ul>
-<li><p><strong>产生原因</strong><br>出台gas limit per block的原因是希望通过限制每个区块消耗的gas总量，防止DDoS攻击。如果交易所需的气体超过了限制值，交易就无法被包含到块中，这就使得大规模的分布式拒绝服务攻击难以发生。</p>
+<li><p><strong>void*自动匹配</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>函数</span><br><span class="line">void* memset(void* dest,int ch,int n)：将dest开始的n个字节都设置为ch(取其最低位字节)，初始化数组。</span><br><span class="line"><span class="comment">//对char数组赋值时，结尾要加'\0'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memcpy</span>函数</span><br><span class="line">void* memcpy(void* dest,void* src,int n)：将n个字节拷贝src-&gt;dest。</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a1[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="keyword">char</span> a2[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="built_in">memset</span>(a1, <span class="string">'a'</span>, <span class="keyword">sizeof</span>(a1)<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">memcpy</span>(a2, a1, <span class="keyword">sizeof</span>(a2));</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; a2 &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//输出aaaaaaaaaa</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>问题背景</strong><br>在没有限制之前，签署合约花费了150万的气体，因此作者认为限制会对合约相关的交易产生负面影响，但对单纯的资金转移交易应该影响不大，之后作者即针对这个观点进行了分析。</p>
-</li>
-<li><p><strong>分析结果</strong><br>由Fig.10可知，在50万气体的限制下，有46.21%的合约类交易无法正常进行；在200万气体的限制下，也有18.78%的合约类交易无法产生。因为气体限额的存在，大量的合约类交易无法进行，这也验证了作者之前的观点。</p>
-</li>
-</ul>
-<h3 id="以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM"><a href="#以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM" class="headerlink" title="以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)"></a>以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)</h3><p>这一节主要对应了作者在摘要中提到的观点：终止机制的缺失会使大量交易处于既未终止也未提交的”pending”状态，严重影响系统的可靠性。为解决这个问题，作者提出了一种交易终止的机制，并进行了实验考察。</p>
-<ul>
-<li><p><strong>终止原理</strong><br><strong>竞争法：</strong>如果先前的交易\(Tx_i\)在规定的时间内未提交，账户可以重新发布一个具有相同nonce序号的交易\(Tx_i^{\prime}\)，赋予其更高的手续费，并将交易的接收方设为自己。一旦\(Tx_i^{\prime}\)成功提交，\(Tx_i\)就会自动过期了，即终止了其状态。<br><strong>重传法：</strong>账户重新发布一个与\(Tx_i\)内容相同的交易\(Tx_i^{\prime\prime}\)，但设置较高的手续费，这样虽然\(Tx_i^{\prime\prime}\)交易信息和\(Tx_i\)是一样的，但数字签名和哈希值却不一样(因为手续费不一样)，这样其他节点会把其当作一个新的交易。只要交易\(Tx_i\)和\(Tx_i^{\prime\prime}\)任何一个成功提交了，另外一个即过期了(因为nonce是一样的)，这样也可以达到终止的目的。</p>
-</li>
-<li><p><strong>实验模拟的三种情况</strong><br>1、交易在规定时间内没有被打包<br>2、因为手续费不足，用户决定撤回之前发布的交易<br>3、因为账户余额不足，交易无法被正常提交，即进入”pending”状态</p>
-</li>
-<li><p><strong>对情况1的实验</strong><br>实验原理：为了降低交易被打包的概率，作者减少了交易的手续费，分别为市场均价的0%、10%、…、90%，并设置了10min的截止时间。如果截止时间内原交易未提交，就按照上文提到的竞争法进行终止。<br>实验结果1：大部分交易都成功提交了，甚至30%-90%市场价的交易全部成功提交。出现这样的情况，我猜测可能是因为设置的终止时间太长了，即虽然手续费低，但只要时间足够长，交易还是有可能成功提交的。<br>实验结果2：在0-20%市场价的交易中，有16个没有成功提交，但最后都成功终止了，终止成功率为100%。</p>
-</li>
-<li><p><strong>对情况2的实验</strong><br>实验原理：这种情况考虑的是客户端希望撤回原先的交易，因此相比情况1，设置的截止时间要短一些（因为如果再设置很长时间的话，就失去模拟用户自行撤回的意义了），实验中是取所有交易提交时间的中位点，即3min。<br>实验结果1：截止时间缩短后，未提交的交易数明显增多，总共有53个交易没有提交，甚至0-20%市场价的交易全部没有提交成功，这也验证了我在实验1中的猜想。<br>实验结果2：虽然未提交的交易数量大大增加，但依旧每个交易都成功终止了，成功率为100%。</p>
-</li>
-<li><p><strong>对情况3的实验</strong><br>实验原理：首先作者创建了两个交易：\(Tx_1(bonce=n+1,value=\frac {k} {1000})\)和\(Tx_1(bonce=n+1,value=\frac {999k} {1000})\)，k为当前账户的余额。其次为了模拟余额不足这种情况，作者采用了一种很巧妙的方式：先发送\(Tx_2\)，隔5s后再发送\(Tx_1\)，这样可以使得\(Tx_2\)顺利发出，因为先发\(Tx_1\)的话，一旦其被顺利打包，\(Tx_2\)就会因为余额不够而无法发送到网络中了。采用这种方式，\(Tx_2\)就有可能比\(Tx_1\)先发到网络中，又因为\(Tx_1 nonce&lt;Tx_2 nonce\)，所以\(Tx_1\)必然会比\(Tx_2\)先打包，这样\(Tx_2\)就会因余额不够而停滞在网络中，即成功模拟了因余额不足所导致的”pending”状态。<br>实验结果：作者进行了100次实验，终止成功率依然是100%，结合前两次实验的结果，说明终止机制的效果还是非常好的。</p>
+<li><p><strong>函数指针</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指向函数入口地址的指针</span></span><br><span class="line"><span class="keyword">int</span> (*Pf)(<span class="keyword">int</span>,<span class="keyword">char</span>)</span><br><span class="line">pf = fun_name;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><h3 id="对于区块链的理解"><a href="#对于区块链的理解" class="headerlink" title="对于区块链的理解"></a>对于区块链的理解</h3><ul>
-<li>区块链的本质是一个去中心化的分布式账本。我认为区块链就是一个账本，记载了所有交易信息和资产信息，但和传统金融记录方式的不同在于，区块链账本并非存储在某一个中心，其在每一个用户的本地都有存储的副本，相当于每个用户都是一个中心。  </li>
-<li>去中心化带来的好处：首先是不用考虑中心的故障问题，就像双11，你再想买一个东西，淘宝服务器一旦瘫痪就不行了，所有的交易都依赖于这个第三方的中心；其次是不用担心信息泄露的问题，还是淘宝的例子，你要买东西、卖家要卖东西，都要提供个人信息，交易完成后也会产生交易信息，这些都被存在淘宝的服务器中，在当今这个强调个人隐私的时代，这是非常让人困扰的；第三是安全，区块链技术具有不可篡改性，我们不用担心因第三方中心的原因导致我们的资产受损失(如银行破产)。  </li>
-<li>去中心化带来的问题：最大的问题是我们如何在各个节点间同步数据。在中心化系统中，中心说什么就是什么，其他人只需和中心保持同步即可；而在去中心化系统中，我们需要和全网进行同步，难度增大了很多，为了解决这个问题，也就出现了共识机制，大家共同记账，一定数量的节点达成共识后，就可正式在网络中进行同步了；而为了提高大家记账的积极性，就出现了工作量证明算法，对于成功记账的人会有奖励，大家都去积极记账了，账本自然就可以不断地维护、更新了。</li>
+<h2 id="第五节-基本STL"><a href="#第五节-基本STL" class="headerlink" title="第五节_基本STL"></a>第五节_基本STL</h2><ul>
+<li><strong>库函数和头文件</strong><br>库函数：编译器自带的函数<br>头文件：包含许多库函数的声明</li>
 </ul>
-<h3 id="对于区块链可靠性的理解"><a href="#对于区块链可靠性的理解" class="headerlink" title="对于区块链可靠性的理解"></a>对于区块链可靠性的理解</h3><ul>
-<li>本文对于区块链可靠性的研究主要围绕“交易提交时间”这个概念，一个交易产生了，最好的情况是在规定时间内顺利打包，加入到区块链主链中。但因为复杂的网络环境、交易手续费或其他种种因素，一个交易的提交很可能会产生延迟，甚至会出现交易既没有提交、又没有销毁的”pending”状态。  </li>
-<li>这就需要我们去探讨两个方面的问题：到底有哪些因素会影响交易的提交时间？交易如果没有顺利提交我们应该采取什么办法？前者就是文章第三、第四节主要研究的内容，通过具体的实验分析了各种可能影响因素；后者则是作者在第六节研究的内容，提出了一种交易终止机制并进行了实验测试。</li>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="comment">//sort(数组名+n1,数组名+n2)，对数组[n1,n2)区间排序，默认从小到大</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(<span class="keyword">int</span>)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>))  <span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//从大到小排序</span></span><br><span class="line"><span class="comment">//#include &lt;functional&gt;头文件</span></span><br><span class="line">sort(a,a+<span class="number">7</span>,greater&lt;T&gt;())  </span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义排序规则</span></span><br><span class="line"><span class="keyword">bool</span> cmp(<span class="keyword">const</span> <span class="keyword">int</span> &amp; a1,<span class="keyword">const</span> <span class="keyword">int</span> &amp; a2) &#123;</span><br><span class="line">    <span class="keyword">return</span> a1 &gt; a2;</span><br><span class="line">    <span class="comment">//若a1应排在a2前面，则返回true。否则返回false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>),cmp());</span><br></pre></td></tr></table></figure>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><ul>
+<li><strong>前提条件</strong><br>所有的二分查找，都是应用在<strong>有序</strong>列表中的。</li>
+<li><p><strong>binary_search函数</strong><br>两种使用方法：<br><code>bool binary_search(数组名+n1,数组名+n2,值)</code><br><code>bool binary_search(数组名+n1,数组名+n2,值,排序规则结构名())</code>，查找时的规则必须和排序时的规则一致。<br>对排好序的数组进行二分查找，返回值true：找到，false：没找到。<br><strong>查找的本质：</strong>查找x，即找到一个元素y，使得“x必须排在y前面”和“y必须排在x前面”都不成立（和 == 的含义不一样），这样就算找到了；没有找到元素y，就是没找到。<br>所以不存在的元素同样有可能查的到（eg：按个位排序，查找的元素只要个位相等就能查到，十位/百位不一定会相等），因此查找的结果要视具体排序规则来分析。</p>
+</li>
+<li><p><strong>lower_bound函数</strong><br><code>T* lower_bound(数组名+n1,数组名+n2,值)</code><br>返回序号p，使得[n1,p)中元素都小于查找值。<br>若比所有元素都小/大，则指向n1/n2。<br>为避免返回序号为n1时的歧义，查前要确保值在数组范围内。</p>
+</li>
+<li><p><strong>upper_bound函数</strong><br><code>T* upper_bound(数组名+n1,数组名+n2,值)</code><br>返回指针p，使得[p,n2)中元素都大于查找值。</p>
+</li>
 </ul>
-<h3 id="对于交易终止机制的理解"><a href="#对于交易终止机制的理解" class="headerlink" title="对于交易终止机制的理解"></a>对于交易终止机制的理解</h3><ul>
-<li>文中提到了两种交易终止的方法：竞争法和重传法，虽然有些区别，但本质思想都是一样的，都是利用了“nonce相等”的原理来终止原来的交易。  </li>
-<li>文中还提到，虽然以太坊不像比特币那样把每一个块都链接起来，但其每个块都有唯一的顺序号nonce，而且主链上的区块必须是按顺序的，因此我们就可以利用nonce号来使某次交易过期，从而达到终止的目的。</li>
+<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>在log(n)内快速添加、删除、查找元素<br>应用了平衡二叉树的四种<strong>排序容器</strong>：<code>multiset</code>、<code>set</code>、<code>multimap</code>、<code>map</code></p>
+<h3 id="multiset容器"><a href="#multiset容器" class="headerlink" title="multiset容器"></a>multiset容器</h3><ul>
+<li><p><strong>主要作用</strong><br>自动对集合内元素排序(默认从小到大)，且允许元素重复，在一些需要动态增加、删除元素的排序场景下使用很方便。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;  //头文件</span></span></span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st;</span><br><span class="line">T a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st2(a,a+<span class="number">5</span>); <span class="comment">//用数组初始化</span></span><br><span class="line">st.insert(a); <span class="comment">//插入元素a，自动排序。插入的是复制值，并非引用。</span></span><br><span class="line">st.erase(a);  <span class="comment">//删除元素a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历集合，用迭代器</span></span><br><span class="line"><span class="built_in">multiset</span>&lt;<span class="keyword">int</span>&gt;::iterator it;  <span class="comment">//定义迭代器，类似指针</span></span><br><span class="line"><span class="keyword">for</span> (it = st.begin(); it != st.end(); it++) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    <span class="comment">//end()为末尾指针，指向最后一个元素的后面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">it = st.find(a);   <span class="comment">//查找元素a，返回迭代器,没找到返回end()</span></span><br><span class="line"></span><br><span class="line">st.lower_bound(a);  <span class="comment">//返回迭代器it,使得[begin(),it)中元素都比a小，注意是前闭后开区间</span></span><br><span class="line"></span><br><span class="line">st.upper_bound(a)  <span class="comment">//返回迭代器it,使得[it,end())中元素都比a大</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>自定义排序规则的multiset</strong><br>1、自定义规则结构体Rule，实现<code>bool operator()(const &amp; T,const &amp; T)</code>函数<br>2、定义容器multiset&lt;T,Rule&gt;<br>3、定义迭代器muliset&lt;T,Rule&gt;::iterator</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义规则结构体Rule方法</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rule</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> &amp; T,<span class="keyword">const</span> &amp; T)</span></span>&#123;</span><br><span class="line">        <span class="comment">//比较函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h3 id="其他一些感想"><a href="#其他一些感想" class="headerlink" title="其他一些感想"></a>其他一些感想</h3><ul>
-<li>论文中还有一点使我印象很深刻，就是整篇文章都贯穿着实验的思想，作者进行了大量的实验去研究某些因素的影响，对所提出的终止机制也进行了具体的实验探究，实验过后还有对实验结果的合理分析，这些都使得整篇文章的逻辑结构很清晰，值得我在今后的科研工作中去学习。</li>
-</ul>
-<h2 id="改进方案"><a href="#改进方案" class="headerlink" title="改进方案"></a>改进方案</h2><h3 id="对比特币实验中无序现象产生的原因进行研究"><a href="#对比特币实验中无序现象产生的原因进行研究" class="headerlink" title="对比特币实验中无序现象产生的原因进行研究"></a>对比特币实验中无序现象产生的原因进行研究</h3><ul>
-<li>在第三节中，作者研究了到达顺序对交易提交时间的影响，最终得出了结论：顺序到达的交易比无序到达的交易的延时要短。</li>
-<li>作者虽然分析出了现象，但对产生这种现象的原因并没有深入研究，我认为如果对无序现象产生的原因进行研究，也会有助于改善区块链系统的可靠性问题。</li>
-<li>方案实现：可参考文中第三节引言部分提到的几种情况，我认为可以主要研究节点转发策略和节点负载这两个因素，转发策略的不同可能会打乱原先的交易分发顺序，从而使得交易无法按顺序到达其他节点；而节点负载主要会影响交易传播的速度，不同节点的传播速度如果不同，也可能会导致交易失序。有了初步的分析，我们可设计实验来具体研究：首先选择一定量的矿工节点，将其按照不同的转发策略和不同的节点负载进行分组，转发策略可通过观察客户端版本、研究底层转发行为的实现代码等方式得出，而节点负载可通过观测相应网络指标得到。之后可以对两种因素进行控制变量分析，从而研究其对交易到达顺序的影响。</li>
-</ul>
-<h3 id="对比特币实验2中部分Orphans数据未统计的情况进行改进"><a href="#对比特币实验2中部分Orphans数据未统计的情况进行改进" class="headerlink" title="对比特币实验2中部分Orphans数据未统计的情况进行改进"></a>对比特币实验2中部分Orphans数据未统计的情况进行改进</h3><ul>
-<li>在比特币的实验2中，因为高网络负载的原因，有20%的Orphans交易最后未被打包到块中，观测样本因此少了20%，作者也认为这对实验结果是一个很大的限制，因此我认为可根据这一点做下改进。  </li>
-<li>方案实现：我考虑了两种思路，思路一：选择网络负载比实验2小但比实验1大的一个时间点，按照同样的方式做实验3，这样既可观测到不同网络环境下的实验结果，也可以减小网络负载对Orphans交易的影响，不至于使实验观测到的样本减少太多；思路二：保持实验1和实验2的网络条件不变，增加观测窗口的时长，分别进行实验3和实验4。由Fig.2可知计算的是累积比例，因此增加观测窗口相当于延长了一段X轴，Orphans Exp 2这条线最终就有机会到达1，而对其他三条曲线则不会有影响(它们已经很接近1了)，因此就可收集到更多的Orphans数据。</li>
-</ul>
+<h3 id="set容器"><a href="#set容器" class="headerlink" title="set容器"></a>set容器</h3><p>与multiset容器区别：不能有重复元素，其他都一样。<br>a和b重复的含义：a排在b前面、b排在a前面都不成立<br>注：因为不能重复，所以插入元素有可能不成功。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="built_in">set</span>&lt;T&gt;::iterator,<span class="keyword">bool</span>&gt; result = <span class="built_in">set</span>.insert(n);  </span><br><span class="line"><span class="comment">//result.second==true，插入成功；否则失败。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="multimap容器"><a href="#multimap容器" class="headerlink" title="multimap容器"></a>multimap容器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">键值对形式，<span class="built_in">multimap</span>中的元素都是pair形式。</span><br><span class="line">按first进行排序，一般不自定义排序。</span><br><span class="line"></span><br><span class="line">pair模板：pair&lt;T1,T2&gt;</span><br><span class="line">等价于</span><br><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    T1 first;  <span class="comment">//关键字</span></span><br><span class="line">    T2 second; <span class="comment">//值 </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="built_in">multimap</span>&lt;T1,T2&gt; mp;</span><br><span class="line">mp.insert(make_pair(T1变量,T2变量))  <span class="comment">//make_pair为转换pair模板的函数</span></span><br><span class="line">multima&lt;T1,T2&gt;::iterator it  <span class="comment">//迭代器</span></span><br></pre></td></tr></table></figure>
+<h3 id="map容器"><a href="#map容器" class="headerlink" title="map容器"></a>map容器</h3><p>和multimap区别：不能有关键字重复的元素<br>可以使用[first]查找second值；若first不存在，则创建一个。<br>插入可能失败(first重复)。</p>
+<h3 id="camath数学库"><a href="#camath数学库" class="headerlink" title="camath数学库"></a>camath数学库</h3><ol>
+<li>abs(int x)：整数绝对值</li>
+<li>fabs(double x)：浮点数绝对值</li>
+<li>sqrt(double x)：求平方根</li>
+<li>ceil(double x)：不小于x的最小整数(上取整)</li>
+<li>sin(double x)/cos(double x)：x(弧度)的正/余弦</li>
+</ol>
+<h3 id="cstring字符串库"><a href="#cstring字符串库" class="headerlink" title="cstring字符串库"></a>cstring字符串库</h3><p>函数都是根据’\0’来判断字符串是否结束的。</p>
+<ol>
+<li>形参常为char c[]，实参可以为char数组或字符串常量。</li>
+<li>int strcmp(char c1[],char c2[])：比较字符串，相等返回0，c1小返回负数。</li>
+<li>char* strcpy(char dest[],char src[])：拷贝字符串src-&gt;dest，返回dest首地址。</li>
+<li>int strlen(char c[])：求字符串长度</li>
+<li>char<em> strchr(char </em>str,char c)：str中查字符c是否在str中，返回指向位置的指针，未查到为NULL。</li>
+<li>char<em> strstr(char </em>str1,char *str2)：str1中查子串str2位置，返回指向位置的指针，未查到为NULL。</li>
+<li>cbar<em> strtok(char </em>str1,char* str2)：str1中抽取被str2分隔的子串。(将str1中的分隔符用’/0’代替了)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *p = strtok(str1, str2);</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		p = strtok(<span class="literal">NULL</span>, str2);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ctype-h字符库"><a href="#ctype-h字符库" class="headerlink" title="ctype.h字符库"></a>ctype.h字符库</h3><ol>
+<li>bool isdigit(int c)：判断c是否是数字字符</li>
+<li>bool isalpha(int c)：判断c是否是字母字符</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" data-id="cjmmfwu1w0023mjqxvvzv6pbq" class="article-share-link" data-share="baidu" data-title="On Availability For Blockchain based Systems读书笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" data-id="cjmqioytw0019ybqx45tm1suk" class="article-share-link" data-share="baidu" data-title="MOOC_C语言笔记">Share</a>
       
 
       
-        <a href="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
     </footer>
   </div>
@@ -740,7 +982,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/09/13/微机接口技术与应用/" data-id="cjmmfwu0v000smjqxuh0puqmy" class="article-share-link" data-share="baidu" data-title="微机接口技术与应用">Share</a>
+        <a data-url="http://yoursite.com/2018/09/13/微机接口技术与应用/" data-id="cjmqioytd000uybqx38flm56m" class="article-share-link" data-share="baidu" data-title="微机接口技术与应用">Share</a>
       
 
       
@@ -797,7 +1039,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/09/13/深度学习与Tensorflow/" data-id="cjmmfwu0w000umjqx6ifgkc98" class="article-share-link" data-share="baidu" data-title="深度学习与TensorFlow">Share</a>
+        <a data-url="http://yoursite.com/2018/09/13/深度学习与Tensorflow/" data-id="cjmqioyta000nybqxx4tn6jyo" class="article-share-link" data-share="baidu" data-title="深度学习与TensorFlow">Share</a>
       
 
       
@@ -806,248 +1048,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/MOOC_C语言程序设计笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" class="article-date">
-  <time datetime="2018-09-13T07:49:58.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="第一节-基础知识"><a href="#第一节-基础知识" class="headerlink" title="第一节_基础知识"></a>第一节_基础知识</h2><ul>
-<li><strong>STL：</strong>C++中的标准模板库</li>
-<li><p><strong>define和typedef</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 9999  <span class="comment">//宏定义，多用来替代常量</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">multimap</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MAP; <span class="comment">//为复杂的类型定义取别名，简化程序，也便于修改。</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>类型取值范围</strong></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">字节数</th>
-<th style="text-align:center">取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">-2^31~2^31-1(-21亿~21亿)</td>
-</tr>
-<tr>
-<td style="text-align:center">long long</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">-2^63~2^63-1(很大)</td>
-</tr>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">3.4x10^-38~3.4x10^38(绝对值)</td>
-</tr>
-<tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">1.7x10^-308~1.7x10^308(绝对值)</td>
-</tr>
-<tr>
-<td style="text-align:center">char</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">-128~127</td>
-</tr>
-<tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">true/false</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>double类型比较相等：相减-&gt;是否小于一个很小的数(0.00001)。<br>比大小：直接&gt; &lt; 比较即可。</p>
-</li>
-<li><p>求字节数：sizeof(int)/sizeof(n)</p>
-</li>
-<li><p>反斜杠\，转义字符、win下地址路径；正斜杠/，网址路径。</p>
-</li>
-<li><p>字符型和整型数据可以相互转换，整型-&gt;字符型：只留最右边8位，再转成ASCII码。</p>
-</li>
-<li><p>常用ASCII码：<br>‘0’-‘9’：48-57<br>‘A’-‘Z’：65-90<br>‘a’-‘z’：97-122</p>
-</li>
-<li><p>十六进制常量：0x打头,0xFFA，1个十六进制位对应4个二进制位。<br>表示二进制：转化为16进制。00101011-&gt;0x2b</p>
-</li>
-<li><p>八进制整型常量：0打头，0677,1个八进制位对应3个二进制位。</p>
-</li>
-<li><p><strong>位运算</strong><br>单独对某些比特进行操作<br><strong>与&amp;</strong>：将某些位置0、获取变量中的某一位<br>eg：判断n的第7位是否为为0，n&amp;0x80==ox80？</p>
-</li>
-</ul>
-<p><strong>或|</strong>：将某些位置1</p>
-<p><strong>异或^</strong>：相同为0不同为1。将某些位按位取反，其他位不变：取反的与1异或，其他与0异或。</p>
-<p><strong>非~</strong>：按位取反。</p>
-<p><strong>左移&lt;&lt;</strong>：左移n位即乘2的n次方，但比乘法要快很多。</p>
-<p><strong>右移&gt;&gt;</strong>：除2的n次方，且向小取整。高位补符号位。</p>
-<h2 id="第二节-数据结构"><a href="#第二节-数据结构" class="headerlink" title="第二节_数据结构"></a>第二节_数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>初始化：类型名 数组名[数量]={x1,x2,x3,x4..} 或 用for循环初始化。<br>数组越界编译器不会报错，会根据内存地址去访问，数组名即相当于内存地址。<br><strong>编程技巧：可用数组取代复杂的switch case分支结构</strong></p>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
-<li><strong>字符串三种形式</strong><br>1、字符串常量，双引号括起来””。<br>2、存放在char数组中，以’\0’结尾，多占一个数组元素。<br>3、string对象，c++标准模板库中的类。<br>注：char数组比string快，但char数组没法传字符串值，只能传数组首地址。因此在一些需要传值的场合，用string更合适。</li>
-</ul>
-<p>字符串在内存占的字节数等于字符数目加1(‘\0’的存在 )<br><strong>读入字符串</strong>：cin或scanf，读到空格为止。空格后内容在下一次cin读入。<br><strong>读一行</strong>：cin.getline(char buf[],int bufSize)，读入不超过bufsize-1个字符</p>
-<h3 id="结构体struct"><a href="#结构体struct" class="headerlink" title="结构体struct"></a>结构体struct</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> ID;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">float</span> fGPA;</span><br><span class="line">    Student* frd;<span class="comment">//成员可以是结构体的指针</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Student s1 = &#123;<span class="number">1234</span>,<span class="string">"TOM"</span>,...&#125;;<span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s1.ID;</span><br><span class="line">Student* s2;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s2-&gt;ID; / <span class="built_in">cout</span>&lt;&lt;(*s2).ID;指针访问成员</span><br></pre></td></tr></table></figure>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>局部变量：</strong>定义在函数内部、语句块内部的变量。<br><strong>全局变量：</strong>定义在函数外部(main函数外)，在所有函数中均可使用。默认初始化为0.<br><strong>静态变量：</strong>全局变量和static定义的变量。生存期一直持续到整个程序结束。<br><strong>PS：</strong>若未初始化，静态变量默认赋值为0，非静态变量值为随机的。</p>
-<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch case"></a>switch case</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">    <span class="keyword">case</span> x1:</span><br><span class="line">    <span class="keyword">break</span>;  <span class="comment">//有无中括号都可以</span></span><br><span class="line">    <span class="keyword">case</span> x2:</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="第三节-函数与输入输出"><a href="#第三节-函数与输入输出" class="headerlink" title="第三节_函数与输入输出"></a>第三节_函数与输入输出</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数定义：</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">    <span class="keyword">return</span> xx ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">函数声明：(无函数体，常写在开头)</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun2</span><span class="params">(<span class="keyword">int</span> a[])</span></span>;<span class="comment">//一维数组作形参，不用写大小。int a[]与int *a等价。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fan3</span><span class="params">(<span class="keyword">int</span> a[][<span class="number">3</span>])</span><span class="comment">//二维数组作形参，行数不用写，列数必须写</span></span></span><br></pre></td></tr></table></figure>
-<p>函数的形参是实参的<strong>拷贝</strong>，形参的改变不会影响实参。(除非形参是数组、引用或对象)<br>string类型也是传值<br>数组作形参传的是首地址，并非整个数组。</p>
-<h3 id="printf、scanf格式化输入输出"><a href="#printf、scanf格式化输入输出" class="headerlink" title="printf、scanf格式化输入输出"></a>printf、scanf格式化输入输出</h3><p>比cin/cout效率高，尽量使用。<br>%：类型占位符</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">格式字符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%d</td>
-<td style="text-align:center">int类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%c</td>
-<td style="text-align:center">char类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%f</td>
-<td style="text-align:center">float类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%lf</td>
-<td style="text-align:center">double类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%.xlf</td>
-<td style="text-align:center">输出x位小数</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;   //头文件</span></span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"这是字符型数据%c，这是int型数据%d"</span>，ch,i);  <span class="comment">//格式化输出</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);  <span class="comment">//记得加&amp;，返回值是接收变量的个数</span></span><br><span class="line"><span class="keyword">char</span> c[<span class="number">20</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s"</span>,c); <span class="comment">//读入字符串，检测到/0结束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为EOF(-1)时说明输入结束</span></span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(xxx) != EOF)&#123;</span><br><span class="line">    <span class="comment">//循环读入数据</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cin</span>.peek()   <span class="comment">//看一个字符不取走</span></span><br><span class="line"><span class="built_in">cin</span>.putback(c)  <span class="comment">//把字符放回输入流头部</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>函数读空格和换行：</span><br><span class="line">如果是%d、%f数值类型，会自动跳过多余的空格和换行，如果是%c会读入空格和换行。</span><br></pre></td></tr></table></figure>
-<h3 id="freopen重定向"><a href="#freopen重定向" class="headerlink" title="freopen重定向"></a>freopen重定向</h3><p>将输入由键盘重定向为文件(不用每次都输入测试数据)<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">freopen(<span class="string">"c:\\xxx.txt"</span>，<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(...)!=EOF)&#123;</span><br><span class="line">    <span class="comment">//从txt文件中输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="cin函数"><a href="#cin函数" class="headerlink" title="cin函数"></a>cin函数</h3><p>cin &gt;&gt; n &gt;&gt; m;<br>返回True(成功接收所有输入)或false()<br>while(cin &gt;&gt; n){<br>    //循环读入数据<br>}<br>注：cin读入的格式由后面的变量决定，若为char即读入一个字符，int则读入一个整数(遇到空格/换行为止)</p>
-<h2 id="第四节-指针"><a href="#第四节-指针" class="headerlink" title="第四节_指针"></a>第四节_指针</h2><ul>
-<li><strong>指针</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">指针变量，<span class="number">4</span>个字节，内容表示一个内存地址。</span><br><span class="line"><span class="keyword">int</span> *p; <span class="comment">//p类型：int *，*p的类型：int</span></span><br><span class="line"><span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c1; <span class="comment">//pc指向变量c1</span></span><br><span class="line"><span class="comment">//*：间接引用运算符。&amp;：取地址运算符。</span></span><br><span class="line"><span class="comment">//&amp;x：变量x的地址，就是指向x的指针，类型是 T*。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>指针的意义：不需要通过变量，即可自由访问内存空间。</p>
-<ul>
-<li><p><strong>指针互相赋值</strong><br>不同类型的指针，如果不经过强制类型转换，不能直接相互赋值。 (每个指针类型还代表着一次向内存读/写多少字节)<br>char <em>c = ‘A’;<br>int </em>p = (int <em>)c;
-</em>p=122; //此时’A’后面三个字节的值也会被改变。</p>
-</li>
-<li><p><strong>指针的运算</strong></p>
-</li>
-</ul>
-<ol>
-<li>指针比大小：比p1和p2地址的大小</li>
-<li>指针相减：p1-p2=(地址p1-地址p2)/sizeof(T)</li>
-<li>p+n=p+n*sizeof(T)，结果还是指针。</li>
-<li>p[n]=*(p+n)</li>
-</ol>
-<ul>
-<li><p><strong>空指针</strong><br>指向地址0的指针，int *pn=NULL;</p>
-</li>
-<li><p><strong>指针和字符串</strong><br>字符串常量、字符数组的类型都是char*。</p>
-</li>
-<li><p><strong>void指针</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以用任何类型的指针对<span class="keyword">void</span>指针进行赋值</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">void</span> *p = &amp;a;</span><br><span class="line">但*p、P+n、p++等均无意义</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>void*自动匹配</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>函数</span><br><span class="line">void* memset(void* dest,int ch,int n)：将dest开始的n个字节都设置为ch(取其最低位字节)，初始化数组。</span><br><span class="line"><span class="comment">//对char数组赋值时，结尾要加'\0'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memcpy</span>函数</span><br><span class="line">void* memcpy(void* dest,void* src,int n)：将n个字节拷贝src-&gt;dest。</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a1[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="keyword">char</span> a2[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="built_in">memset</span>(a1, <span class="string">'a'</span>, <span class="keyword">sizeof</span>(a1)<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">memcpy</span>(a2, a1, <span class="keyword">sizeof</span>(a2));</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; a2 &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//输出aaaaaaaaaa</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>函数指针</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指向函数入口地址的指针</span></span><br><span class="line"><span class="keyword">int</span> (*Pf)(<span class="keyword">int</span>,<span class="keyword">char</span>)</span><br><span class="line">pf = fun_name;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="第五节-基本STL"><a href="#第五节-基本STL" class="headerlink" title="第五节_基本STL"></a>第五节_基本STL</h2><ul>
-<li><strong>库函数和头文件</strong><br>库函数：编译器自带的函数<br>头文件：包含许多库函数的声明</li>
-</ul>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="comment">//sort(数组名+n1,数组名+n2)，对数组[n1,n2)区间排序，默认从小到大</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(<span class="keyword">int</span>)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>))  <span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//从大到小排序</span></span><br><span class="line"><span class="comment">//#include &lt;functional&gt;头文件</span></span><br><span class="line">sort(a,a+<span class="number">7</span>,greater&lt;T&gt;())  </span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义排序规则</span></span><br><span class="line"><span class="keyword">bool</span> cmp(<span class="keyword">const</span> <span class="keyword">int</span> &amp; a1,<span class="keyword">const</span> <span class="keyword">int</span> &amp; a2) &#123;</span><br><span class="line">    <span class="keyword">return</span> a1 &gt; a2;</span><br><span class="line">    <span class="comment">//若a1应排在a2前面，则返回true。否则返回false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>),cmp());</span><br></pre></td></tr></table></figure>
-<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><ul>
-<li><strong>前提条件</strong><br>所有的二分查找，都是应用在<strong>有序</strong>列表中的。</li>
-<li><p><strong>binary_search函数</strong><br>两种使用方法：<br><code>bool binary_search(数组名+n1,数组名+n2,值)</code><br><code>bool binary_search(数组名+n1,数组名+n2,值,排序规则结构名())</code>，查找时的规则必须和排序时的规则一致。<br>对排好序的数组进行二分查找，返回值true：找到，false：没找到。<br><strong>查找的本质：</strong>查找x，即找到一个元素y，使得“x必须排在y前面”和“y必须排在x前面”都不成立（和 == 的含义不一样），这样就算找到了；没有找到元素y，就是没找到。<br>所以不存在的元素同样有可能查的到（eg：按个位排序，查找的元素只要个位相等就能查到，十位/百位不一定会相等），因此查找的结果要视具体排序规则来分析。</p>
-</li>
-<li><p><strong>lower_bound函数</strong><br><code>T* lower_bound(数组名+n1,数组名+n2,值)</code><br>返回序号p，使得[n1,p)中元素都小于查找值。<br>若比所有元素都小/大，则指向n1/n2。<br>为避免返回序号为n1时的歧义，查前要确保值在数组范围内。</p>
-</li>
-<li><p><strong>upper_bound函数</strong><br><code>T* upper_bound(数组名+n1,数组名+n2,值)</code><br>返回指针p，使得[p,n2)中元素都大于查找值。</p>
-</li>
-</ul>
-<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>在log(n)内快速添加、删除、查找元素<br>应用了平衡二叉树的四种<strong>排序容器</strong>：<code>multiset</code>、<code>set</code>、<code>multimap</code>、<code>map</code></p>
-<h3 id="multiset容器"><a href="#multiset容器" class="headerlink" title="multiset容器"></a>multiset容器</h3><ul>
-<li><p><strong>主要作用</strong><br>自动对集合内元素排序(默认从小到大)，且允许元素重复，在一些需要动态增加、删除元素的排序场景下使用很方便。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;  //头文件</span></span></span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st;</span><br><span class="line">T a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st2(a,a+<span class="number">5</span>); <span class="comment">//用数组初始化</span></span><br><span class="line">st.insert(a); <span class="comment">//插入元素a，自动排序。插入的是复制值，并非引用。</span></span><br><span class="line">st.erase(a);  <span class="comment">//删除元素a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历集合，用迭代器</span></span><br><span class="line"><span class="built_in">multiset</span>&lt;<span class="keyword">int</span>&gt;::iterator it;  <span class="comment">//定义迭代器，类似指针</span></span><br><span class="line"><span class="keyword">for</span> (it = st.begin(); it != st.end(); it++) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    <span class="comment">//end()为末尾指针，指向最后一个元素的后面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">it = st.find(a);   <span class="comment">//查找元素a，返回迭代器,没找到返回end()</span></span><br><span class="line"></span><br><span class="line">st.lower_bound(a);  <span class="comment">//返回迭代器it,使得[begin(),it)中元素都比a小，注意是前闭后开区间</span></span><br><span class="line"></span><br><span class="line">st.upper_bound(a)  <span class="comment">//返回迭代器it,使得[it,end())中元素都比a大</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>自定义排序规则的multiset</strong><br>1、自定义规则结构体Rule，实现<code>bool operator()(const &amp; T,const &amp; T)</code>函数<br>2、定义容器multiset&lt;T,Rule&gt;<br>3、定义迭代器muliset&lt;T,Rule&gt;::iterator</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义规则结构体Rule方法</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rule</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> &amp; T,<span class="keyword">const</span> &amp; T)</span></span>&#123;</span><br><span class="line">        <span class="comment">//比较函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="set容器"><a href="#set容器" class="headerlink" title="set容器"></a>set容器</h3><p>与multiset容器区别：不能有重复元素，其他都一样。<br>a和b重复的含义：a排在b前面、b排在a前面都不成立<br>注：因为不能重复，所以插入元素有可能不成功。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="built_in">set</span>&lt;T&gt;::iterator,<span class="keyword">bool</span>&gt; result = <span class="built_in">set</span>.insert(n);  </span><br><span class="line"><span class="comment">//result.second==true，插入成功；否则失败。</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="multimap容器"><a href="#multimap容器" class="headerlink" title="multimap容器"></a>multimap容器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">键值对形式，<span class="built_in">multimap</span>中的元素都是pair形式。</span><br><span class="line">按first进行排序，一般不自定义排序。</span><br><span class="line"></span><br><span class="line">pair模板：pair&lt;T1,T2&gt;</span><br><span class="line">等价于</span><br><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    T1 first;  <span class="comment">//关键字</span></span><br><span class="line">    T2 second; <span class="comment">//值 </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="built_in">multimap</span>&lt;T1,T2&gt; mp;</span><br><span class="line">mp.insert(make_pair(T1变量,T2变量))  <span class="comment">//make_pair为转换pair模板的函数</span></span><br><span class="line">multima&lt;T1,T2&gt;::iterator it  <span class="comment">//迭代器</span></span><br></pre></td></tr></table></figure>
-<h3 id="map容器"><a href="#map容器" class="headerlink" title="map容器"></a>map容器</h3><p>和multimap区别：不能有关键字重复的元素<br>可以使用[first]查找second值；若first不存在，则创建一个。<br>插入可能失败(first重复)。</p>
-<h3 id="camath数学库"><a href="#camath数学库" class="headerlink" title="camath数学库"></a>camath数学库</h3><ol>
-<li>abs(int x)：整数绝对值</li>
-<li>fabs(double x)：浮点数绝对值</li>
-<li>sqrt(double x)：求平方根</li>
-<li>ceil(double x)：不小于x的最小整数(上取整)</li>
-<li>sin(double x)/cos(double x)：x(弧度)的正/余弦</li>
-</ol>
-<h3 id="cstring字符串库"><a href="#cstring字符串库" class="headerlink" title="cstring字符串库"></a>cstring字符串库</h3><p>函数都是根据’\0’来判断字符串是否结束的。</p>
-<ol>
-<li>形参常为char c[]，实参可以为char数组或字符串常量。</li>
-<li>int strcmp(char c1[],char c2[])：比较字符串，相等返回0，c1小返回负数。</li>
-<li>char* strcpy(char dest[],char src[])：拷贝字符串src-&gt;dest，返回dest首地址。</li>
-<li>int strlen(char c[])：求字符串长度</li>
-<li>char<em> strchr(char </em>str,char c)：str中查字符c是否在str中，返回指向位置的指针，未查到为NULL。</li>
-<li>char<em> strstr(char </em>str1,char *str2)：str1中查子串str2位置，返回指向位置的指针，未查到为NULL。</li>
-<li>cbar<em> strtok(char </em>str1,char* str2)：str1中抽取被str2分隔的子串。(将str1中的分隔符用’/0’代替了)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *p = strtok(str1, str2);</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		p = strtok(<span class="literal">NULL</span>, str2);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="ctype-h字符库"><a href="#ctype-h字符库" class="headerlink" title="ctype.h字符库"></a>ctype.h字符库</h3><ol>
-<li>bool isdigit(int c)：判断c是否是数字字符</li>
-<li>bool isalpha(int c)：判断c是否是字母字符</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" data-id="cjmmfwu1e0016mjqxzw2zg1b6" class="article-share-link" data-share="baidu" data-title="MOOC_C语言笔记">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
     </footer>
   </div>
@@ -1196,7 +1196,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/06/25/概率论与数理统计笔记/" data-id="cjmmfwu0u000pmjqxgf07optp" class="article-share-link" data-share="baidu" data-title="概率论与数理统计笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/06/25/概率论与数理统计笔记/" data-id="cjmqioytc000sybqxhlusjtf7" class="article-share-link" data-share="baidu" data-title="概率论与数理统计笔记">Share</a>
       
 
       
@@ -1313,7 +1313,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络1/" data-id="cjmmfwu1n001jmjqxnasddz8u" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第一部分）">Share</a>
+        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络1/" data-id="cjmqioyua001xybqx7e4q2u1h" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第一部分）">Share</a>
       
 
       
@@ -1618,7 +1618,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络2/" data-id="cjmmfwu1o001mmjqx0f4fqpuf" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第二部分）">Share</a>
+        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络2/" data-id="cjmqioyu5001mybqxhasscqa5" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第二部分）">Share</a>
       
 
       
@@ -1739,7 +1739,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/05/26/Network/TCPIP/" data-id="cjmmfwu1m001imjqx6dxbbfg1" class="article-share-link" data-share="baidu" data-title="TCPIP笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/05/26/Network/TCPIP/" data-id="cjmqioyu2001jybqxitdarzey" class="article-share-link" data-share="baidu" data-title="TCPIP笔记">Share</a>
       
 
       
@@ -1771,7 +1771,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1780,7 +1780,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 17.5px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 20px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -1801,6 +1801,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
           </li>
         
@@ -1809,15 +1813,11 @@
           </li>
         
           <li>
-            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+            <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
           </li>
         
           <li>
             <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
           </li>
         
       </ul>

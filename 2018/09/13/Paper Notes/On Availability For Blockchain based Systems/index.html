@@ -6,18 +6,18 @@
   
   <title>On Availability For Blockchain based Systems读书笔记 | Ren Li&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="论文地址点这里     内容概述这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。 简介(INTRODUCTION) 区块链的可靠性问题可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。提交时间不稳定：客户端不可预知交易成功提交所需的时间">
+  <meta name="description" content="论文地址点这里     论文内容概述这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。 简介(INTRODUCTION) 区块链的可靠性问题可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。提交时间不稳定：客户端不可预知交易成功提交所需的">
 <meta name="keywords" content="Paper Notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="On Availability For Blockchain based Systems读书笔记">
 <meta property="og:url" content="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/index.html">
 <meta property="og:site_name" content="Ren Li&#39;s blog">
-<meta property="og:description" content="论文地址点这里     内容概述这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。 简介(INTRODUCTION) 区块链的可靠性问题可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。提交时间不稳定：客户端不可预知交易成功提交所需的时间">
+<meta property="og:description" content="论文地址点这里     论文内容概述这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。 简介(INTRODUCTION) 区块链的可靠性问题可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。提交时间不稳定：客户端不可预知交易成功提交所需的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T20:07:47.781Z">
+<meta property="og:updated_time" content="2018-09-28T20:11:10.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="On Availability For Blockchain based Systems读书笔记">
-<meta name="twitter:description" content="论文地址点这里     内容概述这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。 简介(INTRODUCTION) 区块链的可靠性问题可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。提交时间不稳定：客户端不可预知交易成功提交所需的时间">
+<meta name="twitter:description" content="论文地址点这里     论文内容概述这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。 简介(INTRODUCTION) 区块链的可靠性问题可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。提交时间不稳定：客户端不可预知交易成功提交所需的">
   
     <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
   
@@ -101,13 +101,13 @@
         <br>
         <strong class="toc-title">文章目录</strong>
         <hr>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内容概述"><span class="toc-number">1.</span> <span class="toc-text">内容概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介-INTRODUCTION"><span class="toc-number">1.1.</span> <span class="toc-text">简介(INTRODUCTION)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景知识-BACKGROUND"><span class="toc-number">1.2.</span> <span class="toc-text">背景知识(BACKGROUND)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS"><span class="toc-number">1.3.</span> <span class="toc-text">比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS"><span class="toc-number">1.4.</span> <span class="toc-text">以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM"><span class="toc-number">1.5.</span> <span class="toc-text">BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM"><span class="toc-number">1.6.</span> <span class="toc-text">以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人感悟"><span class="toc-number">2.</span> <span class="toc-text">个人感悟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于区块链的理解"><span class="toc-number">2.1.</span> <span class="toc-text">对于区块链的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于区块链可靠性的理解"><span class="toc-number">2.2.</span> <span class="toc-text">对于区块链可靠性的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于交易终止机制的理解"><span class="toc-number">2.3.</span> <span class="toc-text">对于交易终止机制的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他一些感想"><span class="toc-number">2.4.</span> <span class="toc-text">其他一些感想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改进方案"><span class="toc-number">3.</span> <span class="toc-text">改进方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对比特币实验中无序现象产生的原因进行研究"><span class="toc-number">3.1.</span> <span class="toc-text">对比特币实验中无序现象产生的原因进行研究</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比特币实验2中部分Orphans数据未统计的情况进行改进"><span class="toc-number">3.2.</span> <span class="toc-text">对比特币实验2中部分Orphans数据未统计的情况进行改进</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#论文内容概述"><span class="toc-number">1.</span> <span class="toc-text">论文内容概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介-INTRODUCTION"><span class="toc-number">1.1.</span> <span class="toc-text">简介(INTRODUCTION)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景知识-BACKGROUND"><span class="toc-number">1.2.</span> <span class="toc-text">背景知识(BACKGROUND)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS"><span class="toc-number">1.3.</span> <span class="toc-text">比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS"><span class="toc-number">1.4.</span> <span class="toc-text">以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM"><span class="toc-number">1.5.</span> <span class="toc-text">BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM"><span class="toc-number">1.6.</span> <span class="toc-text">以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个人感悟"><span class="toc-number">2.</span> <span class="toc-text">个人感悟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于区块链的理解"><span class="toc-number">2.1.</span> <span class="toc-text">对于区块链的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于区块链可靠性的理解"><span class="toc-number">2.2.</span> <span class="toc-text">对于区块链可靠性的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对于交易终止机制的理解"><span class="toc-number">2.3.</span> <span class="toc-text">对于交易终止机制的理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他一些感想"><span class="toc-number">2.4.</span> <span class="toc-text">其他一些感想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改进方案"><span class="toc-number">3.</span> <span class="toc-text">改进方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对比特币实验中无序现象产生的原因进行研究"><span class="toc-number">3.1.</span> <span class="toc-text">对比特币实验中无序现象产生的原因进行研究</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比特币实验2中部分Orphans数据未统计的情况进行改进"><span class="toc-number">3.2.</span> <span class="toc-text">对比特币实验2中部分Orphans数据未统计的情况进行改进</span></a></li></ol></li></ol>
         </div>
         
         <p><a href="https://research.csiro.au/data61/wp-content/uploads/sites/85/2016/08/OnAvailabilityForBlockchain-BasedSystems-SRDS2017-authors-copy.pdf" target="_blank" rel="noopener">论文地址点这里</a></p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>  
 
-<h2 id="内容概述"><a href="#内容概述" class="headerlink" title="内容概述"></a>内容概述</h2><p>这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。</p>
+<h2 id="论文内容概述"><a href="#论文内容概述" class="headerlink" title="论文内容概述"></a>论文内容概述</h2><p>这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。</p>
 <h3 id="简介-INTRODUCTION"><a href="#简介-INTRODUCTION" class="headerlink" title="简介(INTRODUCTION)"></a>简介(INTRODUCTION)</h3><ul>
 <li><p><strong>区块链的可靠性问题</strong><br>可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。<br>提交时间不稳定：客户端不可预知交易成功提交所需的时间。从Fig.1中可看出，61.5%的交易在3分钟内就提交了，但13.8%的交易4.5分钟还没提交(延迟了50%)，提交时间的差异可能系统可用性的下降。</p>
 </li>
@@ -202,7 +202,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" data-id="cjmmfwu1w0023mjqxvvzv6pbq" class="article-share-link" data-share="baidu" data-title="On Availability For Blockchain based Systems读书笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" data-id="cjmqioyuf0029ybqx5oa00hdy" class="article-share-link" data-share="baidu" data-title="On Availability For Blockchain based Systems读书笔记">Share</a>
       
 
       
@@ -218,19 +218,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Notes of Efficient Estimation of Word Representations in Vector Space读书笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/13/微机接口技术与应用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">微机接口技术与应用</div>
+      <div class="article-nav-title">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</div>
     </a>
   
 </nav>
@@ -252,7 +243,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -261,7 +252,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 16px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 14px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 17.5px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 20px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -282,6 +273,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
           </li>
         
@@ -290,15 +285,11 @@
           </li>
         
           <li>
-            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+            <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
           </li>
         
           <li>
             <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
           </li>
         
       </ul>
