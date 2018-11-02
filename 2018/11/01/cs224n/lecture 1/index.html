@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>lecture 1_Introduction | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于人类语言(human language)人类语言的特点 语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。 语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。 大脑是一种符号处理器（symbolic process">
+<meta name="keywords" content="cs224n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lecture 1_Introduction">
+<meta property="og:url" content="http://yoursite.com/2018/11/01/cs224n/lecture 1/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="关于人类语言(human language)人类语言的特点 语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。 语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。 大脑是一种符号处理器（symbolic process">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/NLP_levels">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/NLP_levels.png">
+<meta property="og:updated_time" content="2018-11-02T12:28:09.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lecture 1_Introduction">
+<meta name="twitter:description" content="关于人类语言(human language)人类语言的特点 语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。 语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。 大脑是一种符号处理器（symbolic process">
+<meta name="twitter:image" content="http://yoursite.com/images/cs224n/NLP_levels">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-cs224n/lecture 1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/01/cs224n/lecture 1/" class="article-date">
+  <time datetime="2018-11-01T21:51:38.553Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lecture 1_Introduction
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <div id="toc" class="toc-article">
+        <br>
+        <strong class="toc-title">文章目录</strong>
+        <hr>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于人类语言-human-language"><span class="toc-number">1.</span> <span class="toc-text">关于人类语言(human language)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#人类语言的特点"><span class="toc-number">1.1.</span> <span class="toc-text">人类语言的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于NLP"><span class="toc-number">2.</span> <span class="toc-text">关于NLP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NLP-levels"><span class="toc-number">2.1.</span> <span class="toc-text">NLP levels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NLP-Applications"><span class="toc-number">2.2.</span> <span class="toc-text">NLP Applications</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-is-NLP-hard"><span class="toc-number">2.3.</span> <span class="toc-text">Why is NLP hard</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于deep-learning"><span class="toc-number">3.</span> <span class="toc-text">关于deep learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统机器学习的问题"><span class="toc-number">3.1.</span> <span class="toc-text">传统机器学习的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-deep-learning"><span class="toc-number">3.2.</span> <span class="toc-text">What is deep learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deep-learning-in-NLP"><span class="toc-number">3.3.</span> <span class="toc-text">deep learning in NLP</span></a></li></ol></li></ol>
+        </div>
+        
+        <h2 id="关于人类语言-human-language"><a href="#关于人类语言-human-language" class="headerlink" title="关于人类语言(human language)"></a>关于人类语言(human language)</h2><h3 id="人类语言的特点"><a href="#人类语言的特点" class="headerlink" title="人类语言的特点"></a>人类语言的特点</h3><ul>
+<li><strong>语言就是符号：</strong>人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。</li>
+<li><strong>语言的载体：</strong>sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。</li>
+<li><strong>大脑是一种符号处理器</strong>（symbolic processors）：我们可以把大脑处理语言看成是<strong>连续模式的激活过程</strong>（continious pattern of activation）。</li>
+<li>因此我们可以得到启发：探索一种<strong>连续的编码模式</strong>来表达思想(explore a continous encoding patten of thought)。这也是很多NLP算法的处理思想，同时也解决了sparsity的问题。</li>
+</ul>
+<h2 id="关于NLP"><a href="#关于NLP" class="headerlink" title="关于NLP"></a>关于NLP</h2><h3 id="NLP-levels"><a href="#NLP-levels" class="headerlink" title="NLP levels"></a>NLP levels</h3><p><img src="/images/cs224n/NLP_levels" alt=""><br><img src="/images/cs224n/NLP_levels.png" width="500" height="270" alt="NLP levels" align="center"></p>
+<ul>
+<li><strong>两大来源：</strong>通过语音或者文本。语音：语音分析（phonetic）或音韵分析（phonological）；文本：OCR识别（Optical Character Recognition，光学字符识别）或分词处理（tokenization）。通过上述方法来获取NLP的输入。</li>
+<li><strong>形态分析</strong>（morphological）：对单词进行形态分析：前缀（prefix）、后缀（suffix）等。</li>
+<li><strong>句法分析</strong>（syntactic）：分析句子结构、语法结构（structure of sentence）。</li>
+<li><strong>语义理解</strong>（semantic interpretation）：work out the meaning of sentences.</li>
+<li><strong>语篇处理</strong>（discourse processing）：因为大多数句子含义需要通过上下文（context）来推测，不能仅仅只分析当前句子，因此就有了the field of discourse processing。<br>注：cs224n课只重点讲syntatic &amp; semantic analysis 这两块，以及一部分speech signal analysis。</li>
+</ul>
+<h3 id="NLP-Applications"><a href="#NLP-Applications" class="headerlink" title="NLP Applications"></a>NLP Applications</h3><ul>
+<li>较低级：spell checking, keyword search, finding synonyms</li>
+<li>中级：extracting information。个人比较感兴趣的方向，让计算机可以阅读文本，理解在讲些什么，至少知道讲的是哪方面内容；或者为文本阅读难度分级（work out the reading level of school text）,识别文本的目标受众（intended audience of document）；情感分析（positive or negetive）。</li>
+<li>高级：机器翻译、对话机器人、智能问答、机器撰写（exploit the knowledge of world）</li>
+</ul>
+<h3 id="Why-is-NLP-hard"><a href="#Why-is-NLP-hard" class="headerlink" title="Why is NLP hard"></a>Why is NLP hard</h3><ul>
+<li><strong>语言本身的困难性</strong>：Ambiguilty of language, and moreover, humen always do not say everything（为了高效表达，语言使用中会出现很多省略）.</li>
+<li><strong>表征语言很困难</strong>：Complexity of representing, using linguistic/situational/world knowledge.</li>
+<li><strong>解释语言很困难</strong>：Real meaning of the language depends on real world, common sense, and contextual knowledge.</li>
+</ul>
+<h2 id="关于deep-learning"><a href="#关于deep-learning" class="headerlink" title="关于deep learning"></a>关于deep learning</h2><h3 id="传统机器学习的问题"><a href="#传统机器学习的问题" class="headerlink" title="传统机器学习的问题"></a>传统机器学习的问题</h3><ul>
+<li>Most traditional machine learning algorithms work well because of human-designed representations and input featured.</li>
+<li>“Machines” are only used to optimize weights that best make a final prdiction. </li>
+<li>Moreover, manually designed featured are often over-specified(lack of generalization), incomplete and take a long time to design and validate.</li>
+</ul>
+<h3 id="What-is-deep-learning"><a href="#What-is-deep-learning" class="headerlink" title="What is deep learning"></a>What is deep learning</h3><ul>
+<li>Subfield of machine learning and part of representation learning.</li>
+<li>Deep learning algorithms attempt to learn (multiple levels of) representations and an output themselves. </li>
+<li>We only input the raw data.</li>
+<li>In a lot of times, deep learning means neural networks (the dominant model family).</li>
+</ul>
+<h3 id="deep-learning-in-NLP"><a href="#deep-learning-in-NLP" class="headerlink" title="deep learning in NLP"></a>deep learning in NLP</h3><p>核心思想：用vector去表征语言，用神经网络去组织、计算vector。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/11/01/cs224n/lecture 1/" data-id="cjnzzxbq8002ot3qxjy8x8xnv" class="article-share-link" data-share="baidu" data-title="lecture 1_Introduction">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/11/01/cs224n/lecture 1/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/30/cs224n/notebook/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">杂七杂八</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/11/01/cs224n/lecture 1/" data-title="lecture 1_Introduction" data-url="http://yoursite.com/2018/11/01/cs224n/lecture 1/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 12.5px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/01/cs224n/lecture 1/">lecture 1_Introduction</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/cs224n/notebook/">杂七杂八</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/">Distributed &amp; Cluster Computing</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

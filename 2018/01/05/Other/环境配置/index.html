@@ -6,18 +6,18 @@
   
   <title>环境配置 | Ren Li&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="VSCode配置 对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。  Eclipse和Tomact配置 tomact中运行的项目理论上应该在webapps目录下(表现为出现以项目名作为名字的文件夹)，但这需要eclipse部署才可以，而eclipse默认是不部署项目的，因此需要设置。不设置的话项目是以缓存文件的形式运行在tomact中">
+  <meta name="description" content="VSCode配置 对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。  设置视线区域内自动换行：&amp;quot;editor.wordWrap&amp;quot;: &amp;quot;on&amp;quot;  Mac python nltk.download()报错：certificate verify failed (_ssl.c:749)解决： 12cd">
 <meta name="keywords" content="Other">
 <meta property="og:type" content="article">
 <meta property="og:title" content="环境配置">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/Other/环境配置/index.html">
 <meta property="og:site_name" content="Ren Li&#39;s blog">
-<meta property="og:description" content="VSCode配置 对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。  Eclipse和Tomact配置 tomact中运行的项目理论上应该在webapps目录下(表现为出现以项目名作为名字的文件夹)，但这需要eclipse部署才可以，而eclipse默认是不部署项目的，因此需要设置。不设置的话项目是以缓存文件的形式运行在tomact中">
+<meta property="og:description" content="VSCode配置 对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。  设置视线区域内自动换行：&amp;quot;editor.wordWrap&amp;quot;: &amp;quot;on&amp;quot;  Mac python nltk.download()报错：certificate verify failed (_ssl.c:749)解决： 12cd">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T21:11:04.095Z">
+<meta property="og:updated_time" content="2018-10-25T21:03:42.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="环境配置">
-<meta name="twitter:description" content="VSCode配置 对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。  Eclipse和Tomact配置 tomact中运行的项目理论上应该在webapps目录下(表现为出现以项目名作为名字的文件夹)，但这需要eclipse部署才可以，而eclipse默认是不部署项目的，因此需要设置。不设置的话项目是以缓存文件的形式运行在tomact中">
+<meta name="twitter:description" content="VSCode配置 对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。  设置视线区域内自动换行：&amp;quot;editor.wordWrap&amp;quot;: &amp;quot;on&amp;quot;  Mac python nltk.download()报错：certificate verify failed (_ssl.c:749)解决： 12cd">
   
     <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
   
@@ -98,7 +98,16 @@
         <!-- Table of Contents -->
         
         <h2 id="VSCode配置"><a href="#VSCode配置" class="headerlink" title="VSCode配置"></a>VSCode配置</h2><ul>
-<li>对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。</li>
+<li><p>对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。</p>
+</li>
+<li><p>设置视线区域内自动换行：<code>&quot;editor.wordWrap&quot;: &quot;on&quot;</code></p>
+</li>
+<li><p>Mac python nltk.download()报错：certificate verify failed (_ssl.c:749)<br>解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /Applications/Python 3.6 </span><br><span class="line">./Install Certificates.command</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Python虚拟环境和包管理工具：anaconda</p>
+</li>
+<li>jupyter文件目录是执行<code>juypter notebook</code>时的目录，和anaconda环境无关。</li>
 </ul>
 <h2 id="Eclipse和Tomact配置"><a href="#Eclipse和Tomact配置" class="headerlink" title="Eclipse和Tomact配置"></a>Eclipse和Tomact配置</h2><ul>
 <li><p>tomact中运行的项目理论上应该在webapps目录下(表现为出现以项目名作为名字的文件夹)，但这需要eclipse部署才可以，而eclipse默认是不部署项目的，因此需要设置。不设置的话项目是以缓存文件的形式运行在tomact中，并不会出现实体文件夹。<br>配置方法：eclispe底部栏server-双击tomact服务器-serverlocation中选中间项-Deploy path写为wepapps</p>
@@ -154,7 +163,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/05/Other/环境配置/" data-id="cjmqioyua001zybqxocm24r89" class="article-share-link" data-share="baidu" data-title="环境配置">Share</a>
+        <a data-url="http://yoursite.com/2018/01/05/Other/环境配置/" data-id="cjnzzxbq3002ht3qxwxel5k1q" class="article-share-link" data-share="baidu" data-title="环境配置">Share</a>
       
 
       
@@ -204,7 +213,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -213,7 +222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 17.5px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 20px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 12.5px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -222,7 +231,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -234,7 +243,15 @@
       <ul>
         
           <li>
-            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+            <a href="/2018/11/01/cs224n/lecture 1/">lecture 1_Introduction</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/cs224n/notebook/">杂七杂八</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/">Distributed &amp; Cluster Computing</a>
           </li>
         
           <li>
@@ -242,15 +259,7 @@
           </li>
         
           <li>
-            <a href="/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
           </li>
         
       </ul>

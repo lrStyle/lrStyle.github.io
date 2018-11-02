@@ -70,6 +70,308 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Python/python环境配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/Python/python环境配置/" class="article-date">
+  <time datetime="2018-01-19T23:00:00.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/19/Python/python环境配置/">VSCode_python环境配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p><strong>配置python调试环境</strong><br>1、新建一个项目文件夹，在文件夹中建一个.py文件，再在VSCode中打开文件夹。<br>2、点开最左边侧栏”debug”项(小虫子图标)，再点左上角齿轮按钮配置launch.json即可。<br>注1：launch.json为调试相关的设置，如调试时是否停在第一行，是否自动跳到终端等。<br>注2：调试选项选Python: Terminal(integrated)，使用VSCode的内置环境调试。</p>
+</li>
+<li><p><strong>关于调试F5</strong><br>调试(F5)不下断点的话和直接运行(ctrl+F5)没区别。<br>调试时F10和F11的区别：F10一条条语句执行(不进入函数)，F11会进入函数内。不要被F10的翻译“单步跳过”所误导，语句还是会执行，并没有跳过。</p>
+</li>
+<li><p>调试(F5)时自动跳到“终端”而非“调试控制台”的解决办法：<br>在launch.json文件中对应调试项中加 <code>&quot;console&quot;: &quot;none&quot;,</code> 不在最后一行的话句尾要加逗号</p>
+</li>
+<li><p><strong>pylint对C扩展库报错</strong><br>对于VSCode中Pylint的报错：E1101: Module ‘xxx’ has no ‘xxx’ member’<br><strong>原因：</strong>Pylint默认只信任来自标准库stdlib的C扩展，而忽略其他的。模块’xxx’不是stdlib的一部分，因此需要手动将其添加到白名单。<br><strong>解决：</strong><br>1、在项目所在目录新建.pylintrc文件<br>2、参照pylint.config模板，写上默认设置：<a href="https://github.com/robot527/python_primer/blob/master/pylint.conf" target="_blank" rel="noopener">https://github.com/robot527/python_primer/blob/master/pylint.conf</a><br>3、文件最后输入<code>extension-pkg-whitelist=xxx</code>(xxx为模块名)<br>注：直接建立.pylintrc文件会提示必须输入文件名，可先建一个空txt文件，再另存为.pylintrc文件即可。 </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/19/Python/python环境配置/" data-id="cjnzzxbq2002et3qx0r9mflps" class="article-share-link" data-share="baidu" data-title="VSCode_python环境配置">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/19/Python/python环境配置/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Other/一些快捷键" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/Other/一些快捷键/" class="article-date">
+  <time datetime="2018-01-19T16:30:00.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/19/Other/一些快捷键/">一些快捷键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p>chrome删除记录的网址：windows: shift+delete键; mac: shift+fn+backspace.</p>
+</li>
+<li><p>chrome恢复刚关闭的网页：ctrl+shift+t</p>
+</li>
+<li><p>输入覆盖后面文字：按insert键切换</p>
+</li>
+<li><p>Tab向后缩进，Shift+Tab向前缩进</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/19/Other/一些快捷键/" data-id="cjnzzxbq0002at3qx9f4a5zsj" class="article-share-link" data-share="baidu" data-title="一些快捷键">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/19/Other/一些快捷键/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Other/LaTex语法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/Other/LaTex语法/" class="article-date">
+  <time datetime="2018-01-19T08:15:00.000Z" itemprop="datePublished">2018-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/19/Other/LaTex语法/">LaTex语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+<p>本文记录了在Markdown中使用LaTex输入数学公式的方法，这样Markdown在一定程度上就可以完全替代office word了。</p>
+<hr>
+<ul>
+<li><p><strong>在markdown中使用LaTex公式</strong><br>1、导入MathJax引擎, 在文章的任意地方加入以下代码即可：<br><code>&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML&#39; async&gt;&lt;/script&gt;</code><br>2、使用LaTex语法写公式即可。<br>注1：MathJax引擎本质是一个js脚本，把页面中的LaTex代码翻译成数学公式。<br>注2：翻译LaTex的工作流程，Markdown先把代码按Markdown语法翻译一遍，因此一些\和特殊字符的组合，要对反斜杠进行转义，如<code>\\{</code>；之后再由js脚本对翻译为数学公式。</p>
+</li>
+<li><p><strong>公式表示</strong><br><code>$$公式$$</code>：表示行间公式，单独居中成行<br><code>\\(公式\\)</code>：表示行内公式，只占一行。两个斜杠<code>\\</code>表示转义。</p>
+</li>
+<li><p><strong>加减乘除</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>语法</th>
+<th>名称</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>加</td>
+<td>+</td>
+<td>减</td>
+<td>-</td>
+</tr>
+<tr>
+<td>乘</td>
+<td><code>\times</code>或直接用<code>*</code></td>
+<td>除</td>
+<td><code>\div</code> 或直接用<code>/</code></td>
+</tr>
+</tbody>
+</table>
+<p>注：乘除后要加一个空格，和后面的字母区分开</p>
+<ul>
+<li><strong>上标和下标</strong><br>使用^表示上标,使用_表示下标,默认将这两个符号后的一个符号作为上下标,如果需要多个符号,则使用{和}括起来.<br>如：<code>z_{i+2} = x^{k+2}+y_2</code><br>$$z_{i+2} = x^{k+2}+y_2$$</li>
+</ul>
+<ul>
+<li><strong>使用括号</strong><br>LaTex中<code>[</code> <code>]</code> <code>(</code>和<code>)</code>都不变，直接输入即可。对于<code>{}</code>，因为其默认作用是将多个元素组合成一个整体，因此需要用<code>\</code>转义，但因为<code>\{</code>在markdown中会被转义为单独一个<code>{</code>，因此要使用<code>\\{</code>对<code>\</code>也进行转义<br>如：<code>$$(z) = \\{x\\}+[y]$$</code>    $$(z) = \{x\}+[y]$$</li>
+</ul>
+<ul>
+<li><strong>特殊符号</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>LaTex语法</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分数</td>
+<td><code>\frac {a} {b}</code></td>
+<td>\(\frac {a} {b}\)</td>
+</tr>
+<tr>
+<td>平方根</td>
+<td><code>\sqrt{a*x+b}</code></td>
+<td>\(\sqrt{a*x+b}\)</td>
+</tr>
+<tr>
+<td>n次方根</td>
+<td><code>\sqrt[n]{a*x+b}</code></td>
+<td>\(\sqrt[n]{a*x+b}\)</td>
+</tr>
+<tr>
+<td>积分</td>
+<td><code>\int_a^b f(x) dx</code></td>
+<td>\(\int_a^b f(x) dx\)</td>
+</tr>
+<tr>
+<td>极限</td>
+<td><code>\lim_{n \rightarrow 0} (\sin{x} / x)</code></td>
+<td>\(\lim_{n \rightarrow 0} (\sin{x} / x)\)</td>
+</tr>
+<tr>
+<td>求和</td>
+<td><code>\sum_{i=0}^n \frac{1}{i^2}</code></td>
+<td>\(\sum_{i=0}^n \frac{1}{i^2}\)</td>
+</tr>
+<tr>
+<td>求积</td>
+<td><code>\prod_{i=0}^n \frac{1}{i^2}</code></td>
+<td>\(\prod_{i=0}^n \frac{1}{i^2}\)</td>
+</tr>
+<tr>
+<td>梯度算子</td>
+<td><code>\nabla</code></td>
+<td>\(\nabla\)</td>
+</tr>
+<tr>
+<td>上划线</td>
+<td><code>\bar{A}</code></td>
+<td>\(\bar{A}\)</td>
+</tr>
+<tr>
+<td>长上划线</td>
+<td><code>\overline{A\cup B}</code></td>
+<td>\(\overline{A\cup B}\)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>希腊字母</strong><br>希腊字母直接用<code>\字母名</code>即可，如<code>\alpha</code>为\(\alpha\)，<code>\beta</code>为\(\beta\)，<code>\theta</code>为\(\theta\)<br>具体符号表可见：<a href="https://zh.wikipedia.org/wiki/%E5%B8%8C%E8%85%8A%E5%AD%97%E6%AF%8D" target="_blank" rel="noopener">希腊字母维基百科</a>，注意首字母要小写</p>
+</li>
+<li><p><strong>矢量运算</strong><br>用<code>\vec{a}</code>表示矢量符号\(\vec{a}\)，<code>\cdot</code>表示点乘\(\vec{a}\cdot \vec{b}\)，<code>\times</code>表示叉乘\(\vec{a}\times \vec{b}\)</p>
+</li>
+<li><p><strong>矩阵</strong><br>矩阵的基本语法为<code>$$\begin{matrix}…\end{matrix}$$</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">  \begin&#123;matrix&#125;</span><br><span class="line">   1 &amp; 2 &amp; 3 \\\\</span><br><span class="line">   4 &amp; 5 &amp; 6 \\\\</span><br><span class="line">   7 &amp; 8 &amp; 9</span><br><span class="line">  \end&#123;matrix&#125; </span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$$<br>  \begin{matrix}<br>   1 &amp; 2 &amp; 3 \\<br>   4 &amp; 5 &amp; 6 \\<br>   7 &amp; 8 &amp; 9<br>  \end{matrix}<br>$$<br>注：因为LaTex中\表示换行，因此在Markdown中使用\\表示</p>
+<ul>
+<li><strong>怎样将矩阵用括号括起来</strong><br>使用<code>\left(</code>和<code>\right)</code>引入变长括号(当然，其他符号也是可以变长的)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">  \left(</span><br><span class="line">  \begin&#123;matrix&#125;</span><br><span class="line">   1 &amp; 2 &amp; 3 \\\\</span><br><span class="line">   4 &amp; 5 &amp; 6 \\\\</span><br><span class="line">   7 &amp; 8 &amp; 9</span><br><span class="line">  \end&#123;matrix&#125; </span><br><span class="line">  \right)</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>\(<br>  \left(<br>  \begin{matrix}<br>   1 &amp; 2 &amp; 3 \\<br>   4 &amp; 5 &amp; 6 \\<br>   7 &amp; 8 &amp; 9<br>  \end{matrix}<br>  \right)<br>\)    \(\left|\begin{matrix}1 &amp; 2 &amp; 3 \\4 &amp; 5 &amp; 6 \\7 &amp; 8 &amp; 9\end{matrix}\right|\)</p>
+<ul>
+<li><strong>矩阵内怎样使用省略号</strong><br>与各种点代码结合可输入省略号，<code>\cdots</code>横向点，<code>\vdots</code>竖向点，<code>\ddtots</code>斜向点<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"> 1      &amp; 2      &amp; \cdots &amp; 4      \\\\</span><br><span class="line"> 7      &amp; 6      &amp; \cdots &amp; 5      \\\\</span><br><span class="line"> \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\\</span><br><span class="line"> 8      &amp; 9      &amp; \cdots &amp; 0      \\\\</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right]</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>$$<br>\left[<br>\begin{matrix}<br> 1      &amp; 2      &amp; \cdots &amp; 4      \\<br> 7      &amp; 6      &amp; \cdots &amp; 5      \\<br> \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br> 8      &amp; 9      &amp; \cdots &amp; 0      \\<br>\end{matrix}<br>\right]<br>$$</p>
+<ul>
+<li><strong>如何输入多行公式</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$ f(x)=\left\\&#123;</span><br><span class="line">\begin&#123;align&#125;</span><br><span class="line">x &amp; =&amp;  &amp;\cos(t) + &amp;x\\\\</span><br><span class="line">y &amp; =&amp;  &amp;\sin(t) + &amp;y\\\\</span><br><span class="line">z &amp; =&amp;  &amp;\frac xy + &amp;z</span><br><span class="line">\end&#123;align&#125;</span><br><span class="line">\right.</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注1：<code>align</code>用来将多行公式括起来，<code>&amp;</code>用来分割各个对齐的单元<br>注2：<code>\right.</code>表示右括号不显示<br>$$ f(x)=\left\{<br>\begin{align}<br>x12 &amp; =  &amp;\cos(t) &amp;+1 &amp;x1 &amp;=1 \\<br>y123 &amp; =  &amp;\sin(t) &amp;+12 &amp;y12 &amp;=12 \\<br>z1234 &amp; =  &amp;\frac xy &amp;+123 &amp;z123 &amp;=123<br>\end{align}<br>\right.<br>$$</p>
+<ul>
+<li><p><strong>关于align中&amp;的对齐方式</strong><br>假设有n个&amp;，会将一行分为n+1列，从左向右两个列分为一组(如1、2列为一组，3、4列为一组…，若有奇数个列，则最后一列单独为一组)。每一行的&amp;数量要保证相同，否则对齐格式会乱。<br>首先明确，LaTex对齐方式包括组内对齐和组间对齐。<br><strong>组内对齐：</strong>两列一组，在组内部，第一列向右对齐，第二列向左对齐，即两列在所在位置上向中间对齐。<br><strong>组间对齐：</strong>首先，不同行的对应组会根据组的中线进行对齐，因为每行组数是一样的，因此为保证组的中线在同一位置，会统一固定组的长度，因此若公式较短就会出现空白。<br>其次在中线对齐的基础上，第一组会紧靠页<strong>左侧</strong>，最后一组则紧靠页<strong>右侧</strong>，紧靠页左/右侧就是将最长的一组紧靠上去，也就是说对于长度不一样的行，较短的那一行是靠不上去的(因为首先要保证组的中线对齐)。</p>
+</li>
+<li><p><strong>字体选项</strong><br><strong>字体大小：</strong><br>稍微小一点：<code>\small</code>，再小一点：<code>\scriptsize</code>，最小：<code>\tiny</code><br>大一点：<code>\huge</code>，最大：<code>huge</code><br><strong>加粗：</strong><br><code>\textbf{xx}</code>，加粗和上划线混用：<code>\overline{\textbf{xx}}</code><br><strong>将公式中的斜体转为正体：</strong><br>在<code>\\( \\)</code>和<code>$$</code>公式中的字母会自动为斜体，转为正体：<code>\rm</code></p>
+</li>
+</ul>
+<ul>
+<li><p>hexo下使用LaTex，若使用了<code>A_{xxx}</code>这种复合下标(下划线和花括号连用)，且<strong>前面</strong>的公式还出现了下划线(后面公式有下划线没事…)，公式就会出错。<br>原因：hexo下的markdown将两个下划线作为斜体符号进行了翻译，公式就无法正常解析了。<br>解决：在两个下划线前分别加反斜杠，<code>\_</code>，对下划线进行转义。<br>注：只有这种情况公式中的下划线会被解析成斜体符号，其他情况下则没事，具体原因不很清楚。</p>
+</li>
+<li><p>更多符号，如逻辑运算、集合运算等可见博文<br><a href="https://blog.csdn.net/u013007900/article/details/50082205" target="_blank" rel="noopener">MathJax使用LaTeX语法编写数学公式教程</a><br><a href="https://blog.csdn.net/ying_xu/article/details/51240291" target="_blank" rel="noopener">Latex所有常用数学符号整理</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/" data-id="cjnzzxbpx0023t3qxsqkiybe2" class="article-share-link" data-share="baidu" data-title="LaTex语法">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/19/Other/LaTex语法/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Other/markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/19/Other/markdown语法/" class="article-date">
@@ -163,7 +465,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Other/markdown语法/" data-id="cjmqioyu5001nybqxy9lmolpc" class="article-share-link" data-share="baidu" data-title="Markdown笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Other/markdown语法/" data-id="cjnzzxbpy0026t3qxh82m0mxo" class="article-share-link" data-share="baidu" data-title="Markdown笔记">Share</a>
       
 
       
@@ -216,7 +518,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/17/English/Self-Introduction/" data-id="cjmqioyu0001fybqx23x7b9ox" class="article-share-link" data-share="baidu" data-title="Self-Introduction">Share</a>
+        <a data-url="http://yoursite.com/2018/01/17/English/Self-Introduction/" data-id="cjnzzxbpm001ht3qxwchlztj9" class="article-share-link" data-share="baidu" data-title="Self-Introduction">Share</a>
       
 
       
@@ -593,11 +895,80 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/14/English/Grammer/" data-id="cjmqioytz001eybqx9bmpo55t" class="article-share-link" data-share="baidu" data-title="English Grammer">Share</a>
+        <a data-url="http://yoursite.com/2018/01/14/English/Grammer/" data-id="cjnzzxbps001rt3qxh8msbrnp" class="article-share-link" data-share="baidu" data-title="English Grammer">Share</a>
       
 
       
         <a href="http://yoursite.com/2018/01/14/English/Grammer/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-English/英语介词用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/13/English/英语介词用法/" class="article-date">
+  <time datetime="2018-01-13T19:35:00.000Z" itemprop="datePublished">2018-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/English/英语介词用法/">英语介词</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>英语的词类优势就是介词，可用介词来扩展词汇的意义。</p>
+<p>under 和 underneath：underneath是一个东西<strong>完全</strong>在另一个东西下面，一点都不能露出来；under则只是在下面就可以。因此underneath的适用范围要比under小，但也更具体。</p>
+<h2 id="介词的本质"><a href="#介词的本质" class="headerlink" title="介词的本质"></a>介词的本质</h2><p>介词是用来表征对象间关系的，可以表征三种关系：<br><strong>空间关系：</strong>the cat sat on the mat, over his shoulder<br><strong>时间关系：</strong>on Thursday, in November<br><strong>抽象关系：</strong>for your eyes only</p>
+<ul>
+<li><p>空间关系：是最基本的关系，有点、线/面、体三种形式。<br>点：at the corner，corner可抽象为一个点<br>线：on my way home，way可看成线的关系。<br>面：on the table<br>体：in Shanghai，把上海想成一个大城市，人很渺小，处于这个大城市之中。<br>因此介词的不同反应了老外对后面词画面上的一个观感。</p>
+</li>
+<li><p>时间关系：是由空间关系引申而来的。<br>点：在某个时间点用at，at that moment, at 9:15。<br>面：面相比点要大一点，用on，on Monday, on the day。<br>体：在一段比较长的时间中，人被时间“包裹”着，in May，in the Stone Age, in 2017，during…。<br>补：因此介词的不同用法可以有不同的修辞功能，比如在周末，美国人用on the weekend/over the weekend；英国人则用at the weekend。这实则表明了两种文化的差异，即英国人比美国人认为周末要短。</p>
+</li>
+<li><p>抽象关系：同样由空间关系引申而来。<br>on：空间上表“面”，the phone on the table，因此会有一种接触、支撑之意。<br>即引申出来“压迫，背负”的意思：<br>there is a lot of pressure on me，<br>the difficult on them，<br>He is short of brains. He is short on brains. 后一句比前一句有更大的鄙视意味（太short了以至于都压着brains了）。</p>
+</li>
+</ul>
+<p>of，for，to：<br>to：有方向性，由A到B。外国人一碰到to这个介词，脑海里就会有由A向B的这个方向性。<br>I’m going to China.<br>I give the book to him.<br>Ten to three.<br>I look forward to your reply.<br>I am addicted to the smoking.<br>devoted to learning.<br>reporter should stick to their ethic</p>
+<p>for：没有空间意义，更多是抽象意义。和to比，for表示一种授予关系里的接收方，强调授予关系。to强调空间移动，for强调角色的获利关系。<br>The cake is for Tom. 蛋糕是留给Tom的，还未到Tom的手里，只是表明在人们意愿上蛋糕是留给Tom的。<br>Money is important to me.<br>Money is important for me. for比to更为严重，我更加地依赖钱。<br>Smoking is bad for health. health是smoking的“获利方”。<br>I did this for him. 这件事是我为他做的，专门为他做了某事，他属于获利方，强调目的性。<br>I did this to him. 这件事是我对他做的，带有动作的指向之意，多指坏的不好的事情。</p>
+<p>talk to &amp; talk with：with在空间中表示“附近”的意思，双方向；to则是单方向。talk with：你一句我一句，to则是单方向一个人讲。</p>
+<p>of：of表示一种从属关系，表示不可或缺的一部分。<br>The roof of the house. 房间的屋顶<br>The roof for the house. 屋顶被刮掉了，专门又为这个房间买了个屋顶。</p>
+<p>a day for mourning<br>a day of mourning<br>哀悼日的翻译肯定要用第二个，因为第一个仅仅表示这一天是用来哀悼的，哀不哀悼都可以；第二个则表示这一天全天就是哀悼，这一天和哀悼之间的关系更为强烈。</p>
+<p>The answer to the question.<br>The answer for the question.<br>The answer of the question.<br>to最为常用，answer和question的关系有点像solution和problem，key和door的关系，有一定指向性的。因此都是solution to the problem，key to the door。</p>
+<p>He is like a brother to me.<br>He is a brother of mine.<br>第二个就是指真实的哥哥，第一个就只是像一个哥哥一样。</p>
+<p>out of：常可当成独立介词来使用，有from的意思，表示一种动态的过程。<br>He is walking out of the buliding.<br>look out of the window<br>look out the window<br>如果仅表示“向窗外看，那有….”，强调结果，则用look out。若强调人站在屋里向窗外看这个过程（想象视线从屋里“动态”地射向外面），则用look out of。</p>
+<p>over：想象一种抛物线的意象，fall over“摔倒”的感觉。</p>
+<p>throughout：空间上意象就像穿隧道一样，全程贯穿。</p>
+<p>《English preposition explained》</p>
+<p>介词虽然能帮助理解，但还是有很多动词+介词构成的动词短语，没有多大规律可言，因此还是要靠长期的积累和记忆。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/13/English/英语介词用法/" data-id="cjnzzxbpr001pt3qxz8qfkg6i" class="article-share-link" data-share="baidu" data-title="英语介词">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/13/English/英语介词用法/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -687,11 +1058,73 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/13/English/Mock Interview/" data-id="cjmqioyty001bybqxjb62u01m" class="article-share-link" data-share="baidu" data-title="Mock Interview">Share</a>
+        <a data-url="http://yoursite.com/2018/01/13/English/Mock Interview/" data-id="cjnzzxbpn001it3qxxh368exi" class="article-share-link" data-share="baidu" data-title="Mock Interview">Share</a>
       
 
       
         <a href="http://yoursite.com/2018/01/13/English/Mock Interview/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-English/Grammer2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/13/English/Grammer2/" class="article-date">
+  <time datetime="2018-01-13T08:15:00.000Z" itemprop="datePublished">2018-01-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/English/Grammer2/">English Grammer2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>本篇笔记是根据《英语语法新思维初级教程》整理而来。</p>
+<h2 id="英文五种基本句型"><a href="#英文五种基本句型" class="headerlink" title="英文五种基本句型"></a>英文五种基本句型</h2><ul>
+<li><p>英语句子可分为两部分，<br><strong>主语：</strong>表示我们要陈述的对象，以代词、名词或名词短语来充当。<br><strong>谓语：</strong>说明主语做什么，或说明主语的状况，以动词来充当。<br>因此我们造句时，首先要考虑我们要陈述的对象是什么，写出主语；再考虑主语的动作或状态，写出谓语；再根据谓语动词的不同形式，选用以下五种句型，再填入相应的其他成分，即能造出一个句子了。🍊</p>
+</li>
+<li><p>主系表<br>I am a boy. 我是一个男孩<br>Learning English is important. 学习英语很重要<br>He looks happy. 他看起来很高兴。<br>补：主系表结构主要用于描述主语的<strong>性质或状态</strong>，由特殊的系动词来连接，<br>常用系动词：<br>look 看起来是<br>sound 听起来是<br>smell 闻起来是<br>taste 尝起来是<br>feel 感觉是<br>seem 似乎是<br>appear 似乎是<br>become 变成为<br>turn 转变为</p>
+</li>
+<li><p>主谓<br>Internet dating hurts. 网恋有害<br>The fire is burning. 火在燃烧<br>He died. 他死了<br>补：主谓结构主要由<strong>不及物动词（vi）</strong>来引导，动词本身就可表达完整的意思，就不需要宾语了。</p>
+</li>
+<li><p>主谓宾<br>These children are playing football.<br>I love English.<br>补：最常见的句型，由<strong>及物动词（vt）</strong>来引导，动词本身意思不完整，必须加上动作的施加对象（宾语）来构成完整句子。</p>
+</li>
+<li><p>主谓+间接宾语+直接宾语<br>Chatting online will give you a lot of fun. 网上聊天会带给你很多乐趣<br>He lent me ten yuan. 他借了我10元<br>I will buy you a meal. 我会请你吃顿饭<br>补：这种句型由<strong>双宾动词</strong>来引导，其后面接两个宾语：间接宾语通常是人，表示动作的接受者；直接宾语通常是物，表示动作的承受者。间接宾语和直接宾语合起来成为双宾语。</p>
+</li>
+<li><p>主谓宾宾补<br>We can call Internet addicts a Webaholic. 我们可以管上网成瘾的人叫网虫。<br>We elected John our chairman. 我们选举John为我们的主席。<br>I found this answer wrong. 我发现答案是错的<br>You can leave the door open. 你可以把门开着<br>补：这种句型由<strong>宾补动词</strong>来引导，动词后面只接宾语无法表示完整的意思，必须再加上补充说明宾语的补足语来构成。<br>补2:区分双宾语和宾语宾补，看两个词之间是否是修饰关系（可用is连接）-&gt;宾语宾补，还是动词引导的逻辑关系-&gt;双宾语。</p>
+</li>
+</ul>
+<p><strong>英语中所有句子都是由五种句型演变而来，具体选用哪种是由动词的类型来决定的。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/13/English/Grammer2/" data-id="cjnzzxbpp001mt3qx2eyxwj8p" class="article-share-link" data-share="baidu" data-title="English Grammer2">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/13/English/Grammer2/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -835,7 +1268,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/13/English/Oral_exam/" data-id="cjmqioyu2001iybqxr8rs8wut" class="article-share-link" data-share="baidu" data-title="Oral Exam">Share</a>
+        <a data-url="http://yoursite.com/2018/01/13/English/Oral_exam/" data-id="cjnzzxbpo001kt3qxjx5g0jpp" class="article-share-link" data-share="baidu" data-title="Oral Exam">Share</a>
       
 
       
@@ -852,245 +1285,10 @@
 
 
   
-    <article id="post-English/Oral" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/12/English/Oral/" class="article-date">
-  <time datetime="2018-01-12T08:15:00.000Z" itemprop="datePublished">2018-01-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/12/English/Oral/">Oral</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="Meeting"><a href="#Meeting" class="headerlink" title="Meeting"></a>Meeting</h2><ul>
-<li><p>普通问候<br>Hello：较正式<br>Hi：比较随和<br>Hey：好朋友间</p>
-</li>
-<li><p>初次见面<br>Nice to meet you. - Nice to meet you, too. / Me too.</p>
-</li>
-<li><p>长时间没见<br>Long time no see. - Yeah.It’s been a long time.<br>Good to see you again. - Me too.</p>
-</li>
-<li><p>意外的碰面<br>What a small world. - Yeah, it’s really a small world.<br>Fancy meeting you here. - Me too.</p>
-</li>
-<li><p>询问近况<br>How are you (doing)? / How’s everything? / How is it going?<br>情况好：Fine, thank you./ Good.<br>情况一般：Same as usual./ Just so so.<br>情况不好：Bad.</p>
-</li>
-</ul>
-<h2 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h2><h3 id="Introduce-yourself"><a href="#Introduce-yourself" class="headerlink" title="Introduce yourself"></a>Introduce yourself</h3><ul>
-<li><p>姓名<br>My name is Ren Li, you can call me Li.</p>
-</li>
-<li><p>籍贯<br>I’m from China = I come from China.</p>
-</li>
-<li><p>爱好<br>I like sth. / I like doing…</p>
-</li>
-</ul>
-<p>自我介绍前加上自荐语：Allow me to introduce myself.</p>
-<h3 id="Introduce-others"><a href="#Introduce-others" class="headerlink" title="Introduce others"></a>Introduce others</h3><ul>
-<li><p>介绍一个人<br>This is + 姓名</p>
-</li>
-<li><p>给两个人相互介绍<br>This is my friend Nick, and that is roommate Wenshuo Zhang.</p>
-</li>
-</ul>
-<h2 id="致谢用语"><a href="#致谢用语" class="headerlink" title="致谢用语"></a>致谢用语</h2><ul>
-<li><p>一般性的感谢<br>Thank you. / Thanks.<br>Thank you very much. / Thanks a lot.<br>It’s very kind of you.（你真好）</p>
-</li>
-<li><p>Thanks for sth/doing sth<br>Many thanks for the lovely flowers.（花很漂亮，非常感谢。）<br>I’d love to go to the party. Thanks for inviting me/Thanks for your invitation.（我非常愿意去参加派对。谢谢你邀请我。）</p>
-</li>
-<li><p>正式场合<br>I really appreciate your help.（非常感谢你的帮助）<br>Thank you for what you’ve done.</p>
-</li>
-<li><p>回答别人的感谢<br>That’s all right. / Not at all.（不用谢）<br>You’re welcome.（不客气）<br>Forget it. （不值得一提）</p>
-</li>
-<li><p>别人帮忙没成功，还是要感谢<br>Thank you just the same.（不管怎样，还是要谢谢你）</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/12/English/Oral/" data-id="cjmqioytx001aybqxmlpe9w4p" class="article-share-link" data-share="baidu" data-title="Oral">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/12/English/Oral/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Other/环境配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/05/Other/环境配置/" class="article-date">
-  <time datetime="2018-01-05T09:20:00.000Z" itemprop="datePublished">2018-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/05/Other/环境配置/">环境配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="VSCode配置"><a href="#VSCode配置" class="headerlink" title="VSCode配置"></a>VSCode配置</h2><ul>
-<li>对于左侧工作区中的文件，单击一下是浏览模式，下一次再打开其他文件就会覆盖掉窗口；双击是编辑模式，窗口会一直存在。</li>
-</ul>
-<h2 id="Eclipse和Tomact配置"><a href="#Eclipse和Tomact配置" class="headerlink" title="Eclipse和Tomact配置"></a>Eclipse和Tomact配置</h2><ul>
-<li><p>tomact中运行的项目理论上应该在webapps目录下(表现为出现以项目名作为名字的文件夹)，但这需要eclipse部署才可以，而eclipse默认是不部署项目的，因此需要设置。不设置的话项目是以缓存文件的形式运行在tomact中，并不会出现实体文件夹。<br>配置方法：eclispe底部栏server-双击tomact服务器-serverlocation中选中间项-Deploy path写为wepapps</p>
-</li>
-<li><p>关于部署jar包，</p>
-<ul>
-<li>方法1：直接把jar包放到lib目录下。若eclipse设置了自动部署，相关的jar包也会导入到tomact项目，即可方便地以项目为单位进行包管理。自动部署方法<a href="https://blog.csdn.net/supercyclone/article/details/18939473" target="_blank" rel="noopener">https://blog.csdn.net/supercyclone/article/details/18939473</a></li>
-<li>方法2：手动将jar包放到tomact 的webapp/lib目录下</li>
-</ul>
-</li>
-<li><p>项目文件位置：src文件下放java代码，webcontent下放jsp/html/css，webcontent/web-inf/lib下放jar包。</p>
-</li>
-<li><p>eclipse source-format自动调整代码缩进</p>
-</li>
-</ul>
-<h2 id="win10配置"><a href="#win10配置" class="headerlink" title="win10配置"></a>win10配置</h2><ul>
-<li><p><strong>取消登陆密码：</strong>cmd输入netplwiz，取消勾选“要使用本计算机，用户必须输入用户名和密码”，之后会让你输入一套用户名和密码，每次开机系统即自动用这个账号密码来登陆。若因为某种原因这套账号密码错了，系统就无法自动登陆了，登陆界面还会多出一个账户。</p>
-</li>
-<li><p><strong>如何切换全/半角</strong><br>有时候打字会莫名触发全/半角开关，导致输入字母间变为全角模式，间距特别大。而默认切换全/半角的开关<code>Shift+Space</code>被禁掉了，正常情况win10又只显示一个“输入指示符合”（日期左边），因此要切换全/半角就只能手动调出语言栏：右键日期左边的输入指示符号-显示语言栏-右键还原语言栏-点击那个太阳/月亮符号即可。</p>
-</li>
-<li><p><strong>如何隐藏语言栏</strong><br>右击语言栏符号-高级键盘设置-取消勾选“使用桌面语言栏（如果可用）”</p>
-</li>
-<li><p><strong>Windows下如何在当前目录下，打开cmd命令窗口</strong><br>在当前目录下，按下shift + 鼠标右键，会出现“在此处打开命令窗口”的字样，然后点击即可。</p>
-</li>
-</ul>
-<h2 id="Win下python装scrapy"><a href="#Win下python装scrapy" class="headerlink" title="Win下python装scrapy"></a>Win下python装scrapy</h2><p>1、<code>pip install scrapy</code><br>测试是否装好：<br><code>&gt;&gt;&gt;import scrapy</code><br><code>&gt;&gt;&gt;scrapy.version_info</code>，正常安装即会出现版本号，如(1,3,3)<br>再在shell(git bash就行)中输<code>scrapy</code>，正常安装会出现相关提示信息</p>
-<p>2、运行scrapy会提示找不到win32api，用pip装：<code>pip install pypiwin32==220</code></p>
-<h2 id="dev-c-配置"><a href="#dev-c-配置" class="headerlink" title="dev-c++配置"></a>dev-c++配置</h2><p>tools-环境-中文<br>tools-enviroment-watch variable mouse，debug自动查看变量<br>ctrl+滚轮，调代码大小<br>tools-editor-code completion，代码补全<br>tools-configure shortcuts-comment，设置注释快捷键。注释ctrl+k，取消注释ctrl+l。</p>
-<h2 id="masm配置"><a href="#masm配置" class="headerlink" title="masm配置"></a>masm配置</h2><ul>
-<li><p>dosbox挂载masm：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount c d:\masm  <span class="comment">//挂载masm</span></span><br><span class="line">c:               <span class="comment">//转到C盘</span></span><br><span class="line">debug            <span class="comment">//进入debug模式，之后即可输入命令</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>masm debug 命令<br>-a命令：输入汇编指令<br>-u命令：查看汇编代码；<br>-t命令：执行下一条语句<br>-g + 内存：跳转到该内存所对应的语句（再用t命令执行该条命令）<br>-r命令：查看寄存器的内容（后可直接接寄存器的名称，就只查看该寄存器的内容）<br>-d命令：后接内存地址，查看该地址后面8 * 16个字节空间的地址（每行16个字节，共8行）后面是对应的字符‘.’表示没有该数字对应的字符 </p>
-</li>
-<li>debug 标志寄存器顺序：<br>OF DF XX SF ZF XX PF CF</li>
-</ul>
-<h2 id="福昕阅读器"><a href="#福昕阅读器" class="headerlink" title="福昕阅读器"></a>福昕阅读器</h2><ul>
-<li>取消全屏模式下左键向下翻页/右键向上翻页功能：文件-偏好设置-全屏设置，对应项勾选掉即可。</li>
-</ul>
-<h2 id="Itunes"><a href="#Itunes" class="headerlink" title="Itunes"></a>Itunes</h2><ul>
-<li>删除同步的文件：在总的界面上，先在下拉框选择影片，再点击家庭视频，右侧出现你有同步过的视频，然后把鼠标放在影视图片后面的信息那里（就是名称或者艺人那，就是不能放在图标上，放在图标上是没有删除的），点右键最下面一个,从资料库删除，点他就好了</li>
-</ul>
-<h2 id="CSDN打开慢"><a href="#CSDN打开慢" class="headerlink" title="CSDN打开慢"></a>CSDN打开慢</h2><ul>
-<li>csdn打开慢, 是因为其广告加载有问题的，只需要在 C:\Windows\System32\drivers\etc\hosts 文件中 添加这一行就可以了: <code>127.0.0.1 allyes.com</code> </li>
-</ul>
-<h2 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h2><p>命令要切到blog的目录下执行</p>
-<ul>
-<li>本地预览：<code>hexo server -g</code></li>
-<li>部署服务端：<code>hexo deploy -g</code></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/05/Other/环境配置/" data-id="cjmqioyua001zybqxocm24r89" class="article-share-link" data-share="baidu" data-title="环境配置">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/05/Other/环境配置/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Other/something_staged" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/01/Other/something_staged/" class="article-date">
-  <time datetime="2018-01-01T08:15:00.000Z" itemprop="datePublished">2018-01-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/01/Other/something_staged/">Something_staged</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>暂存区：不知道记哪先记这里好了。</p>
-<ul>
-<li><strong>命令中常见的四种括号</strong><br>square brackets：<code>[optional option]</code><br>angle brackets：<code>&lt;required argument&gt;</code><br>curly braces：<code>{default values}</code><br>parenthesis：<code>(miscellaneous info)</code></li>
-</ul>
-<p>想的太多，做的太少，中间的落差就是烦恼，要么去做，要么别想</p>
-<p>反斜杠\，转义字符、win下地址路径；正斜杠/，网址路径。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/01/Other/something_staged/" data-id="cjmqioyu7001rybqxv16808md" class="article-share-link" data-share="baidu" data-title="Something_staged">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/01/Other/something_staged/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 </section>
       
@@ -1102,7 +1300,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1111,7 +1309,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 17.5px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 20px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 12.5px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -1120,7 +1318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">24</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1132,7 +1330,15 @@
       <ul>
         
           <li>
-            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+            <a href="/2018/11/01/cs224n/lecture 1/">lecture 1_Introduction</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/cs224n/notebook/">杂七杂八</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/">Distributed &amp; Cluster Computing</a>
           </li>
         
           <li>
@@ -1140,15 +1346,7 @@
           </li>
         
           <li>
-            <a href="/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/微机接口技术与应用/">微机接口技术与应用</a>
+            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
           </li>
         
       </ul>
