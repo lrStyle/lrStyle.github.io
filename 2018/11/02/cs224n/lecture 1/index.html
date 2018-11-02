@@ -4,15 +4,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2018 | Ren Li&#39;s blog</title>
+  <title>lecture 1_Introduction | Ren Li&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Ren Li&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/3/index.html">
+  <meta name="description" content="关于人类语言(human language)人类语言的特点 语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。 语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。 大脑是一种符号处理器（symbolic process">
+<meta name="keywords" content="cs224n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lecture 1_Introduction">
+<meta property="og:url" content="http://yoursite.com/2018/11/02/cs224n/lecture 1/index.html">
 <meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="关于人类语言(human language)人类语言的特点 语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。 语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。 大脑是一种符号处理器（symbolic process">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/NLP_levels">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/NLP_levels.png">
+<meta property="og:updated_time" content="2018-11-02T12:33:43.989Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ren Li&#39;s blog">
+<meta name="twitter:title" content="lecture 1_Introduction">
+<meta name="twitter:description" content="关于人类语言(human language)人类语言的特点 语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。 语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。 大脑是一种符号处理器（symbolic process">
+<meta name="twitter:image" content="http://yoursite.com/images/cs224n/NLP_levels">
   
     <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
   
@@ -68,215 +76,109 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
+      <section id="main"><article id="post-cs224n/lecture 1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/02/cs224n/lecture 1/" class="article-date">
+  <time datetime="2018-11-02T12:33:38.275Z" itemprop="datePublished">2018-11-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lecture 1_Introduction
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        <!-- Table of Contents -->
+        
+        <div id="toc" class="toc-article">
+        <br>
+        <strong class="toc-title">文章目录</strong>
+        <hr>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于人类语言-human-language"><span class="toc-number">1.</span> <span class="toc-text">关于人类语言(human language)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#人类语言的特点"><span class="toc-number">1.1.</span> <span class="toc-text">人类语言的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于NLP"><span class="toc-number">2.</span> <span class="toc-text">关于NLP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NLP-levels"><span class="toc-number">2.1.</span> <span class="toc-text">NLP levels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NLP-Applications"><span class="toc-number">2.2.</span> <span class="toc-text">NLP Applications</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-is-NLP-hard"><span class="toc-number">2.3.</span> <span class="toc-text">Why is NLP hard</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于deep-learning"><span class="toc-number">3.</span> <span class="toc-text">关于deep learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统机器学习的问题"><span class="toc-number">3.1.</span> <span class="toc-text">传统机器学习的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-deep-learning"><span class="toc-number">3.2.</span> <span class="toc-text">What is deep learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deep-learning-in-NLP"><span class="toc-number">3.3.</span> <span class="toc-text">deep learning in NLP</span></a></li></ol></li></ol>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/C++输入输出/" class="archive-article-date">
-  <time datetime="2018-01-20T19:40:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
+        
+        <h2 id="关于人类语言-human-language"><a href="#关于人类语言-human-language" class="headerlink" title="关于人类语言(human language)"></a>关于人类语言(human language)</h2><h3 id="人类语言的特点"><a href="#人类语言的特点" class="headerlink" title="人类语言的特点"></a>人类语言的特点</h3><ul>
+<li><strong>语言就是符号：</strong>人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。</li>
+<li><strong>语言的载体：</strong>sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。</li>
+<li><strong>大脑是一种符号处理器</strong>（symbolic processors）：我们可以把大脑处理语言看成是<strong>连续模式的激活过程</strong>（continious pattern of activation）。</li>
+<li>因此我们可以得到启发：探索一种<strong>连续的编码模式</strong>来表达思想(explore a continous encoding patten of thought)。这也是很多NLP算法的处理思想，同时也解决了sparsity的问题。</li>
+</ul>
+<h2 id="关于NLP"><a href="#关于NLP" class="headerlink" title="关于NLP"></a>关于NLP</h2><h3 id="NLP-levels"><a href="#NLP-levels" class="headerlink" title="NLP levels"></a>NLP levels</h3><p><img src="/images/cs224n/NLP_levels" alt=""><br><img src="/images/cs224n/NLP_levels.png" width="500" height="270" alt="NLP levels" align="center"></p>
+<ul>
+<li><strong>两大来源：</strong>通过语音或者文本。语音：语音分析（phonetic）或音韵分析（phonological）；文本：OCR识别（Optical Character Recognition，光学字符识别）或分词处理（tokenization）。通过上述方法来获取NLP的输入。</li>
+<li><strong>形态分析</strong>（morphological）：对单词进行形态分析：前缀（prefix）、后缀（suffix）等。</li>
+<li><strong>句法分析</strong>（syntactic）：分析句子结构、语法结构（structure of sentence）。</li>
+<li><strong>语义理解</strong>（semantic interpretation）：work out the meaning of sentences.</li>
+<li><strong>语篇处理</strong>（discourse processing）：因为大多数句子含义需要通过上下文（context）来推测，不能仅仅只分析当前句子，因此就有了the field of discourse processing。<br>注：cs224n课只重点讲syntatic &amp; semantic analysis 这两块，以及一部分speech signal analysis。</li>
+</ul>
+<h3 id="NLP-Applications"><a href="#NLP-Applications" class="headerlink" title="NLP Applications"></a>NLP Applications</h3><ul>
+<li>较低级：spell checking, keyword search, finding synonyms</li>
+<li>中级：extracting information。个人比较感兴趣的方向，让计算机可以阅读文本，理解在讲些什么，至少知道讲的是哪方面内容；从文本中识别、抽取某方面内容；或者为文本阅读难度分级（work out the reading level of school text）,识别文本的目标受众（intended audience of document）；情感分析（positive or negetive）。</li>
+<li>高级：机器翻译、对话机器人、智能问答、机器撰写（exploit the knowledge of world）</li>
+</ul>
+<h3 id="Why-is-NLP-hard"><a href="#Why-is-NLP-hard" class="headerlink" title="Why is NLP hard"></a>Why is NLP hard</h3><ul>
+<li><strong>语言本身的困难性</strong>：Ambiguilty of language, and moreover, humen always do not say everything（为了高效表达，语言使用中会出现很多省略）.</li>
+<li><strong>表征语言很困难</strong>：Complexity of representing, using linguistic/situational/world knowledge.</li>
+<li><strong>解释语言很困难</strong>：Real meaning of the language depends on real world, common sense, and contextual knowledge.</li>
+</ul>
+<h2 id="关于deep-learning"><a href="#关于deep-learning" class="headerlink" title="关于deep learning"></a>关于deep learning</h2><h3 id="传统机器学习的问题"><a href="#传统机器学习的问题" class="headerlink" title="传统机器学习的问题"></a>传统机器学习的问题</h3><ul>
+<li>Most traditional machine learning algorithms work well because of human-designed representations and input featured.</li>
+<li>“Machines” are only used to optimize weights that best make a final prdiction. </li>
+<li>Moreover, manually designed featured are often over-specified(lack of generalization), incomplete and take a long time to design and validate.</li>
+</ul>
+<h3 id="What-is-deep-learning"><a href="#What-is-deep-learning" class="headerlink" title="What is deep learning"></a>What is deep learning</h3><ul>
+<li>Subfield of machine learning and part of representation learning.</li>
+<li>Deep learning algorithms attempt to learn (multiple levels of) representations and an output themselves. </li>
+<li>We only input the raw data.</li>
+<li>In a lot of times, deep learning means neural networks (the dominant model family).</li>
+</ul>
+<h3 id="deep-learning-in-NLP"><a href="#deep-learning-in-NLP" class="headerlink" title="deep learning in NLP"></a>deep learning in NLP</h3><p>核心思想：用vector去表征语言，用神经网络去组织、计算vector。</p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/C++输入输出/">C++文件操作</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/Git操作/" class="archive-article-date">
-  <time datetime="2018-01-20T19:35:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/Git操作/">Git操作</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/Java/" class="archive-article-date">
-  <time datetime="2018-01-20T17:20:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
+        <a data-url="http://yoursite.com/2018/11/02/cs224n/lecture 1/" data-id="cjo00415o0000wkqxz1817g9j" class="article-share-link" data-share="baidu" data-title="lecture 1_Introduction">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/Java/">Java笔记</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/Other/编程体会/" class="archive-article-date">
-  <time datetime="2018-01-20T17:10:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/Other/编程体会/">编程体会</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/Matlab笔记/" class="archive-article-date">
-  <time datetime="2018-01-20T10:40:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
+        <a href="http://yoursite.com/2018/11/02/cs224n/lecture 1/#ds-thread" class="article-comment-link">Comments</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/Matlab笔记/">Matlab笔记</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/Lingo笔记/" class="archive-article-date">
-  <time datetime="2018-01-20T10:34:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/Lingo笔记/">Lingo笔记</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Distributed &amp; Cluster Computing</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/数据库SQL/" class="archive-article-date">
-  <time datetime="2018-01-20T10:26:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/数据库SQL/">数据库SQL</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/人工智能笔记/" class="archive-article-date">
-  <time datetime="2018-01-20T09:20:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/人工智能笔记/">人工智能笔记</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/20/MFC/" class="archive-article-date">
-  <time datetime="2018-01-20T07:14:00.000Z" itemprop="datePublished">Jan 20</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/20/MFC/">MFC</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/19/Python/python环境配置/" class="archive-article-date">
-  <time datetime="2018-01-19T23:00:00.000Z" itemprop="datePublished">Jan 19</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/19/Python/python环境配置/">VSCode_python环境配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
 
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/2018/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><a class="page-number" href="/archives/2018/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2018/page/4/">4</a><a class="page-number" href="/archives/2018/page/5/">5</a><a class="extend next" rel="next" href="/archives/2018/page/4/">Next &raquo;</a>
-  </nav>
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/11/02/cs224n/lecture 1/" data-title="lecture 1_Introduction" data-url="http://yoursite.com/2018/11/02/cs224n/lecture 1/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">
