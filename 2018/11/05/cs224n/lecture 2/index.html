@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>lecture 2_Word Vectors | Ren Li&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="How to represent the meaning of a word in computer离散表示（discrete representation） 把单词作为一个个原子符号（atomic symbol）来表征：hotel, conference, walk… 对应到计算机中，使用独热编码（one-hot encoding）来存储：[0 0 0 0 1 0 0 0] 存在的问题：1、">
+<meta name="keywords" content="cs224n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lecture 2_Word Vectors">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/cs224n/lecture 2/index.html">
+<meta property="og:site_name" content="Ren Li&#39;s blog">
+<meta property="og:description" content="How to represent the meaning of a word in computer离散表示（discrete representation） 把单词作为一个个原子符号（atomic symbol）来表征：hotel, conference, walk… 对应到计算机中，使用独热编码（one-hot encoding）来存储：[0 0 0 0 1 0 0 0] 存在的问题：1、">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/2_distributed%20representation.png">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/2_Skipgram_prediction.png">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/2_Skipgram_model.png">
+<meta property="og:image" content="http://yoursite.com/images/cs224n/2_theta.png">
+<meta property="og:updated_time" content="2018-11-06T22:29:23.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lecture 2_Word Vectors">
+<meta name="twitter:description" content="How to represent the meaning of a word in computer离散表示（discrete representation） 把单词作为一个个原子符号（atomic symbol）来表征：hotel, conference, walk… 对应到计算机中，使用独热编码（one-hot encoding）来存储：[0 0 0 0 1 0 0 0] 存在的问题：1、">
+<meta name="twitter:image" content="http://yoursite.com/images/cs224n/2_distributed%20representation.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ren Li&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Think and write down</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-cs224n/lecture 2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/05/cs224n/lecture 2/" class="article-date">
+  <time datetime="2018-11-05T21:32:18.948Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lecture 2_Word Vectors
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <div id="toc" class="toc-article">
+        <br>
+        <strong class="toc-title">文章目录</strong>
+        <hr>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-represent-the-meaning-of-a-word-in-computer"><span class="toc-number">1.</span> <span class="toc-text">How to represent the meaning of a word in computer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离散表示（discrete-representation）"><span class="toc-number">1.1.</span> <span class="toc-text">离散表示（discrete representation）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分布表示（distributed-representation）"><span class="toc-number">1.2.</span> <span class="toc-text">分布表示（distributed representation）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#word2vec模型"><span class="toc-number">2.</span> <span class="toc-text">word2vec模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Skip-grams-SG"><span class="toc-number">2.1.</span> <span class="toc-text">Skip-grams(SG)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用"><span class="toc-number">2.1.1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义损失函数（Loss-Function）"><span class="toc-number">2.1.2.</span> <span class="toc-text">定义损失函数（Loss Function）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎样求损失函数最小值：梯度下降（gradient-descent）"><span class="toc-number">2.1.3.</span> <span class="toc-text">怎样求损失函数最小值：梯度下降（gradient descent）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#怎样训练模型"><span class="toc-number">2.1.4.</span> <span class="toc-text">怎样训练模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Continuous-Bag-of-Words-CBOW"><span class="toc-number">2.2.</span> <span class="toc-text">Continuous Bag of Words(CBOW)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">作用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遗留问题："><span class="toc-number">3.</span> <span class="toc-text">遗留问题：</span></a></li></ol>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+<h2 id="How-to-represent-the-meaning-of-a-word-in-computer"><a href="#How-to-represent-the-meaning-of-a-word-in-computer" class="headerlink" title="How to represent the meaning of a word in computer"></a>How to represent the meaning of a word in computer</h2><h3 id="离散表示（discrete-representation）"><a href="#离散表示（discrete-representation）" class="headerlink" title="离散表示（discrete representation）"></a>离散表示（discrete representation）</h3><ul>
+<li>把单词作为一个个原子符号（atomic symbol）来表征：hotel, conference, walk…</li>
+<li>对应到计算机中，使用<strong>独热编码（one-hot encoding）</strong>来存储：<code>[0 0 0 0 1 0 0 0]</code></li>
+<li>存在的问题：<br>1、向量规模过大：每个单词都对应一个单独的位，若要存储所有单词，则需要a very very long vector。<br>2、难以计算单词间的相似性：这是一种localist representation, 每个one-hot representation是独立存在的，no inherent notion of similarity, 两两间并没有天然的相似性关系。<br>3、因此与其去研究an approach to work out similarity relationship between one-hot representations，不如直接探究<strong>an approach where representation of word encodes its meaning inherently</strong>，这样就能直观去计算单词间的similarity，这就是分布表示（distributed representation）的设计初衷。</li>
+</ul>
+<h3 id="分布表示（distributed-representation）"><a href="#分布表示（distributed-representation）" class="headerlink" title="分布表示（distributed representation）"></a>分布表示（distributed representation）</h3><ul>
+<li><strong>核心思想：</strong>通过单词的上下文（context）来理解词意。如<code>banking</code>这个单词，我们让计算机知道经常和它一起出现的其他单词，就相当于明白了单词的用法(怎样将单词放到正确的上下文中)，就相当于理解了单词的meaning。<br><img src="/images/cs224n/2_distributed representation.png" width="500" height="120" align="center"></li>
+<li><strong>具体方法：</strong>用向量定义词语的含义。通过调整一个单词及其上下文单词的向量，使得根据两个向量可以推测两个单词的相似度，就可以根据中心词向量预测上下文/根据上下文向量预测中心词。这就是我们常说的<strong>word2vec</strong>!</li>
+<li>注：区分distributed和distributional<br>distributed meaning：一种词义表示，和one-hot相对，one-hot将词义独立地存储在本地（<code>[0 0 0 0 1 0 0 0]</code>向量中），distributed则存储在一个大的稠密的向量空间中。<br>distributional similarity：一种通过上下文来理解词义的方法，与denotational相对。<br>We use distributional similarity to <strong>build</strong> distributed meaning.</li>
+</ul>
+<h2 id="word2vec模型"><a href="#word2vec模型" class="headerlink" title="word2vec模型"></a>word2vec模型</h2><h3 id="Skip-grams-SG"><a href="#Skip-grams-SG" class="headerlink" title="Skip-grams(SG)"></a>Skip-grams(SG)</h3><p><img src="/images/cs224n/2_Skipgram_prediction.png" width="300" height="150" alt="Skipgram_prediction" align="center/"><br><img src="/images/cs224n/2_Skipgram_model.png" width="450" height="300" alt="Skipgram_model" align="center/"></p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>通过中心词预测上下文。</p>
+<p>####定义预测单词上下文的模型<br>\(p(context|w_t)\)，表示在给定中心词\(w_t\)的条件下，正确预测出上下文单词的概率。<br>再具体点：\(p(w_{t-1}|w_t)\)，\(p(w_{t-2}|w_t)\)，\(p(w_{t+1}|w_t)\)，\(t, t+1, t-1\)都是表示单词在文中出现的序号。<br>最终形式：<br>$$ p(w_{t+j}|w_t)=p(o|c)=\frac {exp(u_0^Tv_c)} {\sum_{w=1}^v exp(u_w^Tv_c)} $$<br>\(t, t+j\)是单词在文中的位置.<br>\(o, c\)则是单词在单词表中的序号，相当于在更为一般地表征两个单词的关联（与具体文本无关）。<br>\(v_c\)是中心词的词向量，\(u_0\)是上下文单词的词向量。<br>公式理解：首先是\(u_0^Tv_c\)，这是一个点积操作，可用来粗糙地衡量单词间相似性（单词越相似，向量值越相近，乘积越大）；其次是softmax操作，用来把值转换成概率：<br>$$\frac {exp(u_0^Tv_c)} {\sum_{w=1}^v exp(u_w^Tv_c)} $$<br>最终即得出了由中心词预测上下文单词的概率。</p>
+<h4 id="定义损失函数（Loss-Function）"><a href="#定义损失函数（Loss-Function）" class="headerlink" title="定义损失函数（Loss Function）"></a>定义损失函数（Loss Function）</h4><p>1、首先对模型全部相乘，表示文本整体的预测正确率：<br>$$ J^`(\theta)=\prod_{t=1}^T \prod_<br>{ \begin{align}<br>-m\le j \le m\\<br>j \neq 0<br>\end{align} }<br>p(w_{t+j}|w_t)$$<br>目标：整体正确率最大，maximize the function，<br>2、做Negtive Log Likelihood处理，使maximize-&gt;minimize，即得到最终的损失函数。<br>$$ J(\theta)=-\frac {1}{T} \sum_{t=1}^T \sum_<br>{ \begin{align}<br>-m&amp; \le j \le m\\<br>j \neq 0<br>\end{align} }<br>p(w_{t+j}|w_t)\\<br>p(w_{t+j}|w_t)=\frac {exp(u_0^Tv_c)} {\sum_{w=1}^v exp(u_w^Tv_c)}<br>$$<br>最终目标：使损失函数最小。</p>
+<h4 id="怎样求损失函数最小值：梯度下降（gradient-descent）"><a href="#怎样求损失函数最小值：梯度下降（gradient-descent）" class="headerlink" title="怎样求损失函数最小值：梯度下降（gradient descent）"></a>怎样求损失函数最小值：梯度下降（gradient descent）</h4><p>注1：具体求解过程见lecture note。<br>注2：求梯度时对\(u_o和v_c\)都要求偏导，最后组合成梯度向量。且求的是向量的导数，和实数求偏导有一定区别。<br>注3：当数据量过大时，可使用SGD随机梯度下降来加快速度（一个窗口计算一次梯度，用来估计整体梯度）。</p>
+<h4 id="怎样训练模型"><a href="#怎样训练模型" class="headerlink" title="怎样训练模型"></a>怎样训练模型</h4><p>模型中的参数就是每个单词对应的word vector向量，将所有参数组合成一个的大向量\(\theta\)，即作为损失函数的自变量。<br><img src="/images/cs224n/2_theta.png" width="150" height="150" alt="theta举例（里面单词是随便举的例子）" align="center"><br>总共V个单词，每个单词对应两个词向量，词向量每个d维，因此\(\theta\)总长度为2dV。<br>为何每个单词对应两个词向量：作为中心词时一个，作为上下文单词时一个，这样更方便数学处理。</p>
+<h3 id="Continuous-Bag-of-Words-CBOW"><a href="#Continuous-Bag-of-Words-CBOW" class="headerlink" title="Continuous Bag of Words(CBOW)"></a>Continuous Bag of Words(CBOW)</h3><h4 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h4><p>通过上下文预测中心词<br>To be continued</p>
+<h2 id="遗留问题："><a href="#遗留问题：" class="headerlink" title="遗留问题："></a>遗留问题：</h2><p>SG模型中，计算每个上下文词向量的值时，context matrix是一样的？ 那计算出的结果不就一样了？<br>如何迭代\(\theta\)来更新梯度？把\(\theta\)初始化成什么样子？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/11/05/cs224n/lecture 2/" data-id="cjo6b5dhc002i4sqxmhzuview" class="article-share-link" data-share="baidu" data-title="lecture 2_Word Vectors">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/11/05/cs224n/lecture 2/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/11/06/cs224n/background/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/02/cs224n/lecture 1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">lecture 1_Introduction</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2018/11/05/cs224n/lecture 2/" data-title="lecture 2_Word Vectors" data-url="http://yoursite.com/2018/11/05/cs224n/lecture 2/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/06/cs224n/background/">基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/05/cs224n/lecture 2/">lecture 2_Word Vectors</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/02/cs224n/lecture 1/">lecture 1_Introduction</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/">Distributed &amp; Cluster Computing</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ren Li<br>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

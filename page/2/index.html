@@ -70,6 +70,280 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-概率论与数理统计笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/25/概率论与数理统计笔记/" class="article-date">
+  <time datetime="2018-06-25T07:14:00.000Z" itemprop="datePublished">2018-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/25/概率论与数理统计笔记/">概率论与数理统计笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+<hr>
+<p>最近在学习数据挖掘、机器学习的相关算法时，感到统计知识的应用还是非常广泛且重要的，因此决定从新温习一遍概率论和数理统计，为进一步学习数据挖掘打下基础。</p>
+<hr>
+<h2 id="绪言"><a href="#绪言" class="headerlink" title="绪言"></a>绪言</h2><ul>
+<li><p><strong>概率论</strong><br>数学的一个分支，研究如何定量描述随机现象及其规律。</p>
+</li>
+<li><p><strong>数理统计</strong><br>以数据为研究对象，包括数据的收集、整理、分析和建模，从而对随机现象的某些规律进行预测或决策。</p>
+</li>
+</ul>
+<hr>
+<h2 id="第一章-随机事件与概率"><a href="#第一章-随机事件与概率" class="headerlink" title="第一章_随机事件与概率"></a>第一章_随机事件与概率</h2><ul>
+<li><p><strong>三个基本概念</strong><br>样本空间：随机试验中所有可能结果的集合称为样本空间，记为S。<br>样本点：S中的单个元素称为样本点，也称为基本事件。<br>随机事件：样本空间S的子集，称为随机事件，一个随机事件可以包含多个基本事件。</p>
+</li>
+<li><p><strong>事件的相互关系</strong>（若有事件A和事件B）</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>记法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合事件</td>
+<td>\(A\cup B\)</td>
+<td>A、B至少有一个发生</td>
+</tr>
+<tr>
+<td>积事件</td>
+<td>\(A\cap B\) 或简写为 \(AB\)</td>
+<td>A、B同时发生</td>
+</tr>
+<tr>
+<td>差事件</td>
+<td>\(A-B\)</td>
+<td>A发生且B不发生</td>
+</tr>
+<tr>
+<td>互斥事件/不相容事件</td>
+<td>\(AB=\phi\)</td>
+<td>AB不能同时发生</td>
+</tr>
+<tr>
+<td>对立事件/逆事件</td>
+<td>\(\bar{A}\)</td>
+<td>\(A\cup \bar{A} = S\)，\(A\cap \bar{A} = \phi\)</td>
+</tr>
+</tbody>
+</table>
+<p>注1：差事件有多种表示方法，如\(A-B = A\bar{B} = A-AB\)<br>注2：区分\(\overline{AB}\)和\(\bar{A}\bar{B}\)，\(\overline{AB}\)表示A、B不同时发生(可单独发生)，\(\bar{A}\bar{B}\)表示A、B都不发生</p>
+<ul>
+<li><p><strong>重要的事件运算定律</strong><br>结合律：<br>  \(A\cup (B\cap C) = (A\cup B)\cap (A\cup C)\)<br>  \(A\cap (B\cup C) = (A\cap B)\cup (A\cap C)\)<br>德摩根律：<br>  \(\overline{A\cup B} = \bar{A}\cap \bar{B}\)<br>  \(\overline{A\cap B} = \bar{A}\cup \bar{B}\)<br>注1：事件运算很多时候可通过画维恩图来表示<br>注2：两个公式都可扩展到多事件的情况</p>
+</li>
+<li><p><strong>频率与概率</strong><br>频率\(f_n(A)\)：表示事件A发生的次数占试验总次数的比例。<br>$$f_n(A) = \frac {n_A} {n}$$<br>概率\(P(A)\)：当实验次数增加时，频率的稳定值称为概率。<br>$$P(A) = lim_{n \rightarrow \infty} f_n(A)$$</p>
+</li>
+<li><p><strong>概率的性质</strong><br>对事件A和事件B<br>(1). \(P(B-A) = P(B)-P(AB)\)。若\(A \subset B\)，则有\(P(B-A) = P(B)-P(A)\)<br>(2). \(P(A \cup B) = P(A)+P(B)-P(AB)\)<br>(3). \(P(\bar{A}) = 1-P(A)\)</p>
+</li>
+<li><p><strong>古典概型</strong><br>两个特征：样本空间S中样本点有限(有限性) &amp; 每一个样本点的概率相等(等可能性)。<br>因此计算概率有：<br>$$P(A) = (A所包含的样本点数)/(S中的样本点总数)$$<br>注1：古典概率只需要计算不同事件对应的样本点个数即可。<br>注2：因为样本点个数有限，所有情况可枚举，因此古典概型经常转化为排列组合的问题求解。</p>
+</li>
+<li><p><strong>补充排列组合公式</strong><br>排列：$$A_n^m = n(n-1)\cdots(n-m+1)$$<br>组合：$$C_n^m = A_n^m/m!$$<br>$$C_n^m = C_n^{n-m}$$</p>
+</li>
+<li><p><strong>条件概率</strong><br>P(B|A)表示在事件A发生的前提下，事件B发生的概率。<br>计算方法：\(P(B|A) = \frac {P(AB)} {P(A)} \)，事件A的发生改变了样本空间。<br>注：注意区分P(AB)和P(B|A)，前者是在整个样本空间下计算，是“原始”的概率；后者是在A的样本空间下计算，是“二次影响”后的概率，条件概率即表征一种影响程度。</p>
+</li>
+<li><p><strong>乘法公式</strong>(计算多个事件同时发生的概率)<br>$$P(AB) = P(A)\cdot P(B|A) = P(B)\cdot P(A|B)$$<br>$$P(ABC) = P(A)\cdot P(B|A)\cdot P(C|AB)$$</p>
+</li>
+<li><p><strong>全概率公式</strong><br>定义划分：若有<br>(1). \(B_1\cup B_2\cup \cdots\cup B_n = S\)<br>(2). \(B_iB_j = \phi,i\not=j\)<br>则称\(B_1,B_2,\cdots,B_n \)为S的一个划分。<br>计算A事件概率就有：<br>$$P(A) = \sum_{j=1}^n P(AB_j) = \sum_{j=1}^n P(B_j)P(A|B_j)$$<br>公式的直观理解：“由因求果”，B1,B2…代表引起事件A发生的各种原因，因此事件A发生的总概率就是各种原因下发生概率的加和。</p>
+</li>
+<li><p><strong>贝叶斯公式</strong><br>\(B_1,B_2,\cdots,B_n \)为S的一个划分，<br>$$P(B_i|A) = \frac {P(B_iA)} {P(A)} = \frac {P(A|B_i)P(B_i)} {\sum_{j=1}^n P(A|B_j)P(B_j)}$$<br>P(B)称为先验概率，代表根据以往经验得到的引起某件事发生的原因的概率。<br>P(B|A)称为后验概率，代表<strong>事情已经发生</strong>，求这件事发生是由某个因素引起的可能性的大小。<br><strong>公式的直观理解</strong>：“执果寻因”，观测某事件已经发生，求导致该事件发生的各种原因的概率。<br>影响后验概率的有两个因素，一个是原因本身的概率P(B)，另一个是原因引起结果的概率P(A|B)，只有当各原因引起结果的概率有差别时，贝叶斯公式才有意义，否则计算出的仅仅就是各原因概率的比例而已。两个影响因素对结果的共同作用大，求出的后验概率P(B|A)就会大，这也是符合直观认知的。<br>此外，后验概率还代表着根据实际情况对先验概率的“修正”：通常情况下，依照经验求得的先验概率不会太准确，这时就需从实际中寻找相关事实对其进行修正。<br>更多贝叶斯公式的讲解：<a href="https://www.cnblogs.com/yemanxiaozu/p/7680761.html" target="_blank" rel="noopener">贝叶斯公式的直观理解(先验概率/后验概率)</a></p>
+</li>
+<li><p><strong>事件的独立性</strong><br><strong>定义</strong>：满足\(P(AB) = P(A)P(B)\)，则称事件A与事件B相互独立。若\(P(A)&gt;0,P(B)&gt;0\)，则有\(P(B|A) = P(B)\)（这个公式理解起来更直观些）。<br><strong>直观理解</strong>：在一次实验中，一个事件的发生不会影响到另一个事件发生的概率。<br><strong>注1</strong>：事件的独立性\(\not=\)互斥性。互斥性指事件不可能同时发生，即\(P(AB)=0\)；独立性指一个事件的发生不会影响到另一个事件发生的概率，即\(P(AB)=P(A)P(B)\)。在维恩图中，互斥事件没有交集，而独立事件则可以有交集，只是交集占B圈的概率与A圈占总体的概率相等罢了。<br><strong>注2</strong>：若多个事件相互独立，则有\(P(ABC) = P(A)P(B)P(C)\)，但注意<br>$$\left.<br>\begin{align}<br>P(AB)=P(A)P(B) \\<br>P(AC)=P(A)P(C) \\<br>P(BC)=P(B)P(C)<br>\end{align}<br>\right\rbrace<br>\not\Rightarrow P(ABC)=P(A)P(B)P(C)$$<br>即两两独立不能推出相互独立，因为相互独立还要求满足\(P(ABC)=P(A)P(BC)\)。</p>
+</li>
+</ul>
+<hr>
+<h2 id="第二章-离散型随机变量"><a href="#第二章-离散型随机变量" class="headerlink" title="第二章_离散型随机变量"></a>第二章_离散型随机变量</h2><ul>
+<li><p><strong>随机变量</strong><br><strong>定义</strong>：样本空间S，样本点e，若\(X=X(e)\)为定义在S上的实值单值函数，则称\(X(e)\)为随机变量，简写为\(X\)。<br>注1：随机变量虽然叫变量，但实际是一个函数，是样本点到实数的一种映射。<br>注2：引入随机变量的原因，是为了将无法量化的随机事件用具有实际意义的数值来表示，便于量化研究随机现象的规律。如在抛硬币实验中，可将实验结果用“正面出现的次数”来表示。<br>注3：随机变量本质是函数，也要满足函数的性质，可以多个样本点对一个实数值，但不能一对多。<br>注4：随机变量一般用大写字母\(X,Y,Z\)或希腊字母\(\eta,\xi\)来表示，且都将\(X(e)\)简写为\(X\)，直接用\(X\)来表示映射后的实数值。</p>
+</li>
+<li><p><strong>离散型随机变量</strong><br>若随机变量X的取值为有限个或可数个，则称X为离散型随机变量。<br>“可数”指其中的元素可以被一一数到。(元素数可以是无限个，如整数集、正奇数集等，都是可数的)<br><strong>离散型随机变量的分布律：</strong>所有随机变量对应的概率，叫做分布律。需要满足两个条件：非负性 &amp; 加和为1。<br><strong>三种常见的离散分布：</strong>0-1分布、二项分布、泊松分布、几何分布。</p>
+</li>
+<li><p><strong>0-1分布</strong><br>若X的分布律满足<br><img src="\images\概率论与数理统计\0-1分布.png" width="200" height="80" align="center"><br>就称X服从参数为p的0-1分布(或两点分布)，即为\(X\sim 0-1(p)\)或\(X\sim B(1,p)\)<br>其分布律可写为：<br>$$P(X=k)=p^k(1-p)^{1-k},k=0,1$$</p>
+</li>
+<li><p><strong>伯努利实验(Bernoulli)</strong><br>设A是一随机事件，且\(P(A)=p(0&lt; p &lt;1)\)。若仅考虑事件A发生与否，就可定义一个服从参数p的0-1分布的随机变量X：<br>$$ X=\left\{<br>\begin{align}<br>0 &amp; , &amp; 若A发生 \\<br>1 &amp; , &amp; 若A不发生(即\bar{A}发生)<br>\end{align}<br>\right.<br>$$<br>来描述这个随机实验的结果。<br>这种只有两个可能结果的实验，称为伯努利实验。<br>注1：将伯努利实验独立重复地进行n次，就称为n重伯努利实验。<br>注2：设X表示n重伯努利实验中事件A发生的次数，则X的可能取值为0,1,…,n，概率为\(P\{X=k\}=C_n^kp^k(1-p)^{n-k}\)。</p>
+</li>
+<li><p><strong>二项分布(Binomial)</strong><br>定义：若随机变量X的概率分布律为<br>$$P\{X=k\}=C_n^kp^k(1-p)^{n-k},k=0,1,\cdots,n$$<br>即称X服从参数为n,p的二项分布，记为\(X\sim B(n,p)\)。<br>n代表进行伯努利实验的次数，p代表一次实验中事件A发生的概率。<br>二项分布作用：描述n重伯努利实验中，事件发生的次数。<br>注：0-1分布也是一种特殊的二项分布，即只进行一次伯努利实验。</p>
+</li>
+<li><p><strong>泊松分布(Poisson)</strong><br>设随机变量\(X\)的取值为0,1,2,…，而取各个值的概率为<br>$$P\{X=k\}=\frac {\lambda^ke^{-\lambda}} {k!},k=0,1,2,…$$<br>其中\(\lambda&gt;0\)且是常数，则称\(X\)服从参数为\(\lambda\)的泊松分布，记为\(X\sim \pi (\lambda)\)<br><strong>证明其满足分布律的两条件：</strong>对于非负性，明显满足；对于加和为1性质，有：<br>$$\sum_{k=0}^\infty P\{X=k\}=\sum_{k=0}^\infty \frac {\lambda^ke^{-\lambda}} {k!}=e^{-\lambda}\sum_{k=0}^\infty \frac {\lambda^k} {k!}=e^{-\lambda}\cdot e^\lambda = 1$$<br><strong>注1</strong>：上式证明所涉及定理：<br>$$e^x=1+x+\frac {x^2} {2!}+\cdots+\frac {x^k} {k!}+\cdots$$<br><strong>注2</strong>：若某事件以固定强度\(\lambda\)，随机且独立地出现，该事件在单位时间内出现的次数可认为服从泊松分布。<br>如公共汽车站到达的乘客数，一本书一页中的印刷错误数等。<br><strong>注3</strong>：不同参数\(\lambda\)的泊松分布概率图，横坐标为k值，纵坐标为概率值<br><img src="\images\概率论与数理统计\泊松分布.jpg" width="343" height="185" align="center"><br>更多泊松分布的解释见：<a href="https://www.zhihu.com/question/26441147" target="_blank" rel="noopener">泊松分布的现实意义是什么？</a><br><strong>注4</strong>：二项分布与泊松分布的近似关系：当\(n&gt;10,p&lt;0.1\)时，<br>$$C_n^k(1-p)^{n-k}\approx \frac {e^{-\lambda}\lambda^k} {k!}, \lambda=np. $$<br>即当\(n\)很大而\(p\)很小，且\(np\)大小适中时，可用泊松分布来近似二项分布。因为\(n\)很大时，二项分布公式中\(C_n^kp^k(1-p)^{n-k}\)计算次方和阶乘会很麻烦，因此用泊松来近似。</p>
+</li>
+<li><p><strong>几何分布(Geometric)</strong><br>定义：若\(X\)的概率分布律为：<br>$$P(X=k)=p(1-p)^{k-1},k=1,2,3,\cdots$$<br>则称\(X\)服从参数为\(p\)的几何分布，记为\(X\sim Grom(p)\)。<br><strong>用处</strong>：在重复多次的伯努利实验中，实验进行到某种结果出现第一次为止，此时实验总次数服从几何分布。</p>
+</li>
+</ul>
+<hr>
+<h2 id="第三章-连续型随机变量"><a href="#第三章-连续型随机变量" class="headerlink" title="第三章_连续型随机变量"></a>第三章_连续型随机变量</h2><ul>
+<li><p><strong>分布函数</strong><br>如果随机变量不是离散型的，分布律就无法描述其取值规律了，因此引入分布函数，分布函数对所有类型的随机变量都适用。<br><strong>定义：</strong>随机变量X，对任意实数x，称函数\(F(x)=P(X\le x)\)为X的概率分布函数，简称分布函数。<br><strong>几何意义：</strong>表示X落到\((-\infty , x)\)区间上的概率。<br><img src="\images\概率论与数理统计\分布函数.png" width="400" height="60" align="center"><br><strong>如何表示落到任意区间的概率：</strong><br>$$ \begin{align}<br>P(a&lt;X\le b) &amp;=P(X\le b)-P(X\le a) \\<br>&amp;=F(b)-F(a)<br>\end{align}<br>$$</p>
+</li>
+<li><p><strong>概率密度</strong><br>对于随机变量\(X\)的分布函数\(F(X)\)，若存在非负函数\(f(x)\)，使对于任意实数\(x\)有：<br>$$F(x)=\int_{-\infty}^x f(t)dt$$<br>则称\(X\)为<strong>连续型随机变量</strong>，其中\(f(x)\)称为\(X\)的概率密度函数，简称<strong>概率密度</strong>。</p>
+</li>
+<li><p><strong>概率密度的性质</strong><br><strong>性质1：</strong>\(f(x)\ge 0\)<br><strong>性质2：</strong>\(\int_{-\infty}^{+\infty} f(x)dx=F(+\infty)=1 \)<br><strong>性质3：</strong>概率密度函数的面积值表示概率（分布函数是y值表示概率）<br>$$P(x_1 &lt; X\le x_2)=\int_{x_1}^{x_2} f(t)dt$$<br><img src="\images\概率论与数理统计\概率密度1.png" width="220" height="140" align="center"><br>因此当\(x_1,x_2\)重合的时候，面积为0，概率也为0，因此连续型随机变量中任意<strong>单点概率</strong>都为0，但并非是不可能事件，即不可能事件\(\Rightarrow\)概率为0，概率为0\(\not\Rightarrow\)不可能事件。<br><strong>性质4：</strong>若\(f(x)\)在点\(x\)连续，则有\(f(x)=F’(x)\)。<br>$$\begin{align}<br>&amp;f(x)=F’(x)=\lim_{\Delta x \rightarrow 0} \frac {F(x+\Delta x)-F(x)} {\Delta x}=\lim_{\Delta x\rightarrow 0} \frac {P(x&lt;X\le x+\Delta x)} {\Delta x}&amp;\\<br>\\<br>&amp;P(x&lt;X\le x+\Delta x)\approx f(x)\cdot \Delta x<br>\end{align}$$<br>表明\(X\)落在点\(x\)邻域附近的概率近似等于\(f(x)\cdot \Delta x\)</p>
+</li>
+<li><p><strong>对性质4的说明：</strong>下图是某概率密度函数<br><img src="\images\概率论与数理统计\概率密度2.png" width="250" height="120" align="center"><br>图中\(f(x_2)&lt;f(x_1)\)，但这并不表明\(x_1\)点的概率比\(x_2\)点的概率大(单点概率都为0)，其表明\(f(x_2)\cdot \Delta x&lt;f(x_1)\cdot \Delta x\)，即\(X\)落在\(x_1\)附近的概率比落在\(x_2\)附近的概率大。同理，在此图中，\(X\)落在\(0\)附近的概率是最大的。</p>
+</li>
+<li><p><strong>均匀分布(Uniform)</strong><br>若\(X\)的概率密度函数为<br>$$f(x)=<br>\left\{<br>  \begin{align}<br>  &amp;\frac {1} {b-a},&amp;x\in (a,b)\\<br>  &amp;0,&amp;其他<br>  \end{align}<br>\right.<br>$$<br>就称\(X\)服从\((a,b)\)上的均匀分布，记为\(X\sim U(a,b)\)。<br>概率密度函数图如下：<br><img src="\images\概率论与数理统计\均匀分布.png" width="280" height="140" align="center"><br><strong>注1：</strong>均匀分布的直观理解就是“均匀”的，具有等可能性，即对于任意的\(a&lt;k&lt;k+l&lt;b\)，有<br>$$P(k&lt; X&lt; k+l)=\int_{k}^{k+l} \frac {1} {b-a}dt=\frac {l} {b-a} $$<br>\(X\)落入\((a,b)\)中任意子区间上的概率，只与区间<strong>长度</strong>有关，与区间位置无关。<br><strong>注2：</strong>均匀分布的分布函数为：<br>$$F(x)=<br>\left\{<br>  \begin{align}<br>  &amp;0, &amp;x&lt; a;\\<br>  &amp;\frac {x-a} {b-a}, &amp;a\le x&lt; b;\\<br>  &amp;1, &amp;x\ge b.<br>  \end{align}<br>\right.<br>$$<br>图像如下所示：<br><img src="\images\概率论与数理统计\均匀分布2.png" width="217" height="134" align="center"></p>
+</li>
+<li><p><strong>指数分布</strong></p>
+</li>
+<li><p><strong>高斯分布</strong></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/06/25/概率论与数理统计笔记/" data-id="cjo6b5dg3000s4sqxjhzhprge" class="article-share-link" data-share="baidu" data-title="概率论与数理统计笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/06/25/概率论与数理统计笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Network/计算机网络1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/Network/计算机网络1/" class="article-date">
+  <time datetime="2018-05-28T07:14:00.000Z" itemprop="datePublished">2018-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/Network/计算机网络1/">计算机网络笔记（第一部分）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script><br>本篇笔记主要包括概述、物理层和数据链路层这三章的内容。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><strong>三类网络</strong><br>电信网络：向用户提供电话、电报、传真等服务；<br>有限电视网络：向用户传送各种电视节目；<br>计算机网络：使用户可以在计算机之间传数据，由若干<strong>结点(node)</strong>和连接这些结点的<strong>链路(link)</strong>组成。<br>注：三类网络中起到核心作用是计算机网络，且有相互融合的趋势，即所谓的“三网融合”的概念。</li>
+</ul>
+<h3 id="互联网基本概念"><a href="#互联网基本概念" class="headerlink" title="互联网基本概念"></a>互联网基本概念</h3><h4 id="Internet的含义"><a href="#Internet的含义" class="headerlink" title="Internet的含义"></a>Internet的含义</h4><p>Internet指当前全球最大的、由众多网络相互连接而成的特定计算机网络，采用TCP/IP协议族作为通信规则，前身是美国的ARPANET。我们生活中的“上网”，即是指将某个电子设备连接到Internet。而关于Internet的译名，有以下两种：<br><strong>因特网：</strong>这是全国科学技术名词审定委员会推荐的译名，虽然准确，但未被广泛使用；<br><strong>互联网：</strong>使用最广泛的Internet译名，也更能体现出Internet的主要特征（连通性），因此《计算机网络》一书第七版之后都采用了这个译名，本笔记也是采用这种译名。<br>注1：Internet是计算机网络的代表，但并不等于计算机网络(还有很多其他类型的网络)。<br>注2：Internet相当于是“网络的网络”，其将全球众多的计算机网络相互连接起来。<br>注3：小写的internet，指“互连网”，任意将若干计算机网络连接起来，可以通信就行；而大写的Internet是专有名词，特指全球最大的那个“互联网”。</p>
+<h4 id="互联网的架构"><a href="#互联网的架构" class="headerlink" title="互联网的架构"></a>互联网的架构</h4><p>当前互联网是<strong>多层次ISP</strong>的架构，ISP(Internet Service Provider)为互联网服务提供商，负责建造通信线路，从互联网管理机构申请IP地址并分配给用户，分为主干ISP、地区ISP和本地ISP（移动、联通、电信即国内三大主干ISP）。示意图如下：<br><img src="/images/计算机网络/ISP架构.png" width="500" height="250" alt="多层次ISP架构示意图" align="center"><br><strong>IXP：</strong>为了提升网络传输速率，出现了互联网交换点IXP(Internet eXchange Point)，使用数据链路层的网络交换机来实现。其主要作用是允许两个网络直接相连传输数据，而无需再通过ISP转发（如上图两个地区ISP之间的IXP），这样可使得互联网的数据流量分布更合理，减少传输时延。</p>
+<h4 id="互联网的组成"><a href="#互联网的组成" class="headerlink" title="互联网的组成"></a>互联网的组成</h4><p>虽然互联网的拓扑结构非常复杂，但总体可以分为两大块：<br><strong>边缘部分：</strong>由所有连接在互联网上的主机(host)组成，这部分是用户可以直接接触到的，用来进行数据传输。<br><strong>核心部分：</strong>由大量网络和连接这些网络的路由器组成，这部分是为边缘部分提供服务的。<br><strong>边缘部分主机的通信方式：</strong>可分为两大类：客户-服务器方式(C/S方式)和点对点方式（P2P方式）。<br>C/S方式中，客户端是服务请求方，主动向服务器发起通信，因此必须知道服务端的地址；而服务端是服务提供方，被动地等待各地的客户端的请求，因此服务端无需知道客户端的地址。<br>P2P方式中，只要两台主机都运行了对等连接软件（P2P软件），它们就可以平等地进行通信，没有客户端和服务端的区分，也可理解为每台主机既是客户端也是服务端。</p>
+<h4 id="互联网核心部分的数据交换方式"><a href="#互联网核心部分的数据交换方式" class="headerlink" title="互联网核心部分的数据交换方式"></a>互联网核心部分的数据交换方式</h4><p>互联网核心部分主要作用是交换、传输数据，有三种交换方式。<br><strong>电路交换：</strong>电话的连接方式，两台电话要进行通信，必须经过“建立连接（占用通信资源）-&gt;通话（一直占用通信资源）-&gt;释放连接（归还通信资源）”三个阶段，两台电话间会建立一条专用的物理线路，通信时会一直占用，通信线路的利用较低。<br><strong>报文交换：</strong>运用了存储转发的原理，整个数据报文先传送到相邻结点，全部存储下来后查找转发表，再转发到下一个结点。<br><strong>分组交换：</strong>同样运用了存储转发(stroe and forward)的原理，将数据报文分成多个小的分组，每个分组在首部加上必要的控制信息，单独地在互联网中进行传输。当路由器收到一个分组后，先暂时存储一下，检查其首部，查找转发表，按照首部中的目的地址，找到合适的接口转发出去(路由算法得出)，把分组交给下一个路由器，分组就这样一步步地到达目的地。<br><img src="/images/计算机网络/数据交换方式.png" width="500" height="350" alt="三种数据交换方式" align="center"></p>
+<ul>
+<li><strong>三种交换方式的比较：</strong><br>1、对于电路交换，是整个比特流连续地从原点直达终点，因此需要建立专用传输线路，如果要传送大量连续数据（传送时间远大于连接建立时间），则电路交换的效率较高；<br>2、对于报文交换和分组交换，不需要预先分配传输资源，因此非常适合传输计算机网络这种<strong>突发性</strong>的数据。另外报文传输是直接传输整个报文，因此时延比分组交换大，且如果报文中出了一点错，整个报文都要重传，开销会很大。<br>3、分组交换的优点：高效，对通信线路是<strong>逐段</strong>占用的，可以充分利用通信资源；灵活，每一个分组都可选择最适合的路由线路进行转发；可靠，当链路中某一结点出现故障，路由算法会自动选择合适的线路。<br>4、分组交换的缺点：使用存储转发(stroe and forward)的方式，分组在各个路由结点会有排队问题，产生一定的时延；分组必须携带的首部会产生一定的开销。</li>
+</ul>
+<h3 id="计算机网络分类"><a href="#计算机网络分类" class="headerlink" title="计算机网络分类"></a>计算机网络分类</h3><p><strong>按网络的作用范围分：</strong><br>    广域网WAN(Wide Area Network)：作用范围为几十到几千公里；<br>    城域网MAN(Metropolitan Area Networl)：城域网的作用范围一般是一个城市；<br>    局域网LAN(Local Area Network)：局域网在地理上局限在较小的范围内(1km左右)；<br>    个人区域网PAN(Personal Area Network)：在个人工作的地方把个人使用的电子设备（如笔记本电脑）用无线技术连接起来，如蓝牙技术。<br><strong>按网络使用者分：</strong><br>    分为公用网(public network)和专用网(private network)。<br><strong>用来把用户加入到互联网的网络：</strong><br>    这种网络叫接入网AN(Access Network)，处于从用户到互联网中第一个路由器之间的一种网络。在互联网初期，用户用电话线拨号接入互联网，速率很低，目前使用了接入网技术来连接，速率了有很大的提升。</p>
+<h3 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h3><p><strong>速率：</strong>指比特率(bit/s)，并非Byte，而且多指<strong>额定速率</strong>。<br><strong>带宽：</strong>传统的带宽指的是频带宽度，单位是HZ。而在计算机网络中，带宽指网络的<strong>最高发送速率</strong>。<br><strong>吞吐量：</strong>单位时间内通过网络的实际数据量，指<strong>实际速率</strong>。<br>注：在存储领域，1k=1024；而在通信领域，1k=1000。<br><strong>往返时间：</strong>往返时间RTT(Round-Trip Time)表示双向交互一次所需要的时间。<br><strong>信道利用率：</strong>指信道有多长时间是被利用的（有数据通过），空闲的信道利用率为0。注：信道利用率并非越大越好，利用率增大，时延也会增加。</p>
+<h4 id="网络时延"><a href="#网络时延" class="headerlink" title="网络时延"></a>网络时延</h4><p>时延是指数据从网络的一端传送到另一端所花费的时间，网络时延由以下几部分组成：<br><strong>发送时延：</strong>主机或路由器发送数据帧所花费的时间，发生在网卡中。$$发送时延=\frac {数据帧长度(bit)} {发送速率(bit/s)}$$<br><strong>传播时延：</strong>电磁波在信道中传播所花费的时间，发生在信道中。$$传播时延=\frac {信道长度(m)} {电磁波在信道中的传播速率(m/s)}$$<br>信号传播速率与信道有很大关系，如光纤、铜线等等。<br><strong>处理时延：</strong>在交换结点分组转发所需的时间，如分析首部、进行差错检验等，没有具体的计算公式。<br><strong>排队时延：</strong>分组在路由器的缓存队列中排队等待的时间，同样没有具体的计算公式。<br>因此网络总时延就是以上四种时延之和：$$总时延=发送时延+传播时延+处理时延+排队时延$$<br>注：高速网络链路，提高的是发送速率(带宽)，并不能提高传输速率。如我们所说的光纤传输速率高，是指可以用很高的速率向光纤信道发送数据，而光纤信道的传播速率实际上比铜线还要低。<br><img src="/images/计算机网络/时延.png" width="500" height="200" alt="四种时延产生的地方不一样" align="center"><br><strong>时延带宽积：</strong>时延带宽积=传播时延 X 带宽，如时延带宽积为\(2\times 10^5bit\)，相当于当发送的第一个比特到达终点时，发送端已经发送了20万个比特，而这20万个比特都未还在传输过程中，因此时延带宽积也表示从发送端发出的但尚未到达接收端的比特数。</p>
+<h3 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h3><p>无论哪种网络体系结构，都采用了“分层”的思想，目前主要有两种体系：OSI和TCP/IP，OSI非常权威，但因为过于复杂，更多被当作一种理论参考，工程上未广泛应用；运用最广泛的是TCP/IP协议，也是事实上的“国际标准”。OSI协议为7层，TCP/IP协议有4层，谢书中采用的是两者的结合版，即一种5层的网络结构。<br><img src="/images/计算机网络/网络体系结构.png" width="500" height="250" alt="三种网络体系结构" align="center"></p>
+<ul>
+<li><strong>五层协议结构</strong><br><strong>应用层：</strong>应用层协议定义的是<strong>进程</strong>间的交互规则，因为主机间通信的本质是主机上进程的通信（进程即为正在运行的程序）。具体的应用层协议有DNS、HTTP等。应用层数据单位：<strong>报文</strong>(message)。<br><strong>运输层：</strong>运输层负责为主机进程间的通信提供通用的数据传输服务，目前主要有两种协议：传输控制协议TCP和用户数据报协议UDP，TCP提供面向连接、可靠的数据传输服务，UDP提供无连接的、尽最大努力的数据传输服务。运输层数据单位：TCP为<strong>报文段</strong>(segment)，UDP为<strong>用户数据报</strong>。<br><strong>网络层：</strong>网络层负责分组交换网的数据传输服务，使用IP协议。与运输层的不同在于：运输层针对互联网的边缘部分，网络层针对互联网的核心部分，路由器在转发时最高就涉及到网络层，不涉及运输层和应用层。网络层数据单位：<strong>IP数据报</strong>（就是之前所说的分组）。<br><strong>数据链路层：</strong>数据链路层负责分组交换网中相邻结点的数据传输，与网络层的不同在于：网络层是源结点到目的结点(中间可能有多个结点)，而数据链路层是相邻结点。数据链路层数据单位：<strong>帧</strong>(framing)。<br><strong>物理层：</strong>负责物理硬件层面的数据传输，物理层数据单位：<strong>比特</strong>(bit)。<br>注：数据从上层到下层需要加首部，加上相关控制信息。另外，从网络层-&gt;链路层还要加尾部（做差错校验的工作）。<br><img src="/images/计算机网络/五层体系结构.png" width="350" height="200" alt="数据在各层的变化" align="center"></li>
+</ul>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><ul>
+<li><p><strong>物理层的主要任务</strong><br>物理层研究的是如何在各种传输媒体上传输比特流，如各个物理接口的尺寸、接口电缆上电压的范围、各种编码方式等，而不是具体的传输媒体（这属于通信领域的范畴）。</p>
+</li>
+<li><p><strong>物理层传输媒介</strong><br>导引型(有线)：双绞线、同轴电缆、光纤<br>非导引型(无线)：自由空间</p>
+</li>
+</ul>
+<h3 id="信道"><a href="#信道" class="headerlink" title="信道"></a>信道</h3><ul>
+<li><strong>信道的基本概念</strong><br>信道指向某一个方向传送信息的媒体，是<strong>单向</strong>的，因此一条通信线路往往包含一条发送信道和一条接收信道。<br>单工通信（单向通信）：只能有一个方向通信，如收音机。<br>半双工通信（双向交替通信）：通信双方都可以发送信息，但不能同时发送，如对讲机。<br>全双工通信（双向同时通信）：通信双方可以同时发送/接收信息。<br>注：单工通信只需一条信道，半双工和全双工通信需要两条信道。</li>
+</ul>
+<h4 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h4><p>为什么要进行调制：来自信源的信号不适合进行长距离传输。<br><strong>基带调制：</strong>数字信号-&gt;另一种数字信号（没有变为模拟信号），也称为编码。具体有如下几种：<br>不归零编码：正电平代表1，负电平代表0。<br>归零编码：正脉冲代表1，负脉冲代表0。<br>曼彻斯特编码：位周期中心向上跳变代表0，位周期中心向下跳变代表1。<br>差分曼彻斯特编码：位开始边界有跳变代表0，位开始边界没有跳变代表1。<br><strong>带通调制：</strong>数字信号-&gt;模拟信号（加到载波上）。具体有如下几种：<br>调幅(AM)：载波的振幅随基带数字信号变化。<br>调频(FM)：载波的频率随基带数字信号变化。<br>调相(PM)：载波的初始相位随基带数字信号变化。</p>
+<h4 id="信道的极限传输速率"><a href="#信道的极限传输速率" class="headerlink" title="信道的极限传输速率"></a>信道的极限传输速率</h4><p>如何提高数据在信道上的传输速率是一个被广泛关注的问题，大致可从以下几个方面来考虑：<br><strong>信道能通过的频率范围：</strong>由奈氏准则可知，在任何信道中，码元传输的速率都是有上限的，传输速率超过此上限，就会出现严重的码间串扰问题，因此可通过拓宽频带，来提高码元传输速率的上限。奈氏准则公式：$$极限波特率(baud/s)=2W\times log_2n$$<br>\(W\)为频带宽度，\(n\)为一个码元可表示几种值，\(log_2n\)即为一个码元携带的信息量。注意区分码元和比特的区别，1码元可以由多个bit位表示。<br><strong>信噪比：</strong>$$信噪比(dB)=10\times log_{10}(S/N)$$<br>\(S\)为信号的平均功率，\(N\)为噪声的平均功率。<br><strong>香农公式：</strong>信道的极限信息传输速率C为：$$C=W\times log_2(1+S/N)$$<br>C为比特率bit/s，W为信道的带宽(Hz)。由公式可知，信道带宽越大，信噪比越高，信息的极限传输速率就越高。<br><strong>比特率和波特率换算：</strong>$$比特率(bit/s)=波特率(baud/s)\times 码元信息量$$ $$码元信息量=log_2n$$<br>\(n\)为一个码元可表示几种值。奈氏准则的具体表示？奈氏准则和香农公式的换算？</p>
+<h4 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h4><p>频分复用(FDM)：在同一时间占用不同的频带资源。<br>时分复用(TDM)：在不同时间占用相同的频带资源，类似时间片轮转。<br>统计时分复用(STDM)：与TDM的不同在于，其并非固定顺序分配时间，而是按需动态分配。<br>波分复用(WDM)：光的频分复用，用一根光纤同时传输多个光载波信号。<br>码分多址(CDMA)：具体介绍如下。</p>
+<h4 id="码分多址-CDMA"><a href="#码分多址-CDMA" class="headerlink" title="码分多址(CDMA)"></a>码分多址(CDMA)</h4><p>各个用户使用经过挑选的不同码型，相互之间不会造成干扰，因此用户可在同一时间使用同样的频带进行通信。具体原理如下：<br><strong>码片：</strong>在CDMA中，每个用户被分配一个m位的码片序列(由+1和-1组成)，用户若要发送比特1，则直接发送这个m位码片序列；若要发送0，则发送该码片序列的反码。如码片序列为(-1-1-1+1+1-1+1+1)，则1对应的就是(-1-1-1+1+1-1+1+1)，0对应的就是(+1+1+1-1-1+1-1-1)，这个m位序列才是最终的发送结果。<br><strong>码片正交：</strong>码片的一个重要特点是，各个用户所分配的码片是正交的，如S代表某用户的码片，T代表其他用户的码片，两个码片正交，则有：<br>$$S\cdot T = \frac {1} {m} \sum_{i=1}^m S_iT_i=0$$<br>即两码片按位相乘最后结果为0。<br><strong>信号处理：</strong>不同用户码片合到一起发出去，若想从中分离出用户X的信号，则首先拿到X的码片，和收到的信号做内积运算(按位乘法)，结果为1：比特为1，结果为-1：比特为0，结果为0：其他用户的信号。按照这个方法即可把其他用户的信号剔除掉。</p>
+<h3 id="宽带接入技术"><a href="#宽带接入技术" class="headerlink" title="宽带接入技术"></a>宽带接入技术</h3><p>用户要连接到互联网，必须先连接到ISP，以便获得上网所需的IP地址，因此即出现了宽带接入技术。我国之前多采用电话线+调制解调器(Modern，猫)的方式拨号上网，因速度有限而被逐渐淘汰，目前主流宽带接入方式的有三种。<br><strong>ADSL技术：</strong>ADSL(Asymmetric Digital Subscriber Line)，非对称数字用户线路，可直接利用原有的电话线路，无需从新布线，用户使用专门的Modern即可上网，且为电信专线，网速较稳定。<br><strong>光纤同轴混合网(HFC网)：</strong>基于有线电视网开发的宽带接入网，在传送电视节目的同时提供宽带服务。将原先有线电视网中的同轴电缆主干部分改换为光纤，一直延申到相应光纤结点后，光信号转换为电信号，再通过同轴电缆将信号传送到用户家庭。要使现有的模拟计算机能够接收数字电视信号，需要使用一个称为<strong>机顶盒(set-top box)</strong>的设备，同时机顶盒大多内嵌了一个叫电缆调制解调器的设备，通过此设备用户即可接入宽带。<br><strong>FTTx技术：</strong>最理想的宽带接入方式是<strong>光纤到户</strong>FTTH(Fiber To The Home)，将光纤一直铺设到用户家庭，只有在光纤进入家门后，才把光信号转换为电信号，这样做就可使用户获得最高的上网速率。但限于价格和用户需求等问题，光纤到户目前还未被广泛使用，但其衍生出了很多宽带光纤接入方式，称为<strong>FTTx</strong>，即Fiber To The…，x代表不同的光纤接入地点，即光电转换的地方。目前大中城市较普及的是光纤接入到楼（FTTB）或小区（FTTZ），再通过网线接入用户家，从而为整幢楼或小区提供共享带宽。</p>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><ul>
+<li><p><strong>数据链路层两种信道类型</strong><br>点对点信道：点对点通信方式（一对一），最常用的协议是PPP协议，多用于住宅主机的拨号上网。<br>广播信道：广播通信方式（一对多），因为主机数较多，必须用专用的共享信道协议(CSMA/CD)来协调主机间的数据发送，多用于<strong>局域网</strong>。</p>
+</li>
+<li><p><strong>链路和数据链路</strong><br>链路：无源的点到点的物理线路段，中间没有任何其他的交换结点。<br>数据链路：物理链路+通信协议，即硬件+软件。</p>
+</li>
+</ul>
+<h3 id="数据链路层的三个基本问题"><a href="#数据链路层的三个基本问题" class="headerlink" title="数据链路层的三个基本问题"></a>数据链路层的三个基本问题</h3><ol>
+<li>封装成帧(framing)</li>
+<li>透明传输</li>
+<li>差错检测</li>
+</ol>
+<h4 id="封装成帧"><a href="#封装成帧" class="headerlink" title="封装成帧"></a>封装成帧</h4><p>概念：在一段数据的前后分别添加首部和尾部，就构成了一个帧。首部和尾部的作用是进行<strong>帧定界</strong>，即确定帧的开始和结束。<br>具体实现：用控制字符完成帧定界，将控制字符SOH(Start Of Header)放在帧的首部表示帧的开始，将控制字符EOT(End Of Transmission)表示帧的结束。<br><img src="/images/计算机网络/帧首部和帧尾部.png" width="470" height="100" alt="帧首部和帧尾部" align="center"></p>
+<h4 id="透明传输"><a href="#透明传输" class="headerlink" title="透明传输"></a>透明传输</h4><p>“封装成帧”的问题：如果数据中的某个字节的二进制代码恰好和SOH或EOT一样，帧就会错误地开始或结束。因此要对帧的数据部分出现的控制字符进行处理。<br>处理方法：字符填充(也称字节填充)，在帧数据部分的SOH/EOT前插入一个转义字符，这样接收时就不会把其当作控制字符来处理（防止帧提前结束掉），最后在数据送向网络层时删去转义字符即可。<br>注：如果转义字符也出现在数据当中，就在转义字符前也加一个转义字符。<br><img src="/images/计算机网络/字符填充.png" width="470" height="100" align="center"></p>
+<h4 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h4><p>问题背景：数据传输中可能会产生比特差错：1变成0或0变成1，因此要采用差错检测措施。<br><strong>循环冗余码CRC：</strong>重点！具体算法见《计算机网络》P74<br>注1：使用循环冗余码只能做到<strong>无比特差错</strong>，但还做不到可靠传输（CRC只能做到接受的帧都没有错误）。<br>注2：可靠传输包括两部分：无比特差错 &amp; 无传输差错。传输差错指帧丢失、帧重复和帧失序，要做到无传输差错，则必须要有确认和重传机制（由上层协议完成）。</p>
+<h3 id="MAC层"><a href="#MAC层" class="headerlink" title="MAC层"></a>MAC层</h3><p>为了制订一个通用的协议模型，IEEE802委员会将数据链路层又拆分成了两个子层：<br>介质访问控制子层(MAC)：MAC层，负责与传输介质相关的部分，将相关操作封装好共LLC透明调用。<br>逻辑链路控制子层(LLC)：LLC层，负责逻辑控制，与传输介质无关，不管采用何种协议对LLC层都是<strong>透明</strong>的。</p>
+<h4 id="MAC层地址"><a href="#MAC层地址" class="headerlink" title="MAC层地址"></a>MAC层地址</h4><p>在局域网中，每个网络适配器（网卡）都会有一个唯一的硬件地址，称为MAC地址。<br>MAC地址位数是48位，高24位为IEEE向网卡厂商分配，低24位为厂商自行指派。<br>在局域网外部传输，使用IP地址查找主机；进入局域网后，即是查找MAC地址。<br><img src="/images/计算机网络/IP地址和MAC地址关系.png" width="330" height="70" alt="IP地址和MAC地址关系" align="center"></p>
+<h4 id="MAC帧格式"><a href="#MAC帧格式" class="headerlink" title="MAC帧格式"></a>MAC帧格式</h4><p><img src="/images/计算机网络/MAC帧格式.png" width="470" height="100" alt="MAC帧格式" align="center"><br>MAC帧数据部分长度范围：46-1500。<br>整个MAC帧长度范围：64-1518，首部和尾部总共18字节。<br><strong>最大传送单元MTU：</strong>指MAC帧中数据部分的最大长度，为1500。</p>
+<h3 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h3><ul>
+<li><p><strong>局域网和以太网的区别</strong><br>以太网是一种局域网，而局域网却不一定是以太网，只是由于目前大多数的局域网是以太网，所以一般说局域网，大家都默认为以太网。<br>所谓以太网，是一种<strong>总线型局域网</strong>，局域网的拓扑结构有很多实现方式，还有有星型、环形等，但目前应用最广泛的局域网标准还是以太网。</p>
+</li>
+<li><p><strong>以太网的通信特点</strong></p>
+<ol>
+<li>和其他种类局域网中的传播方式相同，采用广播的方式。</li>
+<li>无连接的工作方式，也没有确认和重传机制，因为局域网的通信质量较好，发生错误的几率较小。</li>
+<li>收到有差错的数据帧就丢弃，但不做纠错，纠错工作交给上层协议。因此以太网提供的服务是不可靠的交付。</li>
+<li>发送的数据使用的是曼彻斯特编码，位周期中心向上跳变代表0，位周期中心向下跳变代表1 </li>
+</ol>
+</li>
+</ul>
+<h4 id="CSMA-CD"><a href="#CSMA-CD" class="headerlink" title="CSMA/CD"></a>CSMA/CD</h4><p>定义：载波监听多点接入/碰撞检测(Carrier Sense Multiple Access with Collision Detection) ，是以太网上的一种通信协议。<br>多点接入：一根总线上解入多个计算机。<br>载波监听：指发送数据之前要先检测总线上是否有其他计算机在发送数据，如果有，则暂时不要发送数据，以免发生碰撞。<br>碰撞检测：检测信道上数据是否发生了碰撞。若发生碰撞，信号就会产生严重的失真，因此一旦检测出碰撞，计算机就会立即停止发送数据，等待一段随机时间后再重新发送。<br>而且也因为信号会发生碰撞，所以以太网只能进行<strong>半双工</strong>通信，而不能全双工。</p>
+<h4 id="CSMA-CD中的碰撞检测"><a href="#CSMA-CD中的碰撞检测" class="headerlink" title="CSMA/CD中的碰撞检测"></a>CSMA/CD中的碰撞检测</h4><p>因为电磁波在信道上传播的速率是有限的，因此当监听到总线是空闲的时，总线可能并非真正的空闲（对方的信号正在信道上传输，还没传过来），因此不仅是在发数据前要检测碰撞，在发送数据的期间也要进行检测。<br><img src="/images/计算机网络/碰撞检测过程.png" width="470" height="100" alt="碰撞检测的过程" align="center"><br>由图可知，先发送数据的计算机，在发送后至多经过\(2\tau\)时间（两倍的端到端往返时延），就可知道发送的数据帧是否遭受了碰撞。<br>所以\(2\tau\)就称为争用期，只有经过争用期这段时间还没有检测到碰撞，才能肯定此次发送不会发生碰撞。<br>以太网取\(51.2\mu s\)为争用期长度，对于10Mbit/s以太网，在争用期内可发送 512 bit，即64字节。因此若发生冲突，一定是在发送的前64字节之内。<br>所以以太网规定<strong>最短有效帧长</strong>为64字节，凡长度小于64字节的帧都是由于冲突而异常中止的无效帧。</p>
+<h4 id="二进制指数退避算法"><a href="#二进制指数退避算法" class="headerlink" title="二进制指数退避算法"></a>二进制指数退避算法</h4><p>发生碰撞的站在停止发送数据后，要推迟（退避）一个随机时间才能再发送数据。<br>基本的退避时间为\(2\tau\)，之后从集合\([0, 1, … , (2^k-1)]\)中随机取一个数，记为r，重传所需的时延就是r倍的基本退避时间。<br>参数\(k\)的计算：\(k=Min[重传次数, 10]\)。<br>当重传达16次仍不能成功时即丢弃该帧，并向上层报告。 </p>
+<ul>
+<li><strong>强化碰撞</strong><br>检测到碰撞后，立即停止发送数据，之后继续发送若干比特的人为干扰信号，以便让所有用户都知道现在已经发生了碰撞。</li>
+</ul>
+<h4 id="扩展以太网"><a href="#扩展以太网" class="headerlink" title="扩展以太网"></a>扩展以太网</h4><p>集线器：用集线器将多个碰撞域组合成一个碰撞域。<br>网桥：用网桥将各网段隔离为单独的碰撞域，网桥工作在数据链路层，其根据MAC地址对收到的帧进行转发。<br>以太网交换机：相当于多接口网桥。</p>
+<ul>
+<li><strong>连接不同网络的中间设备</strong><br>物理层：集线器Hub，会扩大碰撞域，而且没法抑制广播风暴。<br>数据链路层：交换机。<br>网络层：路由器，由于历史的原因，许多有关 TCP/IP 的文献将网络层使用的路由器称为网关。<br>交换机和路由器的不同：交换机连接的是主机，路由器连接的是网络。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络1/" data-id="cjo6b5dgy001q4sqx4i4enmh2" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第一部分）">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/05/28/Network/计算机网络1/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Network/">Network</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Network/计算机网络2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/28/Network/计算机网络2/" class="article-date">
@@ -358,7 +632,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络2/" data-id="cjnzzxbpv001zt3qxneip5pqv" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第二部分）">Share</a>
+        <a data-url="http://yoursite.com/2018/05/28/Network/计算机网络2/" data-id="cjo6b5dh1001w4sqxk8295dz0" class="article-share-link" data-share="baidu" data-title="计算机网络笔记（第二部分）">Share</a>
       
 
       
@@ -479,7 +753,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/05/26/Network/TCPIP/" data-id="cjnzzxbpt001ut3qxnj9tlm6l" class="article-share-link" data-share="baidu" data-title="TCPIP笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/05/26/Network/TCPIP/" data-id="cjo6b5dgx001n4sqxlo934j15" class="article-share-link" data-share="baidu" data-title="TCPIP笔记">Share</a>
       
 
       
@@ -551,7 +825,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/05/03/FaceLivenessDetection/" data-id="cjnzzxboh0004t3qxpqgeuzk1" class="article-share-link" data-share="baidu" data-title="活体人脸识别系统介绍">Share</a>
+        <a data-url="http://yoursite.com/2018/05/03/FaceLivenessDetection/" data-id="cjo6b5dfn00034sqx6g6va0gi" class="article-share-link" data-share="baidu" data-title="活体人脸识别系统介绍">Share</a>
       
 
       
@@ -732,7 +1006,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/" data-id="cjnzzxbp80019t3qxemfc4tmi" class="article-share-link" data-share="baidu" data-title="MOOC_算法课程笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/" data-id="cjo6b5dgn00164sqx47p07eqt" class="article-share-link" data-share="baidu" data-title="MOOC_算法课程笔记">Share</a>
       
 
       
@@ -852,7 +1126,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/03/18/Python/Python3笔记/" data-id="cjnzzxbq2002ft3qx7yhjiwa7" class="article-share-link" data-share="baidu" data-title="Python3笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/03/18/Python/Python3笔记/" data-id="cjo6b5dha002e4sqx2mwfsk7v" class="article-share-link" data-share="baidu" data-title="Python3笔记">Share</a>
       
 
       
@@ -1009,7 +1283,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/02/13/JSP/" data-id="cjnzzxboj0005t3qx09fhn1td" class="article-share-link" data-share="baidu" data-title="JSP笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/02/13/JSP/" data-id="cjo6b5dfo00044sqxj74uuodh" class="article-share-link" data-share="baidu" data-title="JSP笔记">Share</a>
       
 
       
@@ -1129,7 +1403,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/27/Swift/" data-id="cjnzzxbot000kt3qxybnpit21" class="article-share-link" data-share="baidu" data-title="Swift笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/27/Swift/" data-id="cjo6b5dfy000l4sqxjvxxkffb" class="article-share-link" data-share="baidu" data-title="Swift笔记">Share</a>
       
 
       
@@ -1369,7 +1643,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/26/Csharp/" data-id="cjnzzxbo90000t3qxd1jccfm9" class="article-share-link" data-share="baidu" data-title="C#笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/26/Csharp/" data-id="cjo6b5dff00004sqxb01ztxn8" class="article-share-link" data-share="baidu" data-title="C#笔记">Share</a>
       
 
       
@@ -1378,143 +1652,6 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-Sharp/">C_Sharp</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图灵论文阅读笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/22/图灵论文阅读笔记/" class="article-date">
-  <time datetime="2018-01-22T08:22:00.000Z" itemprop="datePublished">2018-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/22/图灵论文阅读笔记/">Computing machinery and Intelligence 阅读笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>图灵在1950年发表的这篇《计算机器与智能》的论文，被公认是人工智能领域的开山之作，图灵以其超前的思维、非凡的想象力和严密的逻辑，对“机器能否思考”这个问题进行了深入的阐释，向我们展现了机器的另一种可能。</p>
-<p>在论文的前两部分“模仿游戏”和“对新问题的评析”中，图灵提出用一种模仿游戏来替代“机器能否思考”这个问题，即在隔开的情况下，测试者向一个人和一台机器，通过一些装置来随意提问，若超过30%的测试者不能区分出人和机器，即认为机器具有了智能。图灵假定机器的最优策略是努力提供和人一样的答案，从而成功地将“机器能否思考”这个抽象、模糊的问题简化为了一个具体的测试，这是非常合理的。</p>
-<p>在论文的第三部分“游戏中的机器”，图灵针对参与游戏的机器进行了分析，他认为这个问题要研究的是“是否存在一台想象中的机器能通过游戏”，而非“是否所有的机器都能通过游戏”，因此只需给出一种可能性即可，之后图灵即针对这种可能性是否存在进行了论述。</p>
-<p>接下来，在论文的“数字计算机”和“数字计算机的通用性”这两部分，图灵分析了数字计算机的基本组成和功能，说明了通过编程，数字计算机就可以执行复杂的操作；而且数字计算机具有通用性，并不会因为问题的不同而需要设计不同的数字计算机。因此图灵便将问题再一次简化，变成了“对一个数字计算机，其拥有足够大的存储空间，足够快的计算速度，并对它进行适当的编程，其是否可以通过测试？”。</p>
-<p>之后图灵没有急于正面解答问题，而是针对了社会上的一些反对观点，如来自神学的反对、来自意识的观点、来自能力限制的观点等，一一进行了反驳，从而为下文更进一步的论证做出了铺垫。</p>
-<p>在文章的最后一部分，为解决上文“数字计算机是否能通过测试”的问题，图灵提出了机器学习的观点，即考虑到为一台数字计算机编程使其能够模仿成人的思维需要花费的大量时间，我们可以从另一个角度来解决问题，即参考教育儿童的过程，对一台机器进行“教育”，同时引入奖励和惩罚机制，使机器自身能够“学习”。这样机器经过不断地训练和学习，终会达到成人思维的水平，从而通过图灵测试，机器即具有了智能。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/22/图灵论文阅读笔记/" data-id="cjnzzxboo000dt3qxlhcl1d36" class="article-share-link" data-share="baidu" data-title="Computing machinery and Intelligence 阅读笔记">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/22/图灵论文阅读笔记/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/20/Algorithm/算法/" class="article-date">
-  <time datetime="2018-01-20T19:50:00.000Z" itemprop="datePublished">2018-01-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/20/Algorithm/算法/">算法知识点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <ul>
-<li><p>树、图的存储：链式前向星</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	Edge&#123;u,v,next,weight&#125;和head[]辅助数组。</span><br><span class="line">	head[]存Edge的序号，为以对应顶点为起点的边。</span><br><span class="line">	Edge中，u:起点，v:终点，next：以u为起点的下一条边的序号，无边返回为-1</span><br><span class="line"></span><br><span class="line">	初始化：</span><br><span class="line">	edge[i].next=head[u]</span><br><span class="line">	head[u]=i</span><br><span class="line"></span><br><span class="line">	遍历：</span><br><span class="line">	for(int i = head[n];i!=-1;i=edge[i].next)&#123;</span><br><span class="line">	//操作edge[i].v</span><br><span class="line">	&#125;</span><br><span class="line">	注：无向图edge要开2倍的大小</span><br><span class="line"></span><br><span class="line">//图的其他数据结构：邻接矩阵(二维数组)、邻接表(Vector&lt;Vector&gt;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>图的遍历：<br>DFS:递归实现，递归完要回退<br>BFS:队列优化</p>
-</li>
-<li><p>单源点最短路径：SPFA算法(队列优化，不断松弛操作)，可有负边不能负环。<br>或Dijkstra算法，不能负边or负环。一次将单源点到所有点的最小距离都生成了，<br>不断选最小点，更新未选点。</p>
-</li>
-<li><p>图的最小生成树<br>prim算法：边较少。(不断从所有已选点中选距离最短的相邻未选点)<br>Kruskal算法：边较多。（所有边中不断找最小边，判断是否在一个连通分量中）<br>判断连通分量用到路径优化后的并查集，注意更新parent[]数组一定要更新根节点。<br>关于已选集合和未选集合的实现：可用visited数组来存储状态。</p>
-</li>
-<li><p>在一些树形动态规划问题中，可能会子结点对应多个父结点，所以开Edge数组要开2倍的大小，而且在前向星便利时要除去父结点的情况。</p>
-</li>
-<li><p>动态规划要点<br>1.列状态转移方程，常分选择/不选择当前结点两种情况(用二维数组a[n][2]表示)<br>2.一定要将每种情况的值存储下来，这样才能保证效率。用二维数组存↑<br>3.程序上常常用递归或for循环实现</p>
-</li>
-<li><p>归并排序：<br>【递归】的思想对数组进行排序，包括排序和合并两个步骤。<br>先将数组分为左右两部分，分别排序，再将有序的两部分合并。<br>可用一个辅助数组temp来临时保存数据来实现原数组排序。<br>可用归并排序来求逆序数：<br>一个数组的逆序数【左半部分逆序数】+【右半部分逆序数】+【左半部分比右半部分大的数的个数（在合并左、右时计算）】</p>
-</li>
-<li><p>二叉树的操作中注意可能会出现单根的情况，会导致树深度大大增加。<br>此时考虑用二叉平衡树。<br>平衡二叉树的简化版-&gt;splay树，伸展树。</p>
-</li>
-</ul>
-<h3 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h3><ul>
-<li><p>若对循环设置一个判断的变量，要注意在每次循环前/后是否需要对变量置为初始值。防止上一次的判断结果影响这一次的判断。<br>eg：&lt;完美的代价&gt;中n为奇数条件pos的使用。</p>
-</li>
-<li><p>日期的计算：<br>计算从日期a到日期b的天数n<br><strong>最常见</strong>如果a算在内但不算b那就是n=b-a。<br>eg:算天数差/经过了多少天/隔多少天<br>如果a和b这两天也算在内就是n=b-a+1<br>如果不算a和b这两天就是n=b-a-1</p>
-</li>
-<li><p>for()循环，满足一定条件才执行段内语句，要在<strong>段内</strong>用if语句，不能将条件写到for()内，否则会变成中止条件，而不是continue条件。</p>
-</li>
-<li><p>一些实际的应用题，可用模拟的方法来求解。确定一个最小的变化单元，不断模拟。<br>eg：&lt;龟兔赛跑&gt;问题中时间一次+1s模拟</p>
-</li>
-<li><p>对于结束情形的判断，若判断各种结束情况很复杂且题目涉及总数量，可改为直接检测数量，会简化许多</p>
-</li>
-<li><p>在递归中，若表达式涉及传入递归函数的参数，要先写回传入的变量，再写递归式。防止下一次递归中改变了变量的值。</p>
-</li>
-<li><p>在进行按位操作时，输入、输出顺序和运算顺序是相反的。<br>但输入输出可都用相反顺序(即正常读入读出顺序)，最后反反得正，结果不受影响。</p>
-</li>
-<li><p>关于输出空格/空行的控制，for循环下可对循环次数进行检测(首次/末次不输出)，while循环下可设标志位检测。</p>
-</li>
-<li><p>大while中套小while，小while每次的判断条件也要保证大while的条件，保证小while的循环不会使大while“循环越界”。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/20/Algorithm/算法/" data-id="cjnzzxbp9001bt3qx4s0o13d8" class="article-share-link" data-share="baidu" data-title="算法知识点">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/20/Algorithm/算法/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
     </footer>
   </div>
@@ -1538,7 +1675,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1547,7 +1684,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 10px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -1556,7 +1693,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1568,6 +1705,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/06/cs224n/background/">基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/05/cs224n/lecture 2/">lecture 2_Word Vectors</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/02/cs224n/lecture 1/">lecture 1_Introduction</a>
           </li>
         
@@ -1577,14 +1722,6 @@
         
           <li>
             <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/">Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
           </li>
         
       </ul>
