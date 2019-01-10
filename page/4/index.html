@@ -70,6 +70,143 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-数据库SQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/数据库SQL/" class="article-date">
+  <time datetime="2018-01-20T10:26:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/数据库SQL/">数据库SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><ul>
+<li><p>sql语句不区分大小写，且在语句末尾必须输分号。</p>
+</li>
+<li><p>创建、删除用户时，用户名、密码两边要用单引号括起来。<br>当输入的值为字符串、日期时，也要用单引号括起来。（双引号也可以）</p>
+</li>
+<li><p>创建数据库：create database xxx;<br>使用数据库：use xxx;<br><a href="https://www.cnblogs.com/qzsoul/p/6919564.html" target="_blank" rel="noopener">mysql数据库相关操作</a></p>
+</li>
+<li><p><strong>数据库授权：</strong><br>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’192.168.1.102’ IDENTIFIED BY ‘1234’ WITH GRANT OPTION; </p>
+</li>
+<li><p><strong>防注入：</strong><br>要对用户直接输入的数据做一些处理再写数据库，防止注入。或者用preparedStatement语句防注入，但要注意% 的like查询注入。</p>
+</li>
+<li><p><strong>清除table的所有数据：</strong><br>truncate table xxx；</p>
+</li>
+<li><p>SQL中两种约束：列级约束(只作用于一列)、表级约束(可作用于多列)<br><strong>六种具体约束：</strong><br>  主键约束（primary key ）<br>  外键约束（foreign）<br>  唯一性约束（unique）<br>  检查约束（check）<br>  缺省约束（default）  只能列级约束<br>  非空约束 (not null)       只能列级约束</p>
+</li>
+<li><p><strong>数据库三级模式：</strong><br>外模式-模式-内模式<br>模式：表，外模式：视图，内模式：物理结构和存储方式</p>
+</li>
+</ul>
+<h2 id="MySQL数据库"><a href="#MySQL数据库" class="headerlink" title="MySQL数据库"></a>MySQL数据库</h2><ul>
+<li><p>mysql数据库目录：C:\Program Files\MySQL\MySQL Server 8.0\bin<br>dos下用cd C:\Program Files\MySQL\MySQL Server 8.0\bin</p>
+</li>
+<li><p>用命令行操作数据库要从dos里打开。找到安装路径下bin文件夹中的mysql.exe，再用登录命令。mysql -u 用户名 -p  （回车-&gt;输密码）</p>
+</li>
+<li><p>mysql数据库 “The server time zone value” 异常：mysql数据库时间与系统时间格式不匹配的问题<br>解决：数据库的url后加”?serverTimezone=GMT”：String dburl = “jdbc:mysql://localhost:3306/bookstore?serverTimezone=GMT”;</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/数据库SQL/" data-id="cjqqhv6hs000l3hqxx32yrw2g" class="article-share-link" data-share="baidu" data-title="数据库SQL">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/数据库SQL/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-人工智能笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/人工智能笔记/" class="article-date">
+  <time datetime="2018-01-20T09:20:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/人工智能笔记/">人工智能笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p><strong>1. 智能的三类观点</strong></p>
+<ul>
+<li>思维理论：智能的核心是思维，可通过对思维规律和思维方法的研究来揭示智能本质。</li>
+<li>知识阙值理论：智能取决于知识的数量及其可运用程度。</li>
+<li>进化理论：智能取决于对外界环境的感知和适应。</li>
+</ul>
+<p><strong>2. 图灵测试：判断机器是否具有智能</strong><br>测试者向人和机器提问，若有超过30%的测试者不能区分任何机器，机器则通过图灵测试。<br>存在的问题：仅涉及了结果的比较，没有涉及思维过程。</p>
+<p><strong>3. 人工智能的定义</strong><br>用人工的方法在机器上实现智能。<br>研究如何构造智能机器，模拟、延伸和扩展人类智能。</p>
+<p><strong>4. 人工智能的发展</strong></p>
+<ul>
+<li>孕育期(1956年之前)：数理逻辑、电子计算机、神经网络模型和控制论的出现。</li>
+<li>形成期(1956-1970)：达特茅斯会议正式定义Aritificial Intelligence这一术语。</li>
+<li>知识应用期(1971-80年代末)：专家系统、自然语言理解、机器翻译等技术的出现。</li>
+<li>从学派分离到综合(80年代末-本世纪初)：三大学派的综合集成。<br>  符号主义学派：功能模拟，数理推理，逻辑理论机——数学定理证明程序LT。<br>  连接主义学派：结构模拟，模拟大脑结构的神将网络系统。<br>  行为主义学派：行为模拟，构造具有进化能力的智能系统。</li>
+<li>智能科学技术的兴起(本世纪初以来)：自然智能、人工智能、集成智能的协同研究。</li>
+</ul>
+<h3 id="第二章-知识表示"><a href="#第二章-知识表示" class="headerlink" title="第二章 知识表示"></a>第二章 知识表示</h3><p><strong>1. 知识的概念</strong><br>人们在实践中积累的认识和经验。<br>认识：对事物现象、属性、本质等的认识；<br>经验：解决问题的方法（微观/宏观）。</p>
+<p><strong>2. 知识表示</strong><br>是对知识的描述，用符号将知识表示成计算机可接受的形式。<br>知识表示的方法不唯一。</p>
+<p><strong>3. 一阶谓词逻辑</strong><br>断言：一个陈述句称为一个断言。<br>命题：具有真假意义的断言。<br>谓词：谓词名(命题的谓语)+个体(命题的主语)。<br>个体域：所讨论对象的全体构成的集合。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/人工智能笔记/" data-id="cjqqhv6hr000i3hqxviq3b2bn" class="article-share-link" data-share="baidu" data-title="人工智能笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/人工智能笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MFC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/20/MFC/" class="article-date">
@@ -118,7 +255,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/MFC/" data-id="cjo6b5dft000b4sqxae218hvn" class="article-share-link" data-share="baidu" data-title="MFC">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/MFC/" data-id="cjqqhv6hn00093hqxssrg6b98" class="article-share-link" data-share="baidu" data-title="MFC">Share</a>
       
 
       
@@ -135,9 +272,9 @@
 
 
   
-    <article id="post-Python/python环境配置" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Python/VSCode_python环境配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/19/Python/python环境配置/" class="article-date">
+    <a href="/2018/01/19/Python/VSCode_python环境配置/" class="article-date">
   <time datetime="2018-01-19T23:00:00.000Z" itemprop="datePublished">2018-01-19</time>
 </a>
     
@@ -149,7 +286,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/19/Python/python环境配置/">VSCode_python环境配置</a>
+      <a class="article-title" href="/2018/01/19/Python/VSCode_python环境配置/">VSCode_python环境配置</a>
     </h1>
   
 
@@ -174,11 +311,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Python/python环境配置/" data-id="cjo6b5dh8002a4sqxh4psjcv7" class="article-share-link" data-share="baidu" data-title="VSCode_python环境配置">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Python/VSCode_python环境配置/" data-id="cjqqhv6j3002q3hqxwr26fon9" class="article-share-link" data-share="baidu" data-title="VSCode_python环境配置">Share</a>
       
 
       
-        <a href="http://yoursite.com/2018/01/19/Python/python环境配置/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/2018/01/19/Python/VSCode_python环境配置/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -230,7 +367,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Other/一些快捷键/" data-id="cjo6b5dh400224sqxy7izebrk" class="article-share-link" data-share="baidu" data-title="一些快捷键">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Other/一些快捷键/" data-id="cjqqhv6ix002a3hqxv677hfwq" class="article-share-link" data-share="baidu" data-title="一些快捷键">Share</a>
       
 
       
@@ -420,7 +557,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/" data-id="cjo6b5dh2001y4sqx62jv416o" class="article-share-link" data-share="baidu" data-title="LaTex语法">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/" data-id="cjqqhv6is00223hqx5ceeuv4i" class="article-share-link" data-share="baidu" data-title="LaTex语法">Share</a>
       
 
       
@@ -530,7 +667,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Other/markdown语法/" data-id="cjo6b5dh0001u4sqxc7sad81r" class="article-share-link" data-share="baidu" data-title="Markdown笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Other/markdown语法/" data-id="cjqqhv6ir001x3hqxipx11e3b" class="article-share-link" data-share="baidu" data-title="Markdown笔记">Share</a>
       
 
       
@@ -583,7 +720,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/17/English/Self-Introduction/" data-id="cjo6b5dgq001a4sqxtdpnduto" class="article-share-link" data-share="baidu" data-title="Self-Introduction">Share</a>
+        <a data-url="http://yoursite.com/2018/01/17/English/Self-Introduction/" data-id="cjqqhv6il001j3hqxg22rcyw8" class="article-share-link" data-share="baidu" data-title="Self-Introduction">Share</a>
       
 
       
@@ -705,11 +842,19 @@
 </li>
 </ul>
 <h4 id="将来时"><a href="#将来时" class="headerlink" title="将来时"></a>将来时</h4><ul>
-<li><p><strong>一般将来时</strong><br>两种形式：<code>will/shall do sth.</code>或<code>be going to do sth.</code>，都可用来表示将来的动作或状态。<br>其他表示将来的用法：<br>1、be to do sth.（不定式表将来）<br>What I plan to solve the problem is to have a meeting with people related.<br>2、be about to do sth.（打算干什么事）<br>3、be due to do sth.（预计做什么事）</p>
+<li><p><strong>will do表将来</strong><br>最普通、最自然（spontaneous）的表达方式：对将来的情况作一般说明；表示意愿、保证等。<br>It will help you a lot.<br>I will buy it.<br>注：shall一般用的很少，只在疑问句中和I/we连用：<code>shall + ? + I/we</code><br>It looks heavy. Shall I help you? （不能用Will I）</p>
 </li>
-<li><p><strong>将来进行时</strong><br><code>shall/will be doing sth</code><br>1、表示在将来某一时间正在进行的动作。<br>2、表示要在将来某一时刻开始，并继续下去的动作。与一般将来时的不同在于，其更加表明动作将一直持续下去。<br>I’ll be waiting till I hear you say I do.</p>
+<li><p><strong>be going to do</strong><br>1、表示已经计划好的事<br>I’m going to have a meet with Tom.<br>2、表示基于当前情况、不久就会发生的事情<br>Look at the black clouds! It’s going to rain.<br>I feel bad and I am going to be sick.</p>
 </li>
-<li><p><strong>将来完成时</strong><br><code>shall/will have done sth.</code><br>1、表示在将来某一时间以前已经完成的动作，常用<code>before/by+将来时间</code>表示时间状语。<br>I will have finished the work befor tomorrow.</p>
+<li><p><strong>be doing表将来（现进表将来）</strong><br>与be going to do类似，同样表示已计划好的事。<br>I’m meeting him for lunch on the 17th.<br>“We are meeting tomorrow anyway” -by Tim<br>注：be doing常和特定的日期/时间点连用，因为比be going to do短，所以与日期连用不会说太多单词，表达起来更方便。</p>
+</li>
+<li><p><strong>Present simple（一般现在时表将来）</strong><br>用于timeables（时刻表），表示一种regualar的意思。（用will do也没错，但用一般现在时更好）<br>The film starts at 10pm.</p>
+</li>
+<li><p><strong>will be doing（将来进行时）</strong><br>将来某个时间点正在进行的动作，强调一种正在进行的状态。</p>
+</li>
+<li><p><strong>will have done（将来完成式）</strong><br>将来某个时间点前已经完成的动作，强调完成。</p>
+</li>
+<li><p><strong>will have been doing（将来完成进行时）</strong><br>很少用，基本不会用</p>
 </li>
 </ul>
 <h4 id="一般过去将来时"><a href="#一般过去将来时" class="headerlink" title="一般过去将来时"></a>一般过去将来时</h4><p><code>should/would do sth., was/were going to do sth.</code><br>1、表示在过去来看将要发生的动作<br>He thought books with cartoon illustrations would be more accessible to pupils.（他认为带有卡通图画的课本孩子们会更容易接受）</p>
@@ -960,7 +1105,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/14/English/Grammer/" data-id="cjo6b5dgv001i4sqxfd1ojdhd" class="article-share-link" data-share="baidu" data-title="English Grammer">Share</a>
+        <a data-url="http://yoursite.com/2018/01/14/English/Grammer/" data-id="cjqqhv6ih001b3hqxps2cqp8c" class="article-share-link" data-share="baidu" data-title="English Grammer">Share</a>
       
 
       
@@ -1029,253 +1174,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/13/English/英语介词用法/" data-id="cjo6b5dgx001m4sqxuxol6py6" class="article-share-link" data-share="baidu" data-title="英语介词">Share</a>
+        <a data-url="http://yoursite.com/2018/01/13/English/英语介词用法/" data-id="cjqqhv6io001p3hqx9136jfor" class="article-share-link" data-share="baidu" data-title="英语介词">Share</a>
       
 
       
         <a href="http://yoursite.com/2018/01/13/English/英语介词用法/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-English/Mock Interview" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/13/English/Mock Interview/" class="article-date">
-  <time datetime="2018-01-13T09:15:00.000Z" itemprop="datePublished">2018-01-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/13/English/Mock Interview/">Mock Interview</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>考官说话有点快，鼻音有点重，没听清多问问。<br>面试大概10Min，20-25个问题。<br>说的时候要看考官的眼神，是否想让你接着说下去。</p>
-<p><strong>1、Are you available at the moment?</strong><br>Yes, I am.</p>
-<p><strong>2、What programme did you study in China?/What course have you studied?</strong><br>The program I studied in China was Computer Science and Technology.<br>(And I have studied many computer related courses like Operating System, Computer Organization and so on.)<br><strong>学习的项目(Project)：</strong>Study Abroad</p>
-<p><strong>3、Which university did you graduate from?</strong><br>I graduated frome Wuhan University of Technology.</p>
-<p><strong>4、What course have you applied?</strong><br>I have applied Computing Programme.<br><strong>Why did you applied this programme?</strong><br>Firstly, I want to be employeed as data analysist in the Internet company, and this programme can provide me a broad range of knowledge for this job.<br>Secondly, my programme in China was Computer Science and Technology, and it is closely related to this programme.</p>
-<p><strong>5、Do you know how long your course duration is?</strong><br>My course duration is ten monthes.</p>
-<p><strong>6、When will the course start?</strong><br>My course will start on seventeenth of September, twenty eighteen.<br>(And it will end on twenty-sixth of July, twenty nighteen.)<br>(2018.9.17-2019.7.26)</p>
-<p><strong>7、What is the structure of your course?</strong><br>I will study one compulsory course named Major Project and four optional courses which are Big Data, Artificial Intelligence and Machine Learning, GPU Programming and Advanced Web Development.<br>(After finishing these courses, I will get one hundred and twenty credits.)</p>
-<p><strong>8、How is your course assessed(评估)?/Is the entire course assessed in the same way?</strong><br>My courses are assessed in different way. For example, Major Project will be assessed by dissertation, presentation and “question and answer”.<br>And Big Data, GPU Programming will be assessed by essay and written exam. </p>
-<p><strong>9、Do you know anyone who has already studied there?(有没有认识的同学)</strong><br>No, I don’t know.</p>
-<p><strong>10、重要：Why did you choose this course and how does it relate to your previous study?</strong><br>Firstly, I can learn a broad range of knowledge from these courses, providing the foundation for my later study.<br>Secondly, through the programming courses like GPU programming, Major Project, I can develop the software solution skill and programming ability, which are highly regarded by employers.<br>Thirdly, the course is closely relate to my previous study. My program in China was Computer Science and Technology.<br>(And it will lay a solid foundation for my courses in UWTSD. 和之前的专业有什么关系)</p>
-<p><strong>11、What qualification(文凭) are you looking forward/expecting from this program?</strong><br>I will not get any qualification. Because what I applied is an exchange program.</p>
-<p><strong>12、What’s your career aspiration? What’s your intention to do in the future?</strong><br>My career aspiration is being a data analyst in the Internet company such as Google, Tencent, Alibaba, and so on.<br>(Because I both like computer science and data science, so I think it’s a good job for me to fulfill my values in society.)</p>
-<p><strong>13、重要：Do you have any arrangement for the accommodation? / Which hotel are you looking for? / Where do you intend to live?</strong><br>I intend to live in the student apartment.<br>(It is located on one hundred and sixty(160) Helens Road, Swansea SA1 4DQ.)</p>
-<p><strong>14、重要：How will you rent a house? / Do you know the name of the agency? / How much is it?</strong><br>I rent the house by angency.<br>The agency’s name is yingxuan.<br>The rent is four hundreds and sixty pounds a month(460磅).</p>
-<p><strong>15、How far is your accommodation from the university?</strong><br>About ten minutes on foot.</p>
-<p><strong>16、What factors are you looking forward when you choose your accommodation?</strong><br>Factors I’m looking forward are security and location. </p>
-<p><strong>17、Dou you have enough money for your studies in UK? Is the money under your name?</strong><br>Yes, I have enough money to support my study. (one hundred and eighty thounds yuan)<br>It is under my name.</p>
-<p><strong>18、How will you support yourself financially?</strong><br>My parents support me.</p>
-<p><strong>19、What your parents do for a living?</strong><br>My mother is a doctor and my father is a company employee.<br><strong>家庭年收入：</strong>My family’s annual income is about three hundred thounds yuan.<br><strong>从事了多长时间：</strong>20 years.<br><strong>父母具体职业：</strong><br>My mother is a doctor, and she helps the disabled to restore their health.<br>My father works as marketing department manager of the company, and he formulates the development strategy of the company.</p>
-<p><strong>20、Is it your father/mother’s own or he/she runs with other partners?</strong><br>开公司的问题，with other partners.</p>
-<p><strong>21、Which department do you intend to work in the future?</strong><br>I want to be employed in the data analysis department of Internet company, like Google, Tencent, Alibaba and so on.</p>
-<p><strong>22、How will the communication skills help you to communicate with customers?（课程怎么帮助你的职业规划，How will the courses help you?）</strong><br>For example, through Big Data module I can learn mathematics and statistics knowledge, which are necessary to support my later scientific research.<br>And by learning Advanced Web Development module, I can develop my programming skill and cooperative ability.</p>
-<p><strong>23、Have you been to the UK previously?</strong><br>No, I’ve not.</p>
-<p><strong>24、重要：Why do you want to study in the UK rather than other countries? / What are the benefits of studying in the UK compared to your home country or other country?</strong><br>First of all, UK is an advanced country and has high level of education, which can give me a valuable opportunity to learn and grow.<br>Secondly, Uk is one of the safest countries in the world, so I’m able to concentrate fully on my study.<br>Thirdly, I like playing soccer very much. So I want to have a ringside view of UK Premier League, which is one of the best leagues in the world. </p>
-<p><strong>25、What’s your intention to do in the UK and why?</strong><br>I go to UK to study. It will be helpful for me to get a job in China.</p>
-<p><strong>26、重要：Why did you choose to study in UWTSD?</strong><br>Firstly, UWTSD has high academic level. It ranks seventh in UK for academic experience, so I can receive a good education.<br>Then, it’s Student Satisfaction also ranks top fifteen in UK, which proves that teachers there are very responsible and can give students timely feedback.<br>Thirdly, UWTSD has established a good cooperative relationship with WUT. So there are many students from WUT are studying there, who can give me lot’s of help in life and study.<br><strong>How did you find out about it?</strong><br>My teacher recommeded it to me, and I also get some information on the Internet by myself.</p>
-<p><strong>27、重要：What modules are you going to study?</strong><br>I will study six modules, including one compulsory course named Major Project and four optional courses which are Big Data, Artificial Intelligence and Machine Learning, GPU Programming and Advanced Web Development, all computer-related courses. </p>
-<p><strong>28、What’s your course level/academic level?</strong><br>level 6.</p>
-<p><strong>29、重要：How will doing this course help you with your future career plans?</strong><br>For example, through Big Data module I can learn mathematics and statistics knowledge, which are necessary to support my later scientific research.<br>And by learning Advanced Web Development module, I can develop my programming skill and cooperative ability.<br>Besides, learning in UK can also improve my English ability, especially for communicating and writting.</p>
-<p><strong>30、重要：How much is your tuition fee?</strong><br>The tuition fee is ten thousands and five hundred ponds(10500磅).</p>
-<p><strong>31、Do you need a meet and greet services?（接机服务）</strong><br>Yes, I need. And my agent will help me with it.</p>
-<p><strong>32、What facilities are you expecting at university? What facilities do you know at university?</strong><br>caffe, reception, computer room</p>
-<p><strong>33、重要：How much is your living expenses?</strong><br>one thound and fifteen pounds per month(1015).</p>
-<p><strong>34、Have you been coached/trained for the interview?</strong><br>No, I haven’t.</p>
-<p><strong>35、Do you have any questions for me?</strong><br>No, I don’t.</p>
-<p><strong>36、Do you plan to work in UK?</strong><br>No, because after I finish my course in UK, I have to come back to China to continue my rest courses in WUT.</p>
-<p><strong>37、What do you plan to do after you finish your course in UK?</strong><br>和36一样</p>
-<p><strong>38、What is your date of birth?</strong><br>Nineteenth of November, nineteen ninety-six(1996). </p>
-<p><strong>39、Do you know your passport number?</strong><br>Sorry, I don’t know. I forget it.</p>
-<p><strong>40、What is your home country address?</strong><br>Honghe Garden District, No.27 Dianchang Road, Zhengzhou City, Henan Province.</p>
-<p><strong>学校全称：</strong><br>UWTSD, University of Wales Trinity Saint David<br>WUT, Wuhan university of Technology</p>
-<p><strong>学校的四个校区(campus)：</strong><br>Swansea, Carmarthen, Lampeter and Cardiff.</p>
-<p><strong>在哪个校区学习：</strong><br>Swansea campus.</p>
-<p><strong>斯旺西在哪个conutry：</strong><br>It is located in south west of Welsh.</p>
-<p><strong>新校区的具体位置：</strong><br>新校区具体位置？</p>
-<p><strong>申请的专业到底是什么？</strong><br>Computing programme or Faculty of Architecture Computing and Engineering programme?</p>
-<p>course/program/major都是指专业，module指学的课程。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/13/English/Mock Interview/" data-id="cjo6b5dgt001e4sqx58vf258o" class="article-share-link" data-share="baidu" data-title="Mock Interview">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/13/English/Mock Interview/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-English/Oral_exam" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/13/English/Oral_exam/" class="article-date">
-  <time datetime="2018-01-13T08:15:00.000Z" itemprop="datePublished">2018-01-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/13/English/Oral_exam/">Oral Exam</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>控制语速，留一些思考的时间和间隙，争取一遍说下来不要重复。</p>
-<h2 id="Part-One"><a href="#Part-One" class="headerlink" title="Part One"></a>Part One</h2><h3 id="Family"><a href="#Family" class="headerlink" title="Family"></a>Family</h3><ul>
-<li><p><strong>Do you have a big family or small family?/How many members in your family?</strong><br>I have a small family, which only includes my father, my mother and I.</p>
-</li>
-<li><p><strong>Are you close to your family members?</strong><br>Yes, I think I’m very close to my parents. I like sharing the interesting trivias(琐事) that happend to my campus life with my mother. And when I need to make some important decisions, I will discuss them with my father. So my parents give me lots of support and I very love them.<br>(what trivias? what did I dream about last night, recent weather is so hot, like such things)</p>
-</li>
-<li><p><strong>What do you like to do with your family?</strong><br>Because my hometown is not Wuhan, so I can only make a phone call with my parents to share my campus life when I’m in school. But when holiday comes, my family will have a reunion. And I enjoy watching movie with my parents very much.<br>(what movie? comedy,which can bring us lots of joy and a good mood)</p>
-</li>
-<li><p><strong>What do your parents do for a living?</strong><br>My mother is a doctor and my father is a company employee.</p>
-</li>
-<li><p><strong>Is it a good thing to be the only one child in a family?</strong><br>Yes I think it is. Though there is no sibling who can go to school together or catch up on gossip with me, I can do these with my parents, classmates or friends. And having only one child can also reduce the financial burden of my family.</p>
-</li>
-<li><p><strong>What are the good things and bad things of a big/small family?</strong><br>If it is a big family, we will have more intimate persons to share the interesting things in our life. But because there are too many people in family, it will be more likely to happen family conflicts.<br>If it is a small family, we can have more time which only belong to ourselves. And  the financial burden of family will be less. But the bad is that the small family will not be as lively as the big family.</p>
-</li>
-<li><p><strong>最喜欢和亲戚/妹妹(younger sister)干的事情</strong><br>go shopping, watch movie, doing sports, go out for dinner, (favourate food–hot pot,It is famous for having lots of pepperies and the hot taste. People gather around a small pot boiled with vegetables, meat, and many other things with delicious soup base)</p>
-</li>
-</ul>
-<h3 id="Friend"><a href="#Friend" class="headerlink" title="Friend"></a>Friend</h3><ul>
-<li><p><strong>Do you have many friends?</strong><br>Yes, I feel that I’m a cheerful boy and I enjoy making friends.</p>
-</li>
-<li><p><strong>Are you good at making new friends?</strong><br>Yes, I think I’m good at it.(How? Firstly, you need to be active. Let others feel that you are an easy-going one. Then, it will be useful to find some common hobbies between you, which will bring many topics you can talk about.)</p>
-</li>
-<li><p><strong>What kind of quelities do you look for in you friends?</strong><br>I prefer the friends who are active and warm-hearted. So we can share with joy and sadness. And when we face some difficult conditions, we can help each other and encourage each other.</p>
-</li>
-<li><p><strong>How can you keep in touch with your friend?</strong><br>I prefer to keep in touch by face-to-face communicating, which I think is the best way to express our emotion.  </p>
-</li>
-<li><p><strong>Do you believe friendship can last forever?</strong><br>Yes, I believe that if we can keep in touch with each other usually, the firendship can last forever.</p>
-</li>
-</ul>
-<h3 id="Food"><a href="#Food" class="headerlink" title="Food"></a>Food</h3><ul>
-<li><p><strong>What kind of food do you like?(favorite flavor?)</strong><br>I like food taste spicy, it’s delicious.</p>
-</li>
-<li><p><strong>Can you cook? Are you good at it?</strong><br>No, I can’t. But I plan to learn how to cook.(Why? I think cooking is an important skill for people. If we cook by ourselves, we can have the food fits us most at any time. And we can also have a well-balanced diet.)</p>
-</li>
-<li><p><strong>Do you think cooking is an important skill for people to learn?</strong><br>和上题相同</p>
-</li>
-<li><p><strong>What kind of food is popular in China?</strong><br>hot pot. It is popular for having lots of pepperies and the hot taste. People gather around a small pot boiled with vegetables, meat, and many other things with delicious soup base.</p>
-</li>
-<li><p><strong>Do you often have meals with your family? Is it important to have meal with your family?</strong><br>No, because I’m studing in Wuhan but my parents are working in Zhengzhou.(可能会引到家乡相关话题)<br>和家人一起吃饭好处：When we are having meal together, we can chat with each other, which can promote the relationship and maintain bonds with family members.</p>
-</li>
-<li><p><strong>Do you like fast food?</strong><br>No, personally I think it has too much fat and calories, posing a health problem such as obesity, heart disease risk and so on. So I don’t very like it.</p>
-</li>
-<li><p><strong>What kind of food can be classified into healthy food?</strong><br>As far as I am concerned, the most important thing is well-balanced diet. That’s  to say, we should have different kinds of food in a proper protion.For example, we shoule eat some vegetables, and also eat some meat, some furit, and so on, rather than take one single kind of food too much.</p>
-</li>
-</ul>
-<h3 id="Hometown"><a href="#Hometown" class="headerlink" title="Hometown"></a>Hometown</h3><ul>
-<li><p><strong>Where do you come from?Can you tell me something about your hometown?</strong><br>Zhengzhou is an inland city, located in the centre of China. So if you want to go for a travel, it will be very convenient, no matter by train or by palne.<br>And zhengzhou is also a city of inclusiveness and openness, welcoming people from all over the world. I very like my hometown.</p>
-</li>
-<li><p><strong>家乡的饮食</strong><br>We like eating noodles, it’s very delicious and convenient. And we can make different flavors of noodles according to our preferences.</p>
-</li>
-<li><p><strong>怎么评价郑州的交通</strong><br>Not so good.<br>Because Zhengzhou is developing rapidly, there are many buildings, subway stations being constructed by the roadside, causing some trafiic problems. So if you gou out in rush hour or at weekends, you will be highly likely to meet a traffic jam.</p>
-</li>
-<li><p><strong>如何评价西安</strong><br>Xian is an international city of inclusiveness and openness.</p>
-</li>
-</ul>
-<h3 id="Weather-amp-Season"><a href="#Weather-amp-Season" class="headerlink" title="Weather &amp; Season"></a>Weather &amp; Season</h3><p>I prefer the weather which is cool. If weather is too hot, I will feel very impatient and hardly to work efficiently.<br>My favourite season is autumn. It is cool.<br>When it is spring or autumn, the temperature is at a moderate level, so we can go camping or do most kinds of sports. But when it is summer or winter, the extreme temperature will limit people’s outdoor activities. If it is me, I will prefer to stay at home.</p>
-<h3 id="festival"><a href="#festival" class="headerlink" title="festival"></a>festival</h3><p><strong>最喜欢的国内节日：</strong>My favorite festival in China is Spring Festival, when I will be reunited with my parents, my grandparents, my cousins. And we can have a holiday to break from work. We can go shopping, see a movie, sing karaoke, play video games, and so on.<br><strong>最喜欢的国外节日：</strong>Sorry I don’t know much about the foreign festivals. I only konw there will be a great dinner at Thanksgiving Day, including a big turkey. I feel that it must be very delicious.</p>
-<h3 id="transportantion"><a href="#transportantion" class="headerlink" title="transportantion"></a>transportantion</h3><p>家乡交通状况：见上文<br>政府采取的措施：limit the amounts of car. If you want to buy car, there will be many restrictions. And the car will also be limited to be driven out one day a week acoording to their car numbers.<br>最喜欢的交通工具（远途）：If I take a long-distance trip, my favourite transportation is train. Since it is very convient. The train station usually locates in the centre of city, while the airport is far away from city. Besides, the price of train tickets is much cheaper than plane tickets. </p>
-<h3 id="Hobby-amp-Interests"><a href="#Hobby-amp-Interests" class="headerlink" title="Hobby &amp; Interests"></a>Hobby &amp; Interests</h3><p>soccer</p>
-<h3 id="music"><a href="#music" class="headerlink" title="music"></a>music</h3><ul>
-<li><p><strong>种类</strong><br>Yes, I do. I am fond of light music. Listening light music can help me concentrate on the work. And as long as I couldn’t go to sleep, I’d like to listen to some light music to calm myself down.</p>
-</li>
-<li><p><strong>歌手</strong><br>My favorite singer is Kelly Chen, who is a HongKong Singer. She has a very nice voice and High level of singing skills. Her songs all sounds wonderful. </p>
-</li>
-</ul>
-<h3 id="travelling"><a href="#travelling" class="headerlink" title="travelling"></a>travelling</h3><p>驾照<br>足球<br>明星</p>
-<h2 id="Part-Two"><a href="#Part-Two" class="headerlink" title="Part Two"></a>Part Two</h2><h2 id="Part-Three"><a href="#Part-Three" class="headerlink" title="Part Three"></a>Part Three</h2><ul>
-<li><p><strong>Which program have you applied?/Which program do you plan to study in the UK?</strong><br>I have applied the</p>
-</li>
-<li><p><strong>Why do you apply to/want to study this program?</strong></p>
-</li>
-<li><p><strong>What do you want to do in the future and why?</strong><br>Dream job</p>
-</li>
-<li><p><strong>How will doing this course help you with your future career plans?</strong></p>
-</li>
-<li><p><strong>Can you name some of the modules in your program?</strong></p>
-</li>
-<li><p><strong>What challenges will you face when you go to UK as a student? And how do you plan to overcome/conquer them?</strong></p>
-</li>
-</ul>
-<h2 id="口语的一些习惯用语"><a href="#口语的一些习惯用语" class="headerlink" title="口语的一些习惯用语"></a>口语的一些习惯用语</h2><ul>
-<li><p><strong>没听清考官问题</strong><br>如果是因为走神或其他原因，真的没听清，可以说：<br>Sorry I don’t understand the question very well. Could you please ask it again<br>Sorry, I didn’t quite catch the question. Could you please repeat it?<br>但也有可能你听不懂问题，是因为问题中存在<strong>生词</strong>，因此当两遍都没听懂时，可以这么表达：<br>So sorry, could you please rephrase（转述） the question?（适合考官态度比较和蔼的情况）<br>Well, my best guess would be…（考官态度不好，就诚实坦白自己没听懂这个问题，接下来的回答都是在猜）</p>
-</li>
-<li><p><strong>我喜欢</strong><br>I like doing<br>I enjoy doing<br>I prefer to do sth<br>I’m a big fan of…</p>
-</li>
-<li><p><strong>我想，我认为</strong><br>I think (that)<br>I feel that<br>As far as I am concerned：就我看来<br>Personally：就我个人而言<br>in my view<br>in my opinion</p>
-</li>
-<li><p><strong>表让步</strong><br>Although = though<br>No matter how/what/who<br>as long as：只要</p>
-</li>
-<li><p><strong>表原因</strong><br>(simply) Because<br>Because of<br>The reason why… is that<br>Since<br>As a result of sth.</p>
-</li>
-<li><p><strong>表结果</strong><br>So<br>= Thus<br>= Therefore</p>
-</li>
-<li><p><strong>表转折</strong><br>but<br>however<br>Instead of<br><strong>表对比：</strong>while</p>
-</li>
-<li><p><strong>举例子</strong><br>for example<br>for instance<br>such as<br>like </p>
-</li>
-</ul>
-<p>It is well acknowledged that the sector of Computer and Internet is sunrise industry. And after my graduation, there will be a guarantee for my future job hunting.So I could get a well-paid job. </p>
-<p>keep in a good shape/live a well-balanced life<br>Because of my program, I have to sit in front of the computer all day long, so I’d better live a healthier life by doing some sports.</p>
-<p>My views are as follows:<br>put the xxx on an important position<br>结尾综上所述：above all<br>作文多写点具体的，不要写太虚的东西。</p>
-<p>We shouldn’t pay attention to how much money they get, what we should concern about is that if they deserve it.<br>And in my opinion, if one soccer player want to make an achivement, he must train hard, keep shape, have a balanced diet. And he will always be under lots of pressure. So it is not as easy as we think. So I don’t thinks it’s unfair.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/13/English/Oral_exam/" data-id="cjo6b5dgr001b4sqxryhhvokm" class="article-share-link" data-share="baidu" data-title="Oral Exam">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/13/English/Oral_exam/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -1303,7 +1206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1312,7 +1215,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 15px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12.5px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.5px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 20px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 15px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 16.67px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 13.33px;">Network</a> <a href="/tags/Other/" style="font-size: 18.33px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 13.33px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -1321,7 +1224,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1333,6 +1236,14 @@
       <ul>
         
           <li>
+            <a href="/2018/12/25/Python/numpy笔记/">numpy笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/26/cs224n/lecture 3/">lecture 2_Morew Word Vectors</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/06/cs224n/background/">基础知识</a>
           </li>
         
@@ -1342,14 +1253,6 @@
         
           <li>
             <a href="/2018/11/02/cs224n/lecture 1/">lecture 1_Introduction</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/">Distributed &amp; Cluster Computing</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
           </li>
         
       </ul>
@@ -1375,7 +1278,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Ren Li<br>
+      &copy; 2019 Ren Li<br>
       Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
