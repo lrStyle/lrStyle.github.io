@@ -70,6 +70,80 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Lingo笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Lingo笔记/" class="article-date">
+  <time datetime="2018-01-20T10:34:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Lingo笔记/">Lingo笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><p><strong>一些语法：</strong></p>
+<ul>
+<li>变量不区分大小写</li>
+<li>语句以分号结尾</li>
+<li>以感叹号！开头写注释，同样需要分号结尾</li>
+<li>系统默认变量非负，除非用@free/@sub/@slb函数另行说明</li>
+<li>lingo一次只能输出一组解，要检验是否有其他解，加额外的约束</li>
+</ul>
+</li>
+<li><p><strong>集合sets和属性的概念：</strong><br>QU/1,2,3/:x1,x2,x3,x4;/1..3/<br>QU集合有三个元素，1~3每个元素都有x1~x4四个属性变量，另外x1~x4也都是大小为3的数组。<br>集合就是一维数组，定义二维数组/矩阵：set3(set1,set2)   注意是括号不是/../</p>
+</li>
+<li><p><strong>Lingo程序结构：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MODEL:</span><br><span class="line">	SETS:定义集合和属性，即变量结构</span><br><span class="line"> 	ENDSETS</span><br><span class="line">	DATA:声明常量, 属性=常数列表</span><br><span class="line">	ENDDATA</span><br><span class="line">	写目标函数:max=...../min=....</span><br><span class="line">	约束条件</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>集合循环函数：</strong><br>FOR、MAX、MIN、SUM、PROD</p>
+<ul>
+<li>@SUM(setname(i)|对i 的约束 : x(i)表达式)<br>若集合中所有元素都要进行求和，则可以省略下标</li>
+<li>@FOR(setname(i)|对i 的约束 : x(i)表达式)<br>若集合中所有元素相同，则可以省略下标</li>
+<li>注：@SUM是遍历属性(横向)，@FOR是遍历集合(纵向)，遍历的方向不同</li>
+<li>@PROD(s:e) 对集合s中的每个成员,分别得到 表达式e 的值,然后返回所有这些值的乘积</li>
+</ul>
+</li>
+<li><p><strong>lingo中函数都以@开头</strong><br>  限定取整数：@gin(x)<br>  0/1变量：@bin(x)<br>  @text(‘文件路径’)=’X为’x   输出集或属性的所有值  写在data块中，在model所有操作执行完后才执行<br>  @rand(seed)  产生0~1之间的随机数，seed为种子，0~1随便取</p>
+</li>
+<li><p><strong>模型类型：</strong><br>LP   线性规划<br>ILP  整数线性规划<br>NLP  非线性规划<br>INLP  整数非线性规划<br>MILP  混合整数线性规划<br>IP    二次规划<br>IQP    整数二次规划</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Lingo笔记/" data-id="cjqqhv6ho000b3hqx6jbm36az" class="article-share-link" data-share="baidu" data-title="Lingo笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Lingo笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lingo/">Lingo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-数据库SQL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/20/数据库SQL/" class="article-date">
@@ -1122,75 +1196,6 @@
 
 
   
-    <article id="post-English/英语介词用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/13/English/英语介词用法/" class="article-date">
-  <time datetime="2018-01-13T19:35:00.000Z" itemprop="datePublished">2018-01-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/13/English/英语介词用法/">英语介词</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>英语的词类优势就是介词，可用介词来扩展词汇的意义。</p>
-<p>under 和 underneath：underneath是一个东西<strong>完全</strong>在另一个东西下面，一点都不能露出来；under则只是在下面就可以。因此underneath的适用范围要比under小，但也更具体。</p>
-<h2 id="介词的本质"><a href="#介词的本质" class="headerlink" title="介词的本质"></a>介词的本质</h2><p>介词是用来表征对象间关系的，可以表征三种关系：<br><strong>空间关系：</strong>the cat sat on the mat, over his shoulder<br><strong>时间关系：</strong>on Thursday, in November<br><strong>抽象关系：</strong>for your eyes only</p>
-<ul>
-<li><p>空间关系：是最基本的关系，有点、线/面、体三种形式。<br>点：at the corner，corner可抽象为一个点<br>线：on my way home，way可看成线的关系。<br>面：on the table<br>体：in Shanghai，把上海想成一个大城市，人很渺小，处于这个大城市之中。<br>因此介词的不同反应了老外对后面词画面上的一个观感。</p>
-</li>
-<li><p>时间关系：是由空间关系引申而来的。<br>点：在某个时间点用at，at that moment, at 9:15。<br>面：面相比点要大一点，用on，on Monday, on the day。<br>体：在一段比较长的时间中，人被时间“包裹”着，in May，in the Stone Age, in 2017，during…。<br>补：因此介词的不同用法可以有不同的修辞功能，比如在周末，美国人用on the weekend/over the weekend；英国人则用at the weekend。这实则表明了两种文化的差异，即英国人比美国人认为周末要短。</p>
-</li>
-<li><p>抽象关系：同样由空间关系引申而来。<br>on：空间上表“面”，the phone on the table，因此会有一种接触、支撑之意。<br>即引申出来“压迫，背负”的意思：<br>there is a lot of pressure on me，<br>the difficult on them，<br>He is short of brains. He is short on brains. 后一句比前一句有更大的鄙视意味（太short了以至于都压着brains了）。</p>
-</li>
-</ul>
-<p>of，for，to：<br>to：有方向性，由A到B。外国人一碰到to这个介词，脑海里就会有由A向B的这个方向性。<br>I’m going to China.<br>I give the book to him.<br>Ten to three.<br>I look forward to your reply.<br>I am addicted to the smoking.<br>devoted to learning.<br>reporter should stick to their ethic</p>
-<p>for：没有空间意义，更多是抽象意义。和to比，for表示一种授予关系里的接收方，强调授予关系。to强调空间移动，for强调角色的获利关系。<br>The cake is for Tom. 蛋糕是留给Tom的，还未到Tom的手里，只是表明在人们意愿上蛋糕是留给Tom的。<br>Money is important to me.<br>Money is important for me. for比to更为严重，我更加地依赖钱。<br>Smoking is bad for health. health是smoking的“获利方”。<br>I did this for him. 这件事是我为他做的，专门为他做了某事，他属于获利方，强调目的性。<br>I did this to him. 这件事是我对他做的，带有动作的指向之意，多指坏的不好的事情。</p>
-<p>talk to &amp; talk with：with在空间中表示“附近”的意思，双方向；to则是单方向。talk with：你一句我一句，to则是单方向一个人讲。</p>
-<p>of：of表示一种从属关系，表示不可或缺的一部分。<br>The roof of the house. 房间的屋顶<br>The roof for the house. 屋顶被刮掉了，专门又为这个房间买了个屋顶。</p>
-<p>a day for mourning<br>a day of mourning<br>哀悼日的翻译肯定要用第二个，因为第一个仅仅表示这一天是用来哀悼的，哀不哀悼都可以；第二个则表示这一天全天就是哀悼，这一天和哀悼之间的关系更为强烈。</p>
-<p>The answer to the question.<br>The answer for the question.<br>The answer of the question.<br>to最为常用，answer和question的关系有点像solution和problem，key和door的关系，有一定指向性的。因此都是solution to the problem，key to the door。</p>
-<p>He is like a brother to me.<br>He is a brother of mine.<br>第二个就是指真实的哥哥，第一个就只是像一个哥哥一样。</p>
-<p>out of：常可当成独立介词来使用，有from的意思，表示一种动态的过程。<br>He is walking out of the buliding.<br>look out of the window<br>look out the window<br>如果仅表示“向窗外看，那有….”，强调结果，则用look out。若强调人站在屋里向窗外看这个过程（想象视线从屋里“动态”地射向外面），则用look out of。</p>
-<p>over：想象一种抛物线的意象，fall over“摔倒”的感觉。</p>
-<p>throughout：空间上意象就像穿隧道一样，全程贯穿。</p>
-<p>《English preposition explained》</p>
-<p>介词虽然能帮助理解，但还是有很多动词+介词构成的动词短语，没有多大规律可言，因此还是要靠长期的积累和记忆。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/13/English/英语介词用法/" data-id="cjqqhv6io001p3hqx9136jfor" class="article-share-link" data-share="baidu" data-title="英语介词">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/13/English/英语介词用法/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/English/">English</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1206,7 +1211,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1215,7 +1220,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 16.67px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 13.33px;">Network</a> <a href="/tags/Other/" style="font-size: 18.33px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 13.33px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 16.67px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 13.33px;">Network</a> <a href="/tags/Other/" style="font-size: 18.33px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 13.33px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 11.67px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -1224,7 +1229,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1234,6 +1239,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/14/uwtsd_modules/N & DCM/">Network &amp; Data Center Management Revision</a>
+          </li>
         
           <li>
             <a href="/2018/12/25/Python/numpy笔记/">numpy笔记</a>
@@ -1249,10 +1258,6 @@
         
           <li>
             <a href="/2018/11/05/cs224n/lecture 2/">lecture 2_Word Vectors</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/02/cs224n/lecture 1/">lecture 1_Introduction</a>
           </li>
         
       </ul>
