@@ -70,248 +70,6 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-Algorithm/MOOC_C语言程序设计笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" class="article-date">
-  <time datetime="2018-09-13T07:49:58.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h2 id="第一节-基础知识"><a href="#第一节-基础知识" class="headerlink" title="第一节_基础知识"></a>第一节_基础知识</h2><ul>
-<li><strong>STL：</strong>C++中的标准模板库</li>
-<li><p><strong>define和typedef</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 9999  <span class="comment">//宏定义，多用来替代常量</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">multimap</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MAP; <span class="comment">//为复杂的类型定义取别名，简化程序，也便于修改。</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>类型取值范围</strong></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">字节数</th>
-<th style="text-align:center">取值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">-2^31~2^31-1(-21亿~21亿)</td>
-</tr>
-<tr>
-<td style="text-align:center">long long</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">-2^63~2^63-1(很大)</td>
-</tr>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">3.4x10^-38~3.4x10^38(绝对值)</td>
-</tr>
-<tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">1.7x10^-308~1.7x10^308(绝对值)</td>
-</tr>
-<tr>
-<td style="text-align:center">char</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">-128~127</td>
-</tr>
-<tr>
-<td style="text-align:center">bool</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">true/false</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>double类型比较相等：相减-&gt;是否小于一个很小的数(0.00001)。<br>比大小：直接&gt; &lt; 比较即可。</p>
-</li>
-<li><p>求字节数：sizeof(int)/sizeof(n)</p>
-</li>
-<li><p>反斜杠\，转义字符、win下地址路径；正斜杠/，网址路径。</p>
-</li>
-<li><p>字符型和整型数据可以相互转换，整型-&gt;字符型：只留最右边8位，再转成ASCII码。</p>
-</li>
-<li><p>常用ASCII码：<br>‘0’-‘9’：48-57<br>‘A’-‘Z’：65-90<br>‘a’-‘z’：97-122</p>
-</li>
-<li><p>十六进制常量：0x打头,0xFFA，1个十六进制位对应4个二进制位。<br>表示二进制：转化为16进制。00101011-&gt;0x2b</p>
-</li>
-<li><p>八进制整型常量：0打头，0677,1个八进制位对应3个二进制位。</p>
-</li>
-<li><p><strong>位运算</strong><br>单独对某些比特进行操作<br><strong>与&amp;</strong>：将某些位置0、获取变量中的某一位<br>eg：判断n的第7位是否为为0，n&amp;0x80==ox80？</p>
-</li>
-</ul>
-<p><strong>或|</strong>：将某些位置1</p>
-<p><strong>异或^</strong>：相同为0不同为1。将某些位按位取反，其他位不变：取反的与1异或，其他与0异或。</p>
-<p><strong>非~</strong>：按位取反。</p>
-<p><strong>左移&lt;&lt;</strong>：左移n位即乘2的n次方，但比乘法要快很多。</p>
-<p><strong>右移&gt;&gt;</strong>：除2的n次方，且向小取整。高位补符号位。</p>
-<h2 id="第二节-数据结构"><a href="#第二节-数据结构" class="headerlink" title="第二节_数据结构"></a>第二节_数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>初始化：类型名 数组名[数量]={x1,x2,x3,x4..} 或 用for循环初始化。<br>数组越界编译器不会报错，会根据内存地址去访问，数组名即相当于内存地址。<br><strong>编程技巧：可用数组取代复杂的switch case分支结构</strong></p>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
-<li><strong>字符串三种形式</strong><br>1、字符串常量，双引号括起来””。<br>2、存放在char数组中，以’\0’结尾，多占一个数组元素。<br>3、string对象，c++标准模板库中的类。<br>注：char数组比string快，但char数组没法传字符串值，只能传数组首地址。因此在一些需要传值的场合，用string更合适。</li>
-</ul>
-<p>字符串在内存占的字节数等于字符数目加1(‘\0’的存在 )<br><strong>读入字符串</strong>：cin或scanf，读到空格为止。空格后内容在下一次cin读入。<br><strong>读一行</strong>：cin.getline(char buf[],int bufSize)，读入不超过bufsize-1个字符</p>
-<h3 id="结构体struct"><a href="#结构体struct" class="headerlink" title="结构体struct"></a>结构体struct</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> ID;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">float</span> fGPA;</span><br><span class="line">    Student* frd;<span class="comment">//成员可以是结构体的指针</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Student s1 = &#123;<span class="number">1234</span>,<span class="string">"TOM"</span>,...&#125;;<span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s1.ID;</span><br><span class="line">Student* s2;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s2-&gt;ID; / <span class="built_in">cout</span>&lt;&lt;(*s2).ID;指针访问成员</span><br></pre></td></tr></table></figure>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>局部变量：</strong>定义在函数内部、语句块内部的变量。<br><strong>全局变量：</strong>定义在函数外部(main函数外)，在所有函数中均可使用。默认初始化为0.<br><strong>静态变量：</strong>全局变量和static定义的变量。生存期一直持续到整个程序结束。<br><strong>PS：</strong>若未初始化，静态变量默认赋值为0，非静态变量值为随机的。</p>
-<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch case"></a>switch case</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">    <span class="keyword">case</span> x1:</span><br><span class="line">    <span class="keyword">break</span>;  <span class="comment">//有无中括号都可以</span></span><br><span class="line">    <span class="keyword">case</span> x2:</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="第三节-函数与输入输出"><a href="#第三节-函数与输入输出" class="headerlink" title="第三节_函数与输入输出"></a>第三节_函数与输入输出</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数定义：</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">    <span class="keyword">return</span> xx ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">函数声明：(无函数体，常写在开头)</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun2</span><span class="params">(<span class="keyword">int</span> a[])</span></span>;<span class="comment">//一维数组作形参，不用写大小。int a[]与int *a等价。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fan3</span><span class="params">(<span class="keyword">int</span> a[][<span class="number">3</span>])</span><span class="comment">//二维数组作形参，行数不用写，列数必须写</span></span></span><br></pre></td></tr></table></figure>
-<p>函数的形参是实参的<strong>拷贝</strong>，形参的改变不会影响实参。(除非形参是数组、引用或对象)<br>string类型也是传值<br>数组作形参传的是首地址，并非整个数组。</p>
-<h3 id="printf、scanf格式化输入输出"><a href="#printf、scanf格式化输入输出" class="headerlink" title="printf、scanf格式化输入输出"></a>printf、scanf格式化输入输出</h3><p>比cin/cout效率高，尽量使用。<br>%：类型占位符</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">格式字符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">%d</td>
-<td style="text-align:center">int类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%c</td>
-<td style="text-align:center">char类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%f</td>
-<td style="text-align:center">float类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%lf</td>
-<td style="text-align:center">double类型</td>
-</tr>
-<tr>
-<td style="text-align:center">%.xlf</td>
-<td style="text-align:center">输出x位小数</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;   //头文件</span></span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"这是字符型数据%c，这是int型数据%d"</span>，ch,i);  <span class="comment">//格式化输出</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);  <span class="comment">//记得加&amp;，返回值是接收变量的个数</span></span><br><span class="line"><span class="keyword">char</span> c[<span class="number">20</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s"</span>,c); <span class="comment">//读入字符串，检测到/0结束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为EOF(-1)时说明输入结束</span></span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(xxx) != EOF)&#123;</span><br><span class="line">    <span class="comment">//循环读入数据</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cin</span>.peek()   <span class="comment">//看一个字符不取走</span></span><br><span class="line"><span class="built_in">cin</span>.putback(c)  <span class="comment">//把字符放回输入流头部</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>函数读空格和换行：</span><br><span class="line">如果是%d、%f数值类型，会自动跳过多余的空格和换行，如果是%c会读入空格和换行。</span><br></pre></td></tr></table></figure>
-<h3 id="freopen重定向"><a href="#freopen重定向" class="headerlink" title="freopen重定向"></a>freopen重定向</h3><p>将输入由键盘重定向为文件(不用每次都输入测试数据)<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">freopen(<span class="string">"c:\\xxx.txt"</span>，<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(...)!=EOF)&#123;</span><br><span class="line">    <span class="comment">//从txt文件中输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="cin函数"><a href="#cin函数" class="headerlink" title="cin函数"></a>cin函数</h3><p>cin &gt;&gt; n &gt;&gt; m;<br>返回True(成功接收所有输入)或false()<br>while(cin &gt;&gt; n){<br>    //循环读入数据<br>}<br>注：cin读入的格式由后面的变量决定，若为char即读入一个字符，int则读入一个整数(遇到空格/换行为止)</p>
-<h2 id="第四节-指针"><a href="#第四节-指针" class="headerlink" title="第四节_指针"></a>第四节_指针</h2><ul>
-<li><strong>指针</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">指针变量，<span class="number">4</span>个字节，内容表示一个内存地址。</span><br><span class="line"><span class="keyword">int</span> *p; <span class="comment">//p类型：int *，*p的类型：int</span></span><br><span class="line"><span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c1; <span class="comment">//pc指向变量c1</span></span><br><span class="line"><span class="comment">//*：间接引用运算符。&amp;：取地址运算符。</span></span><br><span class="line"><span class="comment">//&amp;x：变量x的地址，就是指向x的指针，类型是 T*。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>指针的意义：不需要通过变量，即可自由访问内存空间。</p>
-<ul>
-<li><p><strong>指针互相赋值</strong><br>不同类型的指针，如果不经过强制类型转换，不能直接相互赋值。 (每个指针类型还代表着一次向内存读/写多少字节)<br>char <em>c = ‘A’;<br>int </em>p = (int <em>)c;
-</em>p=122; //此时’A’后面三个字节的值也会被改变。</p>
-</li>
-<li><p><strong>指针的运算</strong></p>
-</li>
-</ul>
-<ol>
-<li>指针比大小：比p1和p2地址的大小</li>
-<li>指针相减：p1-p2=(地址p1-地址p2)/sizeof(T)</li>
-<li>p+n=p+n*sizeof(T)，结果还是指针。</li>
-<li>p[n]=*(p+n)</li>
-</ol>
-<ul>
-<li><p><strong>空指针</strong><br>指向地址0的指针，int *pn=NULL;</p>
-</li>
-<li><p><strong>指针和字符串</strong><br>字符串常量、字符数组的类型都是char*。</p>
-</li>
-<li><p><strong>void指针</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以用任何类型的指针对<span class="keyword">void</span>指针进行赋值</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">void</span> *p = &amp;a;</span><br><span class="line">但*p、P+n、p++等均无意义</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>void*自动匹配</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>函数</span><br><span class="line">void* memset(void* dest,int ch,int n)：将dest开始的n个字节都设置为ch(取其最低位字节)，初始化数组。</span><br><span class="line"><span class="comment">//对char数组赋值时，结尾要加'\0'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memcpy</span>函数</span><br><span class="line">void* memcpy(void* dest,void* src,int n)：将n个字节拷贝src-&gt;dest。</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a1[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="keyword">char</span> a2[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="built_in">memset</span>(a1, <span class="string">'a'</span>, <span class="keyword">sizeof</span>(a1)<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">memcpy</span>(a2, a1, <span class="keyword">sizeof</span>(a2));</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; a2 &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//输出aaaaaaaaaa</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>函数指针</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指向函数入口地址的指针</span></span><br><span class="line"><span class="keyword">int</span> (*Pf)(<span class="keyword">int</span>,<span class="keyword">char</span>)</span><br><span class="line">pf = fun_name;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="第五节-基本STL"><a href="#第五节-基本STL" class="headerlink" title="第五节_基本STL"></a>第五节_基本STL</h2><ul>
-<li><strong>库函数和头文件</strong><br>库函数：编译器自带的函数<br>头文件：包含许多库函数的声明</li>
-</ul>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="comment">//sort(数组名+n1,数组名+n2)，对数组[n1,n2)区间排序，默认从小到大</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(<span class="keyword">int</span>)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>))  <span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//从大到小排序</span></span><br><span class="line"><span class="comment">//#include &lt;functional&gt;头文件</span></span><br><span class="line">sort(a,a+<span class="number">7</span>,greater&lt;T&gt;())  </span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义排序规则</span></span><br><span class="line"><span class="keyword">bool</span> cmp(<span class="keyword">const</span> <span class="keyword">int</span> &amp; a1,<span class="keyword">const</span> <span class="keyword">int</span> &amp; a2) &#123;</span><br><span class="line">    <span class="keyword">return</span> a1 &gt; a2;</span><br><span class="line">    <span class="comment">//若a1应排在a2前面，则返回true。否则返回false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>),cmp());</span><br></pre></td></tr></table></figure>
-<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><ul>
-<li><strong>前提条件</strong><br>所有的二分查找，都是应用在<strong>有序</strong>列表中的。</li>
-<li><p><strong>binary_search函数</strong><br>两种使用方法：<br><code>bool binary_search(数组名+n1,数组名+n2,值)</code><br><code>bool binary_search(数组名+n1,数组名+n2,值,排序规则结构名())</code>，查找时的规则必须和排序时的规则一致。<br>对排好序的数组进行二分查找，返回值true：找到，false：没找到。<br><strong>查找的本质：</strong>查找x，即找到一个元素y，使得“x必须排在y前面”和“y必须排在x前面”都不成立（和 == 的含义不一样），这样就算找到了；没有找到元素y，就是没找到。<br>所以不存在的元素同样有可能查的到（eg：按个位排序，查找的元素只要个位相等就能查到，十位/百位不一定会相等），因此查找的结果要视具体排序规则来分析。</p>
-</li>
-<li><p><strong>lower_bound函数</strong><br><code>T* lower_bound(数组名+n1,数组名+n2,值)</code><br>返回序号p，使得[n1,p)中元素都小于查找值。<br>若比所有元素都小/大，则指向n1/n2。<br>为避免返回序号为n1时的歧义，查前要确保值在数组范围内。</p>
-</li>
-<li><p><strong>upper_bound函数</strong><br><code>T* upper_bound(数组名+n1,数组名+n2,值)</code><br>返回指针p，使得[p,n2)中元素都大于查找值。</p>
-</li>
-</ul>
-<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>在log(n)内快速添加、删除、查找元素<br>应用了平衡二叉树的四种<strong>排序容器</strong>：<code>multiset</code>、<code>set</code>、<code>multimap</code>、<code>map</code></p>
-<h3 id="multiset容器"><a href="#multiset容器" class="headerlink" title="multiset容器"></a>multiset容器</h3><ul>
-<li><p><strong>主要作用</strong><br>自动对集合内元素排序(默认从小到大)，且允许元素重复，在一些需要动态增加、删除元素的排序场景下使用很方便。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;  //头文件</span></span></span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st;</span><br><span class="line">T a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st2(a,a+<span class="number">5</span>); <span class="comment">//用数组初始化</span></span><br><span class="line">st.insert(a); <span class="comment">//插入元素a，自动排序。插入的是复制值，并非引用。</span></span><br><span class="line">st.erase(a);  <span class="comment">//删除元素a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历集合，用迭代器</span></span><br><span class="line"><span class="built_in">multiset</span>&lt;<span class="keyword">int</span>&gt;::iterator it;  <span class="comment">//定义迭代器，类似指针</span></span><br><span class="line"><span class="keyword">for</span> (it = st.begin(); it != st.end(); it++) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    <span class="comment">//end()为末尾指针，指向最后一个元素的后面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">it = st.find(a);   <span class="comment">//查找元素a，返回迭代器,没找到返回end()</span></span><br><span class="line"></span><br><span class="line">st.lower_bound(a);  <span class="comment">//返回迭代器it,使得[begin(),it)中元素都比a小，注意是前闭后开区间</span></span><br><span class="line"></span><br><span class="line">st.upper_bound(a)  <span class="comment">//返回迭代器it,使得[it,end())中元素都比a大</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>自定义排序规则的multiset</strong><br>1、自定义规则结构体Rule，实现<code>bool operator()(const &amp; T,const &amp; T)</code>函数<br>2、定义容器multiset&lt;T,Rule&gt;<br>3、定义迭代器muliset&lt;T,Rule&gt;::iterator</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义规则结构体Rule方法</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rule</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> &amp; T,<span class="keyword">const</span> &amp; T)</span></span>&#123;</span><br><span class="line">        <span class="comment">//比较函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="set容器"><a href="#set容器" class="headerlink" title="set容器"></a>set容器</h3><p>与multiset容器区别：不能有重复元素，其他都一样。<br>a和b重复的含义：a排在b前面、b排在a前面都不成立<br>注：因为不能重复，所以插入元素有可能不成功。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="built_in">set</span>&lt;T&gt;::iterator,<span class="keyword">bool</span>&gt; result = <span class="built_in">set</span>.insert(n);  </span><br><span class="line"><span class="comment">//result.second==true，插入成功；否则失败。</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="multimap容器"><a href="#multimap容器" class="headerlink" title="multimap容器"></a>multimap容器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">键值对形式，<span class="built_in">multimap</span>中的元素都是pair形式。</span><br><span class="line">按first进行排序，一般不自定义排序。</span><br><span class="line"></span><br><span class="line">pair模板：pair&lt;T1,T2&gt;</span><br><span class="line">等价于</span><br><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    T1 first;  <span class="comment">//关键字</span></span><br><span class="line">    T2 second; <span class="comment">//值 </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="built_in">multimap</span>&lt;T1,T2&gt; mp;</span><br><span class="line">mp.insert(make_pair(T1变量,T2变量))  <span class="comment">//make_pair为转换pair模板的函数</span></span><br><span class="line">multima&lt;T1,T2&gt;::iterator it  <span class="comment">//迭代器</span></span><br></pre></td></tr></table></figure>
-<h3 id="map容器"><a href="#map容器" class="headerlink" title="map容器"></a>map容器</h3><p>和multimap区别：不能有关键字重复的元素<br>可以使用[first]查找second值；若first不存在，则创建一个。<br>插入可能失败(first重复)。</p>
-<h3 id="camath数学库"><a href="#camath数学库" class="headerlink" title="camath数学库"></a>camath数学库</h3><ol>
-<li>abs(int x)：整数绝对值</li>
-<li>fabs(double x)：浮点数绝对值</li>
-<li>sqrt(double x)：求平方根</li>
-<li>ceil(double x)：不小于x的最小整数(上取整)</li>
-<li>sin(double x)/cos(double x)：x(弧度)的正/余弦</li>
-</ol>
-<h3 id="cstring字符串库"><a href="#cstring字符串库" class="headerlink" title="cstring字符串库"></a>cstring字符串库</h3><p>函数都是根据’\0’来判断字符串是否结束的。</p>
-<ol>
-<li>形参常为char c[]，实参可以为char数组或字符串常量。</li>
-<li>int strcmp(char c1[],char c2[])：比较字符串，相等返回0，c1小返回负数。</li>
-<li>char* strcpy(char dest[],char src[])：拷贝字符串src-&gt;dest，返回dest首地址。</li>
-<li>int strlen(char c[])：求字符串长度</li>
-<li>char<em> strchr(char </em>str,char c)：str中查字符c是否在str中，返回指向位置的指针，未查到为NULL。</li>
-<li>char<em> strstr(char </em>str1,char *str2)：str1中查子串str2位置，返回指向位置的指针，未查到为NULL。</li>
-<li>cbar<em> strtok(char </em>str1,char* str2)：str1中抽取被str2分隔的子串。(将str1中的分隔符用’/0’代替了)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *p = strtok(str1, str2);</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		p = strtok(<span class="literal">NULL</span>, str2);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="ctype-h字符库"><a href="#ctype-h字符库" class="headerlink" title="ctype.h字符库"></a>ctype.h字符库</h3><ol>
-<li>bool isdigit(int c)：判断c是否是数字字符</li>
-<li>bool isalpha(int c)：判断c是否是字母字符</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" data-id="cjqqhv6ig001a3hqx5j26i3cf" class="article-share-link" data-share="baidu" data-title="MOOC_C语言笔记">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-微机接口技术与应用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/13/微机接口技术与应用/" class="article-date">
@@ -605,6 +363,305 @@
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/课程笔记/">课程笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Algorithm/MOOC_C语言程序设计笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" class="article-date">
+  <time datetime="2018-09-13T07:49:58.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/">MOOC_C语言笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="第一节-基础知识"><a href="#第一节-基础知识" class="headerlink" title="第一节_基础知识"></a>第一节_基础知识</h2><ul>
+<li><strong>STL：</strong>C++中的标准模板库</li>
+<li><p><strong>define和typedef</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 9999  <span class="comment">//宏定义，多用来替代常量</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">multimap</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; MAP; <span class="comment">//为复杂的类型定义取别名，简化程序，也便于修改。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>类型取值范围</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">字节数</th>
+<th style="text-align:center">取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">-2^31~2^31-1(-21亿~21亿)</td>
+</tr>
+<tr>
+<td style="text-align:center">long long</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">-2^63~2^63-1(很大)</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3.4x10^-38~3.4x10^38(绝对值)</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1.7x10^-308~1.7x10^308(绝对值)</td>
+</tr>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-128~127</td>
+</tr>
+<tr>
+<td style="text-align:center">bool</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">true/false</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>double类型比较相等：相减-&gt;是否小于一个很小的数(0.00001)。<br>比大小：直接&gt; &lt; 比较即可。</p>
+</li>
+<li><p>求字节数：sizeof(int)/sizeof(n)</p>
+</li>
+<li><p>反斜杠\，转义字符、win下地址路径；正斜杠/，网址路径。</p>
+</li>
+<li><p>字符型和整型数据可以相互转换，整型-&gt;字符型：只留最右边8位，再转成ASCII码。</p>
+</li>
+<li><p>常用ASCII码：<br>‘0’-‘9’：48-57<br>‘A’-‘Z’：65-90<br>‘a’-‘z’：97-122</p>
+</li>
+<li><p>十六进制常量：0x打头,0xFFA，1个十六进制位对应4个二进制位。<br>表示二进制：转化为16进制。00101011-&gt;0x2b</p>
+</li>
+<li><p>八进制整型常量：0打头，0677,1个八进制位对应3个二进制位。</p>
+</li>
+<li><p><strong>位运算</strong><br>单独对某些比特进行操作<br><strong>与&amp;</strong>：将某些位置0、获取变量中的某一位<br>eg：判断n的第7位是否为为0，n&amp;0x80==ox80？</p>
+</li>
+</ul>
+<p><strong>或|</strong>：将某些位置1</p>
+<p><strong>异或^</strong>：相同为0不同为1。将某些位按位取反，其他位不变：取反的与1异或，其他与0异或。</p>
+<p><strong>非~</strong>：按位取反。</p>
+<p><strong>左移&lt;&lt;</strong>：左移n位即乘2的n次方，但比乘法要快很多。</p>
+<p><strong>右移&gt;&gt;</strong>：除2的n次方，且向小取整。高位补符号位。</p>
+<h2 id="第二节-数据结构"><a href="#第二节-数据结构" class="headerlink" title="第二节_数据结构"></a>第二节_数据结构</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>初始化：类型名 数组名[数量]={x1,x2,x3,x4..} 或 用for循环初始化。<br>数组越界编译器不会报错，会根据内存地址去访问，数组名即相当于内存地址。<br><strong>编程技巧：可用数组取代复杂的switch case分支结构</strong></p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
+<li><strong>字符串三种形式</strong><br>1、字符串常量，双引号括起来””。<br>2、存放在char数组中，以’\0’结尾，多占一个数组元素。<br>3、string对象，c++标准模板库中的类。<br>注：char数组比string快，但char数组没法传字符串值，只能传数组首地址。因此在一些需要传值的场合，用string更合适。</li>
+</ul>
+<p>字符串在内存占的字节数等于字符数目加1(‘\0’的存在 )<br><strong>读入字符串</strong>：cin或scanf，读到空格为止。空格后内容在下一次cin读入。<br><strong>读一行</strong>：cin.getline(char buf[],int bufSize)，读入不超过bufsize-1个字符</p>
+<h3 id="结构体struct"><a href="#结构体struct" class="headerlink" title="结构体struct"></a>结构体struct</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> ID;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">float</span> fGPA;</span><br><span class="line">    Student* frd;<span class="comment">//成员可以是结构体的指针</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Student s1 = &#123;<span class="number">1234</span>,<span class="string">"TOM"</span>,...&#125;;<span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s1.ID;</span><br><span class="line">Student* s2;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s2-&gt;ID; / <span class="built_in">cout</span>&lt;&lt;(*s2).ID;指针访问成员</span><br></pre></td></tr></table></figure>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p><strong>局部变量：</strong>定义在函数内部、语句块内部的变量。<br><strong>全局变量：</strong>定义在函数外部(main函数外)，在所有函数中均可使用。默认初始化为0.<br><strong>静态变量：</strong>全局变量和static定义的变量。生存期一直持续到整个程序结束。<br><strong>PS：</strong>若未初始化，静态变量默认赋值为0，非静态变量值为随机的。</p>
+<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch case"></a>switch case</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line">    <span class="keyword">case</span> x1:</span><br><span class="line">    <span class="keyword">break</span>;  <span class="comment">//有无中括号都可以</span></span><br><span class="line">    <span class="keyword">case</span> x2:</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第三节-函数与输入输出"><a href="#第三节-函数与输入输出" class="headerlink" title="第三节_函数与输入输出"></a>第三节_函数与输入输出</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">函数定义：</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//函数体</span></span><br><span class="line">    <span class="keyword">return</span> xx ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">函数声明：(无函数体，常写在开头)</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">char</span> c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun2</span><span class="params">(<span class="keyword">int</span> a[])</span></span>;<span class="comment">//一维数组作形参，不用写大小。int a[]与int *a等价。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fan3</span><span class="params">(<span class="keyword">int</span> a[][<span class="number">3</span>])</span><span class="comment">//二维数组作形参，行数不用写，列数必须写</span></span></span><br></pre></td></tr></table></figure>
+<p>函数的形参是实参的<strong>拷贝</strong>，形参的改变不会影响实参。(除非形参是数组、引用或对象)<br>string类型也是传值<br>数组作形参传的是首地址，并非整个数组。</p>
+<h3 id="printf、scanf格式化输入输出"><a href="#printf、scanf格式化输入输出" class="headerlink" title="printf、scanf格式化输入输出"></a>printf、scanf格式化输入输出</h3><p>比cin/cout效率高，尽量使用。<br>%：类型占位符</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">格式字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%d</td>
+<td style="text-align:center">int类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%c</td>
+<td style="text-align:center">char类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%f</td>
+<td style="text-align:center">float类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%lf</td>
+<td style="text-align:center">double类型</td>
+</tr>
+<tr>
+<td style="text-align:center">%.xlf</td>
+<td style="text-align:center">输出x位小数</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;   //头文件</span></span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"这是字符型数据%c，这是int型数据%d"</span>，ch,i);  <span class="comment">//格式化输出</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);  <span class="comment">//记得加&amp;，返回值是接收变量的个数</span></span><br><span class="line"><span class="keyword">char</span> c[<span class="number">20</span>];</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s"</span>,c); <span class="comment">//读入字符串，检测到/0结束</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回值为EOF(-1)时说明输入结束</span></span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(xxx) != EOF)&#123;</span><br><span class="line">    <span class="comment">//循环读入数据</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cin</span>.peek()   <span class="comment">//看一个字符不取走</span></span><br><span class="line"><span class="built_in">cin</span>.putback(c)  <span class="comment">//把字符放回输入流头部</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">scanf</span>函数读空格和换行：</span><br><span class="line">如果是%d、%f数值类型，会自动跳过多余的空格和换行，如果是%c会读入空格和换行。</span><br></pre></td></tr></table></figure>
+<h3 id="freopen重定向"><a href="#freopen重定向" class="headerlink" title="freopen重定向"></a>freopen重定向</h3><p>将输入由键盘重定向为文件(不用每次都输入测试数据)<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">freopen(<span class="string">"c:\\xxx.txt"</span>，<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">scanf</span>(...)!=EOF)&#123;</span><br><span class="line">    <span class="comment">//从txt文件中输入</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="cin函数"><a href="#cin函数" class="headerlink" title="cin函数"></a>cin函数</h3><p>cin &gt;&gt; n &gt;&gt; m;<br>返回True(成功接收所有输入)或false()<br>while(cin &gt;&gt; n){<br>    //循环读入数据<br>}<br>注：cin读入的格式由后面的变量决定，若为char即读入一个字符，int则读入一个整数(遇到空格/换行为止)</p>
+<h2 id="第四节-指针"><a href="#第四节-指针" class="headerlink" title="第四节_指针"></a>第四节_指针</h2><ul>
+<li><strong>指针</strong><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">指针变量，<span class="number">4</span>个字节，内容表示一个内存地址。</span><br><span class="line"><span class="keyword">int</span> *p; <span class="comment">//p类型：int *，*p的类型：int</span></span><br><span class="line"><span class="keyword">char</span> c1 = <span class="string">'A'</span>;</span><br><span class="line"><span class="keyword">char</span> *pc = &amp;c1; <span class="comment">//pc指向变量c1</span></span><br><span class="line"><span class="comment">//*：间接引用运算符。&amp;：取地址运算符。</span></span><br><span class="line"><span class="comment">//&amp;x：变量x的地址，就是指向x的指针，类型是 T*。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>指针的意义：不需要通过变量，即可自由访问内存空间。</p>
+<ul>
+<li><p><strong>指针互相赋值</strong><br>不同类型的指针，如果不经过强制类型转换，不能直接相互赋值。 (每个指针类型还代表着一次向内存读/写多少字节)<br>char <em>c = ‘A’;<br>int </em>p = (int <em>)c;
+</em>p=122; //此时’A’后面三个字节的值也会被改变。</p>
+</li>
+<li><p><strong>指针的运算</strong></p>
+</li>
+</ul>
+<ol>
+<li>指针比大小：比p1和p2地址的大小</li>
+<li>指针相减：p1-p2=(地址p1-地址p2)/sizeof(T)</li>
+<li>p+n=p+n*sizeof(T)，结果还是指针。</li>
+<li>p[n]=*(p+n)</li>
+</ol>
+<ul>
+<li><p><strong>空指针</strong><br>指向地址0的指针，int *pn=NULL;</p>
+</li>
+<li><p><strong>指针和字符串</strong><br>字符串常量、字符数组的类型都是char*。</p>
+</li>
+<li><p><strong>void指针</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">可以用任何类型的指针对<span class="keyword">void</span>指针进行赋值</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">void</span> *p = &amp;a;</span><br><span class="line">但*p、P+n、p++等均无意义</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>void*自动匹配</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">memset</span>函数</span><br><span class="line">void* memset(void* dest,int ch,int n)：将dest开始的n个字节都设置为ch(取其最低位字节)，初始化数组。</span><br><span class="line"><span class="comment">//对char数组赋值时，结尾要加'\0'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">memcpy</span>函数</span><br><span class="line">void* memcpy(void* dest,void* src,int n)：将n个字节拷贝src-&gt;dest。</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a1[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="keyword">char</span> a2[<span class="number">10</span>]=<span class="string">""</span>;</span><br><span class="line"><span class="built_in">memset</span>(a1, <span class="string">'a'</span>, <span class="keyword">sizeof</span>(a1)<span class="number">-1</span>);</span><br><span class="line"><span class="built_in">memcpy</span>(a2, a1, <span class="keyword">sizeof</span>(a2));</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; a2 &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//输出aaaaaaaaaa</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>函数指针</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指向函数入口地址的指针</span></span><br><span class="line"><span class="keyword">int</span> (*Pf)(<span class="keyword">int</span>,<span class="keyword">char</span>)</span><br><span class="line">pf = fun_name;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="第五节-基本STL"><a href="#第五节-基本STL" class="headerlink" title="第五节_基本STL"></a>第五节_基本STL</h2><ul>
+<li><strong>库函数和头文件</strong><br>库函数：编译器自带的函数<br>头文件：包含许多库函数的声明</li>
+</ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"><span class="comment">//sort(数组名+n1,数组名+n2)，对数组[n1,n2)区间排序，默认从小到大</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(<span class="keyword">int</span>)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>))  <span class="comment">//从小到大排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//从大到小排序</span></span><br><span class="line"><span class="comment">//#include &lt;functional&gt;头文件</span></span><br><span class="line">sort(a,a+<span class="number">7</span>,greater&lt;T&gt;())  </span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义排序规则</span></span><br><span class="line"><span class="keyword">bool</span> cmp(<span class="keyword">const</span> <span class="keyword">int</span> &amp; a1,<span class="keyword">const</span> <span class="keyword">int</span> &amp; a2) &#123;</span><br><span class="line">    <span class="keyword">return</span> a1 &gt; a2;</span><br><span class="line">    <span class="comment">//若a1应排在a2前面，则返回true。否则返回false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">15</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">6</span>&#125;</span><br><span class="line">sort(a,a+<span class="keyword">sizeof</span>(a)/<span class="keyword">sizeof</span>(<span class="keyword">int</span>),cmp());</span><br></pre></td></tr></table></figure>
+<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><ul>
+<li><strong>前提条件</strong><br>所有的二分查找，都是应用在<strong>有序</strong>列表中的。</li>
+<li><p><strong>binary_search函数</strong><br>两种使用方法：<br><code>bool binary_search(数组名+n1,数组名+n2,值)</code><br><code>bool binary_search(数组名+n1,数组名+n2,值,排序规则结构名())</code>，查找时的规则必须和排序时的规则一致。<br>对排好序的数组进行二分查找，返回值true：找到，false：没找到。<br><strong>查找的本质：</strong>查找x，即找到一个元素y，使得“x必须排在y前面”和“y必须排在x前面”都不成立（和 == 的含义不一样），这样就算找到了；没有找到元素y，就是没找到。<br>所以不存在的元素同样有可能查的到（eg：按个位排序，查找的元素只要个位相等就能查到，十位/百位不一定会相等），因此查找的结果要视具体排序规则来分析。</p>
+</li>
+<li><p><strong>lower_bound函数</strong><br><code>T* lower_bound(数组名+n1,数组名+n2,值)</code><br>返回序号p，使得[n1,p)中元素都小于查找值。<br>若比所有元素都小/大，则指向n1/n2。<br>为避免返回序号为n1时的歧义，查前要确保值在数组范围内。</p>
+</li>
+<li><p><strong>upper_bound函数</strong><br><code>T* upper_bound(数组名+n1,数组名+n2,值)</code><br>返回指针p，使得[p,n2)中元素都大于查找值。</p>
+</li>
+</ul>
+<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>在log(n)内快速添加、删除、查找元素<br>应用了平衡二叉树的四种<strong>排序容器</strong>：<code>multiset</code>、<code>set</code>、<code>multimap</code>、<code>map</code></p>
+<h3 id="multiset容器"><a href="#multiset容器" class="headerlink" title="multiset容器"></a>multiset容器</h3><ul>
+<li><p><strong>主要作用</strong><br>自动对集合内元素排序(默认从小到大)，且允许元素重复，在一些需要动态增加、删除元素的排序场景下使用很方便。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;  //头文件</span></span></span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st;</span><br><span class="line">T a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"><span class="built_in">multiset</span>&lt;T&gt; st2(a,a+<span class="number">5</span>); <span class="comment">//用数组初始化</span></span><br><span class="line">st.insert(a); <span class="comment">//插入元素a，自动排序。插入的是复制值，并非引用。</span></span><br><span class="line">st.erase(a);  <span class="comment">//删除元素a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历集合，用迭代器</span></span><br><span class="line"><span class="built_in">multiset</span>&lt;<span class="keyword">int</span>&gt;::iterator it;  <span class="comment">//定义迭代器，类似指针</span></span><br><span class="line"><span class="keyword">for</span> (it = st.begin(); it != st.end(); it++) &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *it &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    <span class="comment">//end()为末尾指针，指向最后一个元素的后面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">it = st.find(a);   <span class="comment">//查找元素a，返回迭代器,没找到返回end()</span></span><br><span class="line"></span><br><span class="line">st.lower_bound(a);  <span class="comment">//返回迭代器it,使得[begin(),it)中元素都比a小，注意是前闭后开区间</span></span><br><span class="line"></span><br><span class="line">st.upper_bound(a)  <span class="comment">//返回迭代器it,使得[it,end())中元素都比a大</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>自定义排序规则的multiset</strong><br>1、自定义规则结构体Rule，实现<code>bool operator()(const &amp; T,const &amp; T)</code>函数<br>2、定义容器multiset&lt;T,Rule&gt;<br>3、定义迭代器muliset&lt;T,Rule&gt;::iterator</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义规则结构体Rule方法</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Rule</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> &amp; T,<span class="keyword">const</span> &amp; T)</span></span>&#123;</span><br><span class="line">        <span class="comment">//比较函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="set容器"><a href="#set容器" class="headerlink" title="set容器"></a>set容器</h3><p>与multiset容器区别：不能有重复元素，其他都一样。<br>a和b重复的含义：a排在b前面、b排在a前面都不成立<br>注：因为不能重复，所以插入元素有可能不成功。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pair&lt;<span class="built_in">set</span>&lt;T&gt;::iterator,<span class="keyword">bool</span>&gt; result = <span class="built_in">set</span>.insert(n);  </span><br><span class="line"><span class="comment">//result.second==true，插入成功；否则失败。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="multimap容器"><a href="#multimap容器" class="headerlink" title="multimap容器"></a>multimap容器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">键值对形式，<span class="built_in">multimap</span>中的元素都是pair形式。</span><br><span class="line">按first进行排序，一般不自定义排序。</span><br><span class="line"></span><br><span class="line">pair模板：pair&lt;T1,T2&gt;</span><br><span class="line">等价于</span><br><span class="line"><span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    T1 first;  <span class="comment">//关键字</span></span><br><span class="line">    T2 second; <span class="comment">//值 </span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="built_in">multimap</span>&lt;T1,T2&gt; mp;</span><br><span class="line">mp.insert(make_pair(T1变量,T2变量))  <span class="comment">//make_pair为转换pair模板的函数</span></span><br><span class="line">multima&lt;T1,T2&gt;::iterator it  <span class="comment">//迭代器</span></span><br></pre></td></tr></table></figure>
+<h3 id="map容器"><a href="#map容器" class="headerlink" title="map容器"></a>map容器</h3><p>和multimap区别：不能有关键字重复的元素<br>可以使用[first]查找second值；若first不存在，则创建一个。<br>插入可能失败(first重复)。</p>
+<h3 id="camath数学库"><a href="#camath数学库" class="headerlink" title="camath数学库"></a>camath数学库</h3><ol>
+<li>abs(int x)：整数绝对值</li>
+<li>fabs(double x)：浮点数绝对值</li>
+<li>sqrt(double x)：求平方根</li>
+<li>ceil(double x)：不小于x的最小整数(上取整)</li>
+<li>sin(double x)/cos(double x)：x(弧度)的正/余弦</li>
+</ol>
+<h3 id="cstring字符串库"><a href="#cstring字符串库" class="headerlink" title="cstring字符串库"></a>cstring字符串库</h3><p>函数都是根据’\0’来判断字符串是否结束的。</p>
+<ol>
+<li>形参常为char c[]，实参可以为char数组或字符串常量。</li>
+<li>int strcmp(char c1[],char c2[])：比较字符串，相等返回0，c1小返回负数。</li>
+<li>char* strcpy(char dest[],char src[])：拷贝字符串src-&gt;dest，返回dest首地址。</li>
+<li>int strlen(char c[])：求字符串长度</li>
+<li>char<em> strchr(char </em>str,char c)：str中查字符c是否在str中，返回指向位置的指针，未查到为NULL。</li>
+<li>char<em> strstr(char </em>str1,char *str2)：str1中查子串str2位置，返回指向位置的指针，未查到为NULL。</li>
+<li>cbar<em> strtok(char </em>str1,char* str2)：str1中抽取被str2分隔的子串。(将str1中的分隔符用’/0’代替了)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> *p = strtok(str1, str2);</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		p = strtok(<span class="literal">NULL</span>, str2);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ctype-h字符库"><a href="#ctype-h字符库" class="headerlink" title="ctype.h字符库"></a>ctype.h字符库</h3><ol>
+<li>bool isdigit(int c)：判断c是否是数字字符</li>
+<li>bool isalpha(int c)：判断c是否是字母字符</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/" data-id="cjqqhv6ig001a3hqx5j26i3cf" class="article-share-link" data-share="baidu" data-title="MOOC_C语言笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/09/13/Algorithm/MOOC_C语言程序设计笔记/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-深度学习与Tensorflow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/深度学习与Tensorflow/" class="article-date">
+  <time datetime="2018-09-13T07:49:58.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/深度学习与Tensorflow/">深度学习与TensorFlow</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="深度学习概述"><a href="#深度学习概述" class="headerlink" title="深度学习概述"></a>深度学习概述</h2><h3 id="人工智能AI"><a href="#人工智能AI" class="headerlink" title="人工智能AI"></a>人工智能AI</h3><p>人工智能AI是计算机科学的一个分支，早在20世纪50年代就被提出了，著名的“图灵测试”就是AI发展的终极目标：如果某台机器运行的逻辑程序可以表现出与人类无法分辨的智能，则认为计算机有了思维，能够进行思考。从实用的角度讲，AI的目标是要让计算机自动完成那些需要人类智慧才能完成的工作。</p>
+<h3 id="深度学习的起因"><a href="#深度学习的起因" class="headerlink" title="深度学习的起因"></a>深度学习的起因</h3><ul>
+<li><p><strong>AI初期：专家系统</strong><br>AI发展初期，主要的思路是将人类总结的知识用一系列规范的、形式化的规则来表示，然后通过自动化的程序来代替人类处理问题，以知识为基础的<strong>专家系统</strong>（Knowledge-based expert system）就是这方面的典型代表。<br>专家系统是将专家的经验写成规则，再依照规则推理的方式来模拟专家的思维。专家系统没有获得太大的成功，原因在于系统会明显受到规则数量的限制，规则是有限的，而问题发生时的状况是无限的，用有限的规则处理无限的可能，注定很容易失败。</p>
+</li>
+<li><p><strong>专家系统-&gt;机器学习</strong><br>因此，“演绎法”的规则推理暂时行不通，“归纳法”就成了另一条出路，基于概率统计的机器学习（Machine Learning）逐渐成为了主流方法，其直接将大量真实世界产生的数据样本交给算法处理，让算法自己在数据中寻找和学习特定的规律，自己“归纳”知识。这种从数据中学习规律的过程也叫做“模式识别”。</p>
+</li>
+<li><p><strong>机器学习-&gt;深度学习</strong><br>但这之后机器学习也遇到了一些问题，例如，对于朴素贝叶斯、逻辑回归等经典机器学习算法，本质是计算输入样本和输出目标之间的<strong>隐含规律/相关性</strong>，但计算相关性其实是一个后续问题，在这之前我们首先要确定各个影响因素，而如何表示各个影响因素会严重影响相关性的判断。如要辨别一段语言中演讲者是男人、女人还是小孩，简单机器学习算法的判断依据很可能是音量而非音色和音调。因此设计合适的<strong>特征表示</strong>在机器学习中是一项非常重要的工作，被称为<strong>特征工程</strong>。但长期以来，合适特征的选取都非常困难，不仅费事费力，更需要人们提供大量的先验知识以弥补对数据本身挖掘不足而产生的缺陷。因此若要拓展机器学习的适用范围，必须要降低对特征工程的依赖性。因此也就出现了深度学习。<br>深度学习是一种<strong>表示学习</strong>（Representation Learning）方法，所谓表示学习，就是要让算法在少量人为先验知识的情况下，能够自己从数据中抽取合适的特征。而表示学习目前受到重视的另一个原因是对于人工智能，其目标就是让机器有能力理解我们所在的世界，只有当它学会如何感知和辨别数据背后的各种隐含因素时才能达到这个目标。<br>深度学习最主要的模型是<strong>深度神经网络</strong>，其思想是通过一些列非线性变换操作把从原始数据中提取的简单特征进行组合，从而得到更高层、更抽象的特征表示，这也对应着我们思维理解的过程。如对于文本分析，先认识各个字母，再认识由字母组成的单词，其次是词组、句子、段落，逐渐由简单向抽象映射。一般有<strong>三个</strong>以上隐含层的神经网络就称为深度神经网络。</p>
+</li>
+<li><p><strong>CPU和GPU</strong><br>促进深度学习的另一个因素是GPU的广泛使用。GPU的主要功能是渲染画面，涉及到坐标变换、栅格化、平面渲染等大量的浮点数计算操作。相比来说，CPU是面向通用计算的产品，GPU则是面向大规模浮点数并行计算的，因此GPU训练计算神经网络的效率会更高。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/09/13/深度学习与Tensorflow/" data-id="cjqqhv6hu000p3hqxvl2faxle" class="article-share-link" data-share="baidu" data-title="深度学习与TensorFlow">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/09/13/深度学习与Tensorflow/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MachineLearning/">MachineLearning</a></li></ul>
 
     </footer>
   </div>
@@ -1688,191 +1745,10 @@
 
 
   
-    <article id="post-Algorithm/MOOC_算法课程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/13/Algorithm/MOOC_算法课程/" class="article-date">
-  <time datetime="2018-04-13T07:14:00.000Z" itemprop="datePublished">2018-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/13/Algorithm/MOOC_算法课程/">MOOC_算法课程笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <hr>
-<p>最近在MOOC上报名了北大郭炜老师的算法课程，感觉收获还是蛮大的，因此整理一下自己的学习心得，方便以后复习查阅。</p>
-<hr>
-<h2 id="第一章-枚举"><a href="#第一章-枚举" class="headerlink" title="第一章_枚举"></a>第一章_枚举</h2><ul>
-<li>逐个尝试答案的一种求解策略</li>
-<li>遇到题，首先考虑枚举法，看数据量是否允许，是否有“剪枝”策略。</li>
-<li>但枚举时也要考虑“减枝”：如何去掉明显不满足的解，加快枚举速度 </li>
-<li>转变枚举思路：从条件出发找解 -&gt; 从解出发去试是否满足条件，解比条件组合更容易遍历所有情况。<br>自问：题目什么是结果，什么是条件。</li>
-<li><strong>局部枚举：</strong><br>可由局部来确定剩余部分的状态，这样只需枚举局部即可实现对全体的枚举。<br>关键是找出局部-&gt;全体的推导关系。</li>
-</ul>
-<hr>
-<h2 id="第二章-递归"><a href="#第二章-递归" class="headerlink" title="第二章_递归"></a>第二章_递归</h2><ul>
-<li><p><strong>常用递归情况：</strong><br>1.解决用递归定义的问题(求解表达式问题)<br>2.将问题分解为规模更小的子问题来求解(汉诺塔问题)</p>
-</li>
-<li><p>想明白递推关系(递推函数是干什么的、返回值是什么)、终止条件。</p>
-</li>
-<li><p>递归用于数据量较小的情况，数据量大用动态规划。</p>
-</li>
-<li><p>递归的本质也是分解子问题，思考怎样把问题缩小。</p>
-</li>
-</ul>
-<hr>
-<h2 id="第三章-动态规划"><a href="#第三章-动态规划" class="headerlink" title="第三章_动态规划"></a>第三章_动态规划</h2><ul>
-<li><p><strong>解题思路</strong></p>
-<ol>
-<li>设计子问题，将原问题分解为子问题(满足最优子结构和无后效性两条件)</li>
-<li>存放子问题解：一个解若由K个变量决定，就申请一个<strong>K维数组</strong>来保存。</li>
-<li>确定初始子问题：问题的边界值(最小的子问题)。</li>
-<li>确定递推函数：如何从子问题-&gt;父问题。多为一个单位一个单位使问题规模递增。可以先做一步，再看能不能划分为形式相同子问题。</li>
-</ol>
-</li>
-<li><p><strong>可用动规解决的问题的特点</strong></p>
-<ul>
-<li><p><strong>最优子结构</strong>：若父问题解是最优的，则子问题解也肯定是最优的。</p>
-</li>
-<li><p><strong>无后效性</strong>：父问题的解只和子问题解的值有关，和子问题的解是如何求得的无关。</p>
-</li>
-<li><p>与递归的相同处：思路都是大问题分成相同形式子问题(递推函数)，小问题的解再组合为大问题解。</p>
-</li>
-<li><p>与递归的不同处：动归要保存中间结果(多用全局数组保存)，避免重复计算。</p>
-</li>
-</ul>
-</li>
-<li><p>递归函数与递推函数：递推函数是用循环实现的：找好结束条件，确定从哪开始循环，在循环体里写递推函数就可以了。</p>
-</li>
-<li><p>递推函数开数组：数组若特别大，考虑用滚动数组，后项不断覆盖前项，可实现二维数组-&gt;一维数组的降维。</p>
-</li>
-</ul>
-<hr>
-<h2 id="第四章-深度优先搜索"><a href="#第四章-深度优先搜索" class="headerlink" title="第四章_深度优先搜索"></a>第四章_深度优先搜索</h2><ul>
-<li><p>多为递归+剪枝来实现。剪枝分为<strong>可行性剪枝(能否求得解)</strong>和<strong>最优性剪枝(是否是最优解)</strong>，从这两个思路来想。</p>
-</li>
-<li><p>深搜的本质还是递归分解子问题，一层层地分解，用栈解决的问题用递归都都可以解决。</p>
-</li>
-<li><p>搜索问题其实就是遍历所有解找最优解的过程，枚举也是搜索的一种，深度/广度搜索只是枚举的策略不同而已。搜索和一般的枚举区别在于，搜索问题的点与点之间是有关系的(边表示这种关系)，因此从一个点可以按规则进入下一个点，而不是盲目的枚举。(如正则表达式问题，出现了’(‘即表示要递归进入新的节点，出现’)’即表示要结束当前问题，出现’|’即需要求左右两边最大值)</p>
-</li>
-<li><p><strong>遍历图的伪代码流程</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    将所有点标记为新点</span><br><span class="line">    起点=xx;</span><br><span class="line">    重点=xx;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;Dfs(起点);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断从V出发是否能走到终点</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Dfs</span><span class="params">(V)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(V是终点)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(V是旧点)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    将V标记为旧点;</span><br><span class="line">    遍历V相邻的每个结点U&#123;</span><br><span class="line">        <span class="keyword">if</span>(Dfs(U)==<span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断从V出发是否能走到终点，并记录路径</span></span><br><span class="line">Node path[MAX_LEN]; <span class="comment">//全局数组，记录路径</span></span><br><span class="line"><span class="keyword">int</span> depth=<span class="number">0</span>; <span class="comment">//记录深度</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Dfs</span><span class="params">(V)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(V是终点)&#123;</span><br><span class="line">        path[depth]=V;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(V是旧点)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    将V标记为旧点;</span><br><span class="line">    path[depth]=V;</span><br><span class="line">    depth++;</span><br><span class="line">    遍历V相邻的每个结点U&#123;</span><br><span class="line">        <span class="keyword">if</span>(Dfs(U)==<span class="literal">true</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    depth--; <span class="comment">//从V走不到终点，回退</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历图中所有点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    将所有点标记为新点;</span><br><span class="line">    <span class="keyword">while</span>(在图中能找到能找到新点K) </span><br><span class="line">        Dfs(K);</span><br><span class="line">&#125;</span><br><span class="line">Dfs(V)&#123;</span><br><span class="line">    <span class="keyword">if</span>(V是旧点) <span class="keyword">return</span>;</span><br><span class="line">    将V标记为旧点;</span><br><span class="line">    对和V相邻的每个点U&#123;</span><br><span class="line">        Dfs(U);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>图的数据结构</strong></p>
-<ul>
-<li><p>邻接矩阵：二维数组，G[i][j]表示节点i和节点j之间边的情况。遍历复杂度O(n2)</p>
-</li>
-<li><p>邻接表：每个节点V设置一个一维数组，存放从V连出去的边。边稀疏时效率高，遍历复杂度O(n+e)。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表实现</span></span><br><span class="line">Vector&lt;Vector&lt;T&gt;&gt; v   <span class="comment">//变长二维数组，用法和数组一样</span></span><br><span class="line">v.push_back()   <span class="comment">//添加元素</span></span><br><span class="line">v[<span class="number">0</span>].size()    <span class="comment">//vector长度</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="第五章-广度优先搜索"><a href="#第五章-广度优先搜索" class="headerlink" title="第五章_广度优先搜索"></a>第五章_广度优先搜索</h2><ul>
-<li><p>依层次顺序，从小到大扩展节点。把层次低的点全部扩展出来后，才会扩展层次高的点。</p>
-</li>
-<li><p>可确保找出最短路径解，因为是一层一层找的</p>
-</li>
-<li><p>深搜用栈(递归)存节点，广搜用队列存节点。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//队列操作</span></span><br><span class="line"><span class="built_in">queue</span>&lt;T&gt; q</span><br><span class="line">q.empty()  <span class="comment">//是否为空</span></span><br><span class="line">q.front()  <span class="comment">//取队首元素  </span></span><br><span class="line">q.push(xx)   <span class="comment">//加入元素</span></span><br><span class="line">q.pop()  <span class="comment">//抛弃元素</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>广搜中若要输出路径，则就要自己实现队列，数组 + aad、tail指针，队头取数，队尾加数。</p>
-<ul>
-<li><p><strong>优先队列：priority_queue<t></t></strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//与multiset区别，pr_queue默认从大到小，multiset默认从小到大。</span></span><br><span class="line"><span class="comment">//pr_queue重载'&lt;'运算符(直接写重载函数即可)，multiset重载'()'运算符(写在结构体中)。</span></span><br><span class="line"><span class="comment">//重写operator&lt;比较符</span></span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> T &amp; t1,<span class="keyword">const</span> T &amp; t2)&#123;</span><br><span class="line">    <span class="keyword">return</span> t1&lt;t2;  <span class="comment">//t1的优先级小于t2，则t2排在队首(优先级高的排队首)</span></span><br><span class="line">&#125;</span><br><span class="line">priority_queue&lt;T&gt; q;  <span class="comment">//自动按重写的&lt;对T排序</span></span><br><span class="line">q.top()   <span class="comment">//取队首</span></span><br><span class="line">q.push()  <span class="comment">//入队尾</span></span><br><span class="line">q.pop()   <span class="comment">//扔队首</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>深搜/广搜区别，深搜用递归，广搜用队列(空间需求会大一些)。广搜最先找到的一定是最优解，深搜则要全部搜完才能找到最优解。因此需要遍历所有节点的情况用深搜，要递归的情况用深搜。</p>
-</li>
-</ul>
-<hr>
-<h2 id="第六章-贪心算法"><a href="#第六章-贪心算法" class="headerlink" title="第六章_贪心算法"></a>第六章_贪心算法</h2><ul>
-<li><p>每一步行动总是选取当前下一步的最优操作，并不考虑之后的影响。<br>(要考虑当前的最优操作也是整体的最优操作)</p>
-</li>
-<li><p>大部分贪心都和排序相关，直接从排序结果中从高到低选择即可。</p>
-</li>
-<li><h4 id="三类常见的区间贪心问题"><a href="#三类常见的区间贪心问题" class="headerlink" title="三类常见的区间贪心问题"></a>三类常见的区间贪心问题</h4><ul>
-<li><p><strong>线段覆盖</strong><br>n个开区间(ai,bi)，选择尽量多个区间，使得这些区间两两不相交<br>右端点排序（&lt;）兼顾左端点（&gt;），再从左到右遇到不相交的就选</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a[i].l、a[i].r为左、右端点</span></span><br><span class="line">sort(a,a+n,cmp);</span><br><span class="line"><span class="keyword">int</span> num=<span class="number">1</span>,now=a[<span class="number">0</span>].r;  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i].l&gt;=now) now=a[i].r,num++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, num);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>区间选点</strong><br>n个闭区间[ai,bi]，选择尽量少的点，使得每个区间至少有一个点<br>右端点排序（&lt;）兼顾左端点（&gt;），每次选择可选区间的最后一个点</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sort(a,a+n,cmp);</span><br><span class="line"><span class="keyword">int</span> num=<span class="number">1</span>,now=a[<span class="number">0</span>].r;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i].l&gt;now) now=a[i].r,num++;   </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, num);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>区间覆盖</strong><br>数轴上有n个闭区间[ai,bi]，选择尽量少的区间覆盖一条指定的线段[s,t]<br>左端点排序（&lt;）兼顾右端点（&lt;），每次选择从当前起点能覆盖到的最长的区间</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sort(a,a+n,cmp);</span><br><span class="line"><span class="keyword">int</span> num=<span class="number">0</span>,now=s,to=<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n &amp;&amp; to&lt;=t; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i].l&lt;=now)    to=max(to,a[i].r);</span><br><span class="line">    <span class="keyword">else</span>    now=to,to=a[i].r,num++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, num);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="一些基础知识"><a href="#一些基础知识" class="headerlink" title="一些基础知识"></a>一些基础知识</h2><ul>
-<li><p><strong>有关复杂度的估算：</strong><br>十亿级肯定超时，亿级较危险，最好千万以下</p>
-</li>
-<li><p>算法中的证明，很难从正面直接证明，多为反证法，要多考虑<strong>反面的不可能性</strong>。eg,证明两数不可能相等，就想两数什么时候会相等、若相等会有什么条件不满足等等…</p>
-</li>
-<li><p><strong>算法三大能力：</strong><br>1.按步骤思考，大问题分为小问题，一步步解决问题的能力<br>2.实际问题抽象为计算机表示的能力(列出问题涉及的元素，再依次表示为计算机的数据结构)<br>3.编程实现的能力(按1.的步骤，对数据结构进行操作，即编写算法)</p>
-</li>
-</ul>
-<p>解题思路：数据量不大，先想枚举，再想递归。大数据量考虑动规。其次深搜、广搜。然后贪心。</p>
-<p>C/C++不能动态申请数组，就一次申请最大量，空间-&gt;时间。</p>
-<p>for循环中：++i比i++效率高(无需保存原先的变量)，尽量使用++i。</p>
-<ul>
-<li><p>vector&lt;pair&lt;string, int&gt;&gt; word; gcc会报错”&gt;&gt;”，理解为输入符号。此时应加上空格：<br>vector&lt;pair&lt;string, int&gt; &gt;</p>
-</li>
-<li><p>对于涉及到“选前n个数”的问题，下标统一从1开始，这样下标使用的时候可以统一，只用把存储信息的数组从1开始存就可以了。</p>
-</li>
-</ul>
-<p>好题记录：</p>
-<ul>
-<li>POJ 1222(灯泡、开关问题)，第一周4题</li>
-<li>放苹果，第三周3题(递归、动态规划对比)</li>
-<li>找n元素数组前m大的数，第五周3题(n+mlogm算法)</li>
-<li>最佳加法表达式，第六周4题(怎样自底向上推导)</li>
-<li>分蛋糕，第七周5题(怎样自底向上推导，循环的嵌套)</li>
-<li>城市通路，第九周1题(深搜，怎样剪枝)</li>
-<li>生日蛋糕，第九周3题(深搜，剪枝)</li>
-<li>带限制的广搜：增加搜索状态的维度，判重时要考虑增加的维度。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/" data-id="cjqqhv6ie00163hqxev2m2smz" class="article-share-link" data-share="baidu" data-title="MOOC_算法课程笔记">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/04/13/Algorithm/MOOC_算法课程/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 </section>
       
@@ -1884,7 +1760,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1893,7 +1769,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 12.86px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.43px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.14px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15.71px;">Network</a> <a href="/tags/Other/" style="font-size: 18.57px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 12.86px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 14.29px;">cs224n</a> <a href="/tags/python/" style="font-size: 12.86px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 16.67px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 18.33px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 13.33px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -1902,7 +1778,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1912,6 +1788,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/27/cs224n/lecture 4/">lecture 4_Word Window Classification and Neural Networks</a>
+          </li>
         
           <li>
             <a href="/2018/12/25/Python/numpy笔记/">numpy笔记</a>
@@ -1927,10 +1807,6 @@
         
           <li>
             <a href="/2018/11/05/cs224n/lecture 2/">lecture 2_Word Vectors</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/02/cs224n/lecture 1/">lecture 1_Introduction</a>
           </li>
         
       </ul>
