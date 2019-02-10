@@ -70,6 +70,126 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Java" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/20/Java/" class="article-date">
+  <time datetime="2018-01-20T17:20:00.000Z" itemprop="datePublished">2018-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/20/Java/">Java笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <ul>
+<li><a href="#1">第一节_基础知识</a></li>
+<li><a href="#2">第二节_String操作</a></li>
+<li><a href="#3">第三节_输入输出</a></li>
+<li><a href="#4">第四节_GUI</a></li>
+</ul>
+<h3 id="1"> 第一节_基础知识 </h3>
+
+<ul>
+<li><p>api中查的都是类，函数查不到。<br>查包的话直接在首页按字母顺序找即可。</p>
+</li>
+<li><p>不清楚数组长度的情况下遍历：<br>for(String/int.. a : array ){}</p>
+</li>
+<li><p>控制double输出格式：decimalformat类<br>DecimalFormat df = new DecimalFormat(“0.0000000”);<br>df.format(xx);<br>“#.#######”与”0.0000000”的区别，【开头位置】出现0时是否用0占位。#舍去0,0则占位。</p>
+</li>
+<li><p>测试代码执行时间<br>long a=System.currentTimeMillis();<br>//测试代码<br>System.out.println((System.currentTimeMillis()-a)/1000f+” 秒 “);</p>
+</li>
+<li><p>基本数据类型从低级-&gt;高级为自动类型转换（因为不会丢失数据）<br>高级-&gt;低级有丢失数据的风险，所以需要强制类型转换。<br>但若低级-&gt;高级时有溢出可能，也需在右式强转，否则无法接收溢出的数据。<br>eg：<br>int n=xxx;<br>double d = n <em> n;<br>【若n^2超出int范围，则无法接收溢出数据，在右式即截断了】<br>应为double d = (double)n </em> n;</p>
+</li>
+<li><p><strong>java各数值类型范围</strong><br>类型|字节数|取值范围<br>:-:|:-:|:-:<br>int|4|-2^31~2^31-1(-21亿~21亿)<br>long|8|-2^63~2^63-1(很大)<br>float|4|3.4x10^-38~3.4x10^38(绝对值)<br>double|8|1.7x10^-308~1.7x10^308(绝对值)<br>char|1|-128~127<br>boolean|1|true/false</p>
+</li>
+<li><p>取绝对值函数：Math.abs(xx)<br>开方函数：Math.sqrt(xx)<br>Arrays.sort(a)：将数组a从小到大排序<br>Arrays.fill(a,xx)：将数组a元素全部置为xx</p>
+</li>
+<li><p>java不显示地支持2进制表示，可用16进制(0x开头)、8进制(0)来代替，直接int即可。<br>但位运算符：&amp; | ^ ~等都是将数转化为二进制后运算。<br>十进制数转二进制输出：Integer.toBinaryString(xx);</p>
+</li>
+<li><p><strong>建立class数组</strong><br>Class[] c = new Class[n];<br>for(int i = 0;i&lt;n;i++){ c[i] = new Class(); }<br>还要逐个进行初始化</p>
+</li>
+<li><p>java自定义类比大小<br>实现Comparable&lt;自定义类名&gt;接口<br>并重写int compareTo(&lt;自定义类名&gt; xx)方法，<br>this小于xx返回负值，等于返回零，大于返回正值。</p>
+</li>
+<li><p>多线程时：实现runnable接口的方式便于多重继承，但在类体内可能无法使用一些Threadl类的方法（如sleep）。<br>继承Thread虽然只能单继承，但方便在类体内使用Thread方法。</p>
+</li>
+</ul>
+<p></p><h3 id="2"> 第二节_String操作 </h3><p></p>
+<ul>
+<li><p>访问字符串中的元素，返回char<br>String.charAt(index)      0 ~ lenth-1</p>
+</li>
+<li><p>char[]转换为String：不能直接toString(),会乱码；正确方法为new String(char[])</p>
+</li>
+<li><p>字符串string匹配要用equals函数，不能直接==；直接==比较的是内存地址<br>但char可以直接==比较</p>
+</li>
+<li><p>搜索字符串str.indexOf(char ch,int index)：从index开始搜</p>
+</li>
+<li><p><strong>分割字符串：</strong><br>str.split(“xx”)：以”xx”分隔str，返回String数组<br>str.substring(int begin,int end)：返回begin~end-1，所以长度为end-begin。</p>
+</li>
+<li><p>制表符\t，当它的前面有单词的时候，补的空格和单词长度加起来刚好能被 8 整除。<br>效果：使制表符后面的字符对齐</p>
+</li>
+<li><p><strong>int,double和string转换</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">double</span> j=<span class="number">1.0</span>;</span><br><span class="line">String str_i=Integer.toString(i);</span><br><span class="line">String str_j = Double.toString(j);</span><br><span class="line"><span class="keyword">double</span> dd = Double.parseDouble(<span class="string">"123.2"</span>);</span><br><span class="line">String str_j = Double.toString(j);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p></p><h3 id="3"> 第三节_输入输出 </h3><p></p>
+<ul>
+<li><p>使用System.in来创建流时，不可关闭。否则会把其他流也一起关掉</p>
+</li>
+<li><p><strong>关于输入输出中的next()函数：</strong><br>Scanner in的输入函数中：next()只接收有效字符，而nextLine()、nextInt()、nextDouble()等此类函数则会接收包括换行、空格在内的一切字符。<br>所有【next类函数】后接in.nextLine()\nextDouble()..函数会出错，会跳过in.nextLine()的输入语句。<br>因为nextLine()接收到上一句next()最后的回车符后就结束了。<br>next()不丢弃末尾的回车符，nextline()函数会丢弃。<br>【解决】：<br>(1).next()后单独跟一句nextLine()接收回车符;<br>(2).都采用next()形式，只接收有效字符。<br>另外，在同一个函数中，不管中间隔了多少语句，只要没有输入语句，nextLine()就还会接收next()的回车。</p>
+</li>
+<li><p>ObjectInputStream()和ObjectOutputStream()用什么顺序写进去的就用什么顺序读出来。而且Object流和其他流不能混用，必须用同类流输入输出。</p>
+</li>
+<li><p>运用缓冲流BufferedWriter写文件时，write()函数后一定要接flush()函数，缓冲流中的内容才会写到文件中，否则就一直在缓冲流中。</p>
+</li>
+<li><p>网络流read、writer读取时只有关闭后才能正常显示-1。<br>最好用read(byte[])的方法而非一个一个byte read，因为函数的循环调用也会占用时间。</p>
+</li>
+</ul>
+<p></p><h3 id="4"> 第四节_GUI </h3><p></p>
+<ul>
+<li><p>写jframe时，setvisible()函数要写到所有所有组件语句之后。<br>否则一开始不会显示组件，拖动下窗口才会显示。</p>
+</li>
+<li><p>setvisible(true)目的是使控件可以显示出来,如果该控件已经被显示出来，那么该方法使控件显示在窗口的最前方。<br>但其使用的位置需要注意。setVisible的对象一般是该对象的使用者调用的。如果setVisible在某个控件的内部，那么在setVisible函数后面添加的控件就显示不出来了。<br>原因就在于，setVisible(true)并不是告诉JVM让该控件可见，而是在内部调用repaint方法把各个控件画出来进行显示。如果在控件还没完全添加完其他控件就setVisible(true)那么在方法后面添加的控件都不能显示。</p>
+</li>
+<li><p>keylistener中的方法是对所有键盘上的按键都会调用。若要针对某个特定的键，可以调用if()方法来判断。</p>
+</li>
+<li><p>key pressed是按下键，typed是键值传到电脑，released是按键完成释放按键。顺序pressed-&gt;typed-&gt;released。<br>1).pressed和typed一般是紧接着的两个动作，中间不会插其他键的函数。而在typed和realesed间若同时按两个键可能会加另外一个键的函数。<br>2).就是realesed时按键才算按成。<br>3).长按键会有很多pressed和typed，但只有一个realesed。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2018/01/20/Java/" data-id="cjrziv5xt0005nkqxd60m29h6" class="article-share-link" data-share="baidu" data-title="Java笔记">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/2018/01/20/Java/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Other/编程体会" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/20/Other/编程体会/" class="article-date">
@@ -105,7 +225,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/Other/编程体会/" data-id="cjqqhv6iv00283hqxt94oquy1" class="article-share-link" data-share="baidu" data-title="编程体会">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/Other/编程体会/" data-id="cjrziv5zm002cnkqx22ehnbo0" class="article-share-link" data-share="baidu" data-title="编程体会">Share</a>
       
 
       
@@ -223,7 +343,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/Matlab笔记/" data-id="cjqqhv6hq000d3hqx8kjmrbtz" class="article-share-link" data-share="baidu" data-title="Matlab笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/Matlab笔记/" data-id="cjrziv5y0000dnkqxe39hg9pr" class="article-share-link" data-share="baidu" data-title="Matlab笔记">Share</a>
       
 
       
@@ -297,7 +417,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/Lingo笔记/" data-id="cjqqhv6ho000b3hqx6jbm36az" class="article-share-link" data-share="baidu" data-title="Lingo笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/Lingo笔记/" data-id="cjrziv5xu0008nkqxa5p2vs4r" class="article-share-link" data-share="baidu" data-title="Lingo笔记">Share</a>
       
 
       
@@ -369,7 +489,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/数据库SQL/" data-id="cjqqhv6hs000l3hqxx32yrw2g" class="article-share-link" data-share="baidu" data-title="数据库SQL">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/数据库SQL/" data-id="cjrziv5y6000pnkqx207yzfqn" class="article-share-link" data-share="baidu" data-title="数据库SQL">Share</a>
       
 
       
@@ -434,7 +554,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/人工智能笔记/" data-id="cjqqhv6hr000i3hqxviq3b2bn" class="article-share-link" data-share="baidu" data-title="人工智能笔记">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/人工智能笔记/" data-id="cjrziv5y2000inkqxsw2el06q" class="article-share-link" data-share="baidu" data-title="人工智能笔记">Share</a>
       
 
       
@@ -499,7 +619,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/20/MFC/" data-id="cjqqhv6hn00093hqxssrg6b98" class="article-share-link" data-share="baidu" data-title="MFC">Share</a>
+        <a data-url="http://yoursite.com/2018/01/20/MFC/" data-id="cjrziv5xw0009nkqxmuepwr00" class="article-share-link" data-share="baidu" data-title="MFC">Share</a>
       
 
       
@@ -555,7 +675,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Python/VSCode_python环境配置/" data-id="cjqqhv6j3002q3hqxwr26fon9" class="article-share-link" data-share="baidu" data-title="VSCode_python环境配置">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Python/VSCode_python环境配置/" data-id="cjrziv5zq002knkqx4657u77u" class="article-share-link" data-share="baidu" data-title="VSCode_python环境配置">Share</a>
       
 
       
@@ -611,7 +731,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Other/一些快捷键/" data-id="cjqqhv6ix002a3hqxv677hfwq" class="article-share-link" data-share="baidu" data-title="一些快捷键">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Other/一些快捷键/" data-id="cjrziv5zj0026nkqxerctzh7j" class="article-share-link" data-share="baidu" data-title="一些快捷键">Share</a>
       
 
       
@@ -801,121 +921,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/" data-id="cjqqhv6is00223hqx5ceeuv4i" class="article-share-link" data-share="baidu" data-title="LaTex语法">Share</a>
+        <a data-url="http://yoursite.com/2018/01/19/Other/LaTex语法/" data-id="cjrziv5zh0022nkqxvvxnyddq" class="article-share-link" data-share="baidu" data-title="LaTex语法">Share</a>
       
 
       
         <a href="http://yoursite.com/2018/01/19/Other/LaTex语法/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Other/">Other</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Other/markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/19/Other/markdown语法/" class="article-date">
-  <time datetime="2018-01-19T08:14:00.000Z" itemprop="datePublished">2018-01-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/19/Other/markdown语法/">Markdown笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>本文主要包括Markdown的特殊语法，一些还与Hexo的特定Markdown渲染方式有关，在网上不是很方便查找，因此记录下来。</p>
-<hr>
-<h2 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h2><ul>
-<li><strong>md文件头设置</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 标题</span><br><span class="line">date: YYYY-MM-DD HH:mm</span><br><span class="line">tags: 分类标签</span><br><span class="line">toc: true</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注1：toc为是否生成目录，默认不生成<br>注2：Hexo默认按文章时间来排序</p>
-<ul>
-<li><p><strong>添加目录</strong><br>混合html代码即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">目录位置添加：</span><br><span class="line">	- [第一章](#1)</span><br><span class="line">	- [第二章](#2)</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">在相应标题处：</span><br><span class="line">	&lt;h2 id=&apos;1&apos;&gt;第一章&lt;/h2&gt;</span><br><span class="line">	&lt;h2 id=&apos;2&apos;&gt;第二章&lt;/h2&gt;</span><br><span class="line">	...</span><br><span class="line">注：使用html的标题要和后面空一行，否则格式会乱</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>书写格式</strong><br>每一章的大标题用<code>##</code>二级标题，章节内再划分用<code>###</code>，再划分用<code>**</code>加粗即可。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">title：笔记题目  <span class="comment">//md自动翻译为一级标题</span></span><br><span class="line">## <span class="number">1</span>  <span class="comment">//每一章节题目是二级标题</span></span><br><span class="line">***   <span class="comment">//分隔线</span></span><br><span class="line">### <span class="number">1.1</span>  <span class="comment">//每一章节内部划分，用三级标题</span></span><br><span class="line"></span><br><span class="line">- **XX**    <span class="comment">//章节内每一个知识点用list+加黑的形式划分</span></span><br><span class="line">**XX(<span class="number">1</span>)：**  <span class="comment">//知识点内再划分就直接加黑，一行可以结束就直接在后面写</span></span><br><span class="line">**XX(<span class="number">2</span>)：**</span><br><span class="line"></span><br><span class="line">- **YY**</span><br><span class="line">**YY(<span class="number">1</span>)：**  <span class="comment">//知识点内再划分就直接加黑，一行结束不了就另起</span></span><br><span class="line">YY1<span class="number">.1</span>  <span class="comment">//不要再写格式了，直接回车划分即可</span></span><br><span class="line">YY1<span class="number">.2</span></span><br><span class="line">**YY(<span class="number">2</span>)：**</span><br><span class="line"><span class="number">1</span>、YY2<span class="number">.1</span>  <span class="comment">//需要标序号就直接1、2、即可，不要使用有序list语法，否则间距太大很不美观</span></span><br><span class="line"><span class="number">2</span>、YY2<span class="number">.2</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>插入链接/图片</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">插入链接</span><br><span class="line">[显示文本](链接地址)</span><br><span class="line">eg : [简书](http://www.jianshu.com)</span><br><span class="line"></span><br><span class="line">插入图片</span><br><span class="line">![](/images/图片名.xxx)</span><br><span class="line">将图片直接放到images文件夹下即可。</span><br><span class="line"></span><br><span class="line">若要控制图片大小，使用HTML标签</span><br><span class="line">&lt;img src=&quot;/images/图片名.xxx&quot; width = &quot;300&quot; height = &quot;200&quot; alt=&quot;图片名称&quot; align=center /&gt;</span><br><span class="line"></span><br><span class="line">在chrome Markdown Preview plus 插件中无法使图片居中，可使用&lt;div&gt;标签</span><br><span class="line">&lt;div align=center&gt;</span><br><span class="line">&lt;img src=&quot;图片地址&quot; width = &quot;300&quot; height = &quot;300&quot;/&gt;&lt;br&gt;</span><br><span class="line">图x 图片名字</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>插入表格</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| Tables        | Are           | Cool  |</span><br><span class="line">| ------------- |:-------------:| -----:|</span><br><span class="line">| col 3 is      | right-aligned | $1600 |</span><br><span class="line">| col 2 is      | centered      |   $12 |</span><br><span class="line">| zebra stripes | are neat      |    $1 |</span><br><span class="line">靠左对齐、居中、靠右对齐</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>效果：</p>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th>Are</th>
-<th>Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td>right-aligned</td>
-<td>$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td>centered</td>
-<td>$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td>are neat</td>
-<td>$1</td>
-</tr>
-</tbody>
-</table>
-<p>注1：hexo/github的markdown不支持列表list嵌套表格。<br>注2：一级列表中写表格要空一行（否则表格解析不出来），二级列表中就不要写表格了。<br>注3：表格内换行，使用html代码<code>&lt;br&gt;</code></p>
-<ul>
-<li><strong>转义符号</strong><br>要使用<code>* _ #</code>等符号，但不想被翻译为格式标识符，可在符号前加反斜杠，如<code>\_</code> <code>\*</code><br>注1：<code>* _</code>为加粗/斜体格式<br>注2：markdown中反斜杠和普通字母组合时，如<code>\abc</code>，\不起作用；但反斜杠和特殊字符组合时，如<code>\*</code>，\就会起到转义作用。</li>
-</ul>
-<h2 id="零碎记录"><a href="#零碎记录" class="headerlink" title="零碎记录"></a>零碎记录</h2><ul>
-<li><p><strong>分隔线</strong><br>三个星号<code>***</code>表示分隔线</p>
-</li>
-<li><p><strong>插入代码：</strong><br>行内代码为前后一个上点，插入代码块是前后三个上点，代码块第一个三点后加<code>C</code>进行语法高亮。</p>
-</li>
-<li><p><strong>插入空格：</strong><br>半角英文空格：<code>&amp;nbsp;</code><br>全角中文空格：<code>&amp;emsp;</code>，注意单词后的分号。</p>
-</li>
-<li><p><strong>语法高亮</strong><br>Hexo语法高亮支持C语言，其他语言也凑合着用C语言的语法高亮吧。</p>
-</li>
-<li><p>VSCode中快捷键<code>ctrl+B</code>添加<code>****</code>，对字体进行加粗</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/01/19/Other/markdown语法/" data-id="cjqqhv6ir001x3hqxipx11e3b" class="article-share-link" data-share="baidu" data-title="Markdown笔记">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/01/19/Other/markdown语法/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
@@ -943,7 +953,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/">nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -952,7 +962,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 13.33px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.67px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 16.67px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15px;">Network</a> <a href="/tags/Other/" style="font-size: 18.33px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 13.33px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15px;">cs224n</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+      <a href="/tags/Algorithm/" style="font-size: 12.86px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.43px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.14px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15.71px;">Network</a> <a href="/tags/Other/" style="font-size: 18.57px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 12.86px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15.71px;">cs224n</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
     </div>
   </div>
 
@@ -961,7 +971,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -971,6 +981,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/02/07/Regular Expression/">正则表达式</a>
+          </li>
         
           <li>
             <a href="/2019/01/27/cs224n/lecture 4/">lecture 4_Word Window Classification and Neural Networks</a>
@@ -986,10 +1000,6 @@
         
           <li>
             <a href="/2018/11/06/cs224n/background/">基础知识</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/05/cs224n/lecture 2/">lecture 2_Word Vectors</a>
           </li>
         
       </ul>
