@@ -134,18 +134,18 @@
 </tr>
 <tr>
 <td style="text-align:center">^</td>
-<td style="text-align:center">匹配字符串的开始？</td>
+<td style="text-align:center">匹配字符串的开始</td>
 </tr>
 <tr>
 <td style="text-align:center">$</td>
-<td style="text-align:center">匹配字符串的结束？</td>
+<td style="text-align:center">匹配字符串的结束</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><p>关于单词边界<code>\b</code>：如对于pattern <code>\blove\b</code>，就会匹配句子”I love you”中的love, 而不会匹配”I aloveb you”中的love。</p>
+<li><p>对单词边界<code>\b</code>：如正则表达式<code>\blove\b</code>，就会匹配句子”I love you”中的love, 而不会匹配”I aloveb you”中的love。</p>
 </li>
-<li><p>一些字符的反义表示<br>如<code>\w</code>，<code>\b</code>这些特殊字符的大写表示其相反的含义，具体如下：</p>
+<li><p>一些字符的反义表示<br>如<code>\w</code>，<code>\b</code>这些特殊字符的大写表示相反的含义，具体如下：</p>
 </li>
 </ul>
 <table>
@@ -211,7 +211,7 @@
 </table>
 <h4 id="贪婪、懒惰匹配原则"><a href="#贪婪、懒惰匹配原则" class="headerlink" title="贪婪、懒惰匹配原则"></a>贪婪、懒惰匹配原则</h4><ul>
 <li>正则表达式的匹配原则为贪婪匹配：即在满足条件的情况下，匹配<strong>尽可能多</strong>的字符。<br>eg. <code>a.*b</code>会匹配以a开始，以b结束的最长的字符串。如果用来搜索<code>aabab</code>，则会匹配整个字符串<code>aabab</code>而非<code>aab</code>。</li>
-<li>若需要懒惰匹配：匹配<strong>尽可能少</strong>的字符，就在相应的重复字符<strong>后</strong>加<code>?</code>即可。<br>eg. <code>a.*?b</code>匹配以a开始，以b结束的最短的字符串，搜索<code>aabab</code>会匹配到<code>aab</code>和<code>ab</code>两个子串（之所以没有仅仅匹配到<code>ab</code>子串，是因为正则表达式的匹配还会考虑开始的先后顺序，最开始匹配的优先级最高）。</li>
+<li>若需要懒惰匹配：即匹配<strong>尽可能少</strong>的字符，就在相应的重复字符<strong>后</strong>加<code>?</code>即可。<br>eg. <code>a.*?b</code>匹配以a开始，以b结束的最短的字符串，搜索<code>aabab</code>会匹配到<code>aab</code>和<code>ab</code>两个子串（之所以没有仅仅匹配到<code>ab</code>子串，是因为正则表达式的匹配还会考虑开始的先后顺序，最开始匹配的优先级最高）。</li>
 <li>懒惰匹配限定符如下：</li>
 </ul>
 <table>
