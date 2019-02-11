@@ -6,18 +6,18 @@
   
   <title>正则表达式 | Ren Li&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。注：本篇博文大部分是对博文正则表达式30分钟入门教程和正则表达式笔记的归纳和整理，更详细内容可查阅原文。 基本语法 基本概念： 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来匹配、检测、替换特定的字符串等。  字符 普通">
+  <meta name="description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。注：本文大部分是对博文deerchao的正则表达式30分钟入门教程，LiZeC的正则表达式笔记以及python re库官方文档的归纳和整理，更详细内容可查阅原文。 基本语法 基本概念： 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern">
 <meta name="keywords" content="python,nlp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="正则表达式">
 <meta property="og:url" content="http://yoursite.com/2019/02/07/Regular Expression/index.html">
 <meta property="og:site_name" content="Ren Li&#39;s blog">
-<meta property="og:description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。注：本篇博文大部分是对博文正则表达式30分钟入门教程和正则表达式笔记的归纳和整理，更详细内容可查阅原文。 基本语法 基本概念： 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来匹配、检测、替换特定的字符串等。  字符 普通">
+<meta property="og:description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。注：本文大部分是对博文deerchao的正则表达式30分钟入门教程，LiZeC的正则表达式笔记以及python re库官方文档的归纳和整理，更详细内容可查阅原文。 基本语法 基本概念： 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-10T23:09:52.536Z">
+<meta property="og:updated_time" content="2019-02-11T00:05:11.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
-<meta name="twitter:description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。注：本篇博文大部分是对博文正则表达式30分钟入门教程和正则表达式笔记的归纳和整理，更详细内容可查阅原文。 基本语法 基本概念： 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来匹配、检测、替换特定的字符串等。  字符 普通">
+<meta name="twitter:description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。注：本文大部分是对博文deerchao的正则表达式30分钟入门教程，LiZeC的正则表达式笔记以及python re库官方文档的归纳和整理，更详细内容可查阅原文。 基本语法 基本概念： 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern">
   
     <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
   
@@ -106,7 +106,7 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
-<p>因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。<br>注：本篇博文大部分是对博文<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">正则表达式30分钟入门教程</a>和<a href="http://lizec.top/2017/08/08/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">正则表达式笔记</a>的归纳和整理，更详细内容可查阅原文。</p>
+<p>因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。<br>注：本文大部分是对博文<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">deerchao的正则表达式30分钟入门教程</a>，<a href="http://lizec.top/2017/08/08/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">LiZeC的正则表达式笔记</a>以及<a href="https://docs.python.org/3.6/library/re.html" target="_blank" rel="noopener">python re库官方文档</a>的归纳和整理，更详细内容可查阅原文。</p>
 <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><ul>
 <li><strong>基本概念：</strong> 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来匹配、检测、替换特定的字符串等。</li>
 </ul>
@@ -463,7 +463,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2019/02/07/Regular Expression/" data-id="cjrziv5y1000gnkqxn5lpa5zv" class="article-share-link" data-share="baidu" data-title="正则表达式">Share</a>
+        <a data-url="http://yoursite.com/2019/02/07/Regular Expression/" data-id="cjrzkudo9000d31qx5yn2ry7h" class="article-share-link" data-share="baidu" data-title="正则表达式">Share</a>
       
 
       
