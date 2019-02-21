@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +5,9 @@
   
   <title>Ren Li&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Ren Li's Blog" />
+  
   <meta property="og:type" content="website">
 <meta property="og:title" content="Ren Li&#39;s blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
@@ -14,1185 +16,558 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ren Li&#39;s blog">
   
-    <link rel="alternative" href="/atom.xml" title="Ren Li&#39;s blog" type="application/atom+xml">
   
+    <link rel="icon" href="/favicon.ico">
   
-    <link rel="icon" href="/favicon.png">
-  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="/css/style.css">
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  <script src="/js/pace.min.js"></script>
   
+
+  
+  
+
 </head>
+
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Ren Li&#39;s blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Think and write down</a>
-        </h2>
-      
+  <div id="container">
+      <header id="header">
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Ren Li&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="https://github.com/lrStyle">
+                        <i class="fa fa-user"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
-        </form>
-      </div>
-    </div>
-  </div>
 </header>
-    <div class="outer">
-      <section id="main">
+      <div class="outer">
+        <section id="main" class="body-wrap">
   
-    <article id="post-Regular Expression" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/07/Regular Expression/" class="article-date">
-  <time datetime="2019-02-07T12:10:58.222Z" itemprop="datePublished">2019-02-07</time>
-</a>
-    
-  </div>
+    <article id="post-Python/TensorFlow" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/07/Regular Expression/">正则表达式</a>
+      <a class="article-title" href="/2019/02/21/Python/TensorFlow/"  >TensorFlow笔记</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                <p>摘要test<br>
+            </p>
+        </div>
+      
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-
-<p>因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。<br>注：本文大部分是对博文<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">正则表达式30分钟入门教程</a>，<a href="http://lizec.top/2017/08/08/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">LiZeC的正则表达式笔记</a>以及<a href="https://docs.python.org/3.6/library/re.html" target="_blank" rel="noopener">python re库官方文档</a>的归纳和整理，更详细内容可查阅原文。</p>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><ul>
-<li><strong>基本概念：</strong> 正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来匹配、检测、替换特定的字符串等。</li>
-</ul>
-<h3 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h3><ul>
-<li><strong>普通字符：</strong>通常正则表达式中出现的任意一个字符代表匹配和他们一样的字符。</li>
-<li><strong>特殊字符：</strong>特殊字符并不匹配他们本身，而是有特殊含义的，具体有：<code>. ^ $ * + ? { } [ ] \ | ( )</code><br>若要匹配这些字符本身，则需要加上<code>\</code>进行转义（escape），如<code>\*</code>表示匹配<code>*</code>本身。</li>
-</ul>
-<h3 id="特殊字符含义"><a href="#特殊字符含义" class="headerlink" title="特殊字符含义"></a>特殊字符含义</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">.</td>
-<td style="text-align:center">匹配任意单个字符(除换行符“\n”外)</td>
-</tr>
-<tr>
-<td style="text-align:center">\w</td>
-<td style="text-align:center">匹配任意字母、数字、下划线、汉字（即匹配普通字符）</td>
-</tr>
-<tr>
-<td style="text-align:center">\s</td>
-<td style="text-align:center">匹配任意的空白符（空格、制表符(Tab)、换行符、中文全角空格等）</td>
-</tr>
-<tr>
-<td style="text-align:center">\d</td>
-<td style="text-align:center">匹配数字（0-9）</td>
-</tr>
-<tr>
-<td style="text-align:center">\b</td>
-<td style="text-align:center">匹配单词的开始或结束（单词边界），即<strong>非字母数字的任意其他字符</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">^</td>
-<td style="text-align:center">匹配字符串的开始</td>
-</tr>
-<tr>
-<td style="text-align:center">$</td>
-<td style="text-align:center">匹配字符串的结束</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>对单词边界<code>\b</code>：如正则表达式<code>\blove\b</code>，就会匹配句子”I love you”中的love, 而不会匹配”I aloveb you”中的love。</p>
-</li>
-<li><p>一些字符的反义表示<br>如<code>\w</code>，<code>\b</code>这些特殊字符的大写表示相反的含义，具体如下：</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">\W</td>
-<td style="text-align:center">匹配不是字母、数字、下划线、汉字的字符（多用来匹配特殊字符）</td>
-</tr>
-<tr>
-<td style="text-align:center">\S</td>
-<td style="text-align:center">匹配任意不是空白符的字符</td>
-</tr>
-<tr>
-<td style="text-align:center">\D</td>
-<td style="text-align:center">匹配任意非数字的字符</td>
-</tr>
-<tr>
-<td style="text-align:center">\B</td>
-<td style="text-align:center">匹配不是单词开头或结束的位置</td>
-</tr>
-</tbody>
-</table>
-<h3 id="重复匹配限定符"><a href="#重复匹配限定符" class="headerlink" title="重复匹配限定符"></a>重复匹配限定符</h3><p>以下字符称为“限定符”（限制次数的符号），跟在特殊字符的<strong>后面</strong>，表示重复该字符特定次数。<br>如<code>\d+</code>匹配1个或更多个的数字。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">限定符</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">重复\(\geq\)0次</td>
-</tr>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:center">重复\(\geq\)1次</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:center">重复0次或1次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n}</td>
-<td style="text-align:center">重复n次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,}</td>
-<td style="text-align:center">重复\(\geq\)n次</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,m}</td>
-<td style="text-align:center">重复n到m次</td>
-</tr>
-</tbody>
-</table>
-<h4 id="贪婪、懒惰匹配原则"><a href="#贪婪、懒惰匹配原则" class="headerlink" title="贪婪、懒惰匹配原则"></a>贪婪、懒惰匹配原则</h4><ul>
-<li>正则表达式的匹配原则为贪婪匹配：即在满足条件的情况下，匹配<strong>尽可能多</strong>的字符。<br>eg. <code>a.*b</code>会匹配以a开始，以b结束的最长的字符串。如果用来搜索<code>aabab</code>，则会匹配整个字符串<code>aabab</code>而非<code>aab</code>。</li>
-<li>若需要懒惰匹配：即匹配<strong>尽可能少</strong>的字符，就在相应的重复字符<strong>后</strong>加<code>?</code>即可。<br>eg. <code>a.*?b</code>匹配以a开始，以b结束的最短的字符串，搜索<code>aabab</code>会匹配到<code>aab</code>和<code>ab</code>两个子串（之所以没有仅仅匹配到<code>ab</code>子串，是因为正则表达式的匹配还会考虑开始的先后顺序，最开始匹配的优先级最高）。</li>
-<li>懒惰匹配限定符如下：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">限定符</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">*?</td>
-<td style="text-align:center">重复\(\geq\)0次，但尽可能少重复</td>
-</tr>
-<tr>
-<td style="text-align:center">+?</td>
-<td style="text-align:center">重复\(\geq\)1次，但尽可能少重复</td>
-</tr>
-<tr>
-<td style="text-align:center">??</td>
-<td style="text-align:center">重复0次或1次，但尽可能少重复</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,}?</td>
-<td style="text-align:center">重复\(\geq\)n次，但尽可能少重复</td>
-</tr>
-<tr>
-<td style="text-align:center">{n,m}?</td>
-<td style="text-align:center">重复n到m次，但尽可能少重复</td>
-</tr>
-</tbody>
-</table>
-<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><ul>
-<li>在 <code>[</code> 和 <code>]</code> 中的若干字符构成一个字符类(character class)。</li>
-<li>字符类是为了匹配某种字符集合，表示此位置可以匹配这个类中的任意一个字符。</li>
-<li>整个字符类所起到的作用和普通字符相同，都是只匹配<strong>单个字符</strong>，因此字符类可作为整体再接受其他限定，如<code>? + {n,m}</code>等等。</li>
-<li>可以使用<code>-</code>来表示一个范围，例如<code>[a-c]</code>表示<code>[abc]</code></li>
-<li>在字符类中的特殊符号不被转义</li>
-<li><strong>反向匹配：</strong>在字符类中，如果以^开头，则表示匹配除此字符类中提及的任何其他字符。如<code>[^5]</code>匹配任何不是5的字符。</li>
-</ul>
-<h3 id="分枝条件"><a href="#分枝条件" class="headerlink" title="分枝条件"></a>分枝条件</h3><ul>
-<li>在正则表达式表示“或”的逻辑，两个条件用<code>|</code>连接即可。<br>eg. <code>\d{5}-\d{4}|\d{5}</code>这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。</li>
-<li>在使用分枝条件时要注意各个条件的<strong>顺序</strong>，如果上文改成<code>\d{5}|\d{5}-\d{4}</code>的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。因为一旦前面的分枝满足的话就不会再管其他条件了。</li>
-</ul>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>不推荐在正则表达式内部写注视，注释推荐写在正则表达式的外部语言中。</p>
-<h2 id="正则表达式高级特性"><a href="#正则表达式高级特性" class="headerlink" title="正则表达式高级特性"></a>正则表达式高级特性</h2><h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><ul>
-<li>上文提到了如何重复单个字符（直接在字符后面加表示重复的限定符即可），但若想重复多个字符，就需要用到<strong>分组</strong>的概念。</li>
-<li>用小括号<code>()</code>来指定分组（也叫子表达式），之后就可以对这个分组的整体进行重复或其他操作。<br>eg. <code>(\d{1,3}\.){3}\d{1,3}</code>，就是一个比较粗糙的IP地址匹配式。</li>
-</ul>
-<h3 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h3><ul>
-<li>使用小括号指定一个分组后，这个分组可以作为一个整体在后文中作进一步处理。</li>
-<li>默认情况下，每个组会有一个<strong>组号</strong>，从左到右，第一个出现的分组组号为1(注意不是0)，第二个为2，以此类推。</li>
-<li>如何引用：在后问中使用<code>\</code>+组号的形式来引用，如<code>\1</code>表示引用1号分组的。<br>eg. <code>\b(\w+)\b\s+\1\b</code>可以来匹配如go go 或kitty kitty 这种连着两个重复单词。</li>
-</ul>
-<h3 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h3><ul>
-<li>用于查找在某些内容前面或后面的东西（但不包括这些内容），类似于<code>^ $ \b</code>这种占位符，用于指定一个位置，这个位置应该满足一定的条件(即断言)，因此被称为零宽断言。</li>
-<li><code>(?=exp)</code>：用于匹配exp前面出现的表达式。<br>e.g <code>\b\w+(?=ing\b)</code>用于匹配以ing为结尾的单词的<strong>前面部分</strong>（不包括ing）</li>
-<li><code>(?&lt;=exp)</code>：用于匹配exp后面出现的表达式。<br>e.g <code>(?&lt;=\bre)\w+\b</code>用于匹配以re开头的单词的<strong>后面部分</strong>（不包括re）</li>
-<li>更多示例：<br><code>(?&lt;=\s)\d+(?=\s)</code>：匹配以空白符间隔的数字(不包括这些空白符)<br><code>((?&lt;=\d)\d{3})+\b</code>：要给一个很长的数字中每三位间加一个逗号(当然是从右边加起了)，你可以这样查找需要在前面和里面添加逗号的部分（用它对<code>1234567890</code>进行查找时结果是<code>234567890</code>）</li>
-</ul>
-<h3 id="负向零宽断言"><a href="#负向零宽断言" class="headerlink" title="负向零宽断言"></a>负向零宽断言</h3><ul>
-<li>用于确保某个模式不会出现。与字符类<code>[^exp]</code>的区别：虽然不匹配这个字符，但字符类总是会匹配某个字符的，这会限制字符类的应用场景；而负向零宽断言不匹配字符，其只指代一个位置。<br>eg. 如果用<code>\b\w*q[^u]\w*\b</code>来匹配“出现了字母q,但是q后面跟的不是字母u”的单词，则像“Iraq, Benq”这种q直接作为最后一个字符的情况就会出错（字符类总要匹配一个字符），因此就需要负向零宽断言。</li>
-<li><code>(?!exp)</code>：断言此位置的后面不能匹配表达式exp。<br>eg.<code>\b((?!abc)\w)+\b</code>匹配不包含连续字符串abc的单词</li>
-<li><code>(?&lt;!exp)</code>：断言此位置的前面不能匹配表达式exp。<br>eg. <code>(?&lt;![a-z])\d{7}</code>匹配前面不是小写字母的七位数字。</li>
-</ul>
-<h3 id="递归匹配"><a href="#递归匹配" class="headerlink" title="递归匹配"></a>递归匹配</h3><ul>
-<li>用于匹配一些嵌套的层次结构，如<code>(100*(50+15))</code>，如果只是简单地使用<code>\(.+\)</code>则只会匹配到最左边的左括号和最右边的右括号之间的内容。假如原来的字符串里的左括号和右括号出现的次数不相等，比如<code>(5/(3+2)))</code>，那我们的匹配结果里两者的个数也不会相等。如果想要想匹配到<strong>最长的，而且配对正确的</strong>字符串，就需要用到递归匹配。</li>
-<li>具体内容参见博文<a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">正则表达式30分钟入门教程</a></li>
-</ul>
-<h3 id="经典正则表达式实例"><a href="#经典正则表达式实例" class="headerlink" title="经典正则表达式实例"></a>经典正则表达式实例</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">正则表达式</th>
-<th style="text-align:left">解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>^[A-Za-z]+$</code></td>
-<td style="text-align:left">由26个字母组成的字符串</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>^[A-Za-z0-9]+$</code></td>
-<td style="text-align:left">由26个字母和数字组成的字符串</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>^-?\d+$</code></td>
-<td style="text-align:left">整数形式的字符串</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>^[0-9]*[1-9][0-9]*$</code></td>
-<td style="text-align:left">正整数形式的字符串</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>[\u4e00-\u9fa5]</code></td>
-<td style="text-align:left">判断是不是中文字符</td>
-</tr>
-</tbody>
-</table>
-<h2 id="在Python中使用正则表达式"><a href="#在Python中使用正则表达式" class="headerlink" title="在Python中使用正则表达式"></a>在Python中使用正则表达式</h2><h3 id="使用原生字符串"><a href="#使用原生字符串" class="headerlink" title="使用原生字符串"></a>使用原生字符串</h3><ul>
-<li>正则表达式中使用<code>\n</code>表示转义，而python中恰好也使用<code>\n</code>表示转义，因此在python中使用正则表达式则需要<code>\\</code>来表示反斜杠。</li>
-<li>为了节省过多的反斜杠，可以使用Python原生字符串特性，即在字符串开头加上<code>r</code>，如<code>r\d</code>，在这个字符串中每个字符表示其本身，Python不进行转义。</li>
-</ul>
-<h3 id="re库"><a href="#re库" class="headerlink" title="re库"></a>re库</h3><p>在Python中使用正则表达式直接导入<code>re</code>库即可 <code>import re</code>。</p>
-<h4 id="常用函数介绍"><a href="#常用函数介绍" class="headerlink" title="常用函数介绍"></a>常用函数介绍</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">函数</th>
-<th style="text-align:center">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">re.compile()</td>
-<td style="text-align:center">编译正则表达式，返回Regular Expression Objects对象</td>
-</tr>
-<tr>
-<td style="text-align:center">re.search()</td>
-<td style="text-align:center">在字符串中查找匹配的子串<strong>第一次出现</strong>的位置，匹配成功返回match对象否则返回None</td>
-</tr>
-<tr>
-<td style="text-align:center">re.findall()</td>
-<td style="text-align:center">在字符串中查找<strong>所有</strong>满足条件的子串，返回string list</td>
-</tr>
-<tr>
-<td style="text-align:center">re.match()</td>
-<td style="text-align:center">强制从起始位置开始匹配，匹配成功返回match对象否则返回 None</td>
-</tr>
-<tr>
-<td style="text-align:center">re.split()</td>
-<td style="text-align:center">将正则表达式作为separator来分割字符串，返回string list</td>
-</tr>
-<tr>
-<td style="text-align:center">re.sub()</td>
-<td style="text-align:center">在字符串中替换所有匹配正则表达式的子串，返回替换后的字符串</td>
-</tr>
-<tr>
-<td style="text-align:center">re.escape()</td>
-<td style="text-align:center">自动在字符串中添加 “\” 转义符（除去字母数字下划线），返回修改后的字符串 <br> 可用来自动生成包含特殊字符的正则表达式</td>
-</tr>
-</tbody>
-</table>
-<p><strong>参数说明：</strong></p>
-<ul>
-<li>re.compile(pattern, flags=0)<br>pattern: 表示正则表达式的字符串<br>flags: 正则表达式的控制标记</li>
-<li>re.search(pattern, string, flags=0)<br>pattern：同上<br>string：待查找的字符串<br>flags: 同上</li>
-<li>re.findall(pattern, string, flags=0)<br>参数同上</li>
-<li>re.match(pattern, string, flags=0)<br>参数同上<br>re.fullmatch(pattern, string, flags=0)<br>参数同上，只不过是查找整个字符串</li>
-<li>re.sub(pattern, repl, string, count=0, flags=0)<br>repl: 用来替代匹配到的子串的字符串</li>
-<li>re.escape(pattern)<br>eg. <code>pattern1 = re.escape(&#39;python.exe&#39;))</code>，pattern1就为”python\.exe”，可直接作为pattern参数传入其他函数中，用来匹配“python.exe”。当pattern含有大量特殊字符时使用这个函数就很方便。</li>
-</ul>
-<h5 id="str-replace-和re-sub的比较"><a href="#str-replace-和re-sub的比较" class="headerlink" title="str.replace()和re.sub的比较"></a>str.replace()和re.sub的比较</h5><ul>
-<li>str.replace(old, new[, count])是字符串的替代函数，其中new为替换的字符串，old为待替换的字符串，old只能为substring而不能为字符串，因此替换功能较为简单。</li>
-<li>re.sub(pattern, repl, string, count=0, flags=0)则使用了正则表达式，可进行更复杂的替换操作，但同时开销也更大。</li>
-<li>因此能用replace()尽量用，复杂的替换操作再使用正则表达式。</li>
-</ul>
-<h4 id="控制标记flag介绍"><a href="#控制标记flag介绍" class="headerlink" title="控制标记flag介绍"></a>控制标记flag介绍</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">标记名(简写/全称)</th>
-<th style="text-align:left">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">re.A / re.ASCII</td>
-<td style="text-align:left">使\w,\b,\s和\d只匹配ASCII字符 <br> eg. 不会匹配汉字和其他Unicode字符</td>
-</tr>
-<tr>
-<td style="text-align:left">re.I / re.IGNORECASE</td>
-<td style="text-align:left">忽略正则表达式大小写</td>
-</tr>
-<tr>
-<td style="text-align:left">re.M / re.MULTILINE</td>
-<td style="text-align:left">使得^表示每一行的开始，$表示每一行的结束 <br> 原义仅表示一个单词的开始和结束</td>
-</tr>
-<tr>
-<td style="text-align:left">re.S / re.DOTALL</td>
-<td style="text-align:left">使得.可以匹配\n字符</td>
-</tr>
-<tr>
-<td style="text-align:left">re.X / re.VERBOSE</td>
-<td style="text-align:left">忽略正则表达式内部的空白符</td>
-</tr>
-</tbody>
-</table>
-<p>注：这些变量在VSCode的python下没有提示，但可以运行。</p>
-<h4 id="正则表达式的两种使用方法"><a href="#正则表达式的两种使用方法" class="headerlink" title="正则表达式的两种使用方法"></a>正则表达式的两种使用方法</h4><ul>
-<li><p>直接函数调用：result = re.search(pattern, string)</p>
-</li>
-<li><p>先编译后使用：<br>prog = re.compile(pattern)<br>result = prog.search(string)</p>
-</li>
-<li><p>两种方式效果相同，且因为缓存机制，在正则表达式数量较少的的情况下，两者效率也相近；但如果重复地调用很多正则表达式，先编译好的效率会更高。</p>
-</li>
-</ul>
-<h4 id="Match类"><a href="#Match类" class="headerlink" title="Match类"></a>Match类</h4><p>re.search()和re.match()两个函数的返回对象，包含了匹配的相关信息，常用函数和属性如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">名称</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">match.group()</td>
-<td style="text-align:left">返回特定的分组，string或tuple的形式</td>
-</tr>
-<tr>
-<td style="text-align:left">match.groups()</td>
-<td style="text-align:left">以tuple的形式返回所有分组</td>
-</tr>
-<tr>
-<td style="text-align:left">match.start()</td>
-<td style="text-align:left">返回特定分组的起始地址</td>
-</tr>
-<tr>
-<td style="text-align:left">match.end()</td>
-<td style="text-align:left">返回特定分组的结束地址 <br>（会比实际大1位，因为python字符串截取前闭后开的特性）</td>
-</tr>
-<tr>
-<td style="text-align:left">match.re</td>
-<td style="text-align:left">为编译好的regular expression object对象</td>
-</tr>
-<tr>
-<td style="text-align:left">match.string</td>
-<td style="text-align:left">为传入到re.search()或re.match()的待匹配字符串</td>
-</tr>
-</tbody>
-</table>
-<p><strong>参数说明：</strong></p>
-<ul>
-<li>match.group([group1, …])<br>group1为组号，默认为0（这时返回the whole match）；当没有参数或只有一个参数时返回string，当有2个或以上参数时返回tuple。</li>
-<li>match.groups(default=None)<br>default为没有匹配到的分组指定所显示的名字，通常保持默认即可。</li>
-<li>match.start([group])、match.end([group])<br>两个函数中group都是指组号，返回特定组号的起始、终止地址；<br>因此相应分组的子串可通过<code>m.string[m.start(g):m.end(g)]</code>来获取。</li>
-</ul>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-02-21</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2019/02/07/Regular Expression/" data-id="cjrzkudo9000d31qx5yn2ry7h" class="article-share-link" data-share="baidu" data-title="正则表达式">Share</a>
+    <a href="/tags/MachineLearning/" class="color1">MachineLearning</a>
       
+    <a href="/tags/python/" class="color2">python</a>
+      
+  </li>
 
-      
-        <a href="http://yoursite.com/2019/02/07/Regular Expression/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nlp/">nlp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
+        </ul>
+        
+            <a href="/2019/02/21/Python/TensorFlow/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
+</article>
+
+
   
+    <article id="post-Regular Expression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/07/Regular Expression/"  >正则表达式</a>
+    </h1>
+  
+
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-feed">
+            <p>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+<p>因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。<br>
+            </p>
+        </div>
+      
+        
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-02-07</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/python/" class="color2">python</a>
+      
+    <a href="/tags/nlp/" class="color4">nlp</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2019/02/07/Regular Expression/#more" class="article-more-link" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
 </article>
 
 
   
     <article id="post-cs224n/lecture 4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/27/cs224n/lecture 4/" class="article-date">
-  <time datetime="2019-01-27T22:29:11.473Z" itemprop="datePublished">2019-01-27</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/27/cs224n/lecture 4/">lecture 4_Word Window Classification and Neural Networks</a>
+      <a class="article-title" href="/2019/01/27/cs224n/lecture 4/"  >lecture 4_Word Window Classification and Neural Networks</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                本节课是通过任务实例展开的，首先介绍了Word Window Classification任务，之后用softmax和cross-entropy进行线性分类，之后用神经网络进行了非线性分类（引入Max-Margin loss &amp; back propogation），其间对相关方法进行了讲解。
+Simple word classfication task —— li...
+            </p>
+        </div>
+      
         
-        <p><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script><br>本节课是通过任务实例展开的，首先介绍了Word Window Classification任务，之后用softmax和cross-entropy进行线性分类，之后用神经网络进行了非线性分类（引入Max-Margin loss &amp; back propogation），其间对相关方法进行了讲解。</p>
-<h2 id="Simple-word-classfication-task-——-linear-classfication"><a href="#Simple-word-classfication-task-——-linear-classfication" class="headerlink" title="Simple word classfication task —— linear classfication"></a>Simple word classfication task —— linear classfication</h2><ul>
-<li>输入输出: \(\{x_i, y_i\}^N_{i=1}\)<br>\(x_i\): 词向量<br>\(y_i\): 输出的分类结果（各个类别的概率分布）</li>
-<li>分类公式：<br><img src="/images/cs224n/4_Softmax classification.png" width="400" height="200" alt="Softmax Classification" align="center"><br>注：分类逻辑就相当于蕴含在矩阵\(W\)中</li>
-<li>Loss function：<br>但光有分类公式还不够，我们还要使分类结果最优，即：使整个数据集的分类结果\(P(y|x)\)最优（一个\(P(y|x)\)只是针对单个词的分类结果）,因此就有了损失函数。</li>
-<li>交叉熵：其中涉及到了Kullback-Leibler divergence（KL散度），其可用于衡量两个概率之间的误差，在这个任务中我们可以用来衡量\(P(y|x)\)和ground truth/gold/target probability（即正确的分类结果：[0,…0,1,0,…0]，一个为1，其余为0）的误差。误差越小，代表分类结果越好。</li>
-<li>交叉熵公式：$$H(p, q) = -\sum_{c=1}^Cp(c)logq(c)$$<br>我们把p(c)看成gold，把q(c)看成预测结果，就有了我们最后的损失函数。</li>
-<li>损失函数：<br>$$<br>J(\theta) = \frac {1} {N} \sum_{i=1}^N -log(\frac {exp(f_{yi})} {\sum_{c=1}^Cexp(f_c)})<br>$$<br>注1: \(f = Wx\)<br>注2: 最终最小化损失函数即可（Maxmize \(P(y|x)\) -&gt; Minimize \(-logP(y|x)\)）。<h3 id="分类问题中是否更新词向量"><a href="#分类问题中是否更新词向量" class="headerlink" title="分类问题中是否更新词向量"></a>分类问题中是否更新词向量</h3></li>
-<li>在优化损失函数的时候，可以只选择\(W\)作为优化参数, 但可将词向量作为一个参数也同时进行梯度下降更新，从而使得词向量更为适合当前任务。</li>
-<li>判断标准：当前任务的数据集的大小。若当前任务数据集不大，则更新词向量很有可能会contaminate原先的向量空间，使得效果反而下降；但若数据集总量很大，可以保证词向量优化效果，且计算资源充足，则应进行优化。</li>
-</ul>
-<h2 id="Word-Window-Classification"><a href="#Word-Window-Classification" class="headerlink" title="Word Window Classification"></a>Word Window Classification</h2><ul>
-<li>任务目标: Classify a word in its context window of neighboring words.<br>eg. 命名实体识别任务: 对单词是Person, location, organization还是none进行分类。</li>
-<li>相比于单个单词的分类，Word Window Classification是将上下文单词也进行考虑，从而帮助对中心词的分类。</li>
-<li>与上文的单词分类相比，唯一改变的只是输入\(x_i\)，原来是一个单词的词向量，现在输入的是整个window所有单词词向量的拼接(concatenation)。通过整个window的context words来帮助对中心词的分类。</li>
-<li>注：window模型有很多种处理方式，如可以将window中的所有单词不考虑位置作乱序处理，以及其他方法来更多地探索上下文信息。</li>
-</ul>
-<h2 id="神经网络分类"><a href="#神经网络分类" class="headerlink" title="神经网络分类"></a>神经网络分类</h2><ul>
-<li>只用SoftMax分类的问题：只能提供线性分类的结果，在复杂数据集上的表现不好。<br><img src="/images/cs224n/4_Softmax classification2.png" width="400" height="350" alt="Softmax Classification Result" align="center"></li>
-<li>神经网络的优点是具有强大的非线性拟合能力，而这种拟合能力很大程度上来源于神经元各种各样的非线性激活函数。<br><img src="/images/cs224n/4_nn activation function.png" width="400" height="350" alt="Why activation functions are needed" align="center"></li>
-<li>Max-margin Loss function<br>依旧是ner的任务，对单词是不是地点进行分类。<br>s = score(museums in Paris are amzing)：中心词是地点的句子<br>sc = score(Not all meseums in Paris)：中心词不是地点的句子<br><strong>公式：</strong>$$ J = max(0, 1-s+sc) $$<br>idea：将中心词是地点的句子（正例）的得分最大化，中心词不是地点的句子（负例）的得分最小化。即正例句子的分值要比负例句子的分值 &gt; 1。<br>注1：将\(J\)值最小化即可 -&gt; 0。<br>注2：公式中的1可看作一个超参数，通常是1，也可是其他数。<br>注3：公式是连续的，因此可使用SGD。</li>
-</ul>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2019-01-27</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2019/01/27/cs224n/lecture 4/" data-id="cjrzkudq0003931qxm3brfjnf" class="article-share-link" data-share="baidu" data-title="lecture 4_Word Window Classification and Neural Networks">Share</a>
+    <a href="/tags/cs224n/" class="color2">cs224n</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2019/01/27/cs224n/lecture 4/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
-
+        </ul>
+        
+            <a href="/2019/01/27/cs224n/lecture 4/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
     <article id="post-Python/numpy笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/25/Python/numpy笔记/" class="article-date">
-  <time datetime="2018-12-25T17:11:34.447Z" itemprop="datePublished">2018-12-25</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/25/Python/numpy笔记/">numpy笔记</a>
+      <a class="article-title" href="/2018/12/25/Python/numpy笔记/"  >numpy笔记</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                
+基本类型: np.array一维: np.array([1,2])二维: np.array([[1,2], [3,4]])三维: np.array([[[1,2], [3,4]], [[5,6], [7,8]]])四维: np.array([[[[1,2], [3,4]], [[5,6], [7,8]]], [[[1,2], [3,4]], [[5,6], [7,8]]...
+            </p>
+        </div>
+      
         
-        <ul>
-<li><p>基本类型: np.array<br>一维: <code>np.array([1,2])</code><br>二维: <code>np.array([[1,2], [3,4]])</code><br>三维: <code>np.array([[[1,2], [3,4]], [[5,6], [7,8]]])</code><br>四维: <code>np.array([[[[1,2], [3,4]], [[5,6], [7,8]]], [[[1,2], [3,4]], [[5,6], [7,8]]]])</code><br>把维度的增加理解为向高一级的抽象(四维数组就是多个三维数组的组合).</p>
-</li>
-<li><p>broadcasting<br>eg: <code>2*[1,2,3] = [2, 4, 6]</code><br>一种节省内存的方法, 让系统自动推断矩阵的shape(不用定义两个完全一样的shape, 相同的元素可以由向量省略为一个数)<br>详细文档: <a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank" rel="noopener">https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html</a></p>
-</li>
-<li><p>行向量-&gt;列向量:<br>普通矩阵的转置直接<code>.T</code>即可, 但<code>.T</code>不适用行向量&amp;列向量, 因此需要其他方法: <code>reshape(-1, 1)</code>,只指定列宽为1, -1表示让系统自动推断大小.</p>
-</li>
-</ul>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-12-25</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/12/25/Python/numpy笔记/" data-id="cjrzkudpw002z31qx60t7m4ox" class="article-share-link" data-share="baidu" data-title="numpy笔记">Share</a>
+    <a href="/tags/python/" class="color2">python</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/12/25/Python/numpy笔记/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/12/25/Python/numpy笔记/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
     <article id="post-cs224n/lecture 3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/26/cs224n/lecture 3/" class="article-date">
-  <time datetime="2018-11-26T22:55:12.828Z" itemprop="datePublished">2018-11-26</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/26/cs224n/lecture 3/">lecture 3_More Word Vectors</a>
+      <a class="article-title" href="/2018/11/26/cs224n/lecture 3/"  >lecture 3_More Word Vectors</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
-        <h2 id="单词的向量表征"><a href="#单词的向量表征" class="headerlink" title="单词的向量表征"></a>单词的向量表征</h2><p>本节lecture主要是对上一节内容的扩展，重点还是在如何用向量来表征单词上，以使得单词间获得更好的相似性，而且我们可以直观地理解这种相似性。<br>核心思想是通过计算单词间的<strong>共现</strong>（co-occurence）次数/频率/概率来表征单词间的相似性——两个单词同时出现在相同context中的次数多了，我们就认为这两个单词比较相似。</p>
-<ul>
-<li>一种模型是skip-gram模型，一步步地计算每个窗口，最终得出单词间相似性。</li>
-<li>另一种模型是Glove，基于共现矩阵的思想，一次性统计语料库中所有单词两两间的共现次数，从而得出单词间的相似性。</li>
-</ul>
-<h2 id="如何评估词向量的优劣"><a href="#如何评估词向量的优劣" class="headerlink" title="如何评估词向量的优劣"></a>如何评估词向量的优劣</h2><p>两种评价思路：intrinsic &amp; extrinsic（内部评价和外部评价）</p>
-<ul>
-<li><p>intrinsic evaluation<br>通过分析词向量本身的一些特性来评价：如词与词之间的余弦相似度、欧式距离或类比关系（analogy, 即 man-woman=king-queen 这种线性关系），如果得出的词向量这些关系好（eg. 词义相似的词向量在向量空间中距离也很近），那么这个词向量就好。<br>注：总的来说<strong>Glove</strong>表现的最好。</p>
-</li>
-<li><p>extrinsic evaluation<br>通过一些下游的任务来评价词向量的好坏，如我们把训练好的词向量用于命名实体识别任务中，看词向量实际表现的怎么样。<br>注：还是<strong>Glove</strong>模型表现的最好。</p>
-</li>
-<li><p>两种评价方法的优劣<br>intrinsic evaluation速度快，可以帮助我们更好地理解这个任务本身。但实际上这并不是一种真实的评价方法，即我们不知道这种词向量模型在实际任务中到底表现得怎么样。<br>extrinsic evaluation则是一种真实的评价方法，可以确切地得出词向量模型的好坏。但缺点是计算出最终结果很费时间，而且如果表现不好，我们并不能准确地分析出原因（到底是向量模型本身的原因，还是向量模型和其他模型互相影响(interact)的原因）</p>
-</li>
-</ul>
+        <div class="article-feed">
+            <p>
+                单词的向量表征本节lecture主要是对上一节内容的扩展，重点还是在如何用向量来表征单词上，以使得单词间获得更好的相似性，而且我们可以直观地理解这种相似性。核心思想是通过计算单词间的共现（co-occurence）次数/频率/概率来表征单词间的相似性——两个单词同时出现在相同context中的次数多了，我们就认为这两个单词比较相似。
 
+一种模型是skip-gram模型，一...
+            </p>
+        </div>
       
+        
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-11-26</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/11/26/cs224n/lecture 3/" data-id="cjrzkudpy003431qxaouotim6" class="article-share-link" data-share="baidu" data-title="lecture 3_More Word Vectors">Share</a>
+    <a href="/tags/cs224n/" class="color2">cs224n</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/11/26/cs224n/lecture 3/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/11/26/cs224n/lecture 3/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
     <article id="post-cs224n/background" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/06/cs224n/background/" class="article-date">
-  <time datetime="2018-11-06T21:07:19.846Z" itemprop="datePublished">2018-11-06</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/cs224n/background/">基础知识</a>
+      <a class="article-title" href="/2018/11/06/cs224n/background/"  >基础知识</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                梯度下降（gradient decent）基本概念
+
+什么是梯度：在多元函数中，梯度可理解为求各个变量的偏导数，最终各个偏导组合成梯度向量，即代表该函数在该点变化最快的方向。eg: \(f(x,y)=x^2+y^2\), 梯度向量为(2x,2y)，在点(1,1)处的梯度即为(2,2)，即沿(2,2)这个方向函数变化最快。
+梯度下降的作用: 求损失函数的最小值. 因为梯度是...
+            </p>
+        </div>
+      
         
-        <h2 id="梯度下降（gradient-decent）"><a href="#梯度下降（gradient-decent）" class="headerlink" title="梯度下降（gradient decent）"></a>梯度下降（gradient decent）</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script></p>
-<ul>
-<li>什么是梯度：在多元函数中，梯度可理解为求各个变量的偏导数，最终各个偏导组合成梯度向量，即代表该函数在该点变化最快的方向。<br>eg: \(f(x,y)=x^2+y^2\), 梯度向量为(2x,2y)，在点(1,1)处的梯度即为(2,2)，即沿(2,2)这个方向函数变化最快。</li>
-<li>梯度下降的作用: 求损失函数的最小值. 因为梯度是函数值下降最快的方向, 所以经常用梯度来构造参数的更新表达式, 以此来求使得损失函数的函数值最小的参数值.</li>
-</ul>
-<h3 id="Vanilla-Gradient-Descent（普通梯度下降）"><a href="#Vanilla-Gradient-Descent（普通梯度下降）" class="headerlink" title="Vanilla Gradient Descent（普通梯度下降）"></a>Vanilla Gradient Descent（普通梯度下降）</h3><p>1、求解梯度向量<br>2、一点点沿着梯度的方向迭代更新函数值，使函数最终下降到局部最小值处。<br>$$<br>\theta^{new}_j=\theta^{old}_j-\alpha\nabla_{\theta}J(\theta)=\theta^{old}_j-\alpha\frac {\partial}{\partial \theta^{old}_j}J(\theta)<br>$$<br>注1: \(J(\theta)\)是损失函数, \(\theta\)是参数, \(\alpha\)是步长（step size).<br>注2: 步长\(\alpha\)的值若取太小则求解速度慢，取则会造成抖动。<br>解决方法：距离谷底较远时，步幅大些比较好（加快速度）；接近谷底时，步幅小些比较好（以免跨过界）。距离谷底的远近可以通过梯度的数值大小间接反映，接近谷底时，坡度会减小，因此可设置步长与梯度数值大小正相关。</p>
-<h3 id="Stochastic-Gradient-Descent（SGD，随机梯度下降）"><a href="#Stochastic-Gradient-Descent（SGD，随机梯度下降）" class="headerlink" title="Stochastic Gradient Descent（SGD，随机梯度下降）"></a>Stochastic Gradient Descent（SGD，随机梯度下降）</h3><p>VGD中，损失函数相当于每个数据样本取平均值，因此每次更新都需要遍历所有data，当数据量太大，更新一次梯度会花费大量时间，因此并不可行。<br>解决这个问题的基本思路：只通过一个随机选取的数据(xn,yn)来获取梯度（通常损失函数都是很多项的变量加和得到的，这时只取一项计算其梯度，用来估计整体的梯度），这种方法叫随即梯度下降。<br>虽然这样估计梯度非常粗糙，但事实证明这种方法效果还不错。</p>
-<h2 id="Softmax函数"><a href="#Softmax函数" class="headerlink" title="Softmax函数"></a>Softmax函数</h2><ul>
-<li>作用：Takes an un-normalized vector, and normalizes it into a probability distribution. After applying Softmax, each element \(x_i\) will be in the interval \([0,1]\) and \(\sum_ix_i=1\).</li>
-<li>公式：<br>$$<br>p(x_i) = \frac {exp(e_i)} {\sum_{n=1}^Nexp(x_n) }<br>$$</li>
-<li>应用：可用于分类任务中，对目标进行线性分类；也经常用在神经网络中，用于将输出值归一化（原先值可能有负数，可能大于1，且所有值加和不为1），可视为产生概率分布。</li>
-</ul>
-<h2 id="Sigmoid函数"><a href="#Sigmoid函数" class="headerlink" title="Sigmoid函数"></a>Sigmoid函数</h2>
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-11-06</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/11/06/cs224n/background/" data-id="cjrzkudpw002x31qxzn2uuez1" class="article-share-link" data-share="baidu" data-title="基础知识">Share</a>
+    <a href="/tags/cs224n/" class="color2">cs224n</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/11/06/cs224n/background/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/11/06/cs224n/background/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
     <article id="post-cs224n/lecture 2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/05/cs224n/lecture 2/" class="article-date">
-  <time datetime="2018-11-05T21:32:18.948Z" itemprop="datePublished">2018-11-05</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/05/cs224n/lecture 2/">lecture 2_Word Vectors</a>
+      <a class="article-title" href="/2018/11/05/cs224n/lecture 2/"  >lecture 2_Word Vectors</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                
+
+How to represent the meaning of a word in computer离散表示（discrete representation）
+把单词作为一个个原子符号（atomic symbol）来表征：hotel, conference, walk…
+对应到计算机中，使用独热编码（one-hot encoding）来存储：[0 0 0 0 1 0 ...
+            </p>
+        </div>
+      
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-
-<h2 id="How-to-represent-the-meaning-of-a-word-in-computer"><a href="#How-to-represent-the-meaning-of-a-word-in-computer" class="headerlink" title="How to represent the meaning of a word in computer"></a>How to represent the meaning of a word in computer</h2><h3 id="离散表示（discrete-representation）"><a href="#离散表示（discrete-representation）" class="headerlink" title="离散表示（discrete representation）"></a>离散表示（discrete representation）</h3><ul>
-<li>把单词作为一个个原子符号（atomic symbol）来表征：hotel, conference, walk…</li>
-<li>对应到计算机中，使用<strong>独热编码（one-hot encoding）</strong>来存储：<code>[0 0 0 0 1 0 0 0]</code></li>
-<li>存在的问题：<br>1、向量规模过大：每个单词都对应一个单独的位，若要存储所有单词，则会需要一个非常大的向量。<br>2、难以计算单词间的相似性：这是一种localist representation, 每个one-hot representation是独立存在的，no inherent notion of similarity, 两两间并没有天然的相似性关系。<br>3、因此与其去研究an approach to work out similarity relationship between one-hot representations，不如直接探究<strong>an approach where representation of word encodes its meaning inherently</strong>，这样就能直观去计算单词间的similarity，这就是分布表示（distributed representation）的设计初衷。<br>注：这里的similarity指的是单词词义上的相似，而不是结构相似。</li>
-</ul>
-<h3 id="分布表示（distributed-representation）"><a href="#分布表示（distributed-representation）" class="headerlink" title="分布表示（distributed representation）"></a>分布表示（distributed representation）</h3><ul>
-<li><strong>核心思想：</strong>通过单词的上下文（context）来理解词意。如<code>banking</code>这个单词，我们让计算机知道经常和它一起出现的其他单词，就相当于明白了单词的用法——怎样将单词放到正确的上下文中，就相当于理解了单词的meaning。<br><img src="/images/cs224n/2_distributed representation.png" width="500" height="120" align="center"></li>
-<li><strong>具体方法：</strong>用向量定义词语的含义。通过调整一个单词及其上下文单词的向量，使得根据两个向量可以推测两个单词词义的相似度，就可以根据中心词向量预测上下文/根据上下文向量预测中心词。这就是我们常说的<strong>word2vec</strong><br>遵循的基本原则：出现在相同上下文中的单词词义会相似。</li>
-<li>注：区分distributed和distributional<br>distributed meaning：一种词义表示，和one-hot相对，one-hot将词义独立地存储在本地（<code>[0 0 0 0 1 0 0 0]</code>向量中），distributed则存储在一个大的稠密的向量空间中。<br>distributional similarity：一种通过上下文来理解词义的方法，与denotational相对。<br>We use distributional similarity to <strong>build</strong> distributed meaning.</li>
-</ul>
-<h2 id="word2vec模型"><a href="#word2vec模型" class="headerlink" title="word2vec模型"></a>word2vec模型</h2><h3 id="Skip-grams-SG"><a href="#Skip-grams-SG" class="headerlink" title="Skip-grams(SG)"></a>Skip-grams(SG)</h3><p><img src="/images/cs224n/2_Skipgram_prediction.png" width="300" height="150" alt="Skipgram_prediction" align="center/"><br><img src="/images/cs224n/2_Skipgram_model.png" width="450" height="300" alt="Skipgram_model" align="center/"></p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>通过中心词预测上下文。</p>
-<h4 id="定义预测单词上下文的模型"><a href="#定义预测单词上下文的模型" class="headerlink" title="定义预测单词上下文的模型"></a>定义预测单词上下文的模型</h4><p><strong>预测模型：</strong>\(p(context|w_t)\)，表示在给定中心词\(w_t\)的条件下，正确预测出上下文单词的概率。<br><strong>再具体点：</strong>\(p(w_{t-1}|w_t)\)，\(p(w_{t-2}|w_t)\)，\(p(w_{t+1}|w_t)\)，\(t, t+1, t-1\)都是表示单词在文中出现的序号。<br><strong>最终形式：</strong><br>$$ p(w_{t+j}|w_t)=p(o|c)=\frac {exp(u_0^Tv_c)} {\sum_{w=1}^v exp(u_w^Tv_c)} $$<br>\(t, t+j\)是单词在文中的位置.<br>\(o, c\)则是单词在单词表中的序号，相当于在更为一般地表征两个单词的关联（与具体文本无关）。<br>\(v_c\)是中心词的词向量，\(u_0\)是上下文单词的词向量。<br><strong>公式理解：</strong>首先是\(u_0^Tv_c\)，这是一个点积操作，可用来粗糙地衡量单词间相似性（单词越相似，向量值越相近，乘积越大）；其次是softmax操作，用来把值转换成概率：<br>$$\frac {exp(u_0^Tv_c)} {\sum_{w=1}^v exp(u_w^Tv_c)} $$<br>最终即得出了由中心词预测上下文单词的概率。</p>
-<h4 id="定义损失函数（Loss-Function）"><a href="#定义损失函数（Loss-Function）" class="headerlink" title="定义损失函数（Loss Function）"></a>定义损失函数（Loss Function）</h4><p>1、首先对模型全部相乘，表示文本整体的预测正确率：<br>$$ J^`(\theta)=\prod_{t=1}^T \prod_<br>{ \begin{align}<br>-m\le j \le m\\<br>j \neq 0<br>\end{align} }<br>p(w_{t+j}|w_t)$$<br>目标：整体正确率最大，maximize the function，<br>2、做Negtive Log Likelihood处理，使maximize-&gt;minimize，即得到最终的损失函数。<br>$$ J(\theta)=-\frac {1}{T} \sum_{t=1}^T \sum_<br>{ \begin{align}<br>-m&amp; \le j \le m\\<br>j \neq 0<br>\end{align} }<br>p(w_{t+j}|w_t)\\<br>p(w_{t+j}|w_t)=\frac {exp(u_0^Tv_c)} {\sum_{w=1}^v exp(u_w^Tv_c)}<br>$$<br>最终目标：使损失函数最小。</p>
-<h4 id="怎样求损失函数最小值：梯度下降（gradient-descent）"><a href="#怎样求损失函数最小值：梯度下降（gradient-descent）" class="headerlink" title="怎样求损失函数最小值：梯度下降（gradient descent）"></a>怎样求损失函数最小值：梯度下降（gradient descent）</h4><p>注1：具体求解过程见lecture slide。<br>注2：求梯度时对\(u_o和v_c\)都要求偏导，最后组合成梯度向量。且求的是向量的导数，和实数求偏导有一定区别。<br>注3：当数据量过大时，可使用SGD随机梯度下降来加快速度（一个窗口计算一次梯度，用来估计整体梯度）。</p>
-<h4 id="怎样训练模型"><a href="#怎样训练模型" class="headerlink" title="怎样训练模型"></a>怎样训练模型</h4><p>模型中的参数就是每个单词对应的word vector向量，将所有参数组合成一个的大向量\(\theta\)，即作为损失函数的自变量。<br><img src="/images/cs224n/2_theta.png" width="150" height="150" alt="theta举例（里面单词是随便举的例子）" align="center"><br>总共V个单词，每个单词对应两个词向量，词向量每个d维，因此\(\theta\)总长度为2dV。<br>为何每个单词对应两个词向量：作为中心词时一个，作为上下文单词时一个，这样更方便数学处理。</p>
-<h3 id="Continuous-Bag-of-Words-CBOW"><a href="#Continuous-Bag-of-Words-CBOW" class="headerlink" title="Continuous Bag of Words(CBOW)"></a>Continuous Bag of Words(CBOW)</h3><h4 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h4><p>通过上下文预测中心词<br>To be continued</p>
-<h2 id="遗留问题："><a href="#遗留问题：" class="headerlink" title="遗留问题："></a>遗留问题：</h2><ol>
-<li>SG模型中，计算每个上下文词向量的值时，context matrix是一样的？ 那计算出的结果不就一样了？————context matrix是一样的，但因为每个单词的词向量表征是不一样的，所以最终训练出来的上下文词向量也是不一样的。直观来说，context martrix是一各由中心词-&gt;上下文的转换, 在词向量空间中从一个单词向这个单词周围来扩展(词义相近单词离得近), 这种变化对每个单词都是一样的, 因此context martrix一样也是正常的.</li>
-<li>如何迭代\(\theta\)来更新梯度？把\(\theta\)初始化成什么样子？<br>————按照梯度下降的法则来更新参数; 参数初始化有多种策略.</li>
-<li>这是有监督的学习过程，损失函数中没有出现计算误差的部分？</li>
-</ol>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-11-05</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/11/05/cs224n/lecture 2/" data-id="cjrzkudpx003231qx1ga08kg1" class="article-share-link" data-share="baidu" data-title="lecture 2_Word Vectors">Share</a>
+    <a href="/tags/cs224n/" class="color2">cs224n</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/11/05/cs224n/lecture 2/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/11/05/cs224n/lecture 2/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
     <article id="post-cs224n/lecture 1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/02/cs224n/lecture 1/" class="article-date">
-  <time datetime="2018-11-02T12:33:38.275Z" itemprop="datePublished">2018-11-02</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/02/cs224n/lecture 1/">lecture 1_Introduction</a>
+      <a class="article-title" href="/2018/11/02/cs224n/lecture 1/"  >lecture 1_Introduction</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                关于人类语言(human language)人类语言的特点
+语言就是符号：人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。
+语言的载体：sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。
+大脑是一种符号处理器（sym...
+            </p>
+        </div>
+      
         
-        <h2 id="关于人类语言-human-language"><a href="#关于人类语言-human-language" class="headerlink" title="关于人类语言(human language)"></a>关于人类语言(human language)</h2><h3 id="人类语言的特点"><a href="#人类语言的特点" class="headerlink" title="人类语言的特点"></a>人类语言的特点</h3><ul>
-<li><strong>语言就是符号：</strong>人类语言本质是一个符号系统（symbol system），无论是汉字还是英文字母，都是一种符号，用来承载、传递我们想要表达的意思（meaning）。</li>
-<li><strong>语言的载体：</strong>sound, vision(writting), gesture，不论是哪一种载体，都是一种连续的交流方式。</li>
-<li><strong>大脑是一种符号处理器</strong>（symbolic processors）：我们可以把大脑处理语言看成是<strong>连续模式的激活过程</strong>（continious pattern of activation）。</li>
-<li>因此我们可以得到启发：探索一种<strong>连续的编码模式</strong>来表达思想(explore a continous encoding patten of thought)。这也是很多NLP算法的处理思想，同时也解决了sparsity的问题。</li>
-</ul>
-<h2 id="关于NLP"><a href="#关于NLP" class="headerlink" title="关于NLP"></a>关于NLP</h2><h3 id="NLP-levels"><a href="#NLP-levels" class="headerlink" title="NLP levels"></a>NLP levels</h3><p><img src="/images/cs224n/1_NLP_levels.png" width="500" height="270" alt="NLP levels" align="center"></p>
-<ul>
-<li><strong>两大来源：</strong>通过语音或者文本。语音：语音分析（phonetic）或音韵分析（phonological）；文本：OCR识别（Optical Character Recognition，光学字符识别）或分词处理（tokenization）。通过上述方法来获取NLP的输入。</li>
-<li><strong>形态分析</strong>（morphological）：对单词进行形态分析：前缀（prefix）、后缀（suffix）等。</li>
-<li><strong>句法分析</strong>（syntactic）：分析句子结构、语法结构（structure of sentence）。</li>
-<li><strong>语义理解</strong>（semantic interpretation）：work out the meaning of sentences.</li>
-<li><strong>语篇处理</strong>（discourse processing）：因为大多数句子含义需要通过上下文（context）来推测，不能仅仅只分析当前句子，因此就有了the field of discourse processing。<br>注：cs224n课只重点讲syntatic &amp; semantic analysis 这两块，以及一部分speech signal analysis。</li>
-</ul>
-<h3 id="NLP-Applications"><a href="#NLP-Applications" class="headerlink" title="NLP Applications"></a>NLP Applications</h3><ul>
-<li>较低级：spell checking, keyword search, finding synonyms</li>
-<li>中级：extracting information。个人比较感兴趣的方向，让计算机可以阅读文本，理解在讲些什么，至少知道讲的是哪方面内容；从文本中识别、抽取某方面内容；或者为文本阅读难度分级（work out the reading level of school text）,识别文本的目标受众（intended audience of document）；情感分析（positive or negetive）。</li>
-<li>高级：机器翻译、对话机器人、智能问答、机器撰写（exploit the knowledge of world）</li>
-</ul>
-<h3 id="Why-is-NLP-hard"><a href="#Why-is-NLP-hard" class="headerlink" title="Why is NLP hard"></a>Why is NLP hard</h3><ul>
-<li><strong>语言本身的困难性</strong>：Ambiguilty of language, and moreover, humen always do not say everything（为了高效表达，语言使用中会出现很多省略）.</li>
-<li><strong>表征语言很困难</strong>：Complexity of representing, using linguistic/situational/world knowledge.</li>
-<li><strong>解释语言很困难</strong>：Real meaning of the language depends on real world, common sense, and contextual knowledge.</li>
-</ul>
-<h2 id="关于deep-learning"><a href="#关于deep-learning" class="headerlink" title="关于deep learning"></a>关于deep learning</h2><h3 id="传统机器学习的问题"><a href="#传统机器学习的问题" class="headerlink" title="传统机器学习的问题"></a>传统机器学习的问题</h3><ul>
-<li>Most traditional machine learning algorithms work well because of human-designed representations and input featured.</li>
-<li>“Machines” are only used to optimize weights that best make a final prdiction. </li>
-<li>Moreover, manually designed featured are often over-specified(lack of generalization), incomplete and take a long time to design and validate.</li>
-</ul>
-<h3 id="What-is-deep-learning"><a href="#What-is-deep-learning" class="headerlink" title="What is deep learning"></a>What is deep learning</h3><ul>
-<li>Subfield of machine learning and part of representation learning.</li>
-<li>Deep learning algorithms attempt to learn (multiple levels of) representations and an output themselves. </li>
-<li>We only input the raw data.</li>
-<li>In a lot of times, deep learning means neural networks (the dominant model family).</li>
-</ul>
-<h3 id="deep-learning-in-NLP"><a href="#deep-learning-in-NLP" class="headerlink" title="deep learning in NLP"></a>deep learning in NLP</h3><p>核心思想：用vector去表征语言，用神经网络去组织、计算vector。</p>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-11-02</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/11/02/cs224n/lecture 1/" data-id="cjrzkudpu002t31qx6zn496ac" class="article-share-link" data-share="baidu" data-title="lecture 1_Introduction">Share</a>
+    <a href="/tags/cs224n/" class="color2">cs224n</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/11/02/cs224n/lecture 1/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cs224n/">cs224n</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/11/02/cs224n/lecture 1/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
     <article id="post-uwtsd_modules/Distributed &amp; Cluster Computing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/" class="article-date">
-  <time datetime="2018-10-18T21:29:42.408Z" itemprop="datePublished">2018-10-18</time>
-</a>
-    
-  </div>
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/">Distributed &amp; Cluster Computing</a>
+      <a class="article-title" href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/"  >Distributed &amp; Cluster Computing</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                Interfaces
+Interface-Based ProgrammingAn interface only defines a signature of properties and methods(method name, type of each parameter, type of return value).12345678910interface IMyIn...
+            </p>
+        </div>
+      
         
-        <h2 id="Interfaces"><a href="#Interfaces" class="headerlink" title="Interfaces"></a>Interfaces</h2><ul>
-<li>Interface-Based Programming<br>An interface only defines a signature of properties and methods(method name, type of each parameter, type of return value).<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMyInterface</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> property1</span><br><span class="line">    &#123;</span><br><span class="line">        get;</span><br><span class="line">        set;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Method1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Method2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>A class is used to implement the interface by providing the actual code for those methods.</p>
-<ul>
-<li>Interface Name Form<br>Microsoft dictates that all interface names start with the <code>I</code> characters, that they not include underscore character, and that they use Pascal casing when the name contains mutiple words(first letter of each word is uppercase). </li>
-</ul>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-10-18</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/" data-id="cjrzkudpz003731qxcoakvx1v" class="article-share-link" data-share="baidu" data-title="Distributed &amp; Cluster Computing">Share</a>
+    <a href="/tags/uwtsd_modules/" class="color4">uwtsd_modules</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/10/18/uwtsd_modules/Distributed & Cluster Computing/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
 </article>
 
 
   
-    <article id="post-Paper Notes/On Availability For Blockchain based Systems" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" class="article-date">
-  <time datetime="2018-09-13T07:49:59.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  </div>
+    <article id="post-Paper Notes/Efficient Estimation of Word Representations in Vector Space" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/">On Availability For Blockchain based Systems读书笔记</a>
+      <a class="article-title" href="/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/"  >Notes of Efficient Estimation of Word Representations in Vector Space读书笔记</a>
     </h1>
   
 
+          
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    <div class="article-entry " itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <div class="article-feed">
+            <p>
+                论文地址点这里
+ 
+
+论文内容概述这是谷歌发布的关于词向量的经典论文，针对传统模型无法表征单词间关联性的问题，本文提出了两种连续的词向量模型，并针对模型实现了分布式学习模块，最后基于词向量的线性运算设计了一种评价模型精度的方法，取得了良好的效果。
+简介(INTRODUCTION)
+传统NLP技术的特点传统NLP技术主要是基于单词间没有相似性的思想，将词汇以单词表索引的形式...
+            </p>
+        </div>
+      
         
-        <p><a href="https://research.csiro.au/data61/wp-content/uploads/sites/85/2016/08/OnAvailabilityForBlockchain-BasedSystems-SRDS2017-authors-copy.pdf" target="_blank" rel="noopener">论文地址点这里</a></p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>  
-
-<h2 id="论文内容概述"><a href="#论文内容概述" class="headerlink" title="论文内容概述"></a>论文内容概述</h2><p>这是一篇偏重实验的论文，通过研究影响交易提交时间的因素，探讨了目前区块链的可靠性问题，并提出了一种交易终止策略来解决这个问题。</p>
-<h3 id="简介-INTRODUCTION"><a href="#简介-INTRODUCTION" class="headerlink" title="简介(INTRODUCTION)"></a>简介(INTRODUCTION)</h3><ul>
-<li><p><strong>区块链的可靠性问题</strong><br>可靠性保证不透明：从应用的角度上来说，并不清楚区块链技术是如何保证系统的可靠性的，而且多数区块链系统只能以一定概率保证交易信息的不变性。<br>提交时间不稳定：客户端不可预知交易成功提交所需的时间。从Fig.1中可看出，61.5%的交易在3分钟内就提交了，但13.8%的交易4.5分钟还没提交(延迟了50%)，提交时间的差异可能系统可用性的下降。</p>
-</li>
-<li><p><strong>论文主要研究内容</strong>  </p>
-<ul>
-<li>导致交易无法成功提交的因素</li>
-<li>以太坊中的transaction inclusion机制</li>
-<li>以太坊中gas price和gas limit两个参数对提交时间的影响</li>
-<li>以太坊中block gas limit的影响</li>
-<li>交易终止机制</li>
-</ul>
-</li>
-</ul>
-<h3 id="背景知识-BACKGROUND"><a href="#背景知识-BACKGROUND" class="headerlink" title="背景知识(BACKGROUND)"></a>背景知识(BACKGROUND)</h3><ul>
-<li><p><strong>区块链基本知识</strong><br>区块链可认为是一个分布式的公共账本，记载了交易信息和资产信息。区块链中的每个用户本地都存储着一个账本的副本，并运行着一个客户端，负责和整个网络同步更新账本信息。</p>
-</li>
-<li><p><strong>区块链中的链指什么</strong><br>区块链系统的交易信息存储在区块(block)中，从第二个区块开始，每个区块都有前一区块的哈希值，即相当于把各个区块链起来了，最终各个区块按时间顺序链接起来呈现一套完整的数据(区块链大账本)。 </p>
-</li>
-<li><p><strong>区块链加密技术</strong><br>区块链采用了非对称加密技术，和传统对称加密最大不同是，加密和解密不再是同一把钥匙，而是分为公钥和私钥。只有特定的用户具有私钥，可以对交易信息进行加密和数字签名；而所有的用户都具备公钥，可以对交易信息解密，并通过数字签名验证交易签署者的身份。 </p>
-</li>
-<li><p><strong>共识算法</strong><br><strong>问题背景：</strong>因为区块链是分布式存储的，所有节点都需要对区块链中块的内容和次序达成“共识”，为了解决这个问题就提出了共识算法。<br><strong>工作量证明算法(POW)：</strong>这是目前最广泛使用的共识算法，其基本原理是：一个节点将交易信息打包到区块中，并添加一个随机数，再做哈希和运算，之后将块发布到网络中。其他节点接收到块后，根据块中包含的参数进行大量的计算(俗称挖矿)，计算出的结果如果小于哈希和，即完成了这部分工作，得出的结果值就相当于对其工作量的“证明”。拥有“证明”后节点不仅会获得一定奖励，也拥有了创建区块的权利，新创建的区块会加到主链末端，其他节点可在其后面继续添加新区块，其后每添加一个区块，就相当于做了一次确认，当其后的区块达到了一定数量后(比特币是6个，以太坊是12个)，就相当于和网络中其他节点达成“共识”了，这个区块即正式被记录在案了。<br><strong>核心思想：</strong>工作量证明机制的核心思想是工作方要得出结果具有一定难度，但验证方检查结果却非常容易，因此很容易验证工作方是不是做了相应工作。既保证了工作完成后奖励的价值(需要付出大量的计算代价)，激励节点去积极打包交易信息，同时验证的简单性也保证了共识算法的效率和可靠。</p>
-</li>
-<li><p><strong>分叉问题(fork)</strong><br><strong>基本概念：</strong>考虑一种小概率情况，两个节点恰好同时完成了计算，创建了区块，并向全网进行了广播，这种情况就叫做分叉。形象的理解就是区块链主链的末端被连了两个块，像是分叉了一样。<br><strong>分叉的影响：</strong>正常情况下，网络中所有的节点达成共识，所生成的区块链就是一条主链，内容、次序都是确定的；而在分叉的情况下，区块链会向两个不同的方向延申(因为每一个区块都是依赖于上一个区块产生的)，主链的内容、次序就不确定了，各节点即无法正常地查询交易和资产信息。<br><strong>解决办法：</strong>所有节点都从当前最长的链开始工作。因为有统计结论，链中的区块数越多，越不容易发生分叉现象。</p>
-</li>
-</ul>
-<h3 id="比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS"><a href="#比特币交易的提交-COMMIT-OF-BITCOIN-TRANSACTIONS" class="headerlink" title="比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)"></a>比特币交易的提交(COMMIT OF BITCOIN TRANSACTIONS)</h3><p>在本节中，作者讨论了影响比特币提交时间的因素，并进行了实验验证。</p>
-<ul>
-<li><p><strong>影响交易提交时间的因素</strong><br><strong>交易手续费(transaction fee)：</strong>手续费的多少会影响节点打包交易信息的积极性，从而影响交易提交的时间。<br><strong>交易是否按顺序到达：</strong>如果一个交易比其所引用的父交易先到达，则被称为orphan。只有父交易提交后，子交易才能提交，否则子交易就会一直在mempool中等待。<br><strong>锁定时间(locktimes)：</strong>这是一个用户可设置的参数，可使得某个交易在特定顺序的区块产生之前一直处于不可用状态。  </p>
-</li>
-<li><p><strong>实验过程</strong><br><strong>实验任务：</strong>观测交易的产生并记录其提交所花费的时间。为了探究不同网络环境下的情况，作者在2016年11月和2017年4月分别进行了两次实验（第二次实验的网络负载较大）。<br><strong>观测窗口：</strong>为了充分收集包含在区块链中的交易信息，作者定义了观测窗口：从实验开始前的第一个区块到实验结束24h后的一个区块，这之间的交易即处于观测窗口中，都会被记录下来。</p>
-</li>
-<li><p><strong>实验结果</strong><br>作者主要研究的交易有两类：<strong>Straight-accepts</strong>和<strong>Oranphans</strong>。<br>实验结果1（针对到达顺序因素）：由Fig.2可知两次实验中，Oranphans的提交时间都比Straight-accepts的时间要长，且在第二次实验中尤为明显，可见到达的顺序对提交时间有着显著的影响，按顺序到达的交易比无序到达的交易时间要短很多。<br>实验结果2（针对交易手续费因素）：由Fig.3可知，交易手续费和提交时间之间并没有显著关联。<br>实验结果3（针对locktimes因素）：通过作者分析可知，绝大多数交易并未使用locktimes这个参数，且Oranphans和Straight-accepts这两类交易结束锁定的时间差异也很大，最终作者认为locktimes并非是Oranphans延迟的主要因素。  </p>
-</li>
-</ul>
-<h3 id="以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS"><a href="#以太坊交易的提交-COMMIT-OF-ETHEREUM-TRANSACTIONS" class="headerlink" title="以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)"></a>以太坊交易的提交(COMMIT OF ETHEREUM TRANSACTIONS)</h3><p>在本节中，作者介绍了以太坊不能保证提交的原理，并实验研究了gas price、gas limit、network三个因素对提交时间的影响。</p>
-<ul>
-<li><p><strong>以太坊中交易事务的生命周期</strong><br>1、交易声明：交易发生并声明。<br>2、交易打包进区块：发布节点将交易信息打包到区块中。<br>3、区块链接到主链：节点完成打包计算，将区块链接到主链。<br>4、交易正式提交：其后链接了一定数量的区块后，即正式提交。<br>注：因为分叉现象或其他原因，步骤2并不能保证交易最终一定被提交，这就产生系统的可靠性问题。</p>
-</li>
-<li><p><strong>实验过程</strong><br>实验任务：研究交易从打包到最终提交所花费的时间以及分支合并后会丢失多少已打包的交易。<br>创建监听节点：作者改写了一个客户端节点作为监听节点，以检测交易声明和区块声明。<br>记录时间：监听节点会记录交易声明的时间和区块到达的时间，以计算交易提交的延迟时间。<br>计算方法：根据交易声明的时间和包含此交易的第一个区块到达的时间，我们计算这之间的时间差，结果就是Fig.5中的<br><code>1st inclusion</code>；当第一个块变为叔块时，我们可根据包含此交易的第二个区块到达的时间，计算出<code>2nd inclusion</code>；同理，<br><code>3rd inclusion</code>也是这么计算的；此外，我们根据最后一个区块的到达时间，可以计算出<code>12 confirmations</code>和<code>36 confirmations</code>。将上述计算出的结果绘成图表，就是文中的Fig.5。</p>
-</li>
-<li><p><strong>实验结果</strong><br>实验结果1（各类提交时间的对比）：从Fig.5中可知，相比1st/2nd/3rd inclusion，12/36 conclusion的提交时间更长，而36 conclusion尤为明显，这说明交易数量越多，交易提交所花费的时间越长。<br>实验结果2（针对gas price因素）：从Fig.6中可知，总体趋势是gas price越高，延时越短，但gas price高于25Gwei后对延时的影响就非常小了。这也侧面解释为什么大部分交易定价在[20,25)的区间内(性价比最高)。<br>实验结果3（针对maximum gas因素）：虽然有个别交易因maximum gas过高而有明显的延时，但作者依旧认为maximum gas和提交时间之间没有很强的关联性。<br>实验结果4（针对network delays因素）：虽然没有得出明确的结论，但作者分析了in-order和out-of-order交易在提交延迟和数量方面的数据后，认为网络延迟对交易的传播是有负面影响的。</p>
-</li>
-</ul>
-<h3 id="BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM"><a href="#BLOCK-GAS-LIMIT对以太坊的影响-IMPACT-OF-THE-BLOCK-GAS-LIMIT-IN-ETHEREUM" class="headerlink" title="BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)"></a>BLOCK GAS LIMIT对以太坊的影响(IMPACT OF THE BLOCK GAS LIMIT IN ETHEREUM)</h3><ul>
-<li><p><strong>产生原因</strong><br>出台gas limit per block的原因是希望通过限制每个区块消耗的gas总量，防止DDoS攻击。如果交易所需的气体超过了限制值，交易就无法被包含到块中，这就使得大规模的分布式拒绝服务攻击难以发生。</p>
-</li>
-<li><p><strong>问题背景</strong><br>在没有限制之前，签署合约花费了150万的气体，因此作者认为限制会对合约相关的交易产生负面影响，但对单纯的资金转移交易应该影响不大，之后作者即针对这个观点进行了分析。</p>
-</li>
-<li><p><strong>分析结果</strong><br>由Fig.10可知，在50万气体的限制下，有46.21%的合约类交易无法正常进行；在200万气体的限制下，也有18.78%的合约类交易无法产生。因为气体限额的存在，大量的合约类交易无法进行，这也验证了作者之前的观点。</p>
-</li>
-</ul>
-<h3 id="以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM"><a href="#以太坊的交易终止机制-TRANSACTION-ABORT-IN-ETHEREUM" class="headerlink" title="以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)"></a>以太坊的交易终止机制(TRANSACTION ABORT IN ETHEREUM)</h3><p>这一节主要对应了作者在摘要中提到的观点：终止机制的缺失会使大量交易处于既未终止也未提交的”pending”状态，严重影响系统的可靠性。为解决这个问题，作者提出了一种交易终止的机制，并进行了实验考察。</p>
-<ul>
-<li><p><strong>终止原理</strong><br><strong>竞争法：</strong>如果先前的交易\(Tx_i\)在规定的时间内未提交，账户可以重新发布一个具有相同nonce序号的交易\(Tx_i^{\prime}\)，赋予其更高的手续费，并将交易的接收方设为自己。一旦\(Tx_i^{\prime}\)成功提交，\(Tx_i\)就会自动过期了，即终止了其状态。<br><strong>重传法：</strong>账户重新发布一个与\(Tx_i\)内容相同的交易\(Tx_i^{\prime\prime}\)，但设置较高的手续费，这样虽然\(Tx_i^{\prime\prime}\)交易信息和\(Tx_i\)是一样的，但数字签名和哈希值却不一样(因为手续费不一样)，这样其他节点会把其当作一个新的交易。只要交易\(Tx_i\)和\(Tx_i^{\prime\prime}\)任何一个成功提交了，另外一个即过期了(因为nonce是一样的)，这样也可以达到终止的目的。</p>
-</li>
-<li><p><strong>实验模拟的三种情况</strong><br>1、交易在规定时间内没有被打包<br>2、因为手续费不足，用户决定撤回之前发布的交易<br>3、因为账户余额不足，交易无法被正常提交，即进入”pending”状态</p>
-</li>
-<li><p><strong>对情况1的实验</strong><br>实验原理：为了降低交易被打包的概率，作者减少了交易的手续费，分别为市场均价的0%、10%、…、90%，并设置了10min的截止时间。如果截止时间内原交易未提交，就按照上文提到的竞争法进行终止。<br>实验结果1：大部分交易都成功提交了，甚至30%-90%市场价的交易全部成功提交。出现这样的情况，我猜测可能是因为设置的终止时间太长了，即虽然手续费低，但只要时间足够长，交易还是有可能成功提交的。<br>实验结果2：在0-20%市场价的交易中，有16个没有成功提交，但最后都成功终止了，终止成功率为100%。</p>
-</li>
-<li><p><strong>对情况2的实验</strong><br>实验原理：这种情况考虑的是客户端希望撤回原先的交易，因此相比情况1，设置的截止时间要短一些（因为如果再设置很长时间的话，就失去模拟用户自行撤回的意义了），实验中是取所有交易提交时间的中位点，即3min。<br>实验结果1：截止时间缩短后，未提交的交易数明显增多，总共有53个交易没有提交，甚至0-20%市场价的交易全部没有提交成功，这也验证了我在实验1中的猜想。<br>实验结果2：虽然未提交的交易数量大大增加，但依旧每个交易都成功终止了，成功率为100%。</p>
-</li>
-<li><p><strong>对情况3的实验</strong><br>实验原理：首先作者创建了两个交易：\(Tx_1(bonce=n+1,value=\frac {k} {1000})\)和\(Tx_1(bonce=n+1,value=\frac {999k} {1000})\)，k为当前账户的余额。其次为了模拟余额不足这种情况，作者采用了一种很巧妙的方式：先发送\(Tx_2\)，隔5s后再发送\(Tx_1\)，这样可以使得\(Tx_2\)顺利发出，因为先发\(Tx_1\)的话，一旦其被顺利打包，\(Tx_2\)就会因为余额不够而无法发送到网络中了。采用这种方式，\(Tx_2\)就有可能比\(Tx_1\)先发到网络中，又因为\(Tx_1 nonce&lt;Tx_2 nonce\)，所以\(Tx_1\)必然会比\(Tx_2\)先打包，这样\(Tx_2\)就会因余额不够而停滞在网络中，即成功模拟了因余额不足所导致的”pending”状态。<br>实验结果：作者进行了100次实验，终止成功率依然是100%，结合前两次实验的结果，说明终止机制的效果还是非常好的。</p>
-</li>
-</ul>
-<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><h3 id="对于区块链的理解"><a href="#对于区块链的理解" class="headerlink" title="对于区块链的理解"></a>对于区块链的理解</h3><ul>
-<li>区块链的本质是一个去中心化的分布式账本。我认为区块链就是一个账本，记载了所有交易信息和资产信息，但和传统金融记录方式的不同在于，区块链账本并非存储在某一个中心，其在每一个用户的本地都有存储的副本，相当于每个用户都是一个中心。  </li>
-<li>去中心化带来的好处：首先是不用考虑中心的故障问题，就像双11，你再想买一个东西，淘宝服务器一旦瘫痪就不行了，所有的交易都依赖于这个第三方的中心；其次是不用担心信息泄露的问题，还是淘宝的例子，你要买东西、卖家要卖东西，都要提供个人信息，交易完成后也会产生交易信息，这些都被存在淘宝的服务器中，在当今这个强调个人隐私的时代，这是非常让人困扰的；第三是安全，区块链技术具有不可篡改性，我们不用担心因第三方中心的原因导致我们的资产受损失(如银行破产)。  </li>
-<li>去中心化带来的问题：最大的问题是我们如何在各个节点间同步数据。在中心化系统中，中心说什么就是什么，其他人只需和中心保持同步即可；而在去中心化系统中，我们需要和全网进行同步，难度增大了很多，为了解决这个问题，也就出现了共识机制，大家共同记账，一定数量的节点达成共识后，就可正式在网络中进行同步了；而为了提高大家记账的积极性，就出现了工作量证明算法，对于成功记账的人会有奖励，大家都去积极记账了，账本自然就可以不断地维护、更新了。</li>
-</ul>
-<h3 id="对于区块链可靠性的理解"><a href="#对于区块链可靠性的理解" class="headerlink" title="对于区块链可靠性的理解"></a>对于区块链可靠性的理解</h3><ul>
-<li>本文对于区块链可靠性的研究主要围绕“交易提交时间”这个概念，一个交易产生了，最好的情况是在规定时间内顺利打包，加入到区块链主链中。但因为复杂的网络环境、交易手续费或其他种种因素，一个交易的提交很可能会产生延迟，甚至会出现交易既没有提交、又没有销毁的”pending”状态。  </li>
-<li>这就需要我们去探讨两个方面的问题：到底有哪些因素会影响交易的提交时间？交易如果没有顺利提交我们应该采取什么办法？前者就是文章第三、第四节主要研究的内容，通过具体的实验分析了各种可能影响因素；后者则是作者在第六节研究的内容，提出了一种交易终止机制并进行了实验测试。</li>
-</ul>
-<h3 id="对于交易终止机制的理解"><a href="#对于交易终止机制的理解" class="headerlink" title="对于交易终止机制的理解"></a>对于交易终止机制的理解</h3><ul>
-<li>文中提到了两种交易终止的方法：竞争法和重传法，虽然有些区别，但本质思想都是一样的，都是利用了“nonce相等”的原理来终止原来的交易。  </li>
-<li>文中还提到，虽然以太坊不像比特币那样把每一个块都链接起来，但其每个块都有唯一的顺序号nonce，而且主链上的区块必须是按顺序的，因此我们就可以利用nonce号来使某次交易过期，从而达到终止的目的。</li>
-</ul>
-<h3 id="其他一些感想"><a href="#其他一些感想" class="headerlink" title="其他一些感想"></a>其他一些感想</h3><ul>
-<li>论文中还有一点使我印象很深刻，就是整篇文章都贯穿着实验的思想，作者进行了大量的实验去研究某些因素的影响，对所提出的终止机制也进行了具体的实验探究，实验过后还有对实验结果的合理分析，这些都使得整篇文章的逻辑结构很清晰，值得我在今后的科研工作中去学习。</li>
-</ul>
-<h2 id="改进方案"><a href="#改进方案" class="headerlink" title="改进方案"></a>改进方案</h2><h3 id="对比特币实验中无序现象产生的原因进行研究"><a href="#对比特币实验中无序现象产生的原因进行研究" class="headerlink" title="对比特币实验中无序现象产生的原因进行研究"></a>对比特币实验中无序现象产生的原因进行研究</h3><ul>
-<li>在第三节中，作者研究了到达顺序对交易提交时间的影响，最终得出了结论：顺序到达的交易比无序到达的交易的延时要短。</li>
-<li>作者虽然分析出了现象，但对产生这种现象的原因并没有深入研究，我认为如果对无序现象产生的原因进行研究，也会有助于改善区块链系统的可靠性问题。</li>
-<li>方案实现：可参考文中第三节引言部分提到的几种情况，我认为可以主要研究节点转发策略和节点负载这两个因素，转发策略的不同可能会打乱原先的交易分发顺序，从而使得交易无法按顺序到达其他节点；而节点负载主要会影响交易传播的速度，不同节点的传播速度如果不同，也可能会导致交易失序。有了初步的分析，我们可设计实验来具体研究：首先选择一定量的矿工节点，将其按照不同的转发策略和不同的节点负载进行分组，转发策略可通过观察客户端版本、研究底层转发行为的实现代码等方式得出，而节点负载可通过观测相应网络指标得到。之后可以对两种因素进行控制变量分析，从而研究其对交易到达顺序的影响。</li>
-</ul>
-<h3 id="对比特币实验2中部分Orphans数据未统计的情况进行改进"><a href="#对比特币实验2中部分Orphans数据未统计的情况进行改进" class="headerlink" title="对比特币实验2中部分Orphans数据未统计的情况进行改进"></a>对比特币实验2中部分Orphans数据未统计的情况进行改进</h3><ul>
-<li>在比特币的实验2中，因为高网络负载的原因，有20%的Orphans交易最后未被打包到块中，观测样本因此少了20%，作者也认为这对实验结果是一个很大的限制，因此我认为可根据这一点做下改进。  </li>
-<li>方案实现：我考虑了两种思路，思路一：选择网络负载比实验2小但比实验1大的一个时间点，按照同样的方式做实验3，这样既可观测到不同网络环境下的实验结果，也可以减小网络负载对Orphans交易的影响，不至于使实验观测到的样本减少太多；思路二：保持实验1和实验2的网络条件不变，增加观测窗口的时长，分别进行实验3和实验4。由Fig.2可知计算的是累积比例，因此增加观测窗口相当于延长了一段X轴，Orphans Exp 2这条线最终就有机会到达1，而对其他三条曲线则不会有影响(它们已经很接近1了)，因此就可收集到更多的Orphans数据。</li>
-</ul>
-
-      
     </div>
     <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2018-09-13</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
       
-        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/" data-id="cjrzkudpt002o31qx6kp05zc8" class="article-share-link" data-share="baidu" data-title="On Availability For Blockchain based Systems读书笔记">Share</a>
+    <a href="/tags/PaperNotes/" class="color2">Paper Notes</a>
       
+  </li>
 
-      
-        <a href="http://yoursite.com/2018/09/13/Paper Notes/On Availability For Blockchain based Systems/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a></li></ul>
-
+        </ul>
+        
+            <a href="/2018/09/13/Paper Notes/Efficient Estimation of Word Representations in Vector Space/#more" class="article-more-link" >more&gt;&gt;</a>
+        
     </footer>
   </div>
-  
-</article>
-
-
-  
-    <article id="post-Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" class="article-date">
-  <time datetime="2018-09-13T07:49:59.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/">Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p><a href="http://cfm.uestc.edu.cn/~zhangdongxiang/papers/ICDE16_industry_231.pdf" target="_blank" rel="noopener">论文地址点这里</a></p>
-<p><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>  </p>
-<h2 id="论文内容概述"><a href="#论文内容概述" class="headerlink" title="论文内容概述"></a>论文内容概述</h2><p>本文结合RNN和FNN两种神经网络提出了一种新的个性推荐方法，希望解决传统的CF方法无法进行实时推荐的问题，最终在网易的考拉电商网站上取得了良好的效果。</p>
-<h3 id="简介-INTRODUCTION"><a href="#简介-INTRODUCTION" class="headerlink" title="简介(INTRODUCTION)"></a>简介(INTRODUCTION)</h3><ul>
-<li><p><strong>传统CF模型存在的问题</strong><br>因为是基于用户购物习惯的推荐，使用的是历史信息，未能利用用户当前的浏览历史，因此无法进行实时推荐。</p>
-</li>
-<li><p><strong>如何进行实时推荐</strong><br>首先要考虑访问电商网站的用户属性，包括基本属性(浏览器、IP地址、个人基本信息、购买历史等)和动态属性(用户所浏览页面的信息)，而基于后者，我们就可以猜测用户在本次访问中究竟想要购买什么，从而完成实时推荐。</p>
-</li>
-<li><p>之后作者对系统主要面临的挑战、所构建DRNN的特点和其他一些技术作了介绍，即完成了本节内容。</p>
-</li>
-</ul>
-<h3 id="推荐模块概述-OVERVIEW-OF-RECOMMENDATION-MODULE"><a href="#推荐模块概述-OVERVIEW-OF-RECOMMENDATION-MODULE" class="headerlink" title="推荐模块概述(OVERVIEW OF RECOMMENDATION MODULE)"></a>推荐模块概述(OVERVIEW OF RECOMMENDATION MODULE)</h3><ul>
-<li><p><strong>系统流程</strong><br>服务器首先接收用户请求并聚合为一个会话信息，之后将其输入到推荐系统中，经过RNN和FNN计算后输出推荐结果，并在页面中显示。</p>
-</li>
-<li><p><strong>数据格式</strong><br>数据收集：假设用户\(u_i\)访问网站，会生成日志文档\(D_j^l\)和会话文档\(D_i^s\)两种文档，两者关系为\(D_i^s=\{D_0^l,D_1^l,\cdots,D_{k-1}^l\}\)，即一个会话文档对应多个日志文档。<br>数据简化：又因为每个日志文档都可简化为一个URL地址\(p_j\)，因此可得\(D_i^s=\{p_0,p_1,\cdots,p_{n-1}\}\)。<br>最终的输入数据：访问网站的每个用户\(u_i\)都会对应一个\(D_i^s\)，即构成了神经网络的输入数据。</p>
-</li>
-</ul>
-<h3 id="DRNN具体介绍-DEEP-RECURRENT-NEURAL-NETWORK"><a href="#DRNN具体介绍-DEEP-RECURRENT-NEURAL-NETWORK" class="headerlink" title="DRNN具体介绍(DEEP RECURRENT NEURAL NETWORK)"></a>DRNN具体介绍(DEEP RECURRENT NEURAL NETWORK)</h3><ul>
-<li><p><strong>RNN的特点</strong><br>RNN即循环神经网络，相比其他神经网络最大的特点是：其考虑了前后两个状态之间的关联，可以更好地处理序列信息。在本文的场景中，一个session可抽象为一系列的网页序列，因此利用RNN来进行推荐直观上是非常合适的。</p>
-</li>
-<li><p><strong>基本RNN模型</strong><br>在单个隐藏层的RNN中，隐藏层节点除了的输入和输出外，还会有一个自连接环，可以根据时间来不断地更新它的值。<br>更新函数：\(a(i)=f(Ux(i)+Wa(i-1))\)，\(a(i)\)表示在状态\(i\)下的节点值，\(x(i)\)表示输入值，\(U,W\)为相应的转移矩阵，\(f(x)\)为激活函数。<br>公式理解：隐藏层节点每次更新除了会考虑输入值外，还会考虑该节点在前一状态下的值，因此RNN的结果可以反映时间序列的相应信息。</p>
-</li>
-<li><p><strong>有限状态的DRNN</strong><br>当RNN具有多个隐藏层时，即构成了DRNN。考虑DRNN中第\(i\)层的某个状态\(t\)，其不仅会连接同层的状态\(t+1\)，还会连接到第\(i+1\)层的状态\(t\)，即构成了新的更新函数：<br>$$ f(x)=\left\{<br>\begin{align}<br>&amp;f(W_ia_i(t-1)+Z_i(a_{i-1}(t)+b_i(t)))&amp;,&amp; i&gt;1 \\<br>&amp;f(W_ia_i(t-1)+Z_i(V_t+\theta (p_t)))&amp;,&amp; i=1<br>\end{align}<br>\right.<br>$$</p>
-</li>
-<li><p><strong>引入历史状态节点的DRNN</strong><br>问题背景：受限于内存，我们不可能保存用户所有产生的状态；但如果使用\(n\)状态的滑动窗口，则只能选择最新的\(n\)个数据训练模型，会降低预测精度。因此作者引入了历史状态节点(history state)的概念。<br>当用户访问的页面数\(x\)超过一定数量\(n\)时，我们将前\(x-n\)个状态组合起来作为历史状态节点，有<br>$$\bar{V}=\sum_{i=0}^{x-n}\varepsilon_iV_i$$<br>$$\varepsilon_i=\frac {\theta(p_i)} {\sum_{j=i}^{x-n}\theta(p_j)} $$<br>公式理解：根据用户在页面的停留时间对前\(x-n\)个页面作加权平均，近似表征用户的历史信息，是一个既在一定程度上保证了模型精度，计算开销又不至于太大的折中方案。</p>
-</li>
-<li><p><strong>与协同过滤算法的结合</strong><br>问题背景：虽然协同过滤算法无法提供实时的推荐，但如果用户遵循以往购买习惯，其推荐效果还是很好的。因此作者引入了FNN模型来模拟CF算法，作为RNN的补充。<br>另外使用FNN还有两点好处：</p>
-<ul>
-<li>FNN和RNN共享相同的输出层，因此可以将二者的输出融合起来作为最终结果，来表征用户购买某件商品的概率。</li>
-<li>可以使用随机最速下降法(SGD)来训练RNN和FNN结合的权重，而不用人为地决定哪个网络更为重要，减轻了模型调参的工作量。</li>
-</ul>
-</li>
-<li><p><strong>如何生成训练数据</strong><br>用户从进入网站开始到最终购买商品，会经历一定数量的页面，个性推荐的本质目标就是减少这之间页面的数量。对于一次购买行为\(I\)，其对应的页面路径为\(p_0,\cdots,p_{n-1}\rightarrow I\)。若对其进行优化，不一定非要优化成\(p_0\rightarrow I\)这样(当然这是最优情况)，只要能减少用户的页面访问数量，都可以算作优化。因此我们的训练数据还可以是\(p_0,p_1\rightarrow I\)、 \(p_0,p_1,p_2\rightarrow I\)等，这样一次购买行为就可以产生\(n\)组训练数据，大大增加了我们的训练量。</p>
-</li>
-<li><p><strong>模型的实现</strong><br>作者使用了Caffe框架来实现模型，整个网络包含三层隐含层，且同一层次的神经元共享相同的权重和偏置矩阵。此外，模型的RNN部分包含4个状态的输入，FNN包含1个状态的输入。</p>
-</li>
-</ul>
-<h3 id="模型调优-MODEL-OPTIMIZATIONS"><a href="#模型调优-MODEL-OPTIMIZATIONS" class="headerlink" title="模型调优(MODEL OPTIMIZATIONS)"></a>模型调优(MODEL OPTIMIZATIONS)</h3><p>这一节作者介绍了其为了改进模型性能所做的工作，并提出了一种自动调优框架，使得模型具有了更高的精度和更快的学习速度。</p>
-<ul>
-<li><p><strong>自动代码生成器</strong><br>问题背景：模型中包括了很多参数，调整这些参数需要更改甚至重写Caffe脚本，非常繁琐。因此作者构建了一个代码生成器，其主要任务是接收参数值，输出对应的Caffe脚本。<br>主要思想：首先将参数分为<strong>基本参数</strong>(损失函数、学习速率等)和<strong>网络结构参数</strong>(每层的神经元数)，调整基本参数只需更改相应的值，而调整网络结构参数则需要改写Caffe脚本，因此我们只需重点关注网络结构参数即可。<br>三种网络结构参数：文中提出了长、宽、高三种网络结构参数，分别对应隐含层数量、状态数以及隐含层与状态层的连接数，并编写了相应的代码生成算法，具体可见文中的Algorithm 1。</p>
-</li>
-<li><p><strong>模型调优</strong><br>为了求得表现更好的模型参数，作者采用了遗传算法这种启发式算法进行模型调优。<br>染色体结构：\(C=(w,l,h,a_1,a_2,\cdots,a_L,\cdots)\)，直观的理解就是将所有参数结合在了一起。<br>适应度函数：\(fit=accuracy+\frac {1} {1+loss}\)，\(accuracy\)为模型预测精度，\(loss\)为损失率。<br>注：虽然遗传算法最终求得的是局部最优解，但因为参数调优本就是一个非常复杂、难以建模的过程，所以作者认为这样的解已经足够好了。</p>
-</li>
-</ul>
-<h3 id="模型实验-EXPERIMENTS"><a href="#模型实验-EXPERIMENTS" class="headerlink" title="模型实验(EXPERIMENTS)"></a>模型实验(EXPERIMENTS)</h3><p>这一节作者对模型进行了全面的测试和分析，并分别研究几个重要因素对模型的影响。</p>
-<ul>
-<li><p><strong>评价指标</strong><br>作者采用了预测正确率作为模型主要的评价指标，公式为\(accuracy=\frac {f(S)} {|S|}\)，\(S\)代表训练样本总数，\(f(S)\)代表正确预测的样本数。</p>
-</li>
-<li><p><strong>batch size的影响</strong><br>在使用默认参数训练模型时，增大batch size可以提高模型精度，但对于内存的消耗也更大。而一个有趣的现象是，使用调优框架后再训练模型，batch size对精度的影响就不再显著了，可见调优框架确实使得模型的表现更为优异了。</p>
-</li>
-<li><p><strong>FNN的影响</strong><br>由Fig.11、Fig.12可得，FNN的使用显著提升了模型精度，尤其是同时使用调优框架和FNN的模型，精度提升了约10%，而且这还是在模型只推荐1个物品的情况下(即购买概率最大的那个物品)，若模型返回10个物品，模型精度可以达到50%以上。<br>同时，使用FNN并不会影响模型的收敛速率，即模型精度的提升并不会增加计算开销，这也是很重要的一点。</p>
-</li>
-<li><p><strong>历史状态节点的影响</strong><br>在使用默认参数训练模型时，使用历史状节点态可提高模型10%的精度；而使用了调优框架后，只能提升2%的精度，即调优过程降低了不同网络结构对模型的影响，这也侧面表明了作者所提出调优框架的优异性能。</p>
-</li>
-<li><p><strong>模型最终效果</strong><br>在DRNN和FNN结合的情况下，模型最终的预测精度达到了33.13%，页面路径压缩到了原先的72.41%，相当于用户从点进网站到最终购买商品，少浏览了30%的页面，效果还是显而易见的，毕竟用户每多浏览一个自己不感兴趣的页面，其离开网站的概率就会越大，这也就是推荐系统的作用所在，即帮助用户更快地进行选择。</p>
-</li>
-</ul>
-<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><h3 id="关于推荐系统"><a href="#关于推荐系统" class="headerlink" title="关于推荐系统"></a>关于推荐系统</h3><ul>
-<li>本文提出了基于RNN和FNN的推荐系统，最主要的原因是传统的CF算法基于用户间购物历史的相似度来做推荐，考虑的更多是用户的购物习惯，这就使其无法把握用户突发的、低频的购买需求。</li>
-<li>比如我平常很爱买衣服，网购的大部分物品都是衣服，但有一天突然想吃零食，就会在网站上浏览零食的相关页面，这时系统给我推荐的若还是衣服，就会影响用户体验，也不利于提高网站的销量，因此实时推荐是很有必要的。</li>
-<li>但同时，在生活大部分情况中，一个人还是会遵循其所形成的习惯去购物，这时基于购物习惯的推荐便能表现出很好的效果，因此CF算法也是很有必要的。</li>
-<li>综上，论文中使用RNN和FNN两种算法共同完成推荐，这种思路是合理的，也是符合我们的直观认知的。</li>
-</ul>
-<h3 id="关于RNN算法"><a href="#关于RNN算法" class="headerlink" title="关于RNN算法"></a>关于RNN算法</h3><ul>
-<li>RNN与其他网络最大的不同在于其隐含层节点的自连接性，在其更新函数中，不仅包括正常的输入值，还包括上一时刻中节点自身的值，这就像使得节点具有了“记忆”，这个记忆表征了时间序列中前后节点的关联，因此RNN适合处理时间序列或状态间具有一定联系的情况。</li>
-<li>对应到本文，用户在网站上购物必然会浏览一系列页面，而这些页面是否是有关联的呢？我认为是有的。比如我要买一个钱包，在第一个页面中没有浏览到我喜欢的款式，那我下一个访问的页面也会是关于钱包的，甚至我之后的浏览可能都会围绕钱包来展开，因此我们就可从用户初始的浏览内容来推测其实时的购买兴趣，这也就是作者应用RNN进行实时推荐的原因。</li>
-</ul>
-<h3 id="关于历史状态节点-history-state"><a href="#关于历史状态节点-history-state" class="headerlink" title="关于历史状态节点(history state)"></a>关于历史状态节点(history state)</h3><ul>
-<li>本文的一个创新在于引入了历史状态节点，来解决状态数过多、计算开销过大的问题。根据用户在页面上停留的时间，将多出的历史状态作加权平均，构成一个新的节点，这样既可以保留历史信息，又不会造成计算开销的大量增加，是一种比较折衷的方案。</li>
-<li>这也提示我们，在数据量过大的情况下，与其直接将一部分数据丢弃掉，不如将这部分数据做整合，采用加权平均或其他的提取信息的方法，构成新的节点来参与运算，在模型精度和计算开销之间取得平衡。</li>
-</ul>
-<h3 id="关于训练数据的生成"><a href="#关于训练数据的生成" class="headerlink" title="关于训练数据的生成"></a>关于训练数据的生成</h3><ul>
-<li>本文针对用户一次的购买行为，将各种可能的路径优化方案都作为了训练数据送入模型进行训练，这样可以增加我们的训练量。因为对于有监督学习来说，带标签的数据是有限的，如何充分利用有限的标签数据去训练模型需要我们去研究，本文给了我们一种可行的思路。</li>
-</ul>
-<h3 id="关于模型调优"><a href="#关于模型调优" class="headerlink" title="关于模型调优"></a>关于模型调优</h3><ul>
-<li>本文提出了一种模型调优框架，大致可分为“生成参数”和“生成代码”两部分。</li>
-<li>首先将模型的相关参数整合成染色体，再利用遗传算法的杂交、变异等操作，生成下一代染色体，之后将参数传入代码生成器中生成对应的Caffe脚本，训练模型后，将结果回带到遗传算法的适应度函数中进行评估和自然选择，一轮轮地迭代，最终即可得出最优的参数组合。</li>
-<li>因为建模的复杂性和组合爆炸等问题，模型调优一直是机器学习的一个难点，在这种情况下，利用一些启发式算法进行智能调优不失为一个好的方法，这也是文章给我们的一个启示。</li>
-</ul>
-<h2 id="改进方案"><a href="#改进方案" class="headerlink" title="改进方案"></a>改进方案</h2><h3 id="关于模型的更新问题"><a href="#关于模型的更新问题" class="headerlink" title="关于模型的更新问题"></a>关于模型的更新问题</h3><ul>
-<li>在文章中提到，顾客每完成一次购物，就相当于得到了一个”ground truth”，可以用来训练、调整模型，这样模型随着网站的运行就会不断优化和改进。</li>
-<li>如果顾客这次购物是在遵循自己以往的购物习惯，那么将结果用来继续训练模型是没有问题的，因为这个行为在今后还会多次发生，这样可以使得模型更了解顾客的购买习惯，从而更好地完成推荐。</li>
-<li>但如果这是一次”unexpected”的购物行为，就像平常都喜欢买衣服的我只是突然想吃点零食，如果模型把这个突发的低频需求当作了用户的购买习惯，在今后也多次向用户进行推荐，可能会造成用户的厌烦。</li>
-<li>因此我认为在模型的持续更新中，应该考虑到用户购买行为的属性，即对利用了RNN方式完成的推荐，要降低其对模型的后续影响。</li>
-<li>方案实现：可以通过减少训练样本数量的方式，对于通过RNN推荐完成的购买，不要将<br>$$<br>  p_0 \rightarrow I \\<br>  p_0,p_1 \rightarrow I \\<br>  \cdots \\<br>  p_0,\cdots,p_{n-1} \rightarrow I<br>$$<br>所有的路径样本都送入训练，可以只送入后半段或后1/4的样本，让推荐发生的条件更为“苛刻”一些，从而使得模型不会在用户一进入网站就推荐一些低频、不经常需求的产品。</li>
-</ul>
-<h3 id="将社群属性加入到模型中"><a href="#将社群属性加入到模型中" class="headerlink" title="将社群属性加入到模型中"></a>将社群属性加入到模型中</h3><ul>
-<li>论文在”Related Work”中提到CF推荐和基于内容的推荐相结合，会在社交网络上表现得更好，因此我认为可以将这种思路应用到本文，即在推荐系统中加入一定的社群属性。</li>
-<li>问题背景：在实际生活中，我们会更倾向于接受来自朋友的推荐，而非来自商家的推荐。尤其是本文的电商网站——网易考拉，是一个主打海淘的平台，用户对一些国外的品牌可能了解并不多，这时如果有来自自己社交圈的推荐，无疑会增加购买的概率。</li>
-<li>方案实现：可以考虑改进文中的FNN部分的方法，即首先通过用户填写的基本信息或其他网易系应用中的用户资料(如网易音乐、游戏等)，对用户进行社群判别和分类，为每个用户构建一个“熟人圈”。在进行FNN推荐时，模型不仅推荐历史相似的用户购买的产品，也推荐来自熟人圈购买的产品，以将社群属性加入到推荐模型中。</li>
-</ul>
-<h3 id="关于推荐理由"><a href="#关于推荐理由" class="headerlink" title="关于推荐理由"></a>关于推荐理由</h3><ul>
-<li>问题背景：目前用户对于推荐系统的态度，不仅是想“知其然”，也想“知其所以然”，即除了推荐的物品本身，用户也会想知道系统为什么会给自己推荐这个物品，因此如果能给推荐物品附上推荐理由，无疑会提升网站的用户体验。</li>
-<li>方案实现：因为本文是将两种神经网络的输出层共享，以类似加权平均的方式进行融合(见文章第三节D部分)，来计算出用户购买某件物品的概率的，因此可以将最终结果的各个部分分离出来，从大到小排序，通过分析值最大的一项或几项来构造我们的推荐理由。</li>
-<li>具体形式：推荐理由的形式可以为“根据你以前购买过的xxx牛仔裤，我们猜你还喜欢这个”、“根据你刚刚浏览过的xxx钱包，我们猜你会喜欢这个”等等，以一种猜测、活泼的口吻对用户进行提示，以增加用户的购买欲望。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/" data-id="cjrzkudpt002q31qxe86gsat6" class="article-share-link" data-share="baidu" data-title="Personal Recommendation Using Deep Recurrent Neural Networks in NetEase读书笔记">Share</a>
-      
-
-      
-        <a href="http://yoursite.com/2018/09/13/Paper Notes/Personal Recommendation Using Deep Recurrent Neural Networks in NetEase/#ds-thread" class="article-comment-link">Comments</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a></li></ul>
-
-    </footer>
-  </div>
-  
 </article>
 
 
@@ -1200,162 +575,123 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next >></a>
   </nav>
 </section>
-      
-      <aside id="sidebar">
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-Sharp/">C_Sharp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/English/">English</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lingo/">Lingo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MachineLearning/">MachineLearning</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Other/">Other</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Paper-Notes/">Paper Notes</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs224n/">cs224n</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/">nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uwtsd-modules/">uwtsd_modules</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/课程笔记/">课程笔记</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 12.86px;">Algorithm</a> <a href="/tags/C/" style="font-size: 11.43px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 17.14px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 15.71px;">Network</a> <a href="/tags/Other/" style="font-size: 18.57px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 12.86px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 15.71px;">cs224n</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/python/" style="font-size: 14.29px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a href="/2019/02/07/Regular Expression/">正则表达式</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/27/cs224n/lecture 4/">lecture 4_Word Window Classification and Neural Networks</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/25/Python/numpy笔记/">numpy笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/26/cs224n/lecture 3/">lecture 3_More Word Vectors</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/06/cs224n/background/">基础知识</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Links</h3>
-    <div class="widget">
-      <ul>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-      
-    </div>
-    <footer id="footer">
-  
+      </div>
+      <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
       &copy; 2019 Ren Li<br>
-      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+      </p>
     </div>
   </div>
 </footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-  <!-- totop start -->
-<div id="totop">
-<a title="totop"><img src="/img/scrollup.png"/></a>
-</div>
-
-<!-- totop end -->
-
-<!-- 多说公共js代码 start -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"reqianduan"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0]
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-  </script>
-<!-- 多说公共js代码 end -->
-
-
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
-</div>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  function SetShareData(cmd, config) {
-    if (shareDataTitle && shareDataUrl) {
-      config.bdText = shareDataTitle;
-      config.bdUrl = shareDataUrl;
-    }
-    return config;
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: false,
+      isHome: true,
+      share: false,
+      reward: 1
   }
-  window._bd_share_config={
-    "common":{onBeforeClick: SetShareData},
-    "share":{"bdCustomStyle":"/css/bdshare.css"}
-  };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 </script>
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
 </div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 16px;">Network</a> <a href="/tags/Other/" style="font-size: 18px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 16px;">cs224n</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="https://github.com/lrStyle">
+                    <i class="fa fa-user"></i><span>Github</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/C-Sharp/" style="font-size: 10px;">C_Sharp</a> <a href="/tags/English/" style="font-size: 20px;">English</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Lingo/" style="font-size: 10px;">Lingo</a> <a href="/tags/MachineLearning/" style="font-size: 18px;">MachineLearning</a> <a href="/tags/Network/" style="font-size: 16px;">Network</a> <a href="/tags/Other/" style="font-size: 18px;">Other</a> <a href="/tags/Paper-Notes/" style="font-size: 14px;">Paper Notes</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cs224n/" style="font-size: 16px;">cs224n</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/uwtsd-modules/" style="font-size: 10px;">uwtsd_modules</a> <a href="/tags/课程笔记/" style="font-size: 10px;">课程笔记</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+  </div>
 </body>
 </html>
