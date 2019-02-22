@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Ren Li&#39;s blog">
 <meta property="og:description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-22T10:41:54.325Z">
+<meta property="og:updated_time" content="2019-02-22T18:33:05.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="因为正则表达式的在文本处理，字符串匹配中有着重要应用，因此本文对其基本语法规则及在Python中的应用进行了简要介绍。">
@@ -285,29 +285,29 @@
 <h3 id="经典正则表达式实例"><a href="#经典正则表达式实例" class="headerlink" title="经典正则表达式实例"></a>经典正则表达式实例</h3><table>
 <thead>
 <tr>
-<th style="text-align:left">正则表达式</th>
+<th style="text-align:center">正则表达式</th>
 <th style="text-align:left">解释</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>^[A-Za-z]+$</code></td>
+<td style="text-align:center"><code>^[A-Za-z]+$</code></td>
 <td style="text-align:left">由26个字母组成的字符串</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>^[A-Za-z0-9]+$</code></td>
+<td style="text-align:center"><code>^[A-Za-z0-9]+$</code></td>
 <td style="text-align:left">由26个字母和数字组成的字符串</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>^-?\d+$</code></td>
+<td style="text-align:center"><code>^-?\d+$</code></td>
 <td style="text-align:left">整数形式的字符串</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>^[0-9]*[1-9][0-9]*$</code></td>
+<td style="text-align:center"><code>^[0-9]*[1-9][0-9]*$</code></td>
 <td style="text-align:left">正整数形式的字符串</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>[\u4e00-\u9fa5]</code></td>
+<td style="text-align:center"><code>[\u4e00-\u9fa5]</code></td>
 <td style="text-align:left">判断是不是中文字符</td>
 </tr>
 </tbody>
@@ -372,29 +372,29 @@
 <h4 id="控制标记flag介绍"><a href="#控制标记flag介绍" class="headerlink" title="控制标记flag介绍"></a>控制标记flag介绍</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">标记名(简写/全称)</th>
+<th style="text-align:center">标记名(简写/全称)</th>
 <th style="text-align:left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">re.A / re.ASCII</td>
+<td style="text-align:center">re.A / re.ASCII</td>
 <td style="text-align:left">使\w,\b,\s和\d只匹配ASCII字符 <br> eg. 不会匹配汉字和其他Unicode字符</td>
 </tr>
 <tr>
-<td style="text-align:left">re.I / re.IGNORECASE</td>
+<td style="text-align:center">re.I / re.IGNORECASE</td>
 <td style="text-align:left">忽略正则表达式大小写</td>
 </tr>
 <tr>
-<td style="text-align:left">re.M / re.MULTILINE</td>
+<td style="text-align:center">re.M / re.MULTILINE</td>
 <td style="text-align:left">使得^表示每一行的开始，$表示每一行的结束 <br> 原义仅表示一个单词的开始和结束</td>
 </tr>
 <tr>
-<td style="text-align:left">re.S / re.DOTALL</td>
+<td style="text-align:center">re.S / re.DOTALL</td>
 <td style="text-align:left">使得.可以匹配\n字符</td>
 </tr>
 <tr>
-<td style="text-align:left">re.X / re.VERBOSE</td>
+<td style="text-align:center">re.X / re.VERBOSE</td>
 <td style="text-align:left">忽略正则表达式内部的空白符</td>
 </tr>
 </tbody>
@@ -412,33 +412,33 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:left">名称</th>
+<th style="text-align:center">名称</th>
 <th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">match.group()</td>
+<td style="text-align:center">match.group()</td>
 <td style="text-align:left">返回特定的分组，string或tuple的形式</td>
 </tr>
 <tr>
-<td style="text-align:left">match.groups()</td>
+<td style="text-align:center">match.groups()</td>
 <td style="text-align:left">以tuple的形式返回所有分组</td>
 </tr>
 <tr>
-<td style="text-align:left">match.start()</td>
+<td style="text-align:center">match.start()</td>
 <td style="text-align:left">返回特定分组的起始地址</td>
 </tr>
 <tr>
-<td style="text-align:left">match.end()</td>
+<td style="text-align:center">match.end()</td>
 <td style="text-align:left">返回特定分组的结束地址 <br>（会比实际大1位，因为python字符串截取前闭后开的特性）</td>
 </tr>
 <tr>
-<td style="text-align:left">match.re</td>
+<td style="text-align:center">match.re</td>
 <td style="text-align:left">为编译好的regular expression object对象</td>
 </tr>
 <tr>
-<td style="text-align:left">match.string</td>
+<td style="text-align:center">match.string</td>
 <td style="text-align:left">为传入到re.search()或re.match()的待匹配字符串</td>
 </tr>
 </tbody>
