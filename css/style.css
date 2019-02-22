@@ -1442,7 +1442,7 @@ body {
 .post-toc-pos {
   z-index: 999;
   bottom: 77%;
-  left: calc(50% - 660px);
+  left: calc(1.5%);
   position: fixed;
 }
 .post-toc-pos .post-article {
@@ -1463,9 +1463,10 @@ body {
   opacity: 0;
 }
 .post-toc-wrap {
+  overflow-y: scroll;
   position: fixed;
   border-radius: 3px;
-  width: 200px;
+  width: 234px;
   max-height: 400px;
   color: #313131;
 }
@@ -1521,6 +1522,7 @@ body {
   position: relative;
 }
 .post-toc-link {
+  white-space: nowrap;
   position: relative;
   z-index: 2;
   padding: 3px 10px;
@@ -1544,12 +1546,12 @@ body {
   height: 100%;
 }
 .post-copyright {
-  margin: 30px 0;
+  margin: 0 0;
   font-size: 14px;
 }
 .post-copyright .content {
   margin-bottom: 1em;
-  padding: 10px 0 30px 20px;
+  padding: 10px 0 0px 0px;
   word-break: break-all;
   color: #727272;
   background: #f0ffff;
